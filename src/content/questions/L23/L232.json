@@ -19,15 +19,15 @@
       },
       {
         "id": "B",
-        "text": "兩者都必須依序訓練"
+        "text": "Bagging 依序修正前一模型錯誤主要降低偏差；Boosting 平行訓練多個模型主要降低變異"
       },
       {
         "id": "C",
-        "text": "Bagging 主要用於降低偏差"
+        "text": "兩者都必須依序訓練，差別只在 Boosting 使用的模型較深"
       },
       {
         "id": "D",
-        "text": "Boosting 不使用任何弱學習器"
+        "text": "Bagging 只能使用決策樹；Boosting 只能使用神經網路"
       }
     ],
     "correctOptionIds": [
@@ -38,9 +38,9 @@
       "correctRationale": "隨機森林屬 Bagging；梯度提升樹屬 Boosting。",
       "optionRationales": {
         "A": "正確。隨機森林屬 Bagging；梯度提升樹屬 Boosting。",
-        "B": "Bagging 可平行訓練。",
-        "C": "Bagging 主要降低變異。",
-        "D": "Boosting 由弱學習器組成。"
+        "B": "說反了：平行訓練、降低變異的是 Bagging；依序修正錯誤的是 Boosting。",
+        "C": "Bagging 可平行訓練；Boosting 通常使用較淺的弱學習器。",
+        "D": "兩者都可搭配不同的基礎模型。"
       },
       "commonTrap": "把隨機森林誤認為 Boosting。",
       "lessonAnchor": "L23201"
@@ -1172,7 +1172,7 @@
     "options": [
       {
         "id": "A",
-        "text": "為了讓參數變少"
+        "text": "非線性函數可以減少參數數量，讓模型訓練得更快"
       },
       {
         "id": "B",
@@ -1180,11 +1180,11 @@
       },
       {
         "id": "C",
-        "text": "非線性函數可以加密資料"
+        "text": "非線性函數可以把輸出限制在 0 到 1，讓所有任務都能當作機率"
       },
       {
         "id": "D",
-        "text": "為了讓計算變慢"
+        "text": "非線性函數可以避免過擬合，因此不需要再使用正則化"
       }
     ],
     "correctOptionIds": [
@@ -1194,10 +1194,10 @@
       "summary": "線性函數的組合仍是線性。",
       "correctRationale": "非線性激活讓深度網路能表達複雜的決策邊界。",
       "optionRationales": {
-        "A": "與參數量無關。",
+        "A": "激活函數不影響參數數量。",
         "B": "正確。否則多層等於一層。",
-        "C": "與加密無關。",
-        "D": "目的不是變慢。"
+        "C": "只有部分激活函數（如 Sigmoid）限制在 0 到 1；ReLU 等並不限制，這也不是需要非線性的原因。",
+        "D": "非線性增加模型表達能力，反而可能更容易過擬合。"
       },
       "commonTrap": "不了解激活函數的作用。",
       "lessonAnchor": "L23203"
@@ -1229,19 +1229,19 @@
     "options": [
       {
         "id": "A",
-        "text": "RNN 比 Transformer 更容易平行化"
+        "text": "Transformer 逐步處理序列、難以平行；RNN 以自注意力同時處理所有位置"
       },
       {
         "id": "B",
-        "text": "兩者完全相同"
+        "text": "RNN 比 Transformer 更擅長捕捉長距離關係，因為 LSTM 沒有記憶限制"
       },
       {
         "id": "C",
-        "text": "Transformer 只能處理影像"
+        "text": "Transformer 只能處理影像，處理文字序列時仍需改用 RNN"
       },
       {
         "id": "D",
-        "text": "RNN 逐步處理序列、難以平行；Transformer 以自注意力同時處理所有位置，易於平行並善於捕捉長距離關係"
+        "text": "RNN 逐步處理、難以平行；Transformer 以自注意力同時處理所有位置，善於長距離關係"
       }
     ],
     "correctOptionIds": [
@@ -1251,9 +1251,9 @@
       "summary": "架構差異影響訓練效率與長距離依賴。",
       "correctRationale": "Transformer 成為大型語言模型的主流架構。",
       "optionRationales": {
-        "A": "RNN 較難平行。",
-        "B": "機制不同。",
-        "C": "Transformer 可處理多種資料。",
+        "A": "說反了：逐步處理的是 RNN，使用自注意力的是 Transformer。",
+        "B": "LSTM 改善了長期依賴問題，但序列很長時仍有困難；自注意力能直接連結任意兩個位置。",
+        "C": "Transformer 最早就是為文字序列設計，也能處理影像等其他資料。",
         "D": "正確。Transformer 成為大型語言模型的主流架構。"
       },
       "commonTrap": "不了解主流序列架構。",
@@ -2702,19 +2702,19 @@
     "options": [
       {
         "id": "A",
-        "text": "多標籤問題無法以神經網路處理"
+        "text": "類別數太多，softmax 無法輸出超過兩個類別的機率"
       },
       {
         "id": "B",
-        "text": "沒有問題，softmax 適用所有分類"
+        "text": "類別交叉熵只能用於迴歸問題，應改用均方誤差"
       },
       {
         "id": "C",
-        "text": "softmax 強迫各類別機率總和為 1，彼此競爭；多標籤應對每個類別用 sigmoid 搭配二元交叉熵"
+        "text": "softmax 讓各類別機率總和為 1、彼此競爭；多標籤應對每類用 sigmoid 與二元交叉熵"
       },
       {
         "id": "D",
-        "text": "應改用均方誤差並移除輸出層"
+        "text": "應改用 ReLU 作為輸出層，讓每個類別的輸出可以大於 1"
       }
     ],
     "correctOptionIds": [
@@ -2724,10 +2724,10 @@
       "summary": "多類別單選用 softmax；多標籤用多個 sigmoid。",
       "correctRationale": "每個類別獨立判斷是否存在，機率不需加總為 1。",
       "optionRationales": {
-        "A": "神經網路可處理多標籤分類。",
-        "B": "softmax 假設類別互斥。",
+        "A": "softmax 可以輸出多個類別的機率，問題在於它假設類別互斥。",
+        "B": "類別交叉熵是分類損失；均方誤差不適合此分類問題。",
         "C": "正確。每個類別獨立判斷是否存在，機率不需加總為 1。",
-        "D": "均方誤差不適合此分類問題，且仍需輸出層。"
+        "D": "ReLU 輸出沒有上限，不能解讀為機率；應對每個類別使用 sigmoid。"
       },
       "commonTrap": "把多標籤與多類別單選混淆。",
       "lessonAnchor": "L23203"
