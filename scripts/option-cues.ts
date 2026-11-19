@@ -27,6 +27,7 @@ const rs = s.rankStrategyPct;
 console.log(`每題選第 k 長的期望得分（理想各約 25%）：最長 ${rs[1]}%、第二長 ${rs[2]}%、第三長 ${rs[3]}%、最短 ${rs[4]}%`);
 console.log(`各科選第二長：${Object.entries(s.bySubject).map(([k, v]) => `${k} ${v.secondStrategyPct}%`).join('、')}`);
 console.log(`絕對字眼：錯誤選項 ${s.absoluteInDistractors} 題、正確選項 ${s.absoluteInCorrect} 題`);
+console.log(`排除含絕對字眼的選項後：隨機選 ${s.absoluteEliminationPct}%、選最長 ${s.absoluteThenLongestPct}%（理想約 25%）`);
 const worst = questions
   .filter((q) => q.reviewStatus !== 'retired' && isStrictlyLongest(q))
   .map((q) => ({ id: q.id, r: lengthRatio(q) }))

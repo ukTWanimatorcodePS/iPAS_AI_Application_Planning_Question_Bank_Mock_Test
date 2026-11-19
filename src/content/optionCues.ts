@@ -58,6 +58,20 @@ export function rankStrategyScore(q: CueQuestion, k: number): number {
   return tied.some((o) => q.correctOptionIds.includes(o.id)) ? 1 / tied.length : 0;
 }
 
+/**
+ * A2「排除絕對字眼」策略：先刪掉含絕對字眼的選項，在剩下的選項中隨機選一個（全部都含時在四個中隨機選）。
+ * thenLongest = true 時改為在剩下的選項中選最長（並列時隨機），模擬兩種線索合用。
+ */
+export function absoluteEliminationScore(q: CueQuestion, thenLongest = false): number {
+  const keep = q.options.filter((o) => !ABSOLUTE_WORDS.test(o.text));
+  let pool = keep.length ? keep : q.options;
+  if (thenLongest) {
+    const max = Math.max(...pool.map((o) => len(o.text)));
+    pool = pool.filter((o) => len(o.text) === max);
+  }
+  return pool.some((o) => q.correctOptionIds.includes(o.id)) ? 1 / pool.length : 0;
+}
+
 export interface CueSummary {
   total: number;
   strictlyLongestPct: number;
@@ -68,6 +82,10 @@ export interface CueSummary {
   ratioAtLeast2: number;
   absoluteInDistractors: number;
   absoluteInCorrect: number;
+  /** 排除含絕對字眼的選項後隨機選的期望得分（%） */
+  absoluteEliminationPct: number;
+  /** 排除含絕對字眼的選項後選最長的期望得分（%） */
+  absoluteThenLongestPct: number;
   /** 正確選項的長度名次分布（1 = 最長；並列時算較前的名次）。理想是四個名次大致平均 */
   lengthRank: Record<1 | 2 | 3 | 4, number>;
   /** 每題選第 k 長的期望得分（%）；四者都應接近 25%，避免「選第二長」等新線索 */
@@ -87,7 +105,11 @@ export function summarizeCues(questions: CueQuestion[]): CueSummary {
     absC = 0;
   const lengthRank: CueSummary['lengthRank'] = { 1: 0, 2: 0, 3: 0, 4: 0 };
   const rankSum: CueSummary['rankStrategyPct'] = { 1: 0, 2: 0, 3: 0, 4: 0 };
+  let absElim = 0,
+    absLongest = 0;
   for (const q of qs) {
+    absElim += absoluteEliminationScore(q);
+    absLongest += absoluteEliminationScore(q, true);
     for (const k of [1, 2, 3, 4] as const) rankSum[k] += rankStrategyScore(q, k);
     if (isStrictlyLongest(q)) strict++;
     const r = lengthRatio(q);
@@ -123,6 +145,8 @@ export function summarizeCues(questions: CueQuestion[]): CueSummary {
     ratioAtLeast2: r2,
     absoluteInDistractors: absD,
     absoluteInCorrect: absC,
+    absoluteEliminationPct: pct(absElim, qs.length),
+    absoluteThenLongestPct: pct(absLongest, qs.length),
     lengthRank,
     rankStrategyPct,
     bySubject,
