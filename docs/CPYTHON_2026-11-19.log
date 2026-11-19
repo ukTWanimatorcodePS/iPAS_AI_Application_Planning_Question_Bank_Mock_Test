@@ -1,0 +1,58 @@
+
+> ipas-ai-prep@0.1.0 verify:python
+> node scripts/verify-python.mjs --strict --engine=cpython
+
+✔ original-L22101-0001 → 5.0 4.5 4
+✔ original-L22101-0002 → 2.0
+✔ original-L22101-0005 → 7 7
+✔ original-L22101-0006 → 1.291 1.118
+✔ original-L22102-0001 → 0.384
+✔ original-L22102-0002 → 0.9772
+✔ original-L22103-0001 → 2.0
+✔ original-L22203-0001 → [1, 3, 4, 5]
+✔ original-L22203-0002 → 3 3
+✔ original-L22203-0003 → [20, 30] 50
+✔ original-L22203-0004 → 220
+✔ original-L22201-0001 → 3 1
+✔ original-L22201-0002 → 1
+✔ original-L22203-0006 → ['A', 'C']
+✔ original-L22301-0001 → 2.0 0.0
+✔ original-L22302-0001 → 0.5 0.67
+✔ original-L23101-0001 → 0.632
+✔ original-L23102-0001 → (3, 2)
+✔ original-L23102-0002 → 5.0 7
+✔ original-L23103-0001 → 2.5
+✔ original-L23103-0002 → 11
+✔ original-L23202-0001 → 2 True
+✔ original-L23202-0002 → 0.5
+✔ original-L23203-0001 → 1.0 2
+✔ original-L23203-0002 → [0, 0, 3]
+✔ original-L23303-0001 → 0.8 0.67
+✔ original-L23303-0002 → 0.67
+✔ original-L23303-0006 → 0.667
+✔ original-L23301-0001 → 5.0 3.0
+✔ original-L23301-0002 → (4, 3)
+✔ original-L23304-0001 → 12
+✔ original-L23304-0002 → 1 3
+✔ original-L23402-0001 → 0.75
+
+程式題驗證（CPython 3.14.10）：通過 33、失敗 0，共 33 題
+✔ 講義 L22101#1
+✔ 講義 L22102#1
+✔ 講義 L22201#1
+✔ 講義 L22203#1
+✔ 講義 L22203#2
+✔ 講義 L22301#1
+✔ 講義 L22302#1
+✔ 講義 L22303#1（含繪圖，以 Agg 後端執行）
+✔ 講義 L23101#1
+✔ 講義 L23102#1
+✔ 講義 L23102#2
+✔ 講義 L23103#1
+✔ 講義 L23202#1
+✔ 講義 L23203#1
+✔ 講義 L23301#1
+✔ 講義 L23303#1
+✔ 講義 L23304#1
+✔ 講義 L23402#1
+講義範例驗證：實際執行通過 18（其中繪圖 1）、僅語法檢查 0、略過 0、失敗 0
