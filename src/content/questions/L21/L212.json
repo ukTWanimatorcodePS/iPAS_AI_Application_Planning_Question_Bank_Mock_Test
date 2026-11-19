@@ -1366,5 +1366,1214 @@
     ],
     "reviewStatus": "ai-checked",
     "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21201-0009",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L212",
+    "competencyCode": "L21201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "某 AI 客服專案一次性導入成本 200 萬元、每年維運 50 萬元，預估每年節省人力 150 萬元。不考慮折現，約第幾年可回收導入成本？",
+    "options": [
+      {
+        "id": "A",
+        "text": "第 4 年"
+      },
+      {
+        "id": "B",
+        "text": "永遠無法回收"
+      },
+      {
+        "id": "C",
+        "text": "第 2 年"
+      },
+      {
+        "id": "D",
+        "text": "第 1 年"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "回收期 = 一次性成本 ÷ 每年淨效益。",
+      "correctRationale": "每年淨效益 = 150 − 50 = 100 萬元；200 ÷ 100 = 2 年。",
+      "optionRationales": {
+        "A": "誤以每年維運成本 50 萬元作為分母（200 ÷ 50）。",
+        "B": "每年淨效益為正，終究可回收。",
+        "C": "正確。每年淨效益 = 150 − 50 = 100 萬元；200 ÷ 100 = 2 年。",
+        "D": "第 1 年只回收 100 萬元。"
+      },
+      "commonTrap": "計算回收期時忘記扣除每年維運成本。",
+      "lessonAnchor": "L21201"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "ROI",
+      "導入評估"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21201-0010",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L212",
+    "competencyCode": "L21201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "評估 AI 專案「資料可行性」時，最應確認的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "競爭對手是否已導入 AI"
+      },
+      {
+        "id": "B",
+        "text": "模型名稱是否好記"
+      },
+      {
+        "id": "C",
+        "text": "公司是否已購買最新的 GPU"
+      },
+      {
+        "id": "D",
+        "text": "資料是否存在、品質是否足夠、是否有合法使用依據且能取得"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "資料是 AI 專案最常見的瓶頸。",
+      "correctRationale": "需確認資料量、標註、品質、可取得性與合法使用依據（例如個資的蒐集目的）。",
+      "optionRationales": {
+        "A": "競爭動態不能取代資料評估。",
+        "B": "與可行性無關。",
+        "C": "硬體屬技術資源，不是資料可行性。",
+        "D": "正確。資料可行性的核心。"
+      },
+      "commonTrap": "只評估技術與預算，忽略資料。",
+      "lessonAnchor": "L21201"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "必考核心觀念",
+    "authoring": "ai-drafted",
+    "tags": [
+      "可行性"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21201-0011",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L212",
+    "competencyCode": "L21201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "中型零售業想導入「發票與收據文字擷取」，市面已有成熟的 OCR 雲端服務，公司沒有 AI 團隊。較合適的策略是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "因為沒有 AI 團隊，所以不能使用任何 AI"
+      },
+      {
+        "id": "B",
+        "text": "先採用成熟的雲端服務並以自家文件做概念驗證，同時確認資料處理條款"
+      },
+      {
+        "id": "C",
+        "text": "立即組建 20 人團隊從零研發 OCR 模型"
+      },
+      {
+        "id": "D",
+        "text": "完全不做評估直接全面導入"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "非核心、通用的能力適合採購成熟方案。",
+      "correctRationale": "以自家資料做 PoC 驗證準確率與成本，並審查資料保存、跨境傳輸等條款。",
+      "optionRationales": {
+        "A": "可採購外部服務。",
+        "B": "正確。先驗證成熟方案並審查條款。",
+        "C": "自建成本高、時程長，且非核心能力。",
+        "D": "未評估就導入風險高。"
+      },
+      "commonTrap": "一律自建或一律不評估就採購。",
+      "lessonAnchor": "L21201"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Build vs Buy"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21201-0012",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L212",
+    "competencyCode": "L21201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「概念驗證（PoC）」與「最小可行產品（MVP）」的差別是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "PoC 驗證技術或做法是否可行；MVP 以最少功能交給真實使用者驗證價值"
+      },
+      {
+        "id": "B",
+        "text": "兩者完全相同"
+      },
+      {
+        "id": "C",
+        "text": "PoC 一定要上線給所有客戶使用"
+      },
+      {
+        "id": "D",
+        "text": "MVP 不需要任何使用者"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "PoC 回答「做得出來嗎」；MVP 回答「有人要用、有價值嗎」。",
+      "correctRationale": "PoC 通常在受控環境以樣本資料驗證；MVP 進入真實使用情境蒐集回饋。",
+      "optionRationales": {
+        "A": "正確。PoC 通常在受控環境以樣本資料驗證；MVP 進入真實使用情境蒐集回饋。",
+        "B": "兩者目的不同。",
+        "C": "PoC 通常不全面上線。",
+        "D": "MVP 的重點正是讓真實使用者使用。"
+      },
+      "commonTrap": "把 PoC 成功當成產品已經可上線。",
+      "lessonAnchor": "L21201"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "PoC",
+      "MVP"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21201-0013",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L212",
+    "competencyCode": "L21201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "某專案的 PoC 準確率 92%，團隊因此主張立即全面上線。在決策前最應補充的評估是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "請競爭對手評估"
+      },
+      {
+        "id": "B",
+        "text": "再把準確率四捨五入成 100%"
+      },
+      {
+        "id": "C",
+        "text": "只要準確率超過 90% 就不需其他評估"
+      },
+      {
+        "id": "D",
+        "text": "以業務指標與實際資料評估效益與錯誤成本，並確認營運、法遵與維運需求"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "模型指標不等於業務價值。",
+      "correctRationale": "需評估錯誤類型的代價、對流程與 KPI 的影響、整合成本、法遵與維運能力。",
+      "optionRationales": {
+        "A": "不合理且有機密風險。",
+        "B": "竄改數字不是評估。",
+        "C": "準確率無法反映錯誤成本與營運需求。",
+        "D": "正確。補足業務、營運與法遵面。"
+      },
+      "commonTrap": "以單一模型指標決定是否全面上線。",
+      "lessonAnchor": "L21201"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "導入評估",
+      "指標"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21201-0014",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L212",
+    "competencyCode": "L21201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "AI 導入評估中進行「利害關係人分析」的主要目的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "挑選程式語言"
+      },
+      {
+        "id": "B",
+        "text": "找出受影響或能影響專案的人，了解其需求、顧慮與責任，以降低導入阻力與風險"
+      },
+      {
+        "id": "C",
+        "text": "決定模型要用幾層神經網路"
+      },
+      {
+        "id": "D",
+        "text": "計算 GPU 的電費"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "導入成敗常取決於人與組織。",
+      "correctRationale": "包含使用者、主管、法遵、資訊、受決策影響的客戶等；需規劃溝通、訓練與責任分工。",
+      "optionRationales": {
+        "A": "屬技術選擇。",
+        "B": "正確。包含使用者、主管、法遵、資訊、受決策影響的客戶等；需規劃溝通、訓練與責任分工。",
+        "C": "屬模型設計問題。",
+        "D": "屬成本估算。"
+      },
+      "commonTrap": "只把導入評估當成技術評估。",
+      "lessonAnchor": "L21201"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "利害關係人"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21201-0015",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L212",
+    "competencyCode": "L21201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "主管說「我們要用 AI 提升業績」，但沒有說明具體情境。專案啟動時最應先做的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "先寫程式再想用途"
+      },
+      {
+        "id": "B",
+        "text": "直接請廠商報價"
+      },
+      {
+        "id": "C",
+        "text": "把目標轉成具體、可衡量的業務問題與成功指標，例如「降低 3 個月流失率 2 個百分點」"
+      },
+      {
+        "id": "D",
+        "text": "立刻購買最大的語言模型"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "清楚的問題定義是評估的起點。",
+      "correctRationale": "先定義決策情境、目標指標、基準值與限制，才能判斷 AI 是否適合以及如何評估成效。",
+      "optionRationales": {
+        "A": "沒有目標無法評估成效。",
+        "B": "問題不清楚時報價也無從比較。",
+        "C": "正確。先定義可衡量的問題。",
+        "D": "工具應配合問題選擇。"
+      },
+      "commonTrap": "先選技術、後找問題。",
+      "lessonAnchor": "L21201"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "導入評估",
+      "問題定義"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21202-0009",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L212",
+    "competencyCode": "L21202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "房價預測模型上線半年，近期誤差逐月上升，輸入特徵分布也明顯改變。最合適的規劃是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "每天隨機替換模型"
+      },
+      {
+        "id": "B",
+        "text": "刪除誤差大的資料讓指標好看"
+      },
+      {
+        "id": "C",
+        "text": "模型已上線就不應再改動"
+      },
+      {
+        "id": "D",
+        "text": "建立監控與警示機制，依漂移或績效門檻觸發再訓練與驗證流程"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "模型需要持續監控與定期更新。",
+      "correctRationale": "設定資料漂移與績效門檻，觸發再訓練；新模型需通過驗證並與舊模型比較後才上線。",
+      "optionRationales": {
+        "A": "沒有驗證的替換風險很高。",
+        "B": "刪資料掩蓋問題且不誠實。",
+        "C": "環境改變時不更新會持續劣化。",
+        "D": "正確。監控驅動的再訓練。"
+      },
+      "commonTrap": "把模型上線當成專案結束。",
+      "lessonAnchor": "L21202"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "MLOps",
+      "再訓練"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21202-0010",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L212",
+    "competencyCode": "L21202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "專案規劃中使用 RACI 矩陣的主要目的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "產生測試資料"
+      },
+      {
+        "id": "B",
+        "text": "計算模型準確率"
+      },
+      {
+        "id": "C",
+        "text": "明確每項工作由誰執行、誰負最終責任、需諮詢誰、需通知誰"
+      },
+      {
+        "id": "D",
+        "text": "決定資料庫索引"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "RACI：Responsible、Accountable、Consulted、Informed。",
+      "correctRationale": "可避免責任不清，例如模型上線的最終核准者是誰。",
+      "optionRationales": {
+        "A": "屬測試工作。",
+        "B": "與模型評估無關。",
+        "C": "正確。可避免責任不清，例如模型上線的最終核准者是誰。",
+        "D": "屬資料庫設計。"
+      },
+      "commonTrap": "把專案管理工具與技術工具混淆。",
+      "lessonAnchor": "L21202"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "RACI"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21202-0011",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L212",
+    "competencyCode": "L21202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "AI 專案規劃中，下列哪一個順序最合理？",
+    "options": [
+      {
+        "id": "A",
+        "text": "定義問題與成功指標 → 資料盤點與 baseline → 模型開發與驗證 → 試行上線 → 監控與擴大"
+      },
+      {
+        "id": "B",
+        "text": "模型開發 → 定義問題 → 資料盤點 → 上線"
+      },
+      {
+        "id": "C",
+        "text": "全面上線 → 再蒐集資料 → 定義問題"
+      },
+      {
+        "id": "D",
+        "text": "購買硬體 → 上線 → 定義成功指標"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "先定義、再驗證、逐步擴大。",
+      "correctRationale": "先確認問題與資料，以 baseline 衡量改善，試行後再擴大，可降低風險。",
+      "optionRationales": {
+        "A": "正確。先確認問題與資料，以 baseline 衡量改善，試行後再擴大，可降低風險。",
+        "B": "沒有問題定義就開發，方向可能錯誤。",
+        "C": "先全面上線風險最高。",
+        "D": "沒有成功指標就上線，無法判斷成效。"
+      },
+      "commonTrap": "跳過 baseline 與試行階段。",
+      "lessonAnchor": "L21202"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "導入規劃",
+      "時程"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21202-0012",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L212",
+    "competencyCode": "L21202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「特徵商店（Feature Store）」與「模型註冊庫（Model Registry）」的差別是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "特徵商店存放模型權重"
+      },
+      {
+        "id": "B",
+        "text": "特徵商店集中管理可重用的特徵並確保訓練與推論一致；模型註冊庫管理模型版本、狀態與核准紀錄"
+      },
+      {
+        "id": "C",
+        "text": "模型註冊庫負責資料清理"
+      },
+      {
+        "id": "D",
+        "text": "兩者都是存放原始資料的備份"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "一個管理特徵，一個管理模型。",
+      "correctRationale": "特徵商店避免訓練與線上推論的特徵計算不一致；模型註冊庫追蹤哪個版本在哪個環境上線。",
+      "optionRationales": {
+        "A": "模型權重由模型註冊庫管理。",
+        "B": "正確。特徵商店避免訓練與線上推論的特徵計算不一致；模型註冊庫追蹤哪個版本在哪個環境上線。",
+        "C": "資料清理由資料管線處理。",
+        "D": "兩者都不是原始資料備份。"
+      },
+      "commonTrap": "把 MLOps 元件的職責混淆。",
+      "lessonAnchor": "L21202"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "特徵商店",
+      "模型註冊庫"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21202-0013",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L212",
+    "competencyCode": "L21202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "醫院導入 AI 影像輔助判讀，但醫師擔心被取代而不願使用。規劃上最有效的做法是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "讓醫師參與設計與試行，明確定位為輔助並保留醫師最終判斷，提供訓練與回饋管道"
+      },
+      {
+        "id": "B",
+        "text": "隱藏 AI 的存在"
+      },
+      {
+        "id": "C",
+        "text": "只要模型準確率高，醫師自然會接受"
+      },
+      {
+        "id": "D",
+        "text": "強制要求使用，不需溝通"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "組織變更管理影響導入成效。",
+      "correctRationale": "使用者參與、清楚角色定位、教育訓練與回饋機制，可提升信任與採用率。",
+      "optionRationales": {
+        "A": "正確。以參與與溝通推動採用。",
+        "B": "隱瞞 AI 會破壞信任並有倫理問題。",
+        "C": "準確率高不代表會被採用。",
+        "D": "強制推行易引發抗拒與錯誤使用。"
+      },
+      "commonTrap": "只重視技術，忽略使用者接受度。",
+      "lessonAnchor": "L21202"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "變更管理",
+      "導入規劃"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21202-0014",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L212",
+    "competencyCode": "L21202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "在開發複雜模型前，先建立簡單的 baseline（例如以過去平均值預測）的主要目的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "為了讓專案時間變長"
+      },
+      {
+        "id": "B",
+        "text": "baseline 可以取代資料蒐集"
+      },
+      {
+        "id": "C",
+        "text": "提供比較基準，判斷複雜模型是否真的帶來足夠改善"
+      },
+      {
+        "id": "D",
+        "text": "baseline 一定是最後要上線的模型"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "baseline 是衡量改善的參考點。",
+      "correctRationale": "若複雜模型只比 baseline 好一點，可能不值得額外的成本與維運複雜度。",
+      "optionRationales": {
+        "A": "不是目的。",
+        "B": "baseline 也需要資料。",
+        "C": "正確。若複雜模型只比 baseline 好一點，可能不值得額外的成本與維運複雜度。",
+        "D": "baseline 不一定上線。"
+      },
+      "commonTrap": "沒有基準就宣稱模型「很好」。",
+      "lessonAnchor": "L21202"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Baseline"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21202-0015",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L212",
+    "competencyCode": "L21202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "新模型上線前的規劃，下列哪一項最常被忽略但非常重要？",
+    "options": [
+      {
+        "id": "A",
+        "text": "關閉所有監控以提高效能"
+      },
+      {
+        "id": "B",
+        "text": "把模型名稱改得更好聽"
+      },
+      {
+        "id": "C",
+        "text": "上線當天刪除舊模型以節省空間"
+      },
+      {
+        "id": "D",
+        "text": "準備回滾機制：發生問題時能迅速切回舊版本"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "可回滾是安全上線的基本要求。",
+      "correctRationale": "保留舊版本與切換流程，搭配監控指標與門檻，問題發生時可快速恢復服務。",
+      "optionRationales": {
+        "A": "關閉監控會無法察覺問題。",
+        "B": "名稱與風險管理無關。",
+        "C": "刪除舊模型就無法回滾。",
+        "D": "正確。保留舊版本與切換流程，搭配監控指標與門檻，問題發生時可快速恢復服務。"
+      },
+      "commonTrap": "只規劃上線，不規劃失敗時的應變。",
+      "lessonAnchor": "L21202"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "上線規劃",
+      "回滾"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21203-0009",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L212",
+    "competencyCode": "L21203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "人資部門想用 AI 篩選履歷並自動淘汰不合格者。從風險管理角度，最適當的做法是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "完全自動淘汰以提高效率"
+      },
+      {
+        "id": "B",
+        "text": "視為高風險應用：評估偏誤、保留人工審核與申訴管道，並記錄決策依據"
+      },
+      {
+        "id": "C",
+        "text": "不告知應徵者有使用 AI"
+      },
+      {
+        "id": "D",
+        "text": "只用模型準確率判斷是否可上線"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "影響就業機會的 AI 屬高風險應用。",
+      "correctRationale": "需檢測不同群體的影響、確保人工監督、透明告知與可申訴，並保留紀錄。",
+      "optionRationales": {
+        "A": "自動淘汰缺乏人工監督。",
+        "B": "正確。高風險應用的管控。",
+        "C": "不透明會損害信任並有法遵風險。",
+        "D": "準確率無法反映公平性與法遵。"
+      },
+      "commonTrap": "只追求效率，忽略對個人的重大影響。",
+      "lessonAnchor": "L21203"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "風險管理",
+      "人工監督"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21203-0010",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L212",
+    "competencyCode": "L21203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "攻擊者在訓練資料中混入特製的錯誤樣本，讓模型在特定情況下做出錯誤判斷。這稱為？",
+    "options": [
+      {
+        "id": "A",
+        "text": "資料增強"
+      },
+      {
+        "id": "B",
+        "text": "對抗樣本攻擊（推論階段）"
+      },
+      {
+        "id": "C",
+        "text": "模型壓縮"
+      },
+      {
+        "id": "D",
+        "text": "資料下毒（Data Poisoning）"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "資料下毒攻擊訓練階段。",
+      "correctRationale": "對抗樣本是在推論時修改輸入；資料下毒是汙染訓練資料。防範包含資料來源管控與異常偵測。",
+      "optionRationales": {
+        "A": "資料增強是正當的訓練技巧。",
+        "B": "對抗樣本攻擊發生在推論階段。",
+        "C": "壓縮是縮小模型。",
+        "D": "正確。對抗樣本是在推論時修改輸入；資料下毒是汙染訓練資料。防範包含資料來源管控與異常偵測。"
+      },
+      "commonTrap": "混淆訓練階段與推論階段的攻擊。",
+      "lessonAnchor": "L21203"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料下毒"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21203-0011",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L212",
+    "competencyCode": "L21203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "風險評估以「發生可能性 × 影響程度」排序。下列哪一項風險應最優先處理？",
+    "options": [
+      {
+        "id": "A",
+        "text": "可能性極低、影響低：備註欄偶爾多一個空格"
+      },
+      {
+        "id": "B",
+        "text": "可能性高、影響極低：介面按鈕顏色不一致"
+      },
+      {
+        "id": "C",
+        "text": "可能性中、影響極高：模型錯誤導致病患用藥劑量錯誤"
+      },
+      {
+        "id": "D",
+        "text": "可能性低、影響低：報表字型偶爾不同"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "影響重大的風險即使可能性中等也應優先處理。",
+      "correctRationale": "用藥錯誤影響生命安全，可能性中等即需優先控制（例如人工覆核、劑量上限檢查）。",
+      "optionRationales": {
+        "A": "可能性與影響都低。",
+        "B": "影響極低。",
+        "C": "正確。影響極高應優先。",
+        "D": "可能性與影響都低。"
+      },
+      "commonTrap": "只依發生頻率排序風險。",
+      "lessonAnchor": "L21203"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "風險矩陣"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21203-0012",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L212",
+    "competencyCode": "L21203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於「資料漂移」與「概念漂移」，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "兩者完全相同"
+      },
+      {
+        "id": "B",
+        "text": "資料漂移是輸入分布改變；概念漂移是輸入與目標的關係改變"
+      },
+      {
+        "id": "C",
+        "text": "資料漂移只發生在訓練階段"
+      },
+      {
+        "id": "D",
+        "text": "概念漂移代表模型程式碼被修改"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "兩者都會讓模型表現下降，但原因不同。",
+      "correctRationale": "例如客群年齡分布改變屬資料漂移；同樣特徵下消費者偏好改變屬概念漂移。",
+      "optionRationales": {
+        "A": "兩者不同。",
+        "B": "正確。例如客群年齡分布改變屬資料漂移；同樣特徵下消費者偏好改變屬概念漂移。",
+        "C": "漂移通常發生在上線後。",
+        "D": "概念漂移與程式碼無關。"
+      },
+      "commonTrap": "把所有表現下降都稱為資料漂移。",
+      "lessonAnchor": "L21203"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料漂移",
+      "概念漂移"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21203-0013",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L212",
+    "competencyCode": "L21203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "員工把含客戶資料的報表貼到公開的生成式 AI 網站請它摘要。最主要的風險與對策是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "個資與機密外洩；應訂定使用政策、提供經審核的企業版工具並進行教育訓練"
+      },
+      {
+        "id": "B",
+        "text": "應禁止員工使用電腦"
+      },
+      {
+        "id": "C",
+        "text": "沒有風險，因為網站很有名"
+      },
+      {
+        "id": "D",
+        "text": "主要風險是摘要太短"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "輸入外部服務的資料可能被保存或用於訓練。",
+      "correctRationale": "企業應訂定可輸入資料的分級規範、使用有資料保護條款的工具，並教育員工。",
+      "optionRationales": {
+        "A": "正確辨識風險與對策。",
+        "B": "因噎廢食，不可行。",
+        "C": "知名度不等於資料保護。",
+        "D": "非主要風險。"
+      },
+      "commonTrap": "忽略輸入外部服務的資料去向。",
+      "lessonAnchor": "L21203"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "生成式 AI",
+      "資料外洩"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21203-0014",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L212",
+    "competencyCode": "L21203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "在信用審核等高影響決策中，要求模型具「可解釋性」的主要理由是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "讓模型準確率一定提高"
+      },
+      {
+        "id": "B",
+        "text": "讓模型不需要測試"
+      },
+      {
+        "id": "C",
+        "text": "可解釋的模型一定比較便宜"
+      },
+      {
+        "id": "D",
+        "text": "讓決策可被檢查、說明與申訴，並協助發現偏誤或錯誤"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "可解釋性支持問責與信任。",
+      "correctRationale": "能說明主要影響因素，有助於回應當事人、稽核與主管機關，也能發現不合理的依據。",
+      "optionRationales": {
+        "A": "可解釋性不保證準確率提高。",
+        "B": "仍需完整測試。",
+        "C": "與成本沒有必然關係。",
+        "D": "正確。能說明主要影響因素，有助於回應當事人、稽核與主管機關，也能發現不合理的依據。"
+      },
+      "commonTrap": "把可解釋性當成提高準確率的方法。",
+      "lessonAnchor": "L21203"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "必考核心觀念",
+    "authoring": "ai-drafted",
+    "tags": [
+      "可解釋性"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21203-0015",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L212",
+    "competencyCode": "L21203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "生成式客服在社群上被截圖流傳，內容是對客戶的不當回覆。依事件應變流程，第一步最應該做的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "否認事件發生"
+      },
+      {
+        "id": "B",
+        "text": "遏止影響：暫停或限制該功能，保存紀錄以利調查"
+      },
+      {
+        "id": "C",
+        "text": "等下一次例行更新再處理"
+      },
+      {
+        "id": "D",
+        "text": "立刻刪除所有紀錄"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "事件應變先遏止損害並保全證據。",
+      "correctRationale": "之後再調查根因、修正（例如輸出過濾與提示調整）、對外說明並檢討流程。",
+      "optionRationales": {
+        "A": "否認會加重信任危機。",
+        "B": "正確。先遏止並保存證據。",
+        "C": "拖延會擴大損害。",
+        "D": "刪除紀錄會妨礙調查並可能違規。"
+      },
+      "commonTrap": "先處理公關說法，未先遏止與保全證據。",
+      "lessonAnchor": "L21203"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "事件應變"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
   }
 ]

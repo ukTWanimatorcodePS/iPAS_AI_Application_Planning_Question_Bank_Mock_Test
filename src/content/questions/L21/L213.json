@@ -910,5 +910,812 @@
     ],
     "reviewStatus": "ai-checked",
     "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21301-0009",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L213",
+    "competencyCode": "L21301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "新創公司只有 500 筆表格資料，要預測客戶是否續約。下列哪一種模型策略最合適作為起點？",
+    "options": [
+      {
+        "id": "A",
+        "text": "從邏輯迴歸或決策樹等簡單模型開始，搭配交叉驗證評估"
+      },
+      {
+        "id": "B",
+        "text": "直接訓練數十億參數的深度神經網路"
+      },
+      {
+        "id": "C",
+        "text": "不建模，直接隨機猜"
+      },
+      {
+        "id": "D",
+        "text": "先等累積到一千萬筆資料再開始"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "資料少時，簡單模型較不易過擬合且易解釋。",
+      "correctRationale": "以交叉驗證取得穩定估計；若有需要再嘗試樹模型整合方法。",
+      "optionRationales": {
+        "A": "正確。以交叉驗證取得穩定估計；若有需要再嘗試樹模型整合方法。",
+        "B": "資料極少時大型網路容易過擬合。",
+        "C": "隨機猜沒有價值。",
+        "D": "可先以現有資料建立基準。"
+      },
+      "commonTrap": "以為模型越複雜越好。",
+      "lessonAnchor": "L21301"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "模型選擇",
+      "資料量"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21301-0010",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L213",
+    "competencyCode": "L21301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "預測「客戶是否會在下個月退訂」時，下列哪一個特徵最可能造成資料洩漏？",
+    "options": [
+      {
+        "id": "A",
+        "text": "過去三個月的使用次數"
+      },
+      {
+        "id": "B",
+        "text": "加入會員的月份"
+      },
+      {
+        "id": "C",
+        "text": "「退訂原因」欄位（只有退訂後才會填寫）"
+      },
+      {
+        "id": "D",
+        "text": "過去一年的客服聯繫次數"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "預測時點無法取得的資訊不可作為特徵。",
+      "correctRationale": "退訂原因在事件發生後才存在，用它訓練會讓模型表現被嚴重高估。",
+      "optionRationales": {
+        "A": "預測時已知的歷史資料。",
+        "B": "預測時已知。",
+        "C": "正確。事後才有的資訊。",
+        "D": "預測時已知的歷史資料。"
+      },
+      "commonTrap": "沒有檢查特徵在預測時點是否可取得。",
+      "lessonAnchor": "L21301"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "特徵",
+      "資料洩漏"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21301-0011",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L213",
+    "competencyCode": "L21301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "有 10,000 筆資料要訓練並評估模型，同時需要調整超參數。下列做法何者最恰當？",
+    "options": [
+      {
+        "id": "A",
+        "text": "切出訓練集、驗證集（調參）與測試集（只在最後評估一次）"
+      },
+      {
+        "id": "B",
+        "text": "用測試集反覆調參直到分數最高"
+      },
+      {
+        "id": "C",
+        "text": "只切訓練集，不需要評估"
+      },
+      {
+        "id": "D",
+        "text": "用全部資料訓練，再用同一批資料評估"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "測試集必須保留到最後。",
+      "correctRationale": "以驗證集或交叉驗證調參，測試集只用於最終評估，才能估計真實表現。",
+      "optionRationales": {
+        "A": "正確。以驗證集或交叉驗證調參，測試集只用於最終評估，才能估計真實表現。",
+        "B": "反覆使用測試集調參會造成資訊洩漏。",
+        "C": "沒有評估無法知道表現。",
+        "D": "同一批資料評估會嚴重高估。"
+      },
+      "commonTrap": "用測試集調參。",
+      "lessonAnchor": "L21301"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料切分"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21301-0012",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L213",
+    "competencyCode": "L21301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "標註預算有限時，「主動學習」與「隨機挑選資料標註」相比，主要差別是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "主動學習完全不需要人工標註"
+      },
+      {
+        "id": "B",
+        "text": "主動學習優先挑選模型最不確定或最有資訊量的樣本標註，用較少標註達到相近效果"
+      },
+      {
+        "id": "C",
+        "text": "隨機挑選一定比較有效率"
+      },
+      {
+        "id": "D",
+        "text": "主動學習只能用於影像"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "主動學習讓標註資源用在最有價值的樣本。",
+      "correctRationale": "模型反覆找出不確定的樣本交給人標註，可節省標註成本。",
+      "optionRationales": {
+        "A": "仍需人工標註。",
+        "B": "正確。模型反覆找出不確定的樣本交給人標註，可節省標註成本。",
+        "C": "隨機挑選通常較沒效率。",
+        "D": "可用於文字、表格等多種資料。"
+      },
+      "commonTrap": "以為主動學習可以完全省去標註。",
+      "lessonAnchor": "L21301"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "標註",
+      "主動學習"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21301-0013",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L213",
+    "competencyCode": "L21301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "癌症篩檢模型中，漏診（偽陰性）的代價遠高於誤報（偽陽性）。選擇模型與門檻時應優先重視？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只看模型訓練速度"
+      },
+      {
+        "id": "B",
+        "text": "只看整體準確率"
+      },
+      {
+        "id": "C",
+        "text": "召回率（敏感度），在可接受的誤報量下盡量減少漏診"
+      },
+      {
+        "id": "D",
+        "text": "只看精確率"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "指標選擇應反映錯誤成本。",
+      "correctRationale": "提高召回率可減少漏診；同時要評估誤報造成的後續檢查負擔，選擇適當門檻。",
+      "optionRationales": {
+        "A": "速度不是此情境的主要考量。",
+        "B": "準確率無法反映漏診成本。",
+        "C": "正確。提高召回率可減少漏診；同時要評估誤報造成的後續檢查負擔，選擇適當門檻。",
+        "D": "只看精確率可能犧牲召回率。"
+      },
+      "commonTrap": "不同錯誤成本下仍使用同一指標。",
+      "lessonAnchor": "L21301"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "評估指標",
+      "成本"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21301-0014",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L213",
+    "competencyCode": "L21301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列哪一項屬於「資料品質」問題？",
+    "options": [
+      {
+        "id": "A",
+        "text": "伺服器放在雲端"
+      },
+      {
+        "id": "B",
+        "text": "報表使用藍色圖表"
+      },
+      {
+        "id": "C",
+        "text": "模型使用 Python 開發"
+      },
+      {
+        "id": "D",
+        "text": "同一位客戶在資料庫中有多筆重複且資料不一致的紀錄"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "資料品質包含正確性、完整性、一致性、即時性等。",
+      "correctRationale": "重複且不一致的紀錄會影響統計與模型訓練，需要去重與整合。",
+      "optionRationales": {
+        "A": "屬基礎設施選擇。",
+        "B": "屬視覺呈現。",
+        "C": "屬開發工具選擇。",
+        "D": "正確。屬資料品質問題。"
+      },
+      "commonTrap": "把技術選擇當成資料品質問題。",
+      "lessonAnchor": "L21301"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料品質"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21301-0015",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L213",
+    "competencyCode": "L21301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "時間序列預測模型做交叉驗證時，下列哪一種方式最恰當？",
+    "options": [
+      {
+        "id": "A",
+        "text": "用未來資料訓練、過去資料驗證"
+      },
+      {
+        "id": "B",
+        "text": "不做任何驗證"
+      },
+      {
+        "id": "C",
+        "text": "滾動（前進式）驗證：每次只用較早的資料訓練、較晚的資料驗證"
+      },
+      {
+        "id": "D",
+        "text": "把所有資料隨機打亂後做 K 折"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "時間序列不可用未來資訊預測過去。",
+      "correctRationale": "滾動驗證模擬實際使用情境，避免時間上的資料洩漏。",
+      "optionRationales": {
+        "A": "違反時間順序。",
+        "B": "沒有驗證無法評估。",
+        "C": "正確。滾動驗證模擬實際使用情境，避免時間上的資料洩漏。",
+        "D": "隨機打亂會讓未來資訊洩漏到訓練集。"
+      },
+      "commonTrap": "對時間序列使用一般隨機 K 折。",
+      "lessonAnchor": "L21301"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "時間序列",
+      "交叉驗證"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21302-0009",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L213",
+    "competencyCode": "L21302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "推薦 API 的平均回應時間 80 毫秒，但尖峰時段第 99 百分位延遲超過 2 秒，造成部分使用者逾時。最合理的改善方向是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "把逾時設定改成 1 小時"
+      },
+      {
+        "id": "B",
+        "text": "只看平均延遲，80 毫秒已經很好"
+      },
+      {
+        "id": "C",
+        "text": "關閉監控避免看到問題"
+      },
+      {
+        "id": "D",
+        "text": "以 p95／p99 延遲為監控目標，透過自動擴展、快取或模型輕量化改善尖峰表現"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "尾端延遲比平均值更能反映使用者體驗。",
+      "correctRationale": "應監控百分位延遲，並以擴展、快取、批次化或輕量化等方式改善。",
+      "optionRationales": {
+        "A": "延長逾時只會讓使用者等更久。",
+        "B": "平均值會掩蓋尾端延遲。",
+        "C": "關閉監控無法解決問題。",
+        "D": "正確。應監控百分位延遲，並以擴展、快取、批次化或輕量化等方式改善。"
+      },
+      "commonTrap": "只看平均延遲。",
+      "lessonAnchor": "L21302"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "部署",
+      "延遲"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21302-0010",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L213",
+    "competencyCode": "L21302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "模型在離線評估表現很好，上線後卻明顯變差；調查發現線上服務計算特徵的方式與訓練時不同。這稱為？",
+    "options": [
+      {
+        "id": "A",
+        "text": "過度正則化"
+      },
+      {
+        "id": "B",
+        "text": "訓練與服務偏差（Training-Serving Skew）"
+      },
+      {
+        "id": "C",
+        "text": "資料增強"
+      },
+      {
+        "id": "D",
+        "text": "模型壓縮"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "訓練與推論的資料處理不一致會造成表現落差。",
+      "correctRationale": "可使用共用的特徵處理程式或特徵商店，並在上線前比對線上與離線特徵。",
+      "optionRationales": {
+        "A": "正則化是訓練技巧。",
+        "B": "正確。可使用共用的特徵處理程式或特徵商店，並在上線前比對線上與離線特徵。",
+        "C": "資料增強是擴充訓練資料。",
+        "D": "壓縮是縮小模型。"
+      },
+      "commonTrap": "只檢查模型，不檢查線上特徵處理。",
+      "lessonAnchor": "L21302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "訓練服務偏差"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21302-0011",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L213",
+    "competencyCode": "L21302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "電商以 A/B 測試比較新舊推薦模型，下列哪一種設計最恰當？",
+    "options": [
+      {
+        "id": "A",
+        "text": "隨機分配使用者到兩組，事先定義主要指標與樣本量，測試期間不任意更換指標"
+      },
+      {
+        "id": "B",
+        "text": "同一位使用者每次隨機看到不同模型"
+      },
+      {
+        "id": "C",
+        "text": "讓新模型只服務最活躍的使用者"
+      },
+      {
+        "id": "D",
+        "text": "看到數字好看就立刻停止測試"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "A/B 測試需要隨機分組與事先定義的指標。",
+      "correctRationale": "事先決定指標與樣本量可避免偏差與「偷看結果就停止」造成的錯誤結論。",
+      "optionRationales": {
+        "A": "正確。事先決定指標與樣本量可避免偏差與「偷看結果就停止」造成的錯誤結論。",
+        "B": "使用者體驗不一致，也會汙染結果。",
+        "C": "非隨機分組會產生選擇偏差。",
+        "D": "提早停止會提高錯誤結論的機率。"
+      },
+      "commonTrap": "看到初步結果好就宣布勝出。",
+      "lessonAnchor": "L21302"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "A/B 測試"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21302-0012",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L213",
+    "competencyCode": "L21302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「藍綠部署」與「金絲雀發布」的主要差別是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "藍綠部署不能回滾"
+      },
+      {
+        "id": "B",
+        "text": "藍綠部署準備兩套完整環境並一次切換流量；金絲雀發布先把少量流量導向新版本再逐步擴大"
+      },
+      {
+        "id": "C",
+        "text": "兩者完全相同"
+      },
+      {
+        "id": "D",
+        "text": "金絲雀發布一次切換全部流量"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "兩者都是降低上線風險的策略。",
+      "correctRationale": "藍綠部署切換快、可迅速切回；金絲雀發布能在小範圍先觀察實際影響。",
+      "optionRationales": {
+        "A": "藍綠部署可快速切回舊環境。",
+        "B": "正確。藍綠部署切換快、可迅速切回；金絲雀發布能在小範圍先觀察實際影響。",
+        "C": "兩者做法不同。",
+        "D": "說反了：一次切換全部流量的是藍綠部署。"
+      },
+      "commonTrap": "混淆不同的上線策略。",
+      "lessonAnchor": "L21302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "藍綠部署",
+      "金絲雀發布"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21302-0013",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L213",
+    "competencyCode": "L21302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "要把影像辨識模型放到記憶體有限的手機上離線使用，下列哪一種做法最合適？",
+    "options": [
+      {
+        "id": "A",
+        "text": "以量化、剪枝或知識蒸餾縮小模型，並在目標裝置上測試準確率與速度"
+      },
+      {
+        "id": "B",
+        "text": "把伺服器上的大模型原封不動複製到手機"
+      },
+      {
+        "id": "C",
+        "text": "改成每次都上傳影像到雲端，即使需要離線"
+      },
+      {
+        "id": "D",
+        "text": "刪除測試流程以加快上線"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "邊緣部署需要輕量化模型。",
+      "correctRationale": "量化、剪枝、蒸餾可降低記憶體與運算需求；需在實際裝置確認準確率的下降可接受。",
+      "optionRationales": {
+        "A": "正確。量化、剪枝、蒸餾可降低記憶體與運算需求；需在實際裝置確認準確率的下降可接受。",
+        "B": "大模型可能無法在手機上執行。",
+        "C": "不符合離線需求。",
+        "D": "略過測試風險高。"
+      },
+      "commonTrap": "忽略邊緣裝置的資源限制。",
+      "lessonAnchor": "L21302"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "邊緣部署",
+      "模型壓縮"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21302-0014",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L213",
+    "competencyCode": "L21302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "其他系統透過 REST API 呼叫模型服務時，通常以哪種格式傳送輸入與接收預測結果？",
+    "options": [
+      {
+        "id": "A",
+        "text": "ZIP"
+      },
+      {
+        "id": "B",
+        "text": "MP3"
+      },
+      {
+        "id": "C",
+        "text": "JSON"
+      },
+      {
+        "id": "D",
+        "text": "EXE"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "REST API 常以 JSON 交換結構化資料。",
+      "correctRationale": "請求包含特徵值，回應包含預測結果與版本等資訊，方便各種系統整合。",
+      "optionRationales": {
+        "A": "ZIP 是壓縮檔。",
+        "B": "MP3 是音訊格式。",
+        "C": "正確。請求包含特徵值，回應包含預測結果與版本等資訊，方便各種系統整合。",
+        "D": "EXE 是執行檔。"
+      },
+      "commonTrap": "不熟悉系統整合的常見資料格式。",
+      "lessonAnchor": "L21302"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "API"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21302-0015",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L213",
+    "competencyCode": "L21302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "模型服務的每一筆預測紀錄中，最應一併記錄哪一項資訊，以便日後追查問題？",
+    "options": [
+      {
+        "id": "A",
+        "text": "工程師的座位號碼"
+      },
+      {
+        "id": "B",
+        "text": "不需記錄任何資訊"
+      },
+      {
+        "id": "C",
+        "text": "當天的天氣"
+      },
+      {
+        "id": "D",
+        "text": "產生該預測的模型版本與輸入特徵（依隱私規範處理）"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "可追溯性是除錯與稽核的基礎。",
+      "correctRationale": "記錄模型版本、輸入摘要、預測結果與時間，才能重現與分析錯誤；個資需遮蔽或依規範保存。",
+      "optionRationales": {
+        "A": "與模型行為無關。",
+        "B": "沒有紀錄就無法追查。",
+        "C": "與模型行為無關。",
+        "D": "正確。可追溯的關鍵資訊。"
+      },
+      "commonTrap": "上線後無法回答「這個預測是哪一版模型產生的」。",
+      "lessonAnchor": "L21302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "監控",
+      "版本"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
   }
 ]

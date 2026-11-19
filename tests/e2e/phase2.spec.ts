@@ -136,11 +136,11 @@ test('版面：深色、高對比、130% 字級下主要頁面不溢出，固定
 test('程式題：長程式碼與輸出選項在畫面內完整換行', async ({ page }) => {
   await skipOnboarding(page);
   await page.getByRole('radiogroup', { name: '切換級別' }).getByRole('radio', { name: '中級' }).click();
-  await page.goto('./#/courses/L22302');
+  await page.goto('./#/courses/L22203');
   await page.getByTestId('start-quiz-10').click();
-  // 逐題前進直到遇到程式題（L22302 共 8 題、其中 1 題程式題；10 題練習會全部抽到）
+  // 逐題前進直到遇到程式題（L22203 共 15 題、其中 8 題程式題：非程式題只有 7 題，10 題練習必定抽到程式題）
   // 依題庫資料判斷，並等待題幹換題後再讀下一題，避免讀到尚未換頁的舊題
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < 10; i++) {
     const q = await currentQuestion(page, bank);
     if (q.code) break;
     await choose(page, q, true);

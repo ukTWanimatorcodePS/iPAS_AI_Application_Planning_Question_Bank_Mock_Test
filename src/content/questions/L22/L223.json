@@ -1404,5 +1404,1301 @@
     ],
     "reviewStatus": "ai-checked",
     "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22301-0009",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L223",
+    "competencyCode": "L22301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列 NumPy 程式計算相關係數，執行後輸出為何？",
+    "code": "import numpy as np\n\nx = np.array([1, 2, 3, 4, 5])\ny = 10 - 2 * x\nprint(round(np.corrcoef(x, y)[0, 1], 2))",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "-1.0",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {
+        "numpy": "2.4.6"
+      },
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "y = 10 − 2x：8, 6, 4, 2, 0。",
+      "x 增加時 y 等量減少，完全負向線性。",
+      "`np.corrcoef` 回傳相關矩陣，[0, 1] 為兩者的相關係數。",
+      "四捨五入後輸出 `-1.0`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "-1.0"
+      },
+      {
+        "id": "B",
+        "text": "0.5"
+      },
+      {
+        "id": "C",
+        "text": "1.0"
+      },
+      {
+        "id": "D",
+        "text": "0.0"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "y 隨 x 完全線性遞減時，相關係數為 −1。",
+      "correctRationale": "y = 10 − 2x，完全負向線性關係，四捨五入後為 −1.0。",
+      "optionRationales": {
+        "A": "正確。y = 10 − 2x，完全負向線性關係，四捨五入後為 −1.0。",
+        "B": "這是完全線性關係，不是中等相關。",
+        "C": "方向相反：x 增加時 y 減少。",
+        "D": "兩者有完全的線性關係。"
+      },
+      "commonTrap": "忽略相關係數的正負方向。",
+      "lessonAnchor": "L22301"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "NumPy",
+      "相關係數"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22301-0010",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L223",
+    "competencyCode": "L22301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "迴歸分析得到「每增加 1 萬元廣告費，銷售額平均增加 3 萬元」（其他變數不變）。下列解讀何者最恰當？",
+    "options": [
+      {
+        "id": "A",
+        "text": "迴歸係數與廣告費無關"
+      },
+      {
+        "id": "B",
+        "text": "廣告費增加到 1 億元，銷售額一定增加 3 億元"
+      },
+      {
+        "id": "C",
+        "text": "這證明廣告是銷售增加的唯一原因"
+      },
+      {
+        "id": "D",
+        "text": "在資料範圍內兩者有此關聯；要宣稱因果，需排除干擾因素或用實驗驗證"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "迴歸係數描述關聯，外推與因果需謹慎。",
+      "correctRationale": "超出觀察範圍外推可能不成立；觀察資料的係數也可能受季節等干擾因素影響。",
+      "optionRationales": {
+        "A": "係數正是描述廣告費與銷售的關係。",
+        "B": "超出資料範圍的線性外推不可靠。",
+        "C": "迴歸無法單獨證明唯一因果。",
+        "D": "正確。超出觀察範圍外推可能不成立；觀察資料的係數也可能受季節等干擾因素影響。"
+      },
+      "commonTrap": "把迴歸係數直接當成可無限外推的因果效果。",
+      "lessonAnchor": "L22301"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "迴歸解讀"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22301-0011",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L223",
+    "competencyCode": "L22301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "民調報告「支持率 45%，誤差範圍 ±3 個百分點」。這個誤差範圍主要反映？",
+    "options": [
+      {
+        "id": "A",
+        "text": "受訪者說謊的比例"
+      },
+      {
+        "id": "B",
+        "text": "隨機抽樣造成的估計不確定性"
+      },
+      {
+        "id": "C",
+        "text": "問卷題目設計的偏差"
+      },
+      {
+        "id": "D",
+        "text": "計算機的運算錯誤"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "誤差範圍反映抽樣誤差。",
+      "correctRationale": "它不包含非抽樣誤差，例如題目引導、拒訪偏差等，這些需另外評估。",
+      "optionRationales": {
+        "A": "說謊屬非抽樣誤差，不在此範圍。",
+        "B": "正確。它不包含非抽樣誤差，例如題目引導、拒訪偏差等，這些需另外評估。",
+        "C": "題目偏差屬非抽樣誤差。",
+        "D": "與運算錯誤無關。"
+      },
+      "commonTrap": "以為誤差範圍涵蓋所有可能的偏差。",
+      "lessonAnchor": "L22301"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "抽樣誤差"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22301-0012",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L223",
+    "competencyCode": "L22301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列 pandas 程式計算各組轉換率，執行後輸出為何？",
+    "code": "import pandas as pd\n\ndf = pd.DataFrame({\n    'group': ['A', 'A', 'A', 'A', 'B', 'B', 'B', 'B'],\n    'converted': [1, 0, 1, 0, 0, 0, 1, 0],\n})\nprint(df.groupby('group')['converted'].mean().to_dict())",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "{'A': 0.5, 'B': 0.25}",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {
+        "pandas": "3.0.2"
+      },
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "A 組：1, 0, 1, 0，平均 0.5。",
+      "B 組：0, 0, 1, 0，平均 0.25。",
+      "`to_dict()` 轉為字典。",
+      "輸出 `{'A': 0.5, 'B': 0.25}`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "{'A': 0.5, 'B': 0.25}"
+      },
+      {
+        "id": "B",
+        "text": "{'A': 0.25, 'B': 0.5}"
+      },
+      {
+        "id": "C",
+        "text": "{'A': 2, 'B': 1}"
+      },
+      {
+        "id": "D",
+        "text": "{'A': 0.4, 'B': 0.6}"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "0/1 欄位的平均數就是比例。",
+      "correctRationale": "A 組 4 人中 2 人轉換 = 0.5；B 組 4 人中 1 人轉換 = 0.25。",
+      "optionRationales": {
+        "A": "正確。A 組 4 人中 2 人轉換 = 0.5；B 組 4 人中 1 人轉換 = 0.25。",
+        "B": "兩組數值對調了。",
+        "C": "這是轉換人數，不是轉換率。",
+        "D": "數值與資料不符。"
+      },
+      "commonTrap": "不知道 0/1 欄位的平均數等於比例。",
+      "lessonAnchor": "L22301"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "pandas",
+      "分組統計"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22301-0013",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L223",
+    "competencyCode": "L22301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "分析「成功創業者的共同特質」只訪問了目前仍在營運的公司。這個分析最可能存在什麼問題？",
+    "options": [
+      {
+        "id": "A",
+        "text": "沒有問題，因為都是真實公司"
+      },
+      {
+        "id": "B",
+        "text": "屬於型二錯誤"
+      },
+      {
+        "id": "C",
+        "text": "樣本太多"
+      },
+      {
+        "id": "D",
+        "text": "倖存者偏差：失敗的公司被排除，共同特質未必是成功的原因"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "只觀察存活下來的樣本會產生偏差。",
+      "correctRationale": "失敗者可能也具有相同特質；需要同時比較成功與失敗的樣本。",
+      "optionRationales": {
+        "A": "真實資料也可能有選擇偏差。",
+        "B": "型二錯誤是假設檢定的概念。",
+        "C": "問題在樣本選擇，不在數量。",
+        "D": "正確。失敗者可能也具有相同特質；需要同時比較成功與失敗的樣本。"
+      },
+      "commonTrap": "忽略被排除的樣本。",
+      "lessonAnchor": "L22301"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "倖存者偏差"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22301-0014",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L223",
+    "competencyCode": "L22301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於「母體參數」與「樣本統計量」，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "母體參數會隨每次抽樣改變"
+      },
+      {
+        "id": "B",
+        "text": "兩者永遠相等"
+      },
+      {
+        "id": "C",
+        "text": "母體參數通常未知且固定；樣本統計量由抽樣資料計算，會隨樣本不同而變動"
+      },
+      {
+        "id": "D",
+        "text": "樣本統計量是固定不變的"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "以樣本統計量估計母體參數。",
+      "correctRationale": "例如以樣本平均 x̄ 估計母體平均 μ；不同樣本得到的 x̄ 不同，形成抽樣分佈。",
+      "optionRationales": {
+        "A": "母體參數是固定的。",
+        "B": "兩者通常不相等。",
+        "C": "正確。例如以樣本平均 x̄ 估計母體平均 μ；不同樣本得到的 x̄ 不同，形成抽樣分佈。",
+        "D": "樣本統計量會隨樣本變動。"
+      },
+      "commonTrap": "混淆母體參數與樣本統計量。",
+      "lessonAnchor": "L22301"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "母體",
+      "樣本"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22301-0015",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L223",
+    "competencyCode": "L22301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "從客戶名單中每隔 50 人抽 1 人進行訪問，屬於哪一種抽樣方法？",
+    "options": [
+      {
+        "id": "A",
+        "text": "集群抽樣"
+      },
+      {
+        "id": "B",
+        "text": "便利抽樣"
+      },
+      {
+        "id": "C",
+        "text": "系統抽樣"
+      },
+      {
+        "id": "D",
+        "text": "分層抽樣"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "依固定間隔抽取即為系統抽樣。",
+      "correctRationale": "若名單排列有週期性，系統抽樣可能產生偏差，需留意。",
+      "optionRationales": {
+        "A": "集群抽樣是以群為單位抽取。",
+        "B": "便利抽樣是抽取方便取得的對象。",
+        "C": "正確。若名單排列有週期性，系統抽樣可能產生偏差，需留意。",
+        "D": "分層抽樣是先分層再各自抽樣。"
+      },
+      "commonTrap": "混淆各種抽樣方法。",
+      "lessonAnchor": "L22301"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "抽樣方法"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22302-0009",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L223",
+    "competencyCode": "L22302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列 pandas 程式計算 3 期移動平均，執行後輸出為何？",
+    "code": "import pandas as pd\n\ns = pd.Series([10, 20, 30, 40])\nprint(s.rolling(3).mean().tolist())",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "[nan, nan, 20.0, 30.0]",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {
+        "pandas": "3.0.2"
+      },
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "視窗大小 3，前兩期資料不足，結果為 nan。",
+      "第 3 期：(10 + 20 + 30) ÷ 3 = 20.0。",
+      "第 4 期：(20 + 30 + 40) ÷ 3 = 30.0。",
+      "輸出 `[nan, nan, 20.0, 30.0]`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "[nan, nan, 60.0, 90.0]"
+      },
+      {
+        "id": "B",
+        "text": "[10.0, 15.0, 20.0, 30.0]"
+      },
+      {
+        "id": "C",
+        "text": "[20.0, 30.0, nan, nan]"
+      },
+      {
+        "id": "D",
+        "text": "[nan, nan, 20.0, 30.0]"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "`rolling(3).mean()` 需要湊滿 3 期才會計算。",
+      "correctRationale": "前兩期不足 3 筆為缺失值；第 3 期 (10+20+30)/3 = 20.0；第 4 期 (20+30+40)/3 = 30.0。",
+      "optionRationales": {
+        "A": "這是 3 期加總，不是平均。",
+        "B": "預設 min_periods 等於視窗大小，前兩期不會計算。",
+        "C": "移動平均依時間向後計算，不會把缺失值放在最後。",
+        "D": "正確。前兩期不足 3 筆為缺失值；第 3 期 (10+20+30)/3 = 20.0；第 4 期 (20+30+40)/3 = 30.0。"
+      },
+      "commonTrap": "不知道移動平均前幾期會是缺失值。",
+      "lessonAnchor": "L22302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "移動平均"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22302-0010",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L223",
+    "competencyCode": "L22302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列程式計算關聯規則的提升度，執行後輸出為何？",
+    "code": "tx = [{'A', 'B'}, {'A', 'B'}, {'A'}, {'C'}]\nn = len(tx)\nsup_a = sum('A' in t for t in tx) / n\nsup_b = sum('B' in t for t in tx) / n\nsup_ab = sum({'A', 'B'} <= t for t in tx) / n\nconf = sup_ab / sup_a\nprint(round(conf / sup_b, 2))",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "1.33",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {},
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "共 4 筆交易；含 A 的 3 筆，支持度 0.75。",
+      "含 B 的 2 筆，支持度 0.5；同時含 A、B 的 2 筆，支持度 0.5。",
+      "信賴度 = 0.5 ÷ 0.75 ≈ 0.667。",
+      "提升度 = 0.667 ÷ 0.5 ≈ 1.33。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "1.33"
+      },
+      {
+        "id": "B",
+        "text": "0.5"
+      },
+      {
+        "id": "C",
+        "text": "1.0"
+      },
+      {
+        "id": "D",
+        "text": "0.75"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "提升度 = 信賴度 ÷ 後項支持度。",
+      "correctRationale": "買 A 的 3 筆中有 2 筆也買 B，信賴度 2/3；B 出現在 4 筆中的 2 筆，支持度 0.5；提升度 (2/3)/0.5 ≈ 1.33。",
+      "optionRationales": {
+        "A": "正確。買 A 的 3 筆中有 2 筆也買 B，信賴度 2/3；B 出現在 4 筆中的 2 筆，支持度 0.5；提升度 (2/3)/0.5 ≈ 1.33。",
+        "B": "0.5 是 B 的支持度。",
+        "C": "提升度為 1 代表獨立，但此資料不是。",
+        "D": "0.75 是 0.5 ÷ (2/3) 的倒數算法。"
+      },
+      "commonTrap": "把提升度的分子分母弄反。",
+      "lessonAnchor": "L22302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "提升度"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22302-0011",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L223",
+    "competencyCode": "L22302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "訂閱服務想知道「1 月加入的用戶，在第 1、2、3 個月分別還剩多少比例」，並與 2 月加入的用戶比較。最合適的分析方法是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "關聯規則分析"
+      },
+      {
+        "id": "B",
+        "text": "同期群（Cohort）分析"
+      },
+      {
+        "id": "C",
+        "text": "主成分分析"
+      },
+      {
+        "id": "D",
+        "text": "迴歸係數檢定"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "同期群分析依加入時間分組追蹤留存。",
+      "correctRationale": "可比較不同月份加入者的留存曲線，評估產品改版或行銷活動的影響。",
+      "optionRationales": {
+        "A": "關聯規則找共同出現的項目。",
+        "B": "正確。可比較不同月份加入者的留存曲線，評估產品改版或行銷活動的影響。",
+        "C": "PCA 用於降維。",
+        "D": "不直接回答留存比例的問題。"
+      },
+      "commonTrap": "把所有用戶混在一起計算平均留存。",
+      "lessonAnchor": "L22302"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "同期群分析"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22302-0012",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L223",
+    "competencyCode": "L22302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "K-means 分群前通常要先把各特徵標準化，主要原因是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "K-means 以距離計算，數值範圍大的特徵會主導分群結果"
+      },
+      {
+        "id": "B",
+        "text": "標準化可以自動決定最佳 K 值"
+      },
+      {
+        "id": "C",
+        "text": "不標準化程式就無法執行"
+      },
+      {
+        "id": "D",
+        "text": "標準化會把資料變成類別型"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "距離型方法對尺度敏感。",
+      "correctRationale": "例如「年收入（數十萬）」與「年齡（數十）」，不標準化時距離幾乎只由收入決定。",
+      "optionRationales": {
+        "A": "正確。例如「年收入（數十萬）」與「年齡（數十）」，不標準化時距離幾乎只由收入決定。",
+        "B": "K 值需另外以手肘法、輪廓係數等判斷。",
+        "C": "不標準化仍可執行，只是結果可能失真。",
+        "D": "標準化後仍是數值資料。"
+      },
+      "commonTrap": "忽略距離型方法對特徵尺度的敏感度。",
+      "lessonAnchor": "L22302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "分群"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22302-0013",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L223",
+    "competencyCode": "L22302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "電商漏斗：瀏覽 10,000 人 → 加入購物車 2,000 人 → 結帳 1,500 人 → 付款完成 300 人。最應優先調查的環節是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "瀏覽到加入購物車（人數減少最多）"
+      },
+      {
+        "id": "B",
+        "text": "結帳到付款完成（轉換率只有 20%）"
+      },
+      {
+        "id": "C",
+        "text": "加入購物車到結帳（轉換率 75%）"
+      },
+      {
+        "id": "D",
+        "text": "所有環節都一樣，不需調查"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "以各階段轉換率找出最異常的流失點。",
+      "correctRationale": "瀏覽→購物車 20%、購物車→結帳 75%、結帳→付款 20%；結帳後才流失代表付款流程可能有問題，且這些都是高意願用戶。",
+      "optionRationales": {
+        "A": "人數減少最多不等於問題最嚴重；瀏覽到加購 20% 在電商中常見。",
+        "B": "正確。結帳後流失比例高且屬高意願用戶。",
+        "C": "75% 是相對健康的轉換率。",
+        "D": "各環節轉換率差異明顯。"
+      },
+      "commonTrap": "只看減少的人數，不看各階段的轉換率與用戶意願。",
+      "lessonAnchor": "L22302"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "漏斗分析"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22302-0014",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L223",
+    "competencyCode": "L22302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列哪一組分析方法分別屬於「非監督式」與「監督式」？",
+    "options": [
+      {
+        "id": "A",
+        "text": "兩者都是非監督式：分類、迴歸"
+      },
+      {
+        "id": "B",
+        "text": "非監督式：預測房價；監督式：關聯規則"
+      },
+      {
+        "id": "C",
+        "text": "兩者都是監督式：分群、降維"
+      },
+      {
+        "id": "D",
+        "text": "非監督式：顧客分群；監督式：預測是否流失"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "監督式學習需要標記答案；非監督式沒有。",
+      "correctRationale": "分群在沒有標籤下找出相似群體；流失預測以歷史上「是否流失」的標籤訓練。",
+      "optionRationales": {
+        "A": "分類與迴歸屬監督式。",
+        "B": "預測房價是監督式，關聯規則是非監督式。",
+        "C": "分群與降維屬非監督式。",
+        "D": "正確。分群在沒有標籤下找出相似群體；流失預測以歷史上「是否流失」的標籤訓練。"
+      },
+      "commonTrap": "依名稱猜測而不判斷是否有標籤。",
+      "lessonAnchor": "L22302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "監督式",
+      "非監督式"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22302-0015",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L223",
+    "competencyCode": "L22302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "時間序列中「每年 12 月銷售都特別高」的規律，稱為？",
+    "options": [
+      {
+        "id": "A",
+        "text": "趨勢"
+      },
+      {
+        "id": "B",
+        "text": "隨機雜訊"
+      },
+      {
+        "id": "C",
+        "text": "季節性"
+      },
+      {
+        "id": "D",
+        "text": "離群值"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "固定週期重複出現的模式稱為季節性。",
+      "correctRationale": "分析時常先拆解趨勢、季節性與殘差，再進行預測。",
+      "optionRationales": {
+        "A": "趨勢是長期上升或下降。",
+        "B": "雜訊沒有規律。",
+        "C": "正確。分析時常先拆解趨勢、季節性與殘差，再進行預測。",
+        "D": "離群值是個別異常點。"
+      },
+      "commonTrap": "混淆趨勢與季節性。",
+      "lessonAnchor": "L22302"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "時間序列"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22303-0009",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L223",
+    "competencyCode": "L22303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "要呈現「廣告費」與「銷售額」兩個數值變數之間的關係，最適合的圖表是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "文字雲"
+      },
+      {
+        "id": "B",
+        "text": "圓餅圖"
+      },
+      {
+        "id": "C",
+        "text": "堆疊長條圖"
+      },
+      {
+        "id": "D",
+        "text": "散佈圖"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "散佈圖呈現兩個數值變數的關係。",
+      "correctRationale": "可觀察方向、強度、非線性與離群值，必要時加上趨勢線。",
+      "optionRationales": {
+        "A": "文字雲呈現詞頻。",
+        "B": "圓餅圖呈現組成比例。",
+        "C": "堆疊長條圖呈現類別的組成。",
+        "D": "正確。可觀察方向、強度、非線性與離群值，必要時加上趨勢線。"
+      },
+      "commonTrap": "用組成型圖表呈現變數關係。",
+      "lessonAnchor": "L22303"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "圖表選擇"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22303-0010",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L223",
+    "competencyCode": "L22303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "要向主管說明「本季營收比去年同期成長 12%，主要來自新產品」，下列哪一種設計最有效？",
+    "options": [
+      {
+        "id": "A",
+        "text": "使用大量不同顏色讓圖表更豐富"
+      },
+      {
+        "id": "B",
+        "text": "放入 20 張圖讓主管自己找結論"
+      },
+      {
+        "id": "C",
+        "text": "以清楚的標題直接寫出結論，搭配營收對比圖並以顏色突顯新產品的貢獻"
+      },
+      {
+        "id": "D",
+        "text": "只放一張未標示單位的 3D 圓餅圖"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "好的視覺化先說結論，再以圖支持。",
+      "correctRationale": "標題寫出重點、只突顯關鍵資訊，能降低閱讀負擔。",
+      "optionRationales": {
+        "A": "過多顏色會分散注意力。",
+        "B": "資訊過多會掩蓋重點。",
+        "C": "正確。以結論為導向的設計。",
+        "D": "3D 效果會扭曲比例，缺少單位也難以解讀。"
+      },
+      "commonTrap": "把所有圖表都放上去，沒有傳達重點。",
+      "lessonAnchor": "L22303"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "視覺化",
+      "溝通"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22303-0011",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L223",
+    "competencyCode": "L22303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列 Matplotlib 程式建立圖表，執行後輸出為何？",
+    "code": "import matplotlib\nmatplotlib.use('Agg')\nimport matplotlib.pyplot as plt\n\nfig, axes = plt.subplots(1, 2)\naxes[0].bar(['A', 'B'], [3, 5])\naxes[1].plot([1, 2, 3], [2, 4, 3])\nprint(len(axes))",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "2",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {
+        "matplotlib": "3.10.8"
+      },
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "`plt.subplots(1, 2)` 建立 1 列 2 欄的子圖。",
+      "`axes[0]` 畫長條圖，`axes[1]` 畫折線圖。",
+      "`axes` 是含 2 個子圖的陣列。",
+      "輸出 `2`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "0"
+      },
+      {
+        "id": "B",
+        "text": "2"
+      },
+      {
+        "id": "C",
+        "text": "1"
+      },
+      {
+        "id": "D",
+        "text": "4"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "`plt.subplots(1, 2)` 建立 1 列 2 欄共 2 個子圖。",
+      "correctRationale": "`axes` 為含 2 個 Axes 物件的陣列，`len(axes)` 為 2。",
+      "optionRationales": {
+        "A": "已建立子圖。",
+        "B": "正確。`axes` 為含 2 個 Axes 物件的陣列，`len(axes)` 為 2。",
+        "C": "1 列不代表只有 1 個子圖。",
+        "D": "1 × 2 = 2，不是 4。"
+      },
+      "commonTrap": "誤解 subplots 的列數與欄數參數。",
+      "lessonAnchor": "L22303"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "Matplotlib"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22303-0012",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L223",
+    "competencyCode": "L22303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "某報告把「營收（億元）」與「客訴件數」畫在左右兩個縱軸，並調整刻度讓兩條線幾乎重疊，宣稱「客訴與營收同步成長」。主要問題是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "雙軸刻度可任意調整，容易製造不存在的關聯印象；應另外分析或分開呈現"
+      },
+      {
+        "id": "B",
+        "text": "線條顏色選得不好"
+      },
+      {
+        "id": "C",
+        "text": "沒有問題，圖形重疊就代表相關"
+      },
+      {
+        "id": "D",
+        "text": "雙軸圖一律禁止使用"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "雙軸圖容易誤導。",
+      "correctRationale": "兩軸刻度的選擇會改變視覺上的關係；應以相關分析或分開的圖呈現。",
+      "optionRationales": {
+        "A": "正確。兩軸刻度的選擇會改變視覺上的關係；應以相關分析或分開的圖呈現。",
+        "B": "顏色不是主要問題。",
+        "C": "視覺重疊可透過刻度製造，不能證明相關。",
+        "D": "雙軸圖可使用，但需謹慎並清楚標示。"
+      },
+      "commonTrap": "用調整刻度製造視覺上的關聯。",
+      "lessonAnchor": "L22303"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "雙軸圖"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22303-0013",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L223",
+    "competencyCode": "L22303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "比較 5 間門市的「每日營收分布」（含中位數與離群值），下列哪一種圖表較合適？",
+    "options": [
+      {
+        "id": "A",
+        "text": "文字雲"
+      },
+      {
+        "id": "B",
+        "text": "圓餅圖"
+      },
+      {
+        "id": "C",
+        "text": "並排箱型圖"
+      },
+      {
+        "id": "D",
+        "text": "單一折線圖"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "箱型圖適合比較多組分布。",
+      "correctRationale": "可同時呈現中位數、四分位距與離群值，方便比較多間門市。",
+      "optionRationales": {
+        "A": "文字雲呈現詞頻。",
+        "B": "圓餅圖呈現比例。",
+        "C": "正確。適合比較多組分布。",
+        "D": "單一折線圖呈現趨勢，不呈現分布。"
+      },
+      "commonTrap": "用呈現趨勢或比例的圖表比較分布。",
+      "lessonAnchor": "L22303"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "箱型圖",
+      "直方圖"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22303-0014",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L223",
+    "competencyCode": "L22303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "設計圖表時，下列哪一項做法最能幫助色覺辨識困難的讀者？",
+    "options": [
+      {
+        "id": "A",
+        "text": "把所有類別都用相近的顏色"
+      },
+      {
+        "id": "B",
+        "text": "除了顏色，也用形狀、線型或文字標籤區分類別"
+      },
+      {
+        "id": "C",
+        "text": "移除圖例"
+      },
+      {
+        "id": "D",
+        "text": "只用紅色與綠色區分"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "狀態資訊不應只靠顏色傳達。",
+      "correctRationale": "搭配形狀、線型、直接標籤或高對比配色，能讓更多人正確解讀。",
+      "optionRationales": {
+        "A": "相近顏色更難區分。",
+        "B": "正確。搭配形狀、線型、直接標籤或高對比配色，能讓更多人正確解讀。",
+        "C": "移除圖例更難理解。",
+        "D": "紅綠對部分色覺辨識困難者難以區分。"
+      },
+      "commonTrap": "只依靠顏色傳遞資訊。",
+      "lessonAnchor": "L22303"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "必考核心觀念",
+    "authoring": "ai-drafted",
+    "tags": [
+      "無障礙"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22303-0015",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L223",
+    "competencyCode": "L22303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「熱力圖（Heatmap）」最適合呈現哪一種資訊？",
+    "options": [
+      {
+        "id": "A",
+        "text": "二維表格中各格數值的大小，例如星期 × 時段的訂單量"
+      },
+      {
+        "id": "B",
+        "text": "兩個地點之間的距離"
+      },
+      {
+        "id": "C",
+        "text": "單一數值的時間趨勢"
+      },
+      {
+        "id": "D",
+        "text": "整體的組成比例"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "熱力圖以顏色深淺表示矩陣中的數值。",
+      "correctRationale": "適合找出模式，例如哪個時段訂單最多、哪些特徵相關係數高。",
+      "optionRationales": {
+        "A": "正確。適合找出模式，例如哪個時段訂單最多、哪些特徵相關係數高。",
+        "B": "距離可用地圖或其他圖表。",
+        "C": "時間趨勢用折線圖。",
+        "D": "組成比例用長條或圓餅圖。"
+      },
+      "commonTrap": "不清楚熱力圖的用途。",
+      "lessonAnchor": "L22303"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "熱力圖"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
   }
 ]

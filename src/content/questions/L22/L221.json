@@ -1495,5 +1495,1365 @@
     ],
     "reviewStatus": "ai-checked",
     "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22101-0009",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L221",
+    "competencyCode": "L22101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列 pandas 程式計算四分位距（IQR），執行後輸出為何？",
+    "code": "import pandas as pd\n\ns = pd.Series([1, 2, 3, 4, 5, 6, 7, 8, 9])\nq1, q3 = s.quantile(0.25), s.quantile(0.75)\nprint(q3 - q1)",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "4.0",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {
+        "pandas": "3.0.2"
+      },
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "資料共 9 筆，已排序。",
+      "`quantile(0.25)` 以線性內插，位置 (9−1)×0.25 = 2，對應第 3 個值 3.0。",
+      "`quantile(0.75)` 位置 6，對應第 7 個值 7.0。",
+      "IQR = 7.0 − 3.0 = 4.0。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "4.0"
+      },
+      {
+        "id": "B",
+        "text": "5.0"
+      },
+      {
+        "id": "C",
+        "text": "8.0"
+      },
+      {
+        "id": "D",
+        "text": "3.0"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "IQR = Q3 − Q1；pandas 的 quantile 預設採線性內插。",
+      "correctRationale": "資料 1～9：Q1 位置 0.25 × 8 = 2 → 值 3.0；Q3 位置 0.75 × 8 = 6 → 值 7.0；IQR = 4.0。",
+      "optionRationales": {
+        "A": "正確。資料 1～9：Q1 位置 0.25 × 8 = 2 → 值 3.0；Q3 位置 0.75 × 8 = 6 → 值 7.0；IQR = 4.0。",
+        "B": "這是以「排除中位數的分半法」得 Q1 = 2.5、Q3 = 7.5 的結果；pandas 預設採線性內插。",
+        "C": "誤用全距（9 − 1）。",
+        "D": "3.0 是 Q1 的值，不是 IQR。"
+      },
+      "commonTrap": "把 IQR 與全距混淆。",
+      "lessonAnchor": "L22101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "pandas",
+      "四分位數"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22101-0010",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L221",
+    "competencyCode": "L22101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列 pandas 程式計算平均數與中位數，執行後輸出為何？",
+    "code": "import pandas as pd\n\ns = pd.Series([2, 3, 1, 4, 100])\nprint(s.mean(), s.median())",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "22.0 3.0",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {
+        "pandas": "3.0.2"
+      },
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "總和 2+3+1+4+100 = 110。",
+      "平均數 110 ÷ 5 = 22.0。",
+      "排序為 1, 2, 3, 4, 100，中位數為 3.0。",
+      "輸出 `22.0 3.0`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "22.0 22.0"
+      },
+      {
+        "id": "B",
+        "text": "4.4 3.0"
+      },
+      {
+        "id": "C",
+        "text": "22.0 3.0"
+      },
+      {
+        "id": "D",
+        "text": "3.0 22.0"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "極端值會大幅拉高平均數，中位數較不受影響。",
+      "correctRationale": "資料總和 110 ÷ 5 = 22.0；排序後中間值為 3。",
+      "optionRationales": {
+        "A": "中位數不受 100 拉高，仍為 3.0。",
+        "B": "4.4 是未計入 100 時的錯誤平均。",
+        "C": "正確。資料總和 110 ÷ 5 = 22.0；排序後中間值為 3。",
+        "D": "把平均數與中位數順序弄反。"
+      },
+      "commonTrap": "以為平均數一定能代表「典型值」。",
+      "lessonAnchor": "L22101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "pandas",
+      "描述統計"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22101-0011",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L221",
+    "competencyCode": "L22101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "某資料分布的平均數 = 50、中位數 = 40。這個分布最可能是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "無法有任何推論，平均數與中位數無關"
+      },
+      {
+        "id": "B",
+        "text": "左偏（負偏）"
+      },
+      {
+        "id": "C",
+        "text": "完全對稱"
+      },
+      {
+        "id": "D",
+        "text": "右偏（正偏）：右側有較大的極端值把平均數往上拉"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "右偏時通常平均數 > 中位數。",
+      "correctRationale": "少數很大的值會拉高平均數，中位數較不受影響，因此平均數大於中位數常見於右偏分布。",
+      "optionRationales": {
+        "A": "兩者的相對大小可提供偏態的線索。",
+        "B": "左偏時通常平均數 < 中位數。",
+        "C": "對稱分布平均數約等於中位數。",
+        "D": "正確。少數很大的值會拉高平均數，中位數較不受影響，因此平均數大於中位數常見於右偏分布。"
+      },
+      "commonTrap": "把右偏、左偏的方向記反。",
+      "lessonAnchor": "L22101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "偏態"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22101-0012",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L221",
+    "competencyCode": "L22101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "小明數學考 80 分（班平均 70、標準差 5），英文考 85 分（班平均 80、標準差 10）。以 Z 分數比較，哪一科相對表現較好？",
+    "options": [
+      {
+        "id": "A",
+        "text": "無法比較不同科目"
+      },
+      {
+        "id": "B",
+        "text": "數學（Z = 2.0）優於英文（Z = 0.5）"
+      },
+      {
+        "id": "C",
+        "text": "英文（85 分較高）"
+      },
+      {
+        "id": "D",
+        "text": "兩科一樣好"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "Z 分數 =（原始值 − 平均）÷ 標準差。",
+      "correctRationale": "數學 (80−70)/5 = 2.0；英文 (85−80)/10 = 0.5；數學相對位置較高。",
+      "optionRationales": {
+        "A": "標準化後即可比較相對位置。",
+        "B": "正確。數學 (80−70)/5 = 2.0；英文 (85−80)/10 = 0.5；數學相對位置較高。",
+        "C": "只比較原始分數，忽略各科分布不同。",
+        "D": "Z 分數不同。"
+      },
+      "commonTrap": "直接比較不同尺度的原始分數。",
+      "lessonAnchor": "L22101"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "標準化",
+      "Z 分數"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22101-0013",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L221",
+    "competencyCode": "L22101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列 NumPy 程式比較母體與樣本變異數，執行後輸出為何？",
+    "code": "import numpy as np\n\nx = np.array([4, 6, 8, 2, 5])\nprint(round(x.var(), 1), round(x.var(ddof=1), 1))",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "4.0 5.0",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {
+        "numpy": "2.4.6"
+      },
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "資料 4, 6, 8, 2, 5，平均為 25 ÷ 5 = 5。",
+      "與平均差的平方：1, 1, 9, 9, 0，總和 20。",
+      "`x.var()` 預設 ddof=0：20 ÷ 5 = 4.0。",
+      "`x.var(ddof=1)`：20 ÷ 4 = 5.0。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "5.0 4.0"
+      },
+      {
+        "id": "B",
+        "text": "4.0 4.0"
+      },
+      {
+        "id": "C",
+        "text": "4.0 5.0"
+      },
+      {
+        "id": "D",
+        "text": "2.0 2.24"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "NumPy 的 var 預設 ddof=0（母體）；ddof=1 為樣本變異數。",
+      "correctRationale": "資料 4、6、8、2、5 平均 5，與平均差的平方總和 20；母體變異數 20 ÷ 5 = 4.0，樣本變異數 20 ÷ 4 = 5.0。",
+      "optionRationales": {
+        "A": "把母體與樣本變異數的順序弄反。",
+        "B": "樣本變異數分母為 n − 1，會比母體變異數大。",
+        "C": "正確。資料 4、6、8、2、5 平均 5，與平均差的平方總和 20；母體變異數 20 ÷ 5 = 4.0，樣本變異數 20 ÷ 4 = 5.0。",
+        "D": "這是母體與樣本「標準差」（2.0 與 √5 ≈ 2.24），不是變異數。"
+      },
+      "commonTrap": "忘記 NumPy 與 pandas 的 ddof 預設值不同。",
+      "lessonAnchor": "L22101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "NumPy",
+      "變異數"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22101-0014",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L221",
+    "competencyCode": "L22101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "調查「最受歡迎的手機品牌」（類別資料），最適合用哪一個統計量描述集中趨勢？",
+    "options": [
+      {
+        "id": "A",
+        "text": "全距"
+      },
+      {
+        "id": "B",
+        "text": "平均數"
+      },
+      {
+        "id": "C",
+        "text": "標準差"
+      },
+      {
+        "id": "D",
+        "text": "眾數"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "類別資料只能計算次數，眾數最合適。",
+      "correctRationale": "品牌名稱無法相加或排序成數值，平均數與中位數不適用。",
+      "optionRationales": {
+        "A": "全距是離散程度指標，且需數值資料。",
+        "B": "類別資料無法計算平均。",
+        "C": "標準差是離散程度指標，且需數值資料。",
+        "D": "正確。類別資料用眾數。"
+      },
+      "commonTrap": "對類別資料計算平均數。",
+      "lessonAnchor": "L22101"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "集中趨勢"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22101-0015",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L221",
+    "competencyCode": "L22101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "分析房價資料時，發現一筆紀錄為「3 坪、5 億元」。最恰當的處理順序是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "保留且不做任何說明"
+      },
+      {
+        "id": "B",
+        "text": "先查證是否為輸入錯誤或特殊物件，再決定修正、排除或另外分析，並記錄處理方式"
+      },
+      {
+        "id": "C",
+        "text": "把它改成平均值以免影響結果"
+      },
+      {
+        "id": "D",
+        "text": "直接刪除所有超過平均值的資料"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "離群值需先判斷原因再處理。",
+      "correctRationale": "可能是單位或輸入錯誤，也可能是真實的特殊案例；處理方式要能說明並記錄。",
+      "optionRationales": {
+        "A": "不處理可能嚴重影響統計結果。",
+        "B": "正確。先查證再處理並記錄。",
+        "C": "任意替換會隱藏問題。",
+        "D": "刪除超過平均的資料會刪掉一半資料，扭曲分布。"
+      },
+      "commonTrap": "不查證就刪除或替換離群值。",
+      "lessonAnchor": "L22101"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "離群值",
+      "敘述統計"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22102-0009",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L221",
+    "competencyCode": "L22102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列程式計算卜瓦松分佈機率，執行後輸出為何？",
+    "code": "from scipy.stats import poisson\n\n# 每小時平均 2 通客訴，求某小時 0 通的機率\nprint(round(poisson.pmf(0, mu=2), 3))",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "0.135",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {
+        "scipy": "1.18.0"
+      },
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "卜瓦松分佈 P(X=k) = λ^k e^(−λ) / k!。",
+      "k = 0、λ = 2：P = e^(−2)。",
+      "e^(−2) ≈ 0.13534。",
+      "四捨五入到 3 位：0.135。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "0.135"
+      },
+      {
+        "id": "B",
+        "text": "0.271"
+      },
+      {
+        "id": "C",
+        "text": "0.865"
+      },
+      {
+        "id": "D",
+        "text": "0.5"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "卜瓦松分佈 P(X=0) = e^(−λ)。",
+      "correctRationale": "λ = 2 時，P(X=0) = e^(−2) ≈ 0.1353，四捨五入到小數 3 位為 0.135。",
+      "optionRationales": {
+        "A": "正確。λ = 2 時，P(X=0) = e^(−2) ≈ 0.1353，四捨五入到小數 3 位為 0.135。",
+        "B": "0.271 是 P(X=1) 或 P(X=2) 的值。",
+        "C": "0.865 是 P(X≥1) = 1 − e^(−2)。",
+        "D": "與 λ = 2 的卜瓦松分佈無關。"
+      },
+      "commonTrap": "混淆 P(X=0) 與 P(X≥1)。",
+      "lessonAnchor": "L22102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "SciPy",
+      "卜瓦松分佈"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22102-0010",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L221",
+    "competencyCode": "L22102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列程式計算兩顆公平骰子點數和為 7 的機率，執行後輸出為何？",
+    "code": "from itertools import product\n\nouts = list(product(range(1, 7), repeat=2))\nhit = sum(1 for a, b in outs if a + b == 7)\nprint(round(hit / len(outs), 3))",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "0.167",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {},
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "`product(range(1,7), repeat=2)` 產生 36 種組合。",
+      "和為 7 的組合有 6 種。",
+      "6 ÷ 36 = 0.1666…",
+      "四捨五入到 3 位：0.167。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "0.028"
+      },
+      {
+        "id": "B",
+        "text": "0.167"
+      },
+      {
+        "id": "C",
+        "text": "0.083"
+      },
+      {
+        "id": "D",
+        "text": "0.5"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "列舉所有等可能結果計算機率。",
+      "correctRationale": "36 種組合中和為 7 的有 6 種：(1,6)…(6,1)，6/36 ≈ 0.167。",
+      "optionRationales": {
+        "A": "0.028 是 1/36，例如和為 2 的機率。",
+        "B": "正確。36 種組合中和為 7 的有 6 種：(1,6)…(6,1)，6/36 ≈ 0.167。",
+        "C": "0.083 是和為 3 或 11（2/36）的機率。",
+        "D": "和為 7 不是一半的機率。"
+      },
+      "commonTrap": "以為每個點數和出現的機率都相同。",
+      "lessonAnchor": "L22102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "機率",
+      "模擬"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22102-0011",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L221",
+    "competencyCode": "L22102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "某產線不良率 1%，且各件獨立。抽查 100 件，「至少 1 件不良」的機率約為？",
+    "options": [
+      {
+        "id": "A",
+        "text": "100%"
+      },
+      {
+        "id": "B",
+        "text": "約 37%"
+      },
+      {
+        "id": "C",
+        "text": "約 63%（1 − 0.99^100）"
+      },
+      {
+        "id": "D",
+        "text": "約 1%"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "「至少一件」用 1 − P(全部合格) 計算。",
+      "correctRationale": "P(全部合格) = 0.99^100 ≈ 0.366，因此至少 1 件不良 ≈ 0.634。",
+      "optionRationales": {
+        "A": "不良不是必然發生。",
+        "B": "約 37% 是「全部合格」的機率。",
+        "C": "正確。P(全部合格) = 0.99^100 ≈ 0.366，因此至少 1 件不良 ≈ 0.634。",
+        "D": "1% 是單件不良率。"
+      },
+      "commonTrap": "把單件機率直接當成多件中至少發生一次的機率。",
+      "lessonAnchor": "L22102"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "二項分佈",
+      "品質管理"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22102-0012",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L221",
+    "competencyCode": "L22102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列哪一組正確對應「離散型」與「連續型」隨機變數？",
+    "options": [
+      {
+        "id": "A",
+        "text": "兩者都是離散：身高、溫度"
+      },
+      {
+        "id": "B",
+        "text": "兩者都是連續：訂單數、退貨件數"
+      },
+      {
+        "id": "C",
+        "text": "離散：體重；連續：硬幣正面次數"
+      },
+      {
+        "id": "D",
+        "text": "離散：每天到店人數；連續：顧客停留時間"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "離散型可數；連續型可在區間內取任意值。",
+      "correctRationale": "人數只能是整數，屬離散；時間可取任意實數值，屬連續。",
+      "optionRationales": {
+        "A": "身高、溫度是連續型。",
+        "B": "訂單數、退貨件數是離散型。",
+        "C": "體重是連續，正面次數是離散。",
+        "D": "正確。人數只能是整數，屬離散；時間可取任意實數值，屬連續。"
+      },
+      "commonTrap": "依變數名稱猜測而沒有判斷可能取值。",
+      "lessonAnchor": "L22102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "離散與連續"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22102-0013",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L221",
+    "competencyCode": "L22102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列程式以固定亂數種子模擬擲公平硬幣 10 萬次，執行後輸出為何？",
+    "code": "import numpy as np\n\nrng = np.random.default_rng(0)\nflips = rng.integers(0, 2, size=100_000)\nprint(round(flips.mean(), 1))",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "0.5",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {
+        "numpy": "2.4.6"
+      },
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "`rng.integers(0, 2)` 產生 0 或 1，各約一半機率。",
+      "共模擬 100,000 次。",
+      "平均值即為 1 的比例，非常接近 0.5。",
+      "四捨五入到 1 位：0.5。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "0.5"
+      },
+      {
+        "id": "B",
+        "text": "0.0"
+      },
+      {
+        "id": "C",
+        "text": "0.1"
+      },
+      {
+        "id": "D",
+        "text": "1.0"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "大數法則：試驗次數多時，樣本比例會接近真實機率。",
+      "correctRationale": "以固定亂數種子模擬 10 萬次，正面比例非常接近 0.5，四捨五入到 1 位為 0.5。",
+      "optionRationales": {
+        "A": "正確。以固定亂數種子模擬 10 萬次，正面比例非常接近 0.5，四捨五入到 1 位為 0.5。",
+        "B": "不會全部是反面。",
+        "C": "機率是 0.5，不是 0.1。",
+        "D": "不會全部是正面。"
+      },
+      "commonTrap": "以為少量試驗結果就能代表機率。",
+      "lessonAnchor": "L22102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "NumPy",
+      "大數法則"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22102-0014",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L221",
+    "competencyCode": "L22102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "抽獎箱中 10% 機率得 100 元，90% 機率得 0 元。抽一次的期望值為？",
+    "options": [
+      {
+        "id": "A",
+        "text": "50 元"
+      },
+      {
+        "id": "B",
+        "text": "10 元"
+      },
+      {
+        "id": "C",
+        "text": "0 元"
+      },
+      {
+        "id": "D",
+        "text": "100 元"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "期望值 = Σ（值 × 機率）。",
+      "correctRationale": "100 × 0.1 + 0 × 0.9 = 10 元。",
+      "optionRationales": {
+        "A": "50 元是兩值的簡單平均，未考慮機率。",
+        "B": "正確。100 × 0.1 + 0 × 0.9 = 10 元。",
+        "C": "0 元是最可能的結果，不是期望值。",
+        "D": "100 元是最大可能獎金。"
+      },
+      "commonTrap": "以簡單平均或最可能值代替期望值。",
+      "lessonAnchor": "L22102"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "期望值"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22102-0015",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L221",
+    "competencyCode": "L22102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "分析師直接以常態分佈估計「每日退貨件數」（多數日子 0～2 件）的機率，算出負數件數也有一定機率。問題在於？",
+    "options": [
+      {
+        "id": "A",
+        "text": "資料為小計數且非負，不符合常態假設，較適合卜瓦松等計數分佈"
+      },
+      {
+        "id": "B",
+        "text": "常態分佈任何情況都適用"
+      },
+      {
+        "id": "C",
+        "text": "退貨件數一定是連續變數"
+      },
+      {
+        "id": "D",
+        "text": "問題在於電腦計算錯誤"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "選擇分佈要符合資料特性。",
+      "correctRationale": "計數資料非負、整數且平均小時明顯右偏，用常態近似會出現不合理的負值機率。",
+      "optionRationales": {
+        "A": "正確指出假設不符。",
+        "B": "常態分佈有適用前提。",
+        "C": "件數是離散的計數變數。",
+        "D": "這是模型選擇問題，不是計算錯誤。"
+      },
+      "commonTrap": "不檢查資料特性就套用常態分佈。",
+      "lessonAnchor": "L22102"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "常態分佈",
+      "假設"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22103-0009",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L221",
+    "competencyCode": "L22103",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列程式以 SciPy 進行雙樣本 t 檢定並依 α = 0.05 判斷，執行後輸出為何？",
+    "code": "from scipy import stats\n\na = [10, 11, 9, 10, 10]\nb = [15, 14, 16, 15, 15]\nt, p = stats.ttest_ind(a, b)\nprint(p < 0.05)",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "True",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {
+        "scipy": "1.18.0"
+      },
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "a 組平均 10、b 組平均 15，兩組內差異都很小。",
+      "`ttest_ind` 回傳 t 統計量與雙尾 p 值。",
+      "差異相對於變異很大，p 值遠小於 0.05。",
+      "`p < 0.05` 為 True。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "None"
+      },
+      {
+        "id": "B",
+        "text": "False"
+      },
+      {
+        "id": "C",
+        "text": "0.05"
+      },
+      {
+        "id": "D",
+        "text": "True"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "p 值小於 α 時拒絕虛無假設。",
+      "correctRationale": "兩組平均分別約 10 與 15，組內變異小，差異非常明顯，p 值遠小於 0.05，因此輸出 True。",
+      "optionRationales": {
+        "A": "比較運算結果是布林值，不會是 None。",
+        "B": "p 值遠小於 0.05，條件成立。",
+        "C": "程式輸出的是布林值，不是 α。",
+        "D": "正確。程式輸出 True。"
+      },
+      "commonTrap": "不清楚程式最後印出的是比較結果。",
+      "lessonAnchor": "L22103"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "SciPy",
+      "t 檢定"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22103-0010",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L221",
+    "competencyCode": "L22103",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "統計檢定的「檢定力（power）」指的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "p 值的大小"
+      },
+      {
+        "id": "B",
+        "text": "樣本平均數的大小"
+      },
+      {
+        "id": "C",
+        "text": "當對立假設為真時，正確拒絕虛無假設的機率（1 − β）"
+      },
+      {
+        "id": "D",
+        "text": "虛無假設為真時拒絕它的機率"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "檢定力 = 1 − 型二錯誤機率。",
+      "correctRationale": "樣本量越大、效果越大、變異越小，檢定力通常越高。",
+      "optionRationales": {
+        "A": "p 值不是檢定力。",
+        "B": "與檢定力的定義無關。",
+        "C": "正確。樣本量越大、效果越大、變異越小，檢定力通常越高。",
+        "D": "這是型一錯誤機率 α。"
+      },
+      "commonTrap": "混淆檢定力與顯著水準。",
+      "lessonAnchor": "L22103"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "檢定力"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22103-0011",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L221",
+    "competencyCode": "L22103",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "行銷團隊同時測試 20 個廣告標題，每個都以 α = 0.05 與原標題比較，結果有 1 個「顯著較好」。最適當的解讀是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "一定找到了最好的標題，可直接全面使用"
+      },
+      {
+        "id": "B",
+        "text": "應把 α 提高到 0.2 以找到更多顯著結果"
+      },
+      {
+        "id": "C",
+        "text": "同時做多次檢定時，即使都沒有效果也可能偶然出現顯著，應做多重比較校正或再驗證"
+      },
+      {
+        "id": "D",
+        "text": "p 值小於 0.05 就代表效果很大"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "多重比較會提高至少一次偽陽性的機率。",
+      "correctRationale": "20 次檢定在都無效果時，平均約 1 次會偶然顯著；可用 Bonferroni 等校正或以新資料再驗證。",
+      "optionRationales": {
+        "A": "可能是偶然的偽陽性。",
+        "B": "提高 α 會增加偽陽性。",
+        "C": "正確。20 次檢定在都無效果時，平均約 1 次會偶然顯著；可用 Bonferroni 等校正或以新資料再驗證。",
+        "D": "顯著與效果大小是不同概念。"
+      },
+      "commonTrap": "忽略多次檢定造成的偽陽性。",
+      "lessonAnchor": "L22103"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "多重比較"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22103-0012",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L221",
+    "competencyCode": "L22103",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於單尾與雙尾檢定，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "雙尾檢定只檢驗變大的方向"
+      },
+      {
+        "id": "B",
+        "text": "看到資料方向後再選單尾，可以讓結果更可信"
+      },
+      {
+        "id": "C",
+        "text": "單尾檢定一定比雙尾檢定好"
+      },
+      {
+        "id": "D",
+        "text": "方向應在看資料前依研究問題決定；雙尾檢定兩個方向的差異都會檢驗"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "檢定方向要事先決定。",
+      "correctRationale": "若只關心「是否變好」可事先設定單尾；看資料後才選方向，會使型一錯誤率失真。",
+      "optionRationales": {
+        "A": "雙尾檢定兩個方向都檢驗。",
+        "B": "事後選方向屬於不當的分析彈性。",
+        "C": "要依研究問題選擇，沒有一定較好。",
+        "D": "正確。若只關心「是否變好」可事先設定單尾；看資料後才選方向，會使型一錯誤率失真。"
+      },
+      "commonTrap": "看了資料再決定單尾或雙尾。",
+      "lessonAnchor": "L22103"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "單尾",
+      "雙尾"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22103-0013",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L221",
+    "competencyCode": "L22103",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列程式進行卡方獨立性檢定，執行後輸出的自由度為何？",
+    "code": "from scipy.stats import chi2_contingency\n\ntable = [[20, 30, 50],\n         [30, 30, 40]]\nchi2, p, dof, expected = chi2_contingency(table)\nprint(dof)",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "2",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {
+        "scipy": "1.18.0"
+      },
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "列聯表為 2 列 3 欄。",
+      "`chi2_contingency` 回傳統計量、p 值、自由度與期望次數。",
+      "自由度 = (2−1) × (3−1) = 2。",
+      "輸出 `2`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "6"
+      },
+      {
+        "id": "B",
+        "text": "2"
+      },
+      {
+        "id": "C",
+        "text": "1"
+      },
+      {
+        "id": "D",
+        "text": "3"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "卡方獨立性檢定自由度 = (列數 − 1) × (欄數 − 1)。",
+      "correctRationale": "表格為 2 列 × 3 欄：(2 − 1) × (3 − 1) = 2。",
+      "optionRationales": {
+        "A": "6 是格子總數。",
+        "B": "正確。表格為 2 列 × 3 欄：(2 − 1) × (3 − 1) = 2。",
+        "C": "1 是 2 × 2 表的自由度。",
+        "D": "3 是欄數，不是自由度。"
+      },
+      "commonTrap": "把格子數當成自由度。",
+      "lessonAnchor": "L22103"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "SciPy",
+      "卡方檢定"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22103-0014",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L221",
+    "competencyCode": "L22103",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "某調查得出平均滿意度的 95% 信賴區間為 [7.2, 7.8]。下列解讀何者最正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "若以相同方法重複抽樣多次，約 95% 的區間會涵蓋真實平均"
+      },
+      {
+        "id": "B",
+        "text": "真實平均有 95% 的機率剛好等於 7.5"
+      },
+      {
+        "id": "C",
+        "text": "95% 的受訪者滿意度落在 7.2～7.8"
+      },
+      {
+        "id": "D",
+        "text": "樣本平均有 95% 的機率落在區間外"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "信賴水準描述的是「方法」的長期涵蓋率。",
+      "correctRationale": "區間反映對母體平均的估計不確定性，不是個別受訪者的分布範圍。",
+      "optionRationales": {
+        "A": "正確。區間反映對母體平均的估計不確定性，不是個別受訪者的分布範圍。",
+        "B": "點估計不會有 95% 機率剛好等於某值。",
+        "C": "混淆了平均數的區間與個人資料的分布。",
+        "D": "樣本平均一定在區間中央。"
+      },
+      "commonTrap": "把信賴區間當成個人資料的範圍。",
+      "lessonAnchor": "L22103"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "信賴區間"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22103-0015",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L221",
+    "competencyCode": "L22103",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "電商檢定「新結帳流程是否改變平均結帳時間」，虛無假設 H₀ 通常設定為？",
+    "options": [
+      {
+        "id": "A",
+        "text": "新舊流程的平均結帳時間沒有差異"
+      },
+      {
+        "id": "B",
+        "text": "新流程一定比較慢"
+      },
+      {
+        "id": "C",
+        "text": "樣本平均等於 p 值"
+      },
+      {
+        "id": "D",
+        "text": "新流程一定比較快"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "H₀ 通常是「沒有差異／沒有效果」。",
+      "correctRationale": "檢定透過資料判斷是否有足夠證據拒絕 H₀，支持對立假設「有差異」。",
+      "optionRationales": {
+        "A": "正確。檢定透過資料判斷是否有足夠證據拒絕 H₀，支持對立假設「有差異」。",
+        "B": "這是另一方向的對立假設。",
+        "C": "假設是關於母體參數，與 p 值無關。",
+        "D": "這是方向性的對立假設，不是 H₀。"
+      },
+      "commonTrap": "把想證明的結論設為虛無假設。",
+      "lessonAnchor": "L22103"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "必考核心觀念",
+    "authoring": "ai-drafted",
+    "tags": [
+      "虛無假設"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
   }
 ]

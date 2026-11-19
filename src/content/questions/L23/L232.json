@@ -1441,5 +1441,1364 @@
     ],
     "reviewStatus": "ai-checked",
     "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23201-0009",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L232",
+    "competencyCode": "L23201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列程式比較單一決策樹與隨機森林的測試準確率，執行後輸出為何？",
+    "code": "from sklearn.datasets import make_classification\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.tree import DecisionTreeClassifier\n\nX, y = make_classification(n_samples=1000, n_features=20,\n                           n_informative=8, flip_y=0.1, random_state=1)\nXtr, Xte, ytr, yte = train_test_split(X, y, random_state=1)\ntree = DecisionTreeClassifier(random_state=1).fit(Xtr, ytr)\nforest = RandomForestClassifier(n_estimators=200, random_state=1).fit(Xtr, ytr)\nprint(forest.score(Xte, yte) > tree.score(Xte, yte))",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "True",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {
+        "scikit-learn": "1.8.0"
+      },
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "產生含 10% 標籤雜訊的分類資料，切成訓練與測試集。",
+      "單一深決策樹容易記住雜訊（高變異）。",
+      "隨機森林以 200 棵樹投票，降低變異。",
+      "測試準確率較高，輸出 `True`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "True"
+      },
+      {
+        "id": "B",
+        "text": "False"
+      },
+      {
+        "id": "C",
+        "text": "0.5"
+      },
+      {
+        "id": "D",
+        "text": "None"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "隨機森林以多棵樹平均，通常能降低單棵深樹的變異。",
+      "correctRationale": "在此合成資料上，隨機森林的測試準確率高於單一決策樹，比較結果為 True。",
+      "optionRationales": {
+        "A": "正確。程式輸出 True。",
+        "B": "本例中集成模型表現較好。",
+        "C": "輸出是布林值。",
+        "D": "比較運算回傳布林值。"
+      },
+      "commonTrap": "以為集成方法一定比較差或一定更慢就不值得用。",
+      "lessonAnchor": "L23201"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "scikit-learn",
+      "集成學習"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23201-0010",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L232",
+    "competencyCode": "L23201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "工廠有大量未標註的設備感測資料，只有少量經工程師確認的故障標註。最適合哪一種學習方式？",
+    "options": [
+      {
+        "id": "A",
+        "text": "強化學習"
+      },
+      {
+        "id": "B",
+        "text": "不需要任何資料"
+      },
+      {
+        "id": "C",
+        "text": "半監督式學習：同時利用少量標註與大量未標註資料"
+      },
+      {
+        "id": "D",
+        "text": "只能使用完全監督式學習，且必須等全部標註完成"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "半監督式學習適合標註少、未標註多的情境。",
+      "correctRationale": "可先以未標註資料學習表示或產生偽標籤，再以少量標註資料訓練或校正。",
+      "optionRationales": {
+        "A": "強化學習需要互動環境與獎勵。",
+        "B": "機器學習需要資料。",
+        "C": "正確。可先以未標註資料學習表示或產生偽標籤，再以少量標註資料訓練或校正。",
+        "D": "等待全部標註成本高且耗時。"
+      },
+      "commonTrap": "以為只要有一點標註就只能用監督式學習。",
+      "lessonAnchor": "L23201"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "學習類型"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23201-0011",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L232",
+    "competencyCode": "L23201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "機器學習中「泛化能力」指的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "模型在訓練資料上的準確率"
+      },
+      {
+        "id": "B",
+        "text": "模型在未見過的新資料上仍能有良好表現的能力"
+      },
+      {
+        "id": "C",
+        "text": "模型的參數數量"
+      },
+      {
+        "id": "D",
+        "text": "模型訓練的速度"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "泛化是機器學習的核心目標。",
+      "correctRationale": "訓練表現好但新資料表現差，代表泛化不佳（過擬合）。",
+      "optionRationales": {
+        "A": "訓練準確率不能代表泛化。",
+        "B": "正確。訓練表現好但新資料表現差，代表泛化不佳（過擬合）。",
+        "C": "參數量與泛化不同。",
+        "D": "速度與泛化無關。"
+      },
+      "commonTrap": "用訓練集表現判斷模型好壞。",
+      "lessonAnchor": "L23201"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "泛化"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23201-0012",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L232",
+    "competencyCode": "L23201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "團隊在同一個驗證集上嘗試了 300 組設定，最後挑出驗證準確率最高的一組並直接報告這個分數。主要問題是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "驗證集分數一定低估真實表現"
+      },
+      {
+        "id": "B",
+        "text": "沒有問題，這就是最終表現"
+      },
+      {
+        "id": "C",
+        "text": "嘗試的設定太少"
+      },
+      {
+        "id": "D",
+        "text": "反覆以同一驗證集選擇，分數會被樂觀高估；應以未參與選擇的測試集評估"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "用於選擇的資料不能同時用於最終評估。",
+      "correctRationale": "多次比較後挑最高分，會選到恰好在驗證集上表現好的設定；需保留獨立測試集或使用巢狀交叉驗證。",
+      "optionRationales": {
+        "A": "方向相反：會被高估。",
+        "B": "選擇過程會造成樂觀偏差。",
+        "C": "問題不在嘗試的數量太少。",
+        "D": "正確。多次比較後挑最高分，會選到恰好在驗證集上表現好的設定；需保留獨立測試集或使用巢狀交叉驗證。"
+      },
+      "commonTrap": "把模型選擇用的分數當作最終表現。",
+      "lessonAnchor": "L23201"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "評估",
+      "過擬合"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23201-0013",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L232",
+    "competencyCode": "L23201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於「參數」與「超參數」，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "參數必須由人工逐一設定"
+      },
+      {
+        "id": "B",
+        "text": "兩者都由訓練自動學得"
+      },
+      {
+        "id": "C",
+        "text": "超參數是模型訓練後得到的權重"
+      },
+      {
+        "id": "D",
+        "text": "參數由訓練過程從資料學得（如權重）；超參數在訓練前設定（如學習率、樹的深度）"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "一個是學出來的，一個是人設定的。",
+      "correctRationale": "超參數影響學習過程與模型容量，常以驗證集或交叉驗證調整。",
+      "optionRationales": {
+        "A": "參數由訓練學得。",
+        "B": "超參數不由梯度下降直接學得。",
+        "C": "說反了：權重是參數。",
+        "D": "正確。超參數影響學習過程與模型容量，常以驗證集或交叉驗證調整。"
+      },
+      "commonTrap": "混淆參數與超參數。",
+      "lessonAnchor": "L23201"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "參數",
+      "超參數"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23201-0014",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L232",
+    "competencyCode": "L23201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "模型訓練誤差與驗證誤差都很高且接近，屬於哪一種情況？較合適的改善方向為何？",
+    "options": [
+      {
+        "id": "A",
+        "text": "資料洩漏；應刪除測試集"
+      },
+      {
+        "id": "B",
+        "text": "過擬合（高變異）；應增加正則化"
+      },
+      {
+        "id": "C",
+        "text": "欠擬合（高偏差）；可增加模型複雜度或加入更有資訊量的特徵"
+      },
+      {
+        "id": "D",
+        "text": "模型已經完美"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "訓練與驗證都差代表模型學得不夠。",
+      "correctRationale": "欠擬合時加強模型容量、改善特徵或減少過強的正則化。",
+      "optionRationales": {
+        "A": "資料洩漏通常造成分數異常偏高。",
+        "B": "過擬合的特徵是訓練好、驗證差。",
+        "C": "正確判斷與方向。",
+        "D": "誤差很高，表現不佳。"
+      },
+      "commonTrap": "把欠擬合誤判為過擬合。",
+      "lessonAnchor": "L23201"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "偏差變異"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23201-0015",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L232",
+    "competencyCode": "L23201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "以「過去的房屋特徵與成交價」訓練模型來預測新房屋價格，屬於哪一種學習？",
+    "options": [
+      {
+        "id": "A",
+        "text": "非監督式學習（分群）"
+      },
+      {
+        "id": "B",
+        "text": "監督式學習（迴歸）"
+      },
+      {
+        "id": "C",
+        "text": "強化學習"
+      },
+      {
+        "id": "D",
+        "text": "自監督式學習"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "有標記答案（成交價）的學習是監督式學習。",
+      "correctRationale": "目標是連續數值，屬於迴歸問題。",
+      "optionRationales": {
+        "A": "分群不使用標記答案。",
+        "B": "正確。目標是連續數值，屬於迴歸問題。",
+        "C": "強化學習需要互動與獎勵。",
+        "D": "自監督式學習從資料本身建立預測目標，不需人工標籤。"
+      },
+      "commonTrap": "混淆學習類型。",
+      "lessonAnchor": "L23201"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "監督式學習"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23201-0016",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L232",
+    "competencyCode": "L23201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "團隊要建立中文法律文件分類器，只有 2,000 筆標註資料。下列哪一種做法通常最有效？",
+    "options": [
+      {
+        "id": "A",
+        "text": "使用在大量中文文本上預訓練的語言模型，再以標註資料微調"
+      },
+      {
+        "id": "B",
+        "text": "只用文件長度作為唯一特徵"
+      },
+      {
+        "id": "C",
+        "text": "把資料翻譯成英文後丟棄原文"
+      },
+      {
+        "id": "D",
+        "text": "從零訓練一個大型 Transformer"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "預訓練加微調可在少量標註下取得好效果。",
+      "correctRationale": "預訓練模型已學到通用語言知識；微調只需較少標註資料即可適應特定任務。",
+      "optionRationales": {
+        "A": "正確。預訓練模型已學到通用語言知識；微調只需較少標註資料即可適應特定任務。",
+        "B": "單一特徵資訊不足。",
+        "C": "翻譯可能失去法律用語的精確意義。",
+        "D": "2,000 筆資料不足以從零訓練大型模型。"
+      },
+      "commonTrap": "標註資料少時仍從零訓練大型模型。",
+      "lessonAnchor": "L23201"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "遷移學習",
+      "自監督"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23202-0009",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L232",
+    "competencyCode": "L23202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列程式以 K 最近鄰（k = 3）分類，執行後輸出為何？",
+    "code": "from sklearn.neighbors import KNeighborsClassifier\n\nX = [[1], [2], [3], [4], [5], [6]]\ny = [0, 0, 0, 1, 1, 1]\nknn = KNeighborsClassifier(n_neighbors=3).fit(X, y)\nprint(knn.predict([[4.6]]).tolist())",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "[1]",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {
+        "scikit-learn": "1.8.0"
+      },
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "查詢點 4.6 與各點距離：5 → 0.4、4 → 0.6、6 → 1.4、3 → 1.6。",
+      "最近 3 個鄰居為 5、4、6。",
+      "三者標籤都是 1。",
+      "輸出 `[1]`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "[0]"
+      },
+      {
+        "id": "B",
+        "text": "[0, 1]"
+      },
+      {
+        "id": "C",
+        "text": "[2]"
+      },
+      {
+        "id": "D",
+        "text": "[1]"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "KNN 以最近的 k 個鄰居多數決。",
+      "correctRationale": "點 4.6 最近的 3 個點為 5、4、6，標籤都是 1，多數決為 1。",
+      "optionRationales": {
+        "A": "最近的 3 個鄰居都是類別 1。",
+        "B": "只預測一個樣本，輸出一個標籤。",
+        "C": "訓練資料中沒有類別 2。",
+        "D": "正確。點 4.6 最近的 3 個點為 5、4、6，標籤都是 1，多數決為 1。"
+      },
+      "commonTrap": "不清楚 KNN 的多數決規則。",
+      "lessonAnchor": "L23202"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "scikit-learn",
+      "KNN"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23202-0010",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L232",
+    "competencyCode": "L23202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列程式以線性迴歸擬合資料，執行後輸出為何？",
+    "code": "import numpy as np\nfrom sklearn.linear_model import LinearRegression\n\nX = np.array([[0], [1], [2], [3]])\ny = 3 * X.ravel() + 1\nm = LinearRegression().fit(X, y)\nprint(round(m.coef_[0], 2), round(m.intercept_, 2))",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "3.0 1.0",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {
+        "numpy": "2.4.6",
+        "scikit-learn": "1.8.0"
+      },
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "y = 3x + 1：1, 4, 7, 10。",
+      "最小平方法完全擬合，斜率 3、截距 1。",
+      "`coef_[0]` 為 3.0，`intercept_` 為 1.0。",
+      "輸出 `3.0 1.0`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "4.0 1.0"
+      },
+      {
+        "id": "B",
+        "text": "1.0 3.0"
+      },
+      {
+        "id": "C",
+        "text": "3.0 1.0"
+      },
+      {
+        "id": "D",
+        "text": "3.0 0.0"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "`coef_` 為斜率，`intercept_` 為截距。",
+      "correctRationale": "資料完全符合 y = 3x + 1，因此斜率 3.0、截距 1.0。",
+      "optionRationales": {
+        "A": "斜率不是 4。",
+        "B": "把斜率與截距順序弄反。",
+        "C": "正確。資料完全符合 y = 3x + 1，因此斜率 3.0、截距 1.0。",
+        "D": "截距不是 0。"
+      },
+      "commonTrap": "不熟悉 scikit-learn 模型屬性的意義。",
+      "lessonAnchor": "L23202"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "scikit-learn",
+      "線性迴歸"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23202-0011",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L232",
+    "competencyCode": "L23202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "銀行要建立信用卡詐欺偵測，資料為數百個數值與類別欄位的表格資料，需兼顧準確率與訓練效率。下列哪一類演算法通常是強力首選？",
+    "options": [
+      {
+        "id": "A",
+        "text": "梯度提升決策樹（如 XGBoost、LightGBM）"
+      },
+      {
+        "id": "B",
+        "text": "單純以規則人工判斷全部交易"
+      },
+      {
+        "id": "C",
+        "text": "K-means 分群"
+      },
+      {
+        "id": "D",
+        "text": "卷積神經網路（專為影像設計）"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "表格資料上，梯度提升樹常有很好的表現。",
+      "correctRationale": "能處理非線性與特徵交互，訓練快、可處理缺失值，也可透過類別權重處理不平衡。",
+      "optionRationales": {
+        "A": "正確。能處理非線性與特徵交互，訓練快、可處理缺失值，也可透過類別權重處理不平衡。",
+        "B": "人工規則難以應付大量且變化快的詐欺手法。",
+        "C": "分群是非監督式方法，不直接預測詐欺標籤。",
+        "D": "CNN 主要用於影像等網格資料。"
+      },
+      "commonTrap": "對表格資料直接套用影像模型。",
+      "lessonAnchor": "L23202"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "演算法選擇"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23202-0012",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L232",
+    "competencyCode": "L23202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "決策樹不加限制地長到最深時，最可能出現什麼問題？",
+    "options": [
+      {
+        "id": "A",
+        "text": "預測速度會變成 0"
+      },
+      {
+        "id": "B",
+        "text": "過擬合：把訓練資料的雜訊也記住"
+      },
+      {
+        "id": "C",
+        "text": "欠擬合：無法學到任何規則"
+      },
+      {
+        "id": "D",
+        "text": "一定無法執行"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "樹太深會讓每個葉節點只剩極少樣本。",
+      "correctRationale": "可透過限制最大深度、最少葉節點樣本數或剪枝控制複雜度。",
+      "optionRationales": {
+        "A": "預測速度與此無關。",
+        "B": "正確。可透過限制最大深度、最少葉節點樣本數或剪枝控制複雜度。",
+        "C": "深樹的問題是學太多，不是太少。",
+        "D": "程式仍可執行。"
+      },
+      "commonTrap": "以為樹越深越準。",
+      "lessonAnchor": "L23202"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "決策樹"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23202-0013",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L232",
+    "competencyCode": "L23202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於邏輯迴歸與線性迴歸，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "邏輯迴歸以 sigmoid 輸出機率，用於分類；線性迴歸輸出連續數值，用於迴歸"
+      },
+      {
+        "id": "B",
+        "text": "邏輯迴歸輸出的值可以是任意實數"
+      },
+      {
+        "id": "C",
+        "text": "線性迴歸用於二元分類效果最好"
+      },
+      {
+        "id": "D",
+        "text": "兩者都只能用於迴歸"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "名稱相似但用途不同。",
+      "correctRationale": "邏輯迴歸輸出介於 0 與 1 的機率，再以門檻判斷類別；線性迴歸直接預測數值。",
+      "optionRationales": {
+        "A": "正確。邏輯迴歸輸出介於 0 與 1 的機率，再以門檻判斷類別；線性迴歸直接預測數值。",
+        "B": "邏輯迴歸輸出經 sigmoid 壓縮到 0～1。",
+        "C": "線性迴歸輸出無範圍限制，不適合直接分類。",
+        "D": "邏輯迴歸用於分類。"
+      },
+      "commonTrap": "因名稱有「迴歸」而以為邏輯迴歸是迴歸模型。",
+      "lessonAnchor": "L23202"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "邏輯迴歸",
+      "線性迴歸"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23202-0014",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L232",
+    "competencyCode": "L23202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "K-means 分群後，團隊發現 K 值越大，群內距離平方和（inertia）就越小，因此選擇 K = 樣本數。主要問題是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "K 越大一定越好"
+      },
+      {
+        "id": "B",
+        "text": "inertia 會隨 K 增加而必然下降，不能單獨用來選 K；應看手肘點、輪廓係數與業務可解釋性"
+      },
+      {
+        "id": "C",
+        "text": "inertia 越大代表分群越好"
+      },
+      {
+        "id": "D",
+        "text": "K-means 不能計算 inertia"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "inertia 隨 K 增加單調下降。",
+      "correctRationale": "每個點自成一群時 inertia 為 0，但毫無意義；需要權衡群數與分群品質。",
+      "optionRationales": {
+        "A": "K 過大會失去分群意義。",
+        "B": "正確。每個點自成一群時 inertia 為 0，但毫無意義；需要權衡群數與分群品質。",
+        "C": "inertia 越小代表群內越緊密，但不能單獨決定 K。",
+        "D": "scikit-learn 的 K-means 提供 inertia_。"
+      },
+      "commonTrap": "只用單一指標選擇群數。",
+      "lessonAnchor": "L23202"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "分群評估"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23202-0015",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L232",
+    "competencyCode": "L23202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "支援向量機（SVM）在分類時追求的目標是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只使用最遠的資料點"
+      },
+      {
+        "id": "B",
+        "text": "讓所有資料點都落在同一側"
+      },
+      {
+        "id": "C",
+        "text": "讓決策邊界盡量靠近資料點"
+      },
+      {
+        "id": "D",
+        "text": "找出讓兩類之間「間隔（margin）」最大的決策邊界"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "SVM 是最大間隔分類器。",
+      "correctRationale": "決策邊界由最靠近邊界的支援向量決定，間隔越大通常泛化越好。",
+      "optionRationales": {
+        "A": "決定邊界的是最近的點（支援向量）。",
+        "B": "目標是分開不同類別。",
+        "C": "方向相反：要遠離最近的點。",
+        "D": "正確。決策邊界由最靠近邊界的支援向量決定，間隔越大通常泛化越好。"
+      },
+      "commonTrap": "不清楚支援向量的意義。",
+      "lessonAnchor": "L23202"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "SVM"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23203-0009",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L232",
+    "competencyCode": "L23203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列程式計算 sigmoid 函數值，執行後輸出為何？",
+    "code": "import numpy as np\n\nx = np.array([-2.0, 0.0, 2.0])\ns = 1 / (1 + np.exp(-x))\nprint(np.round(s, 3).tolist())",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "[0.119, 0.5, 0.881]",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {
+        "numpy": "2.4.6"
+      },
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "sigmoid(−2) = 1 / (1 + e²) ≈ 0.119。",
+      "sigmoid(0) = 1 / 2 = 0.5。",
+      "sigmoid(2) = 1 / (1 + e^(−2)) ≈ 0.881。",
+      "輸出 `[0.119, 0.5, 0.881]`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "[-2, 0, 2]"
+      },
+      {
+        "id": "B",
+        "text": "[0.0, 0.5, 1.0]"
+      },
+      {
+        "id": "C",
+        "text": "[0.119, 0.5, 0.881]"
+      },
+      {
+        "id": "D",
+        "text": "[0.881, 0.5, 0.119]"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "sigmoid(x) = 1 / (1 + e^(−x))，輸出介於 0 與 1。",
+      "correctRationale": "sigmoid(0) = 0.5；sigmoid(2) ≈ 0.881；sigmoid(−2) ≈ 0.119。",
+      "optionRationales": {
+        "A": "這是輸入值本身。",
+        "B": "sigmoid 不會在有限輸入時剛好等於 0 或 1。",
+        "C": "正確。sigmoid(0) = 0.5；sigmoid(2) ≈ 0.881；sigmoid(−2) ≈ 0.119。",
+        "D": "順序弄反：輸入越大輸出越大。"
+      },
+      "commonTrap": "記錯 sigmoid 的單調方向。",
+      "lessonAnchor": "L23203"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "NumPy",
+      "sigmoid"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23203-0010",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L232",
+    "competencyCode": "L23203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列程式計算全連接層的參數數量，執行後輸出為何？",
+    "code": "in_dim, out_dim = 64, 10\nparams = in_dim * out_dim + out_dim\nprint(params)",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "650",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {},
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "權重矩陣形狀為 64 × 10，共 640 個。",
+      "每個輸出神經元有 1 個偏差，共 10 個。",
+      "總計 640 + 10 = 650。",
+      "輸出 `650`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "650"
+      },
+      {
+        "id": "B",
+        "text": "74"
+      },
+      {
+        "id": "C",
+        "text": "10"
+      },
+      {
+        "id": "D",
+        "text": "640"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "全連接層參數 = 輸入維度 × 輸出維度 + 偏差數。",
+      "correctRationale": "64 × 10 = 640 個權重，加上 10 個偏差，共 650。",
+      "optionRationales": {
+        "A": "正確。64 × 10 = 640 個權重，加上 10 個偏差，共 650。",
+        "B": "這是輸入加輸出維度。",
+        "C": "這只是輸出維度。",
+        "D": "漏算了偏差項。"
+      },
+      "commonTrap": "計算參數量時忘記偏差項。",
+      "lessonAnchor": "L23203"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "參數量"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23203-0011",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L232",
+    "competencyCode": "L23203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "影像分類網路訓練準確率 99%，驗證準確率停在 70%。下列哪一組做法最適合優先嘗試？",
+    "options": [
+      {
+        "id": "A",
+        "text": "把學習率調到極大"
+      },
+      {
+        "id": "B",
+        "text": "增加更多層並延長訓練"
+      },
+      {
+        "id": "C",
+        "text": "移除驗證集"
+      },
+      {
+        "id": "D",
+        "text": "資料增強、加入 Dropout 或權重衰減，並使用提早停止"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "訓練好、驗證差是過擬合。",
+      "correctRationale": "增加資料多樣性與正則化可改善泛化；提早停止避免繼續記住訓練資料。",
+      "optionRationales": {
+        "A": "學習率極大會讓訓練不穩定。",
+        "B": "更深、更久通常會加重過擬合。",
+        "C": "移除驗證集只會看不到問題。",
+        "D": "正確。合適的改善方向。"
+      },
+      "commonTrap": "過擬合時繼續增加模型容量。",
+      "lessonAnchor": "L23203"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "過擬合",
+      "深度學習"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23203-0012",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L232",
+    "competencyCode": "L23203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "批次正規化（Batch Normalization）的主要作用是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "刪除部分訓練資料"
+      },
+      {
+        "id": "B",
+        "text": "取代損失函數"
+      },
+      {
+        "id": "C",
+        "text": "把每層的輸入正規化，穩定並加速訓練"
+      },
+      {
+        "id": "D",
+        "text": "把影像轉成灰階"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "BN 讓各層輸入分布較穩定。",
+      "correctRationale": "能使用較大學習率、加快收斂，並帶有些微正則化效果。",
+      "optionRationales": {
+        "A": "不會刪除資料。",
+        "B": "損失函數仍然需要。",
+        "C": "正確。能使用較大學習率、加快收斂，並帶有些微正則化效果。",
+        "D": "與色彩轉換無關。"
+      },
+      "commonTrap": "不清楚 BN 在網路中的角色。",
+      "lessonAnchor": "L23203"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "批次正規化"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23203-0013",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L232",
+    "competencyCode": "L23203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於 Transformer 的「自注意力（Self-Attention）」機制，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "完全不需要任何參數"
+      },
+      {
+        "id": "B",
+        "text": "每個位置可依相關程度直接參考序列中所有其他位置的資訊"
+      },
+      {
+        "id": "C",
+        "text": "只能看到前一個位置"
+      },
+      {
+        "id": "D",
+        "text": "只能處理固定長度為 1 的序列"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "自注意力讓模型直接建立遠距離的關聯。",
+      "correctRationale": "以 Query、Key、Value 計算各位置之間的權重，可平行處理整段序列。",
+      "optionRationales": {
+        "A": "Q、K、V 的投影矩陣都是可學習參數。",
+        "B": "正確。以 Query、Key、Value 計算各位置之間的權重，可平行處理整段序列。",
+        "C": "只看前一位置類似最簡單的 RNN 步驟。",
+        "D": "可處理長度多變的序列（受上下文長度限制）。"
+      },
+      "commonTrap": "以為 Transformer 跟 RNN 一樣只能逐步處理。",
+      "lessonAnchor": "L23203"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "CNN",
+      "Transformer"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23203-0014",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L232",
+    "competencyCode": "L23203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "多標籤分類（一張圖可同時包含「貓」與「狗」）的網路，輸出層使用 softmax 搭配類別交叉熵。主要問題是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "多標籤問題無法以神經網路處理"
+      },
+      {
+        "id": "B",
+        "text": "沒有問題，softmax 適用所有分類"
+      },
+      {
+        "id": "C",
+        "text": "softmax 強迫各類別機率總和為 1，彼此競爭；多標籤應對每個類別用 sigmoid 搭配二元交叉熵"
+      },
+      {
+        "id": "D",
+        "text": "應改用均方誤差並移除輸出層"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "多類別單選用 softmax；多標籤用多個 sigmoid。",
+      "correctRationale": "每個類別獨立判斷是否存在，機率不需加總為 1。",
+      "optionRationales": {
+        "A": "神經網路可處理多標籤分類。",
+        "B": "softmax 假設類別互斥。",
+        "C": "正確。每個類別獨立判斷是否存在，機率不需加總為 1。",
+        "D": "均方誤差不適合此分類問題，且仍需輸出層。"
+      },
+      "commonTrap": "把多標籤與多類別單選混淆。",
+      "lessonAnchor": "L23203"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "輸出層",
+      "損失函數"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23203-0015",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L232",
+    "competencyCode": "L23203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "PyTorch、TensorFlow 等深度學習框架提供的「自動微分」功能，主要用途是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "自動蒐集網路上的資料"
+      },
+      {
+        "id": "B",
+        "text": "自動計算損失對各參數的梯度，供反向傳播更新權重"
+      },
+      {
+        "id": "C",
+        "text": "自動決定商業目標"
+      },
+      {
+        "id": "D",
+        "text": "自動標註訓練資料"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "自動微分讓開發者不必手動推導梯度。",
+      "correctRationale": "框架記錄運算圖並自動套用連鎖律計算梯度。",
+      "optionRationales": {
+        "A": "資料蒐集不是自動微分的功能。",
+        "B": "正確。框架記錄運算圖並自動套用連鎖律計算梯度。",
+        "C": "商業目標由人決定。",
+        "D": "標註仍需人工或其他流程。"
+      },
+      "commonTrap": "不清楚框架的核心功能。",
+      "lessonAnchor": "L23203"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "深度學習框架"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
   }
 ]

@@ -21,7 +21,7 @@ export interface VQuestion {
   questionType?: string;
   lessonSection?: string;
   reviewStatus: string;
-  verification?: { status: string };
+  verification?: { status: string; kind?: string; expectedStdout?: string };
 }
 
 export interface Issue {
@@ -98,6 +98,13 @@ export function validateContent(input: ValidateInput): Issue[] {
       else if (q.lessonSection && !headings.includes(q.lessonSection)) err(q.id, `對應講義段落「${q.lessonSection}」不存在`);
     }
     if (q.verification && q.verification.status !== 'verified') warn(q.id, '程式題尚未通過實際執行驗證（待驗證）');
+    // 程式輸出題：實際執行只比對 expectedStdout，因此正解選項必須與它逐字相同，且其他選項不可相同
+    if (q.verification?.kind === 'python-stdout' && q.verification.expectedStdout !== undefined) {
+      const expected = q.verification.expectedStdout.trim();
+      const matches = q.options.filter((o) => o.text.trim() === expected).map((o) => o.id);
+      if (matches.length !== 1 || !q.correctOptionIds.includes(matches[0]))
+        err(q.id, `程式預期輸出「${expected}」與正確選項不一致（相同文字的選項：${matches.join('、') || '無'}）`);
+    }
   }
 
   // 相似度：同一細項內兩兩比較（不同細項間只檢查極高相似度）

@@ -123,6 +123,18 @@ describe('題庫驗證器（validate:content）', () => {
     expect(msg).toContain('高度相似');
     expect(msg).toContain('從題庫消失');
   });
+
+  it('程式輸出題：預期輸出必須逐字等於唯一的正確選項', () => {
+    const code = allQuestions.find((x) => x.verification?.kind === 'python-stdout')!;
+    const wrongOpt = code.options.find((o) => !code.correctOptionIds.includes(o.id))!;
+    const mismatch = { ...code, verification: { ...code.verification!, expectedStdout: wrongOpt.text } };
+    const run = (q: typeof code) =>
+      validateContent({ questions: [q], competencyCodes: new Set([q.competencyCode]), lessonHeadings: new Map(), registry: [] })
+        .map((i) => i.message)
+        .filter((m) => m.includes('預期輸出'));
+    expect(run(code)).toEqual([]);
+    expect(run(mismatch)[0]).toContain('與正確選項不一致');
+  });
 });
 
 describe('講義', () => {

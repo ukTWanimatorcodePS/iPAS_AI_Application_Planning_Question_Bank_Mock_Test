@@ -927,5 +927,829 @@
     ],
     "reviewStatus": "ai-checked",
     "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23401-0009",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L234",
+    "competencyCode": "L23401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "競爭對手透過大量查詢公司的定價模型 API，蒐集輸入與輸出後訓練出功能相近的模型。這屬於哪一種攻擊？較合適的防護是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "資料下毒；應重新標註資料"
+      },
+      {
+        "id": "B",
+        "text": "模型萃取（竊取）攻擊；以速率限制、異常查詢偵測與降低輸出精細度防護"
+      },
+      {
+        "id": "C",
+        "text": "提示注入；應修改系統提示"
+      },
+      {
+        "id": "D",
+        "text": "這不是攻擊，無需處理"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "以查詢結果重建模型稱為模型萃取。",
+      "correctRationale": "限制查詢頻率、監控異常模式、只回傳必要資訊，並以服務條款約束。",
+      "optionRationales": {
+        "A": "資料下毒是汙染訓練資料。",
+        "B": "正確辨識與防護。",
+        "C": "提示注入針對生成式模型的指令。",
+        "D": "模型是重要資產，需要保護。"
+      },
+      "commonTrap": "只保護資料，忽略模型本身也是資產。",
+      "lessonAnchor": "L23401"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "模型竊取",
+      "API 安全"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23401-0010",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L234",
+    "competencyCode": "L23401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "聯邦學習（Federated Learning）保護隱私的主要方式是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "原始資料留在各參與端，只傳送模型更新（如梯度或權重）進行彙整"
+      },
+      {
+        "id": "B",
+        "text": "把所有原始資料集中上傳到單一伺服器"
+      },
+      {
+        "id": "C",
+        "text": "刪除所有訓練資料"
+      },
+      {
+        "id": "D",
+        "text": "只用公開資料訓練"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "「資料不動，模型動」。",
+      "correctRationale": "可降低集中資料的風險；但模型更新仍可能洩漏資訊，常需搭配安全彙整或差分隱私。",
+      "optionRationales": {
+        "A": "正確。可降低集中資料的風險；但模型更新仍可能洩漏資訊，常需搭配安全彙整或差分隱私。",
+        "B": "這是集中式訓練。",
+        "C": "沒有資料無法訓練。",
+        "D": "聯邦學習的目的是使用各端的私有資料。"
+      },
+      "commonTrap": "以為聯邦學習能完全消除隱私風險。",
+      "lessonAnchor": "L23401"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "聯邦學習"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23401-0011",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L234",
+    "competencyCode": "L23401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "以客服對話微調的語言模型，在特定提示下輸出了某位客戶的完整電話與地址。最根本的改善方式是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "告訴使用者不要問這類問題"
+      },
+      {
+        "id": "B",
+        "text": "把溫度參數調高"
+      },
+      {
+        "id": "C",
+        "text": "只要模型準確率高就不需處理"
+      },
+      {
+        "id": "D",
+        "text": "在訓練前偵測並移除個資，並在輸出端加上個資過濾與紅隊測試"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "模型可能記住並重現訓練資料中的個資。",
+      "correctRationale": "源頭去識別化是最根本的措施；輸出過濾與紅隊測試作為額外防線。",
+      "optionRationales": {
+        "A": "無法靠使用者自律防止外洩。",
+        "B": "溫度高不會消除記憶，反而可能更不穩定。",
+        "C": "準確率與隱私外洩無關。",
+        "D": "正確。從源頭與輸出端雙重處理。"
+      },
+      "commonTrap": "只在輸出端補救，忽略訓練資料本身。",
+      "lessonAnchor": "L23401"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "生成式 AI",
+      "記憶"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23401-0012",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L234",
+    "competencyCode": "L23401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於「匿名化」與「假名化」，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "兩者完全相同"
+      },
+      {
+        "id": "B",
+        "text": "假名化後的資料一定不屬於個資"
+      },
+      {
+        "id": "C",
+        "text": "假名化以代碼取代識別資訊，仍可透過額外資訊回推；匿名化後應無法以合理方式識別個人"
+      },
+      {
+        "id": "D",
+        "text": "匿名化後仍可輕易識別個人"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "假名化資料通常仍屬個人資料。",
+      "correctRationale": "依 GDPR，假名化資料仍是個資；真正匿名化的資料才不適用 GDPR。",
+      "optionRationales": {
+        "A": "兩者法律意義不同。",
+        "B": "假名化資料仍可能屬於個資。",
+        "C": "正確。依 GDPR，假名化資料仍是個資；真正匿名化的資料才不適用 GDPR。",
+        "D": "說反了：匿名化後才應無法以合理方式識別個人。"
+      },
+      "commonTrap": "把假名化當成匿名化。",
+      "lessonAnchor": "L23401"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "匿名化",
+      "假名化"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23401-0013",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L234",
+    "competencyCode": "L23401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "團隊從公開網站下載一個預訓練模型檔案直接載入使用。從安全角度，最應注意的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "模型檔案不可能含有惡意程式"
+      },
+      {
+        "id": "B",
+        "text": "下載後直接部署到正式環境"
+      },
+      {
+        "id": "C",
+        "text": "確認來源可信、檢查檔案雜湊，並避免載入可執行任意程式碼的序列化格式（如不明來源的 pickle）"
+      },
+      {
+        "id": "D",
+        "text": "只要下載速度快就安全"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "模型檔案也是軟體供應鏈的一環。",
+      "correctRationale": "pickle 等格式在載入時可執行程式碼；應使用可信來源、驗證完整性，並優先使用較安全的格式（如 safetensors）。",
+      "optionRationales": {
+        "A": "序列化格式可能夾帶惡意程式碼。",
+        "B": "應先在隔離環境測試與審查。",
+        "C": "正確。pickle 等格式在載入時可執行程式碼；應使用可信來源、驗證完整性，並優先使用較安全的格式（如 safetensors）。",
+        "D": "速度與安全無關。"
+      },
+      "commonTrap": "把模型檔案當成單純的資料，不做安全檢查。",
+      "lessonAnchor": "L23401"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "模型供應鏈"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23401-0014",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L234",
+    "competencyCode": "L23401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "在模型訓練中加入差分隱私時，常見的取捨是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "ε 越大代表隱私越強"
+      },
+      {
+        "id": "B",
+        "text": "隱私越強，準確率一定越高"
+      },
+      {
+        "id": "C",
+        "text": "差分隱私不會影響模型"
+      },
+      {
+        "id": "D",
+        "text": "隱私保護越強（ε 越小），模型準確率通常越低"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "隱私與效用之間存在取捨。",
+      "correctRationale": "加入的雜訊越多，越難推論個人資訊，但模型學習的訊號也會受影響。",
+      "optionRationales": {
+        "A": "ε 越小隱私越強。",
+        "B": "方向相反。",
+        "C": "雜訊會影響模型效用。",
+        "D": "正確。加入的雜訊越多，越難推論個人資訊，但模型學習的訊號也會受影響。"
+      },
+      "commonTrap": "記反 ε 與隱私強度的關係。",
+      "lessonAnchor": "L23401"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "差分隱私"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23401-0015",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L234",
+    "competencyCode": "L23401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "AI 系統的「紅隊測試（Red Teaming）」指的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "由開發者自己確認程式碼可編譯"
+      },
+      {
+        "id": "B",
+        "text": "模擬攻擊者主動找出系統的弱點與不當行為"
+      },
+      {
+        "id": "C",
+        "text": "把系統介面改成紅色"
+      },
+      {
+        "id": "D",
+        "text": "只測試系統的執行速度"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "紅隊測試以攻擊者角度檢驗系統。",
+      "correctRationale": "例如嘗試越獄、提示注入、誘導輸出個資，找出問題後再修正。",
+      "optionRationales": {
+        "A": "編譯檢查不等於安全測試。",
+        "B": "正確。例如嘗試越獄、提示注入、誘導輸出個資，找出問題後再修正。",
+        "C": "與顏色無關。",
+        "D": "效能測試是不同的測試類型。"
+      },
+      "commonTrap": "只做功能測試，不做對抗性測試。",
+      "lessonAnchor": "L23401"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "紅隊測試"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23402-0009",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L234",
+    "competencyCode": "L23402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列程式計算兩個群體的真陽性率（TPR）差異，執行後輸出為何？",
+    "code": "import pandas as pd\n\ndf = pd.DataFrame({\n    'group': ['A'] * 4 + ['B'] * 4,\n    'y_true': [1, 1, 1, 1, 1, 1, 1, 1],\n    'y_pred': [1, 1, 1, 0, 1, 1, 0, 0],\n})\ntpr = df[df.y_true == 1].groupby('group')['y_pred'].mean()\nprint(round(tpr['A'] - tpr['B'], 2))",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "0.25",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {
+        "pandas": "3.0.2"
+      },
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "所有樣本實際皆為正例。",
+      "A 群預測為 1 的有 3 筆，TPR = 0.75。",
+      "B 群預測為 1 的有 2 筆，TPR = 0.5。",
+      "差異 0.75 − 0.5 = 0.25。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "0.25"
+      },
+      {
+        "id": "B",
+        "text": "0.75"
+      },
+      {
+        "id": "C",
+        "text": "0.0"
+      },
+      {
+        "id": "D",
+        "text": "0.5"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "機會均等關注各群體的真陽性率是否相近。",
+      "correctRationale": "A 群實際正例 4 人中預測正確 3 人（TPR 0.75）；B 群實際正例 4 人中預測正確 2 人（TPR 0.5）；差異 0.25。",
+      "optionRationales": {
+        "A": "正確。A 群實際正例 4 人中預測正確 3 人（TPR 0.75）；B 群實際正例 4 人中預測正確 2 人（TPR 0.5）；差異 0.25。",
+        "B": "0.75 是 A 群的 TPR。",
+        "C": "兩群 TPR 不相同。",
+        "D": "0.5 是 B 群的 TPR。"
+      },
+      "commonTrap": "混淆群體指標與群體間差異。",
+      "lessonAnchor": "L23402"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "pandas",
+      "公平性"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23402-0010",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L234",
+    "competencyCode": "L23402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "保險定價模型沒有使用種族欄位，但使用了「居住地郵遞區號」，結果某些族群集中的地區保費明顯偏高。最恰當的處理是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "直接刪除所有地理資訊並不再評估"
+      },
+      {
+        "id": "B",
+        "text": "評估郵遞區號是否成為族群的代理變數，以分群指標檢查影響，必要時調整特徵或模型"
+      },
+      {
+        "id": "C",
+        "text": "把高保費地區的資料刪除"
+      },
+      {
+        "id": "D",
+        "text": "既然沒用種族欄位，就一定公平"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "移除敏感欄位不保證公平。",
+      "correctRationale": "與敏感屬性高度相關的特徵可能成為代理變數；需以分群結果評估並決定緩解方式。",
+      "optionRationales": {
+        "A": "一刀切刪除可能損及合理風險因子，且仍需評估。",
+        "B": "正確。與敏感屬性高度相關的特徵可能成為代理變數；需以分群結果評估並決定緩解方式。",
+        "C": "刪除資料會造成新的偏差。",
+        "D": "代理變數仍會帶入偏差。"
+      },
+      "commonTrap": "以為「不用敏感欄位」就等於公平。",
+      "lessonAnchor": "L23402"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "公平性",
+      "代理變數"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23402-0011",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L234",
+    "competencyCode": "L23402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "以「被逮捕紀錄」作為「實際犯罪行為」的替代標籤訓練模型，可能產生哪一種偏差？",
+    "options": [
+      {
+        "id": "A",
+        "text": "測量偏差：標籤反映的是執法的分布，而非真實行為的分布"
+      },
+      {
+        "id": "B",
+        "text": "沒有偏差，因為紀錄是官方資料"
+      },
+      {
+        "id": "C",
+        "text": "抽樣偏差一定不存在"
+      },
+      {
+        "id": "D",
+        "text": "只會影響模型的訓練速度"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "標籤本身可能帶有偏差。",
+      "correctRationale": "若某些地區執法較密集，該地區的逮捕紀錄就較多，模型會把執法差異學成風險差異。",
+      "optionRationales": {
+        "A": "正確。若某些地區執法較密集，該地區的逮捕紀錄就較多，模型會把執法差異學成風險差異。",
+        "B": "官方資料也可能反映既有偏差。",
+        "C": "此情境主要是標籤的測量問題。",
+        "D": "偏差影響的是預測結果的公平性。"
+      },
+      "commonTrap": "把替代標籤當成真實結果。",
+      "lessonAnchor": "L23402"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "測量偏差"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23402-0012",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L234",
+    "competencyCode": "L23402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "團隊只計算整體準確率 92% 就宣布模型「對所有人都公平」。最需要補充的分析是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只檢查訓練時間"
+      },
+      {
+        "id": "B",
+        "text": "再把整體準確率四捨五入"
+      },
+      {
+        "id": "C",
+        "text": "增加模型參數量"
+      },
+      {
+        "id": "D",
+        "text": "依群體分別計算錯誤率與核准率等指標，比較群體間差異"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "整體指標可能掩蓋群體差異。",
+      "correctRationale": "例如多數群體準確率 95%、少數群體 70%，整體仍可能很高。",
+      "optionRationales": {
+        "A": "訓練時間與公平性無關。",
+        "B": "數字修飾不是分析。",
+        "C": "模型大小無法回答公平性問題。",
+        "D": "正確。例如多數群體準確率 95%、少數群體 70%，整體仍可能很高。"
+      },
+      "commonTrap": "只看整體指標判斷公平性。",
+      "lessonAnchor": "L23402"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "公平性評估"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23402-0013",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L234",
+    "competencyCode": "L23402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於偏見緩解的「前處理」與「後處理」方法，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "兩者都在訓練過程中修改損失函數"
+      },
+      {
+        "id": "B",
+        "text": "後處理會重新蒐集資料"
+      },
+      {
+        "id": "C",
+        "text": "前處理在訓練前調整資料（如重新加權）；後處理在模型輸出後調整（如各群體門檻）"
+      },
+      {
+        "id": "D",
+        "text": "前處理只能在模型上線後進行"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "依介入時點分類。",
+      "correctRationale": "另外還有「處理中」方法，在訓練時加入公平性限制。",
+      "optionRationales": {
+        "A": "在訓練中修改損失的是處理中方法。",
+        "B": "後處理調整的是模型輸出。",
+        "C": "正確。另外還有「處理中」方法，在訓練時加入公平性限制。",
+        "D": "前處理在訓練之前。"
+      },
+      "commonTrap": "混淆三類偏見緩解方法的時點。",
+      "lessonAnchor": "L23402"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "前處理",
+      "後處理"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23402-0014",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L234",
+    "competencyCode": "L23402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "為什麼 AI 系統需要評估公平性？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只要資料量大，模型就一定公平"
+      },
+      {
+        "id": "B",
+        "text": "模型可能放大資料中的歷史偏差，對特定群體造成不公平的結果"
+      },
+      {
+        "id": "C",
+        "text": "公平性只與介面設計有關"
+      },
+      {
+        "id": "D",
+        "text": "公平性評估可以讓模型訓練更快"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "偏差可能來自資料、標籤與設計。",
+      "correctRationale": "在招募、信貸、醫療等高影響領域，不公平的結果可能造成實際傷害與法遵風險。",
+      "optionRationales": {
+        "A": "大量資料也可能帶有偏差。",
+        "B": "正確。在招募、信貸、醫療等高影響領域，不公平的結果可能造成實際傷害與法遵風險。",
+        "C": "公平性與模型決策結果有關。",
+        "D": "公平性評估與訓練速度無關。"
+      },
+      "commonTrap": "以為資料越多模型就越公平。",
+      "lessonAnchor": "L23402"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "必考核心觀念",
+    "authoring": "ai-drafted",
+    "tags": [
+      "公平性"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23402-0015",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L234",
+    "competencyCode": "L23402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "招募篩選模型上線時各群體指標相近，半年後發現某群體的通過率明顯下降。最合理的做法是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "刪除該群體的申請資料"
+      },
+      {
+        "id": "B",
+        "text": "上線時已通過評估，不需處理"
+      },
+      {
+        "id": "C",
+        "text": "直接停止所有招募"
+      },
+      {
+        "id": "D",
+        "text": "持續監控分群指標，調查資料或流程變化的原因，必要時重新評估或調整模型"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "公平性需要持續監控。",
+      "correctRationale": "資料分布或申請者組成改變可能讓模型產生新的偏差；應建立定期監控與處理流程。",
+      "optionRationales": {
+        "A": "刪除資料不公平且可能違法。",
+        "B": "上線後情況可能改變。",
+        "C": "過度反應，應先調查原因。",
+        "D": "正確。資料分布或申請者組成改變可能讓模型產生新的偏差；應建立定期監控與處理流程。"
+      },
+      "commonTrap": "把上線前的公平性評估當作一次性工作。",
+      "lessonAnchor": "L23402"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "公平性",
+      "持續監控"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
   }
 ]

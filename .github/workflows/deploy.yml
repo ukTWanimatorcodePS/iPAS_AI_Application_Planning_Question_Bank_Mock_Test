@@ -41,7 +41,7 @@ jobs:
           python-version: '3.12'
       - name: 程式題交叉驗證（CPython）
         run: |
-          pip install numpy pandas scikit-learn
+          pip install numpy pandas scikit-learn scipy matplotlib
           npm run verify:python -- --strict --engine=cpython
       - name: Install Playwright browser
         run: npx playwright install --with-deps chromium

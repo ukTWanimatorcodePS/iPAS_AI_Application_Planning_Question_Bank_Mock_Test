@@ -1497,5 +1497,1364 @@
     ],
     "reviewStatus": "ai-checked",
     "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22201-0009",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列 pandas 程式以中位數填補缺失值，執行後輸出為何？",
+    "code": "import pandas as pd\nimport numpy as np\n\ns = pd.Series([10, 20, np.nan, 30])\nprint(s.fillna(s.median()).tolist())",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "[10.0, 20.0, 20.0, 30.0]",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {
+        "pandas": "3.0.2",
+        "numpy": "2.4.6"
+      },
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "Series 含一個缺失值，型別為浮點數。",
+      "`s.median()` 忽略缺失值，10、20、30 的中位數為 20.0。",
+      "`fillna(20.0)` 把缺失值改為 20.0。",
+      "`tolist()` 輸出 `[10.0, 20.0, 20.0, 30.0]`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "[10.0, 20.0, nan, 30.0]"
+      },
+      {
+        "id": "B",
+        "text": "[10.0, 20.0, 0.0, 30.0]"
+      },
+      {
+        "id": "C",
+        "text": "[10.0, 20.0, 15.0, 30.0]"
+      },
+      {
+        "id": "D",
+        "text": "[10.0, 20.0, 20.0, 30.0]"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "`fillna(s.median())` 以非缺失值的中位數填補。",
+      "correctRationale": "非缺失值 10, 20, 30 的中位數為 20.0，填入缺失位置。",
+      "optionRationales": {
+        "A": "`fillna` 已填補缺失值。",
+        "B": "`fillna` 不會預設填 0。",
+        "C": "15 不是 10、20、30 的中位數。",
+        "D": "正確。非缺失值 10, 20, 30 的中位數為 20.0，填入缺失位置。"
+      },
+      "commonTrap": "不清楚中位數只用非缺失值計算。",
+      "lessonAnchor": "L22201"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "pandas",
+      "缺失值"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22201-0010",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列 pandas 程式去除重複列，執行後輸出為何？",
+    "code": "import pandas as pd\n\ndf = pd.DataFrame({'id': [1, 2, 1, 3, 2],\n                   'v': ['a', 'b', 'a', 'c', 'b']})\nprint(len(df.drop_duplicates()))",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "3",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {
+        "pandas": "3.0.2"
+      },
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "資料共 5 列。",
+      "(1, a) 與 (2, b) 各重複一次。",
+      "`drop_duplicates()` 保留每組的第一筆。",
+      "剩 3 列，輸出 `3`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "4"
+      },
+      {
+        "id": "B",
+        "text": "2"
+      },
+      {
+        "id": "C",
+        "text": "3"
+      },
+      {
+        "id": "D",
+        "text": "5"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "`drop_duplicates()` 預設保留第一筆完全相同的列。",
+      "correctRationale": "5 列中 (1, a) 出現兩次、(2, b) 出現兩次，去重後剩 (1,a)、(2,b)、(3,c) 共 3 列。",
+      "optionRationales": {
+        "A": "只去除了一組重複。",
+        "B": "(3, c) 不重複，會保留。",
+        "C": "正確。5 列中 (1, a) 出現兩次、(2, b) 出現兩次，去重後剩 (1,a)、(2,b)、(3,c) 共 3 列。",
+        "D": "5 是去重前的列數。"
+      },
+      "commonTrap": "以為去重會把重複的列全部刪除。",
+      "lessonAnchor": "L22201"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "pandas",
+      "去重"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22201-0011",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "合併三家分店的會員資料時，電話欄位出現「0912-345-678」「0912345678」「+886912345678」三種格式。最恰當的處理是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "把電話欄位整欄刪除"
+      },
+      {
+        "id": "B",
+        "text": "訂定標準格式，以規則轉換後再比對與去重，並保留原始值備查"
+      },
+      {
+        "id": "C",
+        "text": "直接刪除格式不同的資料"
+      },
+      {
+        "id": "D",
+        "text": "三種格式都保留，視為不同會員"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "資料標準化是合併前的必要步驟。",
+      "correctRationale": "統一格式後才能正確比對同一位會員；保留原始值以便稽核與回溯。",
+      "optionRationales": {
+        "A": "刪除欄位會失去重要的識別資訊。",
+        "B": "正確。統一格式後才能正確比對同一位會員；保留原始值以便稽核與回溯。",
+        "C": "刪除會遺失有效資料。",
+        "D": "同一支電話會被當成不同會員，造成重複計算。"
+      },
+      "commonTrap": "未標準化就直接比對或去重。",
+      "lessonAnchor": "L22201"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料清理",
+      "格式"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22201-0012",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於缺失值的處理，下列敘述何者較正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "應先了解缺失的原因與型態，再選擇刪除、填補或把「是否缺失」作為特徵"
+      },
+      {
+        "id": "B",
+        "text": "缺失比例再高都可以用平均值填補而不影響分析"
+      },
+      {
+        "id": "C",
+        "text": "缺失值一律刪除整列最安全"
+      },
+      {
+        "id": "D",
+        "text": "缺失值一律填 0 最簡單且不影響結果"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "缺失值的處理方式取決於缺失原因。",
+      "correctRationale": "若缺失與結果有關（例如高收入者不填收入），任意刪除或填補會造成偏差。",
+      "optionRationales": {
+        "A": "正確。先判斷原因再處理。",
+        "B": "大量填補平均值會低估變異。",
+        "C": "刪除可能造成樣本偏差與資料浪費。",
+        "D": "填 0 會扭曲分布。"
+      },
+      "commonTrap": "用同一種方式處理所有缺失值。",
+      "lessonAnchor": "L22201"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "缺失機制"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22201-0013",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列程式清理產品代碼，執行後輸出為何？",
+    "code": "codes = [' a01 ', 'b02', 'A01']\nclean = [c.strip().upper() for c in codes]\nprint(clean)",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "['A01', 'B02', 'A01']",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {},
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "`' a01 '.strip()` 得到 `'a01'`，`upper()` 得到 `'A01'`。",
+      "`'b02'` 轉成 `'B02'`。",
+      "`'A01'` 不變。",
+      "輸出 `['A01', 'B02', 'A01']`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "[' a01 ', 'b02', 'A01']"
+      },
+      {
+        "id": "B",
+        "text": "['A01', 'B02', 'A01']"
+      },
+      {
+        "id": "C",
+        "text": "['a01', 'b02', 'a01']"
+      },
+      {
+        "id": "D",
+        "text": "['A01', 'B02']"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "`strip()` 去除前後空白；`upper()` 轉成大寫。",
+      "correctRationale": "每個字串依序去空白再轉大寫，串列長度不變，因此保留重複值。",
+      "optionRationales": {
+        "A": "程式已經處理過字串。",
+        "B": "正確。每個字串依序去空白再轉大寫，串列長度不變，因此保留重複值。",
+        "C": "`upper()` 會轉成大寫，不是小寫。",
+        "D": "串列生成式不會去重。"
+      },
+      "commonTrap": "以為字串清理會同時去除重複。",
+      "lessonAnchor": "L22201"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "字串處理"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22201-0014",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "團隊想把 App 使用者的定位資料用於新的廣告分析，但當初蒐集時只告知用於「導航功能」。最應先處理的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "資料已經在公司內，可自由使用"
+      },
+      {
+        "id": "B",
+        "text": "只要不公開分析結果就沒問題"
+      },
+      {
+        "id": "C",
+        "text": "把資料轉成 Excel 就可以使用"
+      },
+      {
+        "id": "D",
+        "text": "確認新用途是否在原蒐集目的範圍內；若超出，需依法取得同意或其他合法依據"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "個資的利用應符合蒐集目的。",
+      "correctRationale": "目的外利用需有法定依據（例如取得當事人同意）；也應評估是否能以去識別化資料達成目的。",
+      "optionRationales": {
+        "A": "持有資料不等於可任意使用。",
+        "B": "不公開結果不能免除目的外利用的問題。",
+        "C": "檔案格式與合法性無關。",
+        "D": "正確。先確認目的與合法依據。"
+      },
+      "commonTrap": "以為已蒐集的資料可任意用於新目的。",
+      "lessonAnchor": "L22201"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料收集",
+      "合規"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22201-0015",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "大數據 5V 中的「Velocity」指的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "資料的種類多樣"
+      },
+      {
+        "id": "B",
+        "text": "資料的商業價值"
+      },
+      {
+        "id": "C",
+        "text": "資料產生與需要處理的速度"
+      },
+      {
+        "id": "D",
+        "text": "資料的正確性"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "Velocity 指速度。",
+      "correctRationale": "例如感測器、交易每秒持續產生資料，需要串流或即時處理。",
+      "optionRationales": {
+        "A": "多樣性是 Variety。",
+        "B": "價值是 Value。",
+        "C": "正確。例如感測器、交易每秒持續產生資料，需要串流或即時處理。",
+        "D": "資料的正確性是 Veracity。"
+      },
+      "commonTrap": "混淆 5V 的各項定義。",
+      "lessonAnchor": "L22201"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "大數據 5V"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22202-0009",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列程式以 SQLite 執行 SQL 查詢，執行後輸出為何？",
+    "code": "import sqlite3\n\ncon = sqlite3.connect(':memory:')\ncon.execute('CREATE TABLE s (region TEXT, amt INT)')\ncon.executemany('INSERT INTO s VALUES (?, ?)',\n                [('北區', 100), ('南區', 150), ('北區', 200)])\nrows = con.execute('SELECT region, SUM(amt) AS t FROM s '\n                   'GROUP BY region ORDER BY t DESC').fetchall()\nprint(rows)",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "[('北區', 300), ('南區', 150)]",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {},
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "建立記憶體資料庫與資料表 s。",
+      "插入三筆資料：北區兩筆、南區一筆。",
+      "`GROUP BY region` 加總：北區 300、南區 150。",
+      "`ORDER BY t DESC` 由大到小，輸出 `[('北區', 300), ('南區', 150)]`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "[('北區', 150), ('南區', 300)]"
+      },
+      {
+        "id": "B",
+        "text": "[('北區', 300), ('南區', 150)]"
+      },
+      {
+        "id": "C",
+        "text": "[('南區', 150), ('北區', 300)]"
+      },
+      {
+        "id": "D",
+        "text": "[('北區', 100), ('南區', 150)]"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "`GROUP BY` 分組加總；`ORDER BY ... DESC` 由大到小排序。",
+      "correctRationale": "北區 100 + 200 = 300，南區 150；依總額由大到小排序。",
+      "optionRationales": {
+        "A": "加總值與地區對應錯誤。",
+        "B": "正確。北區 100 + 200 = 300，南區 150；依總額由大到小排序。",
+        "C": "排序方向錯誤：DESC 為由大到小。",
+        "D": "北區沒有加總兩筆資料。"
+      },
+      "commonTrap": "忽略 ORDER BY 的排序方向。",
+      "lessonAnchor": "L22202"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "SQL",
+      "sqlite3"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22202-0010",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "物聯網平台每秒寫入數十萬筆感測器讀值，主要查詢是「某裝置在某時段的數值」。較適合的儲存方式是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只存在單台電腦的記憶體中"
+      },
+      {
+        "id": "B",
+        "text": "圖形資料庫"
+      },
+      {
+        "id": "C",
+        "text": "時間序列資料庫，或依時間與裝置分割的寬欄式資料庫"
+      },
+      {
+        "id": "D",
+        "text": "單一試算表檔案"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "依資料型態與查詢模式選擇儲存技術。",
+      "correctRationale": "時間序列資料庫針對時間戳記的大量寫入與區間查詢最佳化，並支援壓縮與保存期限政策。",
+      "optionRationales": {
+        "A": "記憶體無法持久保存且容量有限。",
+        "B": "圖形資料庫適合關係網路分析，不是時間序列。",
+        "C": "正確。符合寫入量與查詢模式。",
+        "D": "試算表無法承受此寫入量。"
+      },
+      "commonTrap": "用同一種資料庫處理所有資料型態。",
+      "lessonAnchor": "L22202"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "儲存選擇"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22202-0011",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關聯式資料庫「正規化」的主要目的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "把所有資料放在同一張表"
+      },
+      {
+        "id": "B",
+        "text": "刪除所有主鍵"
+      },
+      {
+        "id": "C",
+        "text": "讓查詢永遠不需要 JOIN"
+      },
+      {
+        "id": "D",
+        "text": "減少資料重複與更新異常，維持資料一致性"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "正規化把資料拆成多張相關的表。",
+      "correctRationale": "例如客戶資料只存一份，訂單以客戶編號參照，避免同一資料在多處不一致。",
+      "optionRationales": {
+        "A": "這是反正規化的極端做法。",
+        "B": "主鍵是正規化設計的基礎。",
+        "C": "正規化後通常需要 JOIN。",
+        "D": "正確。例如客戶資料只存一份，訂單以客戶編號參照，避免同一資料在多處不一致。"
+      },
+      "commonTrap": "混淆正規化與反正規化。",
+      "lessonAnchor": "L22202"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "正規化"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22202-0012",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於 OLTP 與 OLAP，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "OLTP 處理大量短小的日常交易；OLAP 支援大範圍的彙總分析查詢"
+      },
+      {
+        "id": "B",
+        "text": "OLTP 主要用於多年歷史資料的趨勢分析"
+      },
+      {
+        "id": "C",
+        "text": "兩者用途完全相同"
+      },
+      {
+        "id": "D",
+        "text": "OLAP 主要處理每筆刷卡交易的即時寫入"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "一個處理交易，一個支援分析。",
+      "correctRationale": "OLTP 例如訂單系統；OLAP 例如資料倉儲中的銷售分析。分開可避免分析查詢拖慢交易系統。",
+      "optionRationales": {
+        "A": "正確。OLTP 例如訂單系統；OLAP 例如資料倉儲中的銷售分析。分開可避免分析查詢拖慢交易系統。",
+        "B": "歷史趨勢分析屬 OLAP。",
+        "C": "兩者用途不同。",
+        "D": "即時交易寫入屬 OLTP。"
+      },
+      "commonTrap": "直接在交易系統上執行大型分析查詢。",
+      "lessonAnchor": "L22202"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "OLTP",
+      "OLAP"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22202-0013",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "公司為了「以後可能有用」而無限期保存所有客戶原始資料。從資料管理與合規角度，主要問題是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只要有備份就沒有任何風險"
+      },
+      {
+        "id": "B",
+        "text": "沒有問題，資料越多越好"
+      },
+      {
+        "id": "C",
+        "text": "違反資料最小化與保存期限原則，增加外洩風險與成本；應訂定保存與刪除政策"
+      },
+      {
+        "id": "D",
+        "text": "只是會占用一些硬碟空間"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "資料應有明確的保存期限。",
+      "correctRationale": "個資在目的達成後應刪除或去識別化；無限期保存會擴大外洩的影響範圍。",
+      "optionRationales": {
+        "A": "備份不能降低外洩風險，反而增加保存的副本。",
+        "B": "過度保存有法遵與資安風險。",
+        "C": "正確。個資在目的達成後應刪除或去識別化；無限期保存會擴大外洩的影響範圍。",
+        "D": "不只是儲存成本問題。"
+      },
+      "commonTrap": "以為保存越久越安全、越有價值。",
+      "lessonAnchor": "L22202"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料治理",
+      "保存期限"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22202-0014",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "電商的商品資料欄位差異很大（衣服有尺寸、3C 有規格），希望彈性儲存不同欄位。較適合哪一類資料庫？",
+    "options": [
+      {
+        "id": "A",
+        "text": "純文字記事本"
+      },
+      {
+        "id": "B",
+        "text": "只能用固定欄位的試算表"
+      },
+      {
+        "id": "C",
+        "text": "時間序列資料庫"
+      },
+      {
+        "id": "D",
+        "text": "文件型資料庫（例如以 JSON 文件儲存）"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "文件型資料庫支援彈性結構。",
+      "correctRationale": "每筆商品以文件儲存，不同類型商品可有不同欄位，不需事先固定所有欄位。",
+      "optionRationales": {
+        "A": "純文字不利查詢與管理。",
+        "B": "固定欄位不適合差異大的資料。",
+        "C": "時間序列資料庫針對時間戳記資料。",
+        "D": "正確。每筆商品以文件儲存，不同類型商品可有不同欄位，不需事先固定所有欄位。"
+      },
+      "commonTrap": "以為所有資料都必須放在固定欄位的表格中。",
+      "lessonAnchor": "L22202"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "NoSQL"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22202-0015",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列 pandas 程式以 left join 合併兩張表，執行後輸出為何？",
+    "code": "import pandas as pd\n\nc = pd.DataFrame({'cid': [1, 2, 3]})\no = pd.DataFrame({'cid': [1, 3], 'amt': [100, 200]})\nprint(len(c.merge(o, on='cid', how='left')))",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "3",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {
+        "pandas": "3.0.2"
+      },
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "左表 c 有 cid 1、2、3。",
+      "右表 o 只有 cid 1、3。",
+      "left join 保留左表全部列，cid 2 的 amt 為缺失值。",
+      "結果 3 列，輸出 `3`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "3"
+      },
+      {
+        "id": "B",
+        "text": "2"
+      },
+      {
+        "id": "C",
+        "text": "1"
+      },
+      {
+        "id": "D",
+        "text": "4"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "left join 保留左表所有列。",
+      "correctRationale": "左表有 3 位客戶；右表只有其中 2 位的訂單，沒有對應的客戶仍保留（欄位為缺失值），共 3 列。",
+      "optionRationales": {
+        "A": "正確。左表有 3 位客戶；右表只有其中 2 位的訂單，沒有對應的客戶仍保留（欄位為缺失值），共 3 列。",
+        "B": "這是 inner join 的列數。",
+        "C": "合併不會只剩 1 列。",
+        "D": "每位客戶在右表最多一筆，不會變成 4 列。"
+      },
+      "commonTrap": "混淆 left join 與 inner join。",
+      "lessonAnchor": "L22202"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "pandas",
+      "合併"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22203-0009",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列 pandas 程式以條件篩選資料，執行後輸出為何？",
+    "code": "import pandas as pd\n\ndf = pd.DataFrame({\n    'name': ['Amy', 'Bob', 'Cat', 'Dan'],\n    'age': [25, 35, 40, 30],\n    'city': ['台北', '台北', '高雄', '台北'],\n})\nprint(len(df[(df['age'] >= 30) & (df['city'] == '台北')]))",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "2",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {
+        "pandas": "3.0.2"
+      },
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "年齡 ≥ 30：Bob、Cat、Dan。",
+      "城市為台北：Amy、Bob、Dan。",
+      "兩條件都符合：Bob、Dan。",
+      "輸出 `2`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "1"
+      },
+      {
+        "id": "B",
+        "text": "2"
+      },
+      {
+        "id": "C",
+        "text": "3"
+      },
+      {
+        "id": "D",
+        "text": "0"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "多條件篩選以 `&` 連接，每個條件需加括號。",
+      "correctRationale": "同時符合「年齡 ≥ 30」且「城市為台北」的只有 Bob 與 Dan，共 2 筆。",
+      "optionRationales": {
+        "A": "漏算了符合條件的另一筆。",
+        "B": "正確。同時符合「年齡 ≥ 30」且「城市為台北」的只有 Bob 與 Dan，共 2 筆。",
+        "C": "把不符合城市條件的資料也算入。",
+        "D": "有符合條件的資料。"
+      },
+      "commonTrap": "把 `&` 寫成 `and`，或忘記加括號。",
+      "lessonAnchor": "L22203"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "pandas",
+      "篩選"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22203-0010",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列 pandas 程式新增分級欄位，執行後輸出為何？",
+    "code": "import pandas as pd\n\ns = pd.Series([50, 150, 300])\nlevel = s.apply(lambda x: '高' if x >= 100 else '低')\nprint(level.tolist())",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "['低', '高', '高']",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {
+        "pandas": "3.0.2"
+      },
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "50 不滿足 x ≥ 100，得「低」。",
+      "150 滿足，得「高」。",
+      "300 滿足，得「高」。",
+      "輸出 `['低', '高', '高']`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "['低', '高', '高']"
+      },
+      {
+        "id": "B",
+        "text": "['低', '低', '高']"
+      },
+      {
+        "id": "C",
+        "text": "['高', '高', '高']"
+      },
+      {
+        "id": "D",
+        "text": "['高', '低', '低']"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "`apply` 對每個值套用函式。",
+      "correctRationale": "50 < 100 → 低；150、300 ≥ 100 → 高。",
+      "optionRationales": {
+        "A": "正確。50 < 100 → 低；150、300 ≥ 100 → 高。",
+        "B": "150 ≥ 100，應為高。",
+        "C": "50 小於 100，應為低。",
+        "D": "判斷條件被反轉。"
+      },
+      "commonTrap": "誤讀條件運算式的方向。",
+      "lessonAnchor": "L22203"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "pandas",
+      "apply"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22203-0011",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "電商想在大促期間「每分鐘」更新各商品的即時銷售排行，同時每晚產出完整的財務報表。較合適的架構是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "兩者都只用人工 Excel 彙整"
+      },
+      {
+        "id": "B",
+        "text": "財務報表用串流、排行用每月批次"
+      },
+      {
+        "id": "C",
+        "text": "即時排行用串流處理，財務報表用批次處理"
+      },
+      {
+        "id": "D",
+        "text": "兩者都只用每晚批次處理"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "依時效需求選擇處理方式。",
+      "correctRationale": "分鐘級更新需要串流處理；完整且需核對的財務報表適合批次處理。",
+      "optionRationales": {
+        "A": "人工彙整無法應付大量資料。",
+        "B": "時效需求與處理方式對調了。",
+        "C": "正確。分鐘級更新需要串流處理；完整且需核對的財務報表適合批次處理。",
+        "D": "每晚批次無法提供每分鐘的排行。"
+      },
+      "commonTrap": "以單一處理方式應付所有時效需求。",
+      "lessonAnchor": "L22203"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "串流處理",
+      "批次處理"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22203-0012",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "MapReduce 模型中「Map」與「Reduce」階段的分工是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "Map 負責畫地圖；Reduce 負責壓縮檔案"
+      },
+      {
+        "id": "B",
+        "text": "兩者都只負責儲存資料"
+      },
+      {
+        "id": "C",
+        "text": "Reduce 先執行，Map 最後執行"
+      },
+      {
+        "id": "D",
+        "text": "Map 將資料轉成鍵值對並分散處理；Reduce 依鍵彙總結果"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "MapReduce 以「分散處理再彙總」的方式處理大量資料。",
+      "correctRationale": "例如字數統計：Map 輸出（詞, 1），Reduce 把相同詞的計數加總。",
+      "optionRationales": {
+        "A": "名稱的字面意思與功能無關。",
+        "B": "兩者都是運算階段。",
+        "C": "執行順序是先 Map 後 Reduce。",
+        "D": "正確。例如字數統計：Map 輸出（詞, 1），Reduce 把相同詞的計數加總。"
+      },
+      "commonTrap": "不清楚分散式運算的基本流程。",
+      "lessonAnchor": "L22203"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "MapReduce"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22203-0013",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列 pandas 程式建立樞紐表，執行後輸出為何？",
+    "code": "import pandas as pd\n\ndf = pd.DataFrame({\n    'city': ['台北', '台北', '高雄'],\n    'prod': ['A', 'A', 'A'],\n    'qty': [20, 40, 10],\n})\npt = df.pivot_table(index='city', columns='prod', values='qty')\nprint(int(pt.loc['台北', 'A']))",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "30",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {
+        "pandas": "3.0.2"
+      },
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "台北的 A 產品有兩筆：20、40。",
+      "`pivot_table` 預設 aggfunc 為平均數。",
+      "平均 (20 + 40) ÷ 2 = 30。",
+      "輸出 `30`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "10"
+      },
+      {
+        "id": "B",
+        "text": "30"
+      },
+      {
+        "id": "C",
+        "text": "20"
+      },
+      {
+        "id": "D",
+        "text": "60"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "`pivot_table` 預設以平均數彙總。",
+      "correctRationale": "台北 A 產品有兩筆 20 與 40，平均為 30。",
+      "optionRationales": {
+        "A": "只取了其中最小值。",
+        "B": "正確。台北 A 產品有兩筆 20 與 40，平均為 30。",
+        "C": "20 是其中一筆數值。",
+        "D": "60 是加總，不是預設的平均。"
+      },
+      "commonTrap": "以為 pivot_table 預設是加總。",
+      "lessonAnchor": "L22203"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "pandas",
+      "樞紐分析"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22203-0014",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "分析師以 Python 迴圈逐列處理千萬筆 DataFrame，執行數小時仍未完成。最優先的改善方向是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "把迴圈改成兩層迴圈"
+      },
+      {
+        "id": "B",
+        "text": "加更多 print 觀察進度"
+      },
+      {
+        "id": "C",
+        "text": "改用向量化運算或內建彙總函式；資料過大時改用分散式或分塊處理"
+      },
+      {
+        "id": "D",
+        "text": "把資料全部複製到 Excel"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "逐列迴圈是 pandas 常見的效能瓶頸。",
+      "correctRationale": "向量化運算由底層最佳化的程式執行，通常快很多；超出單機記憶體時可分塊或使用 Spark 等工具。",
+      "optionRationales": {
+        "A": "巢狀迴圈只會更慢。",
+        "B": "print 不會加快執行，反而更慢。",
+        "C": "正確。向量化運算由底層最佳化的程式執行，通常快很多；超出單機記憶體時可分塊或使用 Spark 等工具。",
+        "D": "Excel 無法處理千萬筆資料。"
+      },
+      "commonTrap": "以逐列迴圈處理大型資料。",
+      "lessonAnchor": "L22203"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "效能",
+      "pandas"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22203-0015",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "Python 中，下列哪一種資料型態「不可變更」（immutable），適合當作字典的鍵？",
+    "options": [
+      {
+        "id": "A",
+        "text": "dict（字典）"
+      },
+      {
+        "id": "B",
+        "text": "tuple（元組）"
+      },
+      {
+        "id": "C",
+        "text": "set（集合）"
+      },
+      {
+        "id": "D",
+        "text": "list（串列）"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "字典的鍵必須是可雜湊的不可變物件。",
+      "correctRationale": "tuple 建立後不能修改元素，可作為鍵；list、dict、set 都可變。",
+      "optionRationales": {
+        "A": "dict 可變。",
+        "B": "正確。tuple 建立後不能修改元素，可作為鍵；list、dict、set 都可變。",
+        "C": "set 可變（frozenset 才不可變）。",
+        "D": "list 可變，不能當作字典的鍵。"
+      },
+      "commonTrap": "分不清可變與不可變的資料型態。",
+      "lessonAnchor": "L22203"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python 資料型態"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
   }
 ]
