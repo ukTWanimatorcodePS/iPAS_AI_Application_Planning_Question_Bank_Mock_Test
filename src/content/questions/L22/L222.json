@@ -1399,15 +1399,15 @@
     "options": [
       {
         "id": "A",
-        "text": "df.drop_duplicates(\"city\")"
+        "text": "df.drop_duplicates(\"city\")[\"sales\"].mean()"
       },
       {
         "id": "B",
-        "text": "df[\"sales\"].sum()"
+        "text": "df[\"sales\"].mean().groupby(\"city\")"
       },
       {
         "id": "C",
-        "text": "df.sort_values(\"city\")"
+        "text": "df.sort_values(\"city\")[\"sales\"].mean()"
       },
       {
         "id": "D",
@@ -1421,9 +1421,9 @@
       "summary": "GROUP BY 對應 pandas 的 groupby，AVG 對應 mean。",
       "correctRationale": "先依城市分組，再計算各組銷售平均。",
       "optionRationales": {
-        "A": "這是去除重複城市。",
-        "B": "這是全部加總，沒有分組。",
-        "C": "這只是排序。",
+        "A": "去除重複後每個城市只剩一筆，算出的是這些資料的整體平均，沒有分組。",
+        "B": "先算平均會得到單一數值，無法再依城市分組。",
+        "C": "排序不會分組，算出的是全部資料的平均。",
         "D": "正確。先依城市分組，再計算各組銷售平均。"
       },
       "commonTrap": "SQL 與 pandas 的對應不熟悉。",
@@ -2624,15 +2624,15 @@
     "options": [
       {
         "id": "A",
-        "text": "Map 負責畫地圖；Reduce 負責壓縮檔案"
+        "text": "Map 負責把資料依地理位置分區；Reduce 負責壓縮輸出檔案的大小"
       },
       {
         "id": "B",
-        "text": "兩者都只負責儲存資料"
+        "text": "Map 與 Reduce 都只負責把資料寫入分散式檔案系統中儲存"
       },
       {
         "id": "C",
-        "text": "Reduce 先執行，Map 最後執行"
+        "text": "Reduce 先把資料分組彙總，Map 最後把結果轉成鍵值對輸出"
       },
       {
         "id": "D",
