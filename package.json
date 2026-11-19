@@ -14,7 +14,8 @@
     "test:e2e": "playwright test",
     "verify:python": "node scripts/verify-python.mjs",
     "validate:content": "node scripts/validate-content.ts",
-    "registry:sync": "node scripts/validate-content.ts --sync-registry"
+    "registry:sync": "node scripts/validate-content.ts --sync-registry",
+    "audit:options": "node scripts/option-cues.ts"
   },
   "dependencies": {
     "dexie": "^4.4.7",
