@@ -1,0 +1,1832 @@
+[
+  {
+    "id": "original-L21101-0001",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "使用 TF-IDF 表示文件時，像「的」「是」這類詞的權重通常很低，主要原因是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "這些詞的字數太少"
+      },
+      {
+        "id": "B",
+        "text": "這些詞幾乎出現在每份文件中，逆文件頻率（IDF）很低"
+      },
+      {
+        "id": "C",
+        "text": "這些詞在中文中不能被斷詞"
+      },
+      {
+        "id": "D",
+        "text": "這些詞屬於命名實體"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "TF-IDF = 詞頻 × 逆文件頻率，常見於所有文件的詞 IDF 低。",
+      "correctRationale": "出現在幾乎所有文件的詞，log(N/df) 接近 0，因此對區分文件幫助很小、權重低。",
+      "optionRationales": {
+        "A": "權重與字數無關。",
+        "B": "正確。普遍出現導致 IDF 低。",
+        "C": "這些詞可以被斷詞，只是資訊量低。",
+        "D": "「的」「是」是功能詞，不是人名、地名等實體。"
+      },
+      "commonTrap": "以為 TF-IDF 只看詞出現的次數。",
+      "lessonAnchor": "L21101"
+    },
+    "difficulty": 2,
+    "tags": [
+      "NLP",
+      "TF-IDF"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L21101-0002",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「蘋果發表新手機」與「我吃了一顆蘋果」中的「蘋果」意義不同。下列哪一種文字表示法最能區分兩者？",
+    "options": [
+      {
+        "id": "A",
+        "text": "詞袋模型（Bag of Words）"
+      },
+      {
+        "id": "B",
+        "text": "只計算字數"
+      },
+      {
+        "id": "C",
+        "text": "靜態詞向量（每個詞固定一個向量）"
+      },
+      {
+        "id": "D",
+        "text": "以 Transformer 產生的上下文表示"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "上下文表示會依句子內容為同一個詞產生不同向量。",
+      "correctRationale": "Transformer 透過自注意力參考整句內容，使「蘋果」在科技語境與水果語境有不同表示。",
+      "optionRationales": {
+        "A": "詞袋只計次數，兩句中的「蘋果」完全相同。",
+        "B": "字數無法表達語意。",
+        "C": "靜態詞向量一詞一個向量，無法處理一詞多義。",
+        "D": "正確。依上下文產生不同向量。"
+      },
+      "commonTrap": "以為詞向量能自動處理一詞多義。",
+      "lessonAnchor": "L21101"
+    },
+    "difficulty": 2,
+    "tags": [
+      "NLP",
+      "詞表示"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L21101-0003",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "法務部門希望從大量合約中自動找出「甲方名稱、簽約日期、金額」等資訊。這最主要屬於哪一種 NLP 任務？",
+    "options": [
+      {
+        "id": "A",
+        "text": "命名實體辨識（NER）／資訊擷取"
+      },
+      {
+        "id": "B",
+        "text": "情感分析"
+      },
+      {
+        "id": "C",
+        "text": "機器翻譯"
+      },
+      {
+        "id": "D",
+        "text": "文本生成"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "NER 找出並分類文本中的人名、組織、日期、金額等實體。",
+      "correctRationale": "從合約擷取特定類型的關鍵資訊，正是命名實體辨識與資訊擷取的應用。",
+      "optionRationales": {
+        "A": "正確。擷取並分類實體。",
+        "B": "情感分析判斷正負面情緒。",
+        "C": "機器翻譯是語言轉換。",
+        "D": "文本生成是產生新內容，不是擷取既有資訊。"
+      },
+      "commonTrap": "把「從文中找資訊」和「生成新文字」混為一談。",
+      "lessonAnchor": "L21101"
+    },
+    "difficulty": 1,
+    "tags": [
+      "NLP",
+      "NER"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "basic",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L21101-0004",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "客服中心每天有數萬張工單，已累積十萬筆標註好的分類資料，需要低延遲、低成本地自動分派部門。較合適的技術路線是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "每張工單都呼叫最大型的生成式模型並以零樣本提示分類"
+      },
+      {
+        "id": "B",
+        "text": "以人工逐張閱讀分派"
+      },
+      {
+        "id": "C",
+        "text": "以標註資料微調較小的編碼器模型（如 BERT 類）做文本分類"
+      },
+      {
+        "id": "D",
+        "text": "使用文生圖模型"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "有大量標註資料、任務單純且重視成本與延遲時，微調小型分類模型常是好選擇。",
+      "correctRationale": "編碼器模型擅長理解與分類，微調後推論快速便宜，適合大量工單。",
+      "optionRationales": {
+        "A": "大型生成模型可用，但大量呼叫成本與延遲較高，且已有足夠標註資料。",
+        "B": "人工處理無法因應數萬張工單的規模。",
+        "C": "正確。小型編碼器微調後分類。",
+        "D": "文生圖與文字分類無關。"
+      },
+      "commonTrap": "認為所有 NLP 任務都應使用最大的 LLM。",
+      "lessonAnchor": "L21101"
+    },
+    "difficulty": 3,
+    "tags": [
+      "NLP",
+      "技術選型"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L21101-0005",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "品牌公關團隊想每天自動統計社群貼文中對新產品的「正面、負面、中立」比例。這屬於哪一種 NLP 任務？",
+    "options": [
+      {
+        "id": "A",
+        "text": "情感分析"
+      },
+      {
+        "id": "B",
+        "text": "語音合成"
+      },
+      {
+        "id": "C",
+        "text": "命名實體辨識"
+      },
+      {
+        "id": "D",
+        "text": "機器翻譯"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "情感分析判斷文本的情緒傾向。",
+      "correctRationale": "依貼文內容判斷正負面，再統計比例以監測口碑。",
+      "optionRationales": {
+        "A": "正確。判斷情緒傾向。",
+        "B": "語音合成是文字轉語音。",
+        "C": "NER 擷取人名、組織等實體。",
+        "D": "翻譯是語言轉換。"
+      },
+      "commonTrap": "把資訊擷取與情緒判斷混淆。",
+      "lessonAnchor": "L21101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "NLP",
+      "情感分析"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21101-0006",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於「抽取式摘要」與「生成式摘要」，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "生成式摘要一定不會出錯"
+      },
+      {
+        "id": "B",
+        "text": "抽取式摘要會產生原文沒有的新句子"
+      },
+      {
+        "id": "C",
+        "text": "抽取式從原文挑選重要句子；生成式改寫出新句子，較流暢但可能產生幻覺"
+      },
+      {
+        "id": "D",
+        "text": "兩者都只能挑選原文句子"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "抽取式選原句；生成式重新表述。",
+      "correctRationale": "生成式摘要可整合多句意思，但可能加入原文沒有的內容，需要檢查。",
+      "optionRationales": {
+        "A": "生成式可能產生幻覺。",
+        "B": "抽取式只挑原句。",
+        "C": "正確區分。",
+        "D": "生成式會改寫。"
+      },
+      "commonTrap": "以為生成式摘要必然忠於原文。",
+      "lessonAnchor": "L21101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "摘要"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21101-0007",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "中文文本進行 NLP 前處理時，與英文相比特別需要注意的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "中文只能用規則式系統處理"
+      },
+      {
+        "id": "B",
+        "text": "中文詞與詞之間沒有空格，需要分詞或使用子詞切分"
+      },
+      {
+        "id": "C",
+        "text": "中文無法使用 Transformer 模型"
+      },
+      {
+        "id": "D",
+        "text": "中文不需要任何前處理"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "中文缺乏天然的詞界。",
+      "correctRationale": "需分詞或以子詞（subword）切分；全半形、繁簡轉換也是常見前處理。",
+      "optionRationales": {
+        "A": "中文可用機器學習與深度學習處理。",
+        "B": "正確。需要分詞或子詞切分。",
+        "C": "Transformer 可處理中文。",
+        "D": "中文仍需前處理。"
+      },
+      "commonTrap": "直接套用英文以空格斷詞的做法。",
+      "lessonAnchor": "L21101"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "中文斷詞"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21101-0008",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "評估機器翻譯與自動摘要的品質時，常用的自動評估指標分別是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "BLEU（翻譯）與 ROUGE（摘要），並需搭配人工評估"
+      },
+      {
+        "id": "B",
+        "text": "IoU 與 mAP"
+      },
+      {
+        "id": "C",
+        "text": "支持度與提升度"
+      },
+      {
+        "id": "D",
+        "text": "AUC 與 RMSE"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "BLEU 常用於翻譯、ROUGE 常用於摘要。",
+      "correctRationale": "兩者都比較與參考答案的詞彙重疊，無法完全反映語意正確性。",
+      "optionRationales": {
+        "A": "正確。NLP 生成任務常用指標。",
+        "B": "IoU、mAP 是物件偵測指標。",
+        "C": "支持度、提升度是關聯規則指標。",
+        "D": "AUC 是分類指標，RMSE 是迴歸指標。"
+      },
+      "commonTrap": "以為自動指標高就代表品質一定好。",
+      "lessonAnchor": "L21101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "評估指標"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21102-0001",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "零售業者想計算貨架上每種飲料的數量與位置，應選擇哪一種電腦視覺任務？",
+    "options": [
+      {
+        "id": "A",
+        "text": "影像生成"
+      },
+      {
+        "id": "B",
+        "text": "影像分類"
+      },
+      {
+        "id": "C",
+        "text": "語意分割"
+      },
+      {
+        "id": "D",
+        "text": "物件偵測"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "需要知道「在哪裡、有幾個」時用物件偵測。",
+      "correctRationale": "物件偵測輸出每個物件的邊界框與類別，可據以計數與定位。",
+      "optionRationales": {
+        "A": "影像生成產生新圖。",
+        "B": "分類只給整張圖一個標籤。",
+        "C": "語意分割不區分同類別的個體，計數較困難。",
+        "D": "正確。輸出位置與類別。"
+      },
+      "commonTrap": "用分類解決需要定位的問題。",
+      "lessonAnchor": "L21102"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "CV 任務"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21102-0002",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "自駕車需要區分畫面中「每一位」行人，以便分別追蹤其移動。較適合哪一種任務？",
+    "options": [
+      {
+        "id": "A",
+        "text": "實例分割"
+      },
+      {
+        "id": "B",
+        "text": "語意分割"
+      },
+      {
+        "id": "C",
+        "text": "影像分類"
+      },
+      {
+        "id": "D",
+        "text": "OCR"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "實例分割在像素層級區分同類別的不同個體。",
+      "correctRationale": "語意分割只標出「行人」區域，無法區分個別行人。",
+      "optionRationales": {
+        "A": "正確。區分每一個個體。",
+        "B": "同類別個體會合併。",
+        "C": "分類無位置資訊。",
+        "D": "OCR 擷取文字。"
+      },
+      "commonTrap": "混淆語意分割與實例分割。",
+      "lessonAnchor": "L21102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "分割"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21102-0003",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "物件偵測的預測框與真實框交集面積為 30，聯集面積為 60。IoU 為多少？若門檻為 0.5，此預測是否算正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "30，面積越大越好"
+      },
+      {
+        "id": "B",
+        "text": "2，大於 1 視為正確"
+      },
+      {
+        "id": "C",
+        "text": "0.3，未達門檻"
+      },
+      {
+        "id": "D",
+        "text": "0.5，達到門檻視為正確偵測"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "IoU = 交集 ÷ 聯集。",
+      "correctRationale": "30 ÷ 60 = 0.5，等於常用門檻 0.5，視為正確。",
+      "optionRationales": {
+        "A": "IoU 是比例，不是面積。",
+        "B": "IoU 介於 0～1，不會是 2。",
+        "C": "0.3 不符合計算。",
+        "D": "正確。30/60 = 0.5。"
+      },
+      "commonTrap": "把 IoU 的分子分母弄反。",
+      "lessonAnchor": "L21102"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "IoU"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21102-0004",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "卷積神經網路（CNN）中「卷積層」的主要作用是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "把所有像素隨機打亂"
+      },
+      {
+        "id": "B",
+        "text": "輸出最終的文字摘要"
+      },
+      {
+        "id": "C",
+        "text": "以濾波器在影像上滑動，擷取邊緣、紋理等局部特徵"
+      },
+      {
+        "id": "D",
+        "text": "把影像轉成語音"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "卷積層擷取局部特徵並共享權重。",
+      "correctRationale": "淺層學到邊緣，深層組合成形狀與物件部件。",
+      "optionRationales": {
+        "A": "卷積保留空間結構。",
+        "B": "分類頭或解碼器負責輸出。",
+        "C": "正確。擷取局部特徵。",
+        "D": "與語音無關。"
+      },
+      "commonTrap": "不清楚 CNN 各層功能。",
+      "lessonAnchor": "L21102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "CNN"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21102-0005",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "工廠只有約 300 張已標註的瑕疵影像，想訓練瑕疵分類模型。最合適的做法是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "從零開始訓練一個超大型模型"
+      },
+      {
+        "id": "B",
+        "text": "使用在大型影像資料集預訓練的模型進行微調，並搭配資料增強"
+      },
+      {
+        "id": "C",
+        "text": "放棄使用深度學習"
+      },
+      {
+        "id": "D",
+        "text": "把 300 張影像複製成 3 萬張即可"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "標註少時，遷移學習加資料增強是常見做法。",
+      "correctRationale": "預訓練模型已學到通用視覺特徵，只需少量資料微調。",
+      "optionRationales": {
+        "A": "資料太少易過擬合。",
+        "B": "正確。遷移學習＋資料增強。",
+        "C": "可用遷移學習解決。",
+        "D": "單純複製不增加資訊。"
+      },
+      "commonTrap": "以為資料少就不能用深度學習。",
+      "lessonAnchor": "L21102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "遷移學習"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21102-0006",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "影像模型訓練時，對影像做翻轉、裁切、亮度調整等處理，主要目的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "刪除錯誤標籤"
+      },
+      {
+        "id": "B",
+        "text": "降低影像解析度以節省儲存"
+      },
+      {
+        "id": "C",
+        "text": "加密影像"
+      },
+      {
+        "id": "D",
+        "text": "資料增強，提升模型對拍攝條件變化的穩健性並降低過擬合"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "資料增強擴充訓練資料的多樣性。",
+      "correctRationale": "讓模型看到不同光線、角度的變化，提升泛化能力。",
+      "optionRationales": {
+        "A": "不能修正標籤錯誤。",
+        "B": "目的不是節省儲存。",
+        "C": "不是加密。",
+        "D": "正確。增加多樣性、降低過擬合。"
+      },
+      "commonTrap": "不了解資料增強的目的。",
+      "lessonAnchor": "L21102"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料增強"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21102-0007",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於 CNN 與 Vision Transformer（ViT），下列敘述何者較正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "兩者完全相同"
+      },
+      {
+        "id": "B",
+        "text": "ViT 不能處理影像"
+      },
+      {
+        "id": "C",
+        "text": "CNN 以局部卷積擷取特徵；ViT 把影像切成 patch 以自注意力建立全域關係，資料量大時表現優異"
+      },
+      {
+        "id": "D",
+        "text": "CNN 一定需要比 ViT 更多資料"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "CNN 有局部性歸納偏誤；ViT 以注意力建立全域關係。",
+      "correctRationale": "ViT 通常需要更多資料或預訓練才能發揮優勢。",
+      "optionRationales": {
+        "A": "機制不同。",
+        "B": "ViT 正是影像模型。",
+        "C": "正確比較。",
+        "D": "通常 ViT 需要更多資料。"
+      },
+      "commonTrap": "混淆兩種架構的特性。",
+      "lessonAnchor": "L21102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "ViT"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21102-0008",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "銀行想自動擷取客戶上傳的身分證影像中的姓名與號碼欄位。主要使用哪種技術？",
+    "options": [
+      {
+        "id": "A",
+        "text": "OCR（光學字元辨識）搭配欄位擷取"
+      },
+      {
+        "id": "B",
+        "text": "K-means 分群"
+      },
+      {
+        "id": "C",
+        "text": "語意分割"
+      },
+      {
+        "id": "D",
+        "text": "文生圖"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "OCR 把影像中的文字轉為可編輯文字。",
+      "correctRationale": "再依欄位位置或語意擷取姓名、號碼。",
+      "optionRationales": {
+        "A": "正確。影像文字辨識。",
+        "B": "分群不讀文字。",
+        "C": "分割標出區域但不讀文字。",
+        "D": "文生圖產生影像。"
+      },
+      "commonTrap": "不知道 OCR 屬於電腦視覺應用。",
+      "lessonAnchor": "L21102"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "OCR"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21103-0001",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21103",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "保險公司的理賠助理需要：(1) 回答每週更新的條款內容並附出處；(2) 摘要輸出固定為公司指定格式。最適合的組合是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "兩者都從頭預訓練新模型"
+      },
+      {
+        "id": "B",
+        "text": "條款問答用 RAG；固定格式可用提示範例，必要時以 LoRA 微調輸出風格"
+      },
+      {
+        "id": "C",
+        "text": "兩者都只靠提高溫度"
+      },
+      {
+        "id": "D",
+        "text": "兩者都不需要任何資料"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "RAG 解決知識問題；微調解決行為與格式問題。",
+      "correctRationale": "條款常更新適合 RAG；固定格式先用提示，仍不足再微調。",
+      "optionRationales": {
+        "A": "預訓練成本極高且不必要。",
+        "B": "正確。依問題選擇方法。",
+        "C": "溫度與知識、格式無直接關係。",
+        "D": "兩者都需要資料。"
+      },
+      "commonTrap": "用同一種方法解決所有問題。",
+      "lessonAnchor": "L21103"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "RAG",
+      "微調"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21103-0002",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21103",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "參數高效微調方法 LoRA 能降低微調成本，主要原因是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "不需要任何訓練資料"
+      },
+      {
+        "id": "B",
+        "text": "把模型轉成規則式系統"
+      },
+      {
+        "id": "C",
+        "text": "刪除模型一半的層數"
+      },
+      {
+        "id": "D",
+        "text": "凍結原模型權重，只訓練少量新增的低秩矩陣參數"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "LoRA 只訓練少量參數。",
+      "correctRationale": "原權重保持不變，新增的低秩矩陣參數很少，記憶體與運算需求大幅降低。",
+      "optionRationales": {
+        "A": "仍需要訓練資料。",
+        "B": "不會轉成規則式系統。",
+        "C": "LoRA 不刪除層。",
+        "D": "正確。只訓練少量低秩參數。"
+      },
+      "commonTrap": "以為 LoRA 會重新訓練全部參數。",
+      "lessonAnchor": "L21103"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "LoRA"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21103-0003",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21103",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "某 API 輸入每百萬 Token 2 美元、輸出每百萬 Token 8 美元。某次呼叫輸入 50 萬 Token、輸出 10 萬 Token，費用為多少？",
+    "options": [
+      {
+        "id": "A",
+        "text": "4.8 美元"
+      },
+      {
+        "id": "B",
+        "text": "10 美元"
+      },
+      {
+        "id": "C",
+        "text": "1.8 美元"
+      },
+      {
+        "id": "D",
+        "text": "1.0 美元"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "成本 = 輸入 Token × 單價 + 輸出 Token × 單價。",
+      "correctRationale": "0.5 × 2 + 0.1 × 8 = 1 + 0.8 = 1.8 美元。",
+      "optionRationales": {
+        "A": "計算錯誤。",
+        "B": "把單價直接相加。",
+        "C": "正確。1.0 + 0.8 = 1.8。",
+        "D": "只計算輸入費用。"
+      },
+      "commonTrap": "忽略輸入與輸出單價不同。",
+      "lessonAnchor": "L21103"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "成本"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21103-0004",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21103",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列哪一項做法最能在不明顯降低品質的情況下降低 LLM 服務成本？",
+    "options": [
+      {
+        "id": "A",
+        "text": "要求每次輸出越長越好"
+      },
+      {
+        "id": "B",
+        "text": "以模型路由把簡單問題交給小模型，複雜問題才交給大模型"
+      },
+      {
+        "id": "C",
+        "text": "每次都附上完整的公司文件"
+      },
+      {
+        "id": "D",
+        "text": "所有問題都用最大模型"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "依任務難度選擇模型規模可節省成本。",
+      "correctRationale": "多數簡單問題小模型即可處理，只有困難問題才需大模型。",
+      "optionRationales": {
+        "A": "輸出 Token 增加費用。",
+        "B": "正確。模型路由。",
+        "C": "輸入 Token 大增。",
+        "D": "成本最高。"
+      },
+      "commonTrap": "以為只有大模型才能用。",
+      "lessonAnchor": "L21103"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "成本控制"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21103-0005",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21103",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "把模型權重從 16 位元浮點數改以 4 位元表示，主要目的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "量化以降低記憶體需求與推論成本，代價是可能略降精度"
+      },
+      {
+        "id": "B",
+        "text": "加密模型權重"
+      },
+      {
+        "id": "C",
+        "text": "提高模型的參數量"
+      },
+      {
+        "id": "D",
+        "text": "讓模型可以處理影像"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "量化以較低位元數表示權重。",
+      "correctRationale": "可在較小的硬體上部署、加快推論，但可能有些微精度損失。",
+      "optionRationales": {
+        "A": "正確。降低記憶體與成本。",
+        "B": "量化不是加密。",
+        "C": "量化不增加參數量。",
+        "D": "與模態無關。"
+      },
+      "commonTrap": "把量化與加密混淆。",
+      "lessonAnchor": "L21103"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "量化"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21103-0006",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21103",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列哪一項對生成技術的描述「正確」？",
+    "options": [
+      {
+        "id": "A",
+        "text": "擴散模型由生成器與判別器對抗"
+      },
+      {
+        "id": "B",
+        "text": "VAE 只能用於分類"
+      },
+      {
+        "id": "C",
+        "text": "擴散模型生成品質高但需多步去噪；GAN 生成快但訓練可能不穩定"
+      },
+      {
+        "id": "D",
+        "text": "GAN 透過逐步去噪生成影像"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "各生成技術機制與特性不同。",
+      "correctRationale": "擴散模型以多步去噪換得高品質；GAN 單步生成快，但可能模式崩塌。",
+      "optionRationales": {
+        "A": "這是 GAN。",
+        "B": "VAE 是生成模型。",
+        "C": "正確描述。",
+        "D": "這是擴散模型。"
+      },
+      "commonTrap": "混淆擴散模型與 GAN。",
+      "lessonAnchor": "L21103"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "生成技術"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21103-0007",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21103",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "評估企業內部問答助理的回答品質，最合適的做法是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只要使用者沒抱怨就代表品質好"
+      },
+      {
+        "id": "B",
+        "text": "只看模型參數量"
+      },
+      {
+        "id": "C",
+        "text": "只看回答長度"
+      },
+      {
+        "id": "D",
+        "text": "建立具代表性的評測題組，依正確性、引用正確等標準人工評分，並輔以自動評分"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "生成品質評估以人工為主、自動為輔。",
+      "correctRationale": "評測集需含困難與邊界案例，並訂定明確評分標準。",
+      "optionRationales": {
+        "A": "沒有抱怨不代表正確。",
+        "B": "參數量不等於品質。",
+        "C": "長度不等於品質。",
+        "D": "正確。評測集＋評分標準。"
+      },
+      "commonTrap": "缺乏系統化評估。",
+      "lessonAnchor": "L21103"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "評估"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21103-0008",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21103",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "RLHF（以人類回饋強化學習）在大型語言模型開發中的主要作用是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "依人類偏好訓練獎勵模型，再用強化學習調整模型，使輸出更符合人類期望"
+      },
+      {
+        "id": "B",
+        "text": "用來壓縮模型大小"
+      },
+      {
+        "id": "C",
+        "text": "用來建立向量資料庫"
+      },
+      {
+        "id": "D",
+        "text": "用來切分訓練資料"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "RLHF 讓模型輸出更符合人類偏好。",
+      "correctRationale": "人類比較多個回答優劣，訓練獎勵模型後引導語言模型調整。",
+      "optionRationales": {
+        "A": "正確。依人類偏好對齊。",
+        "B": "壓縮是量化或蒸餾。",
+        "C": "與向量資料庫無關。",
+        "D": "與資料切分無關。"
+      },
+      "commonTrap": "不清楚對齊（alignment）的概念。",
+      "lessonAnchor": "L21103"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "RLHF"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21104-0001",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21104",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "客服系統讓使用者上傳故障零件照片並詢問「這是什麼零件？」。這屬於哪一種多模態任務？",
+    "options": [
+      {
+        "id": "A",
+        "text": "純文字分類"
+      },
+      {
+        "id": "B",
+        "text": "視覺問答（VQA）"
+      },
+      {
+        "id": "C",
+        "text": "以文搜圖"
+      },
+      {
+        "id": "D",
+        "text": "語音合成"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "視覺問答依影像內容回答文字問題。",
+      "correctRationale": "輸入是影像＋文字問題，輸出文字答案。",
+      "optionRationales": {
+        "A": "單一文字模態無法看圖。",
+        "B": "正確。影像＋問題 → 答案。",
+        "C": "以文搜圖是用文字檢索影像。",
+        "D": "語音合成是文字轉語音。"
+      },
+      "commonTrap": "分不清多模態任務類型。",
+      "lessonAnchor": "L21104"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "多模態任務"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21104-0002",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21104",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "CLIP 能做「零樣本影像分類」的原因是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "它把影像轉成語音再分類"
+      },
+      {
+        "id": "B",
+        "text": "它為每個類別都有大量人工標註"
+      },
+      {
+        "id": "C",
+        "text": "它只使用規則判斷"
+      },
+      {
+        "id": "D",
+        "text": "透過大量圖文配對的對比學習，把影像與文字放入共同向量空間，可比較影像與類別描述的相似度"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "CLIP 建立圖文共同嵌入空間。",
+      "correctRationale": "把類別寫成文字描述，計算與影像向量的相似度，就能在未特別訓練的類別上分類。",
+      "optionRationales": {
+        "A": "與語音無關。",
+        "B": "零樣本不需要該類別的標註。",
+        "C": "CLIP 是學習而來。",
+        "D": "正確。共同空間＋相似度比較。"
+      },
+      "commonTrap": "以為零樣本分類仍需各類別標註。",
+      "lessonAnchor": "L21104"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "CLIP"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21104-0003",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21104",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "某系統結合影像與文字判斷商品類別，但部分商品沒有照片。較適合哪一種融合方式？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只能使用單一模態"
+      },
+      {
+        "id": "B",
+        "text": "晚期融合：各模態各自預測再合併，某模態缺失時仍可運作"
+      },
+      {
+        "id": "C",
+        "text": "刪除所有沒有照片的商品"
+      },
+      {
+        "id": "D",
+        "text": "早期融合：必須同時具備所有模態特徵"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "晚期融合對模態缺失較有彈性。",
+      "correctRationale": "各模態獨立預測，缺少影像時仍可用文字結果。",
+      "optionRationales": {
+        "A": "可以使用多模態。",
+        "B": "正確。缺失時仍可運作。",
+        "C": "刪除資料會損失資訊。",
+        "D": "早期融合需成對資料。"
+      },
+      "commonTrap": "不考慮模態缺失情況。",
+      "lessonAnchor": "L21104"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "融合"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21104-0004",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21104",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「深偽（Deepfake）」主要帶來哪一類風險？",
+    "options": [
+      {
+        "id": "A",
+        "text": "讓網頁載入變慢"
+      },
+      {
+        "id": "B",
+        "text": "讓模型訓練速度變慢"
+      },
+      {
+        "id": "C",
+        "text": "以偽造的逼真影像、聲音或影片進行詐騙或損害名譽"
+      },
+      {
+        "id": "D",
+        "text": "讓資料庫容量變大"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "深偽利用生成式 AI 偽造內容。",
+      "correctRationale": "可能被用於冒充親友或主管詐騙、散播假訊息。",
+      "optionRationales": {
+        "A": "與網頁速度無關。",
+        "B": "與訓練速度無關。",
+        "C": "正確。詐騙與名譽風險。",
+        "D": "與資料庫容量無關。"
+      },
+      "commonTrap": "低估深偽的社會風險。",
+      "lessonAnchor": "L21104"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "深偽"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21104-0005",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21104",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "多模態模型描述一張照片時，提到了照片中「並不存在」的物件。這屬於什麼問題？",
+    "options": [
+      {
+        "id": "A",
+        "text": "多模態幻覺，需要人工查核"
+      },
+      {
+        "id": "B",
+        "text": "資料投毒"
+      },
+      {
+        "id": "C",
+        "text": "資料漂移"
+      },
+      {
+        "id": "D",
+        "text": "過擬合造成的正常現象，不需處理"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "多模態模型也會產生幻覺。",
+      "correctRationale": "描述不存在的內容是幻覺，重要應用需人工確認。",
+      "optionRationales": {
+        "A": "正確。多模態幻覺。",
+        "B": "投毒是訓練階段攻擊。",
+        "C": "漂移是分布改變。",
+        "D": "需要處理。"
+      },
+      "commonTrap": "以為看圖模型一定正確。",
+      "lessonAnchor": "L21104"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "多模態幻覺"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21104-0006",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21104",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "電商使用者輸入「白色帆布鞋」，系統從商品圖片中找出相符商品，即使商品名稱沒有這幾個字。最可能使用的技術是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "圖文共同嵌入空間的以文搜圖（例如 CLIP 類模型）"
+      },
+      {
+        "id": "B",
+        "text": "語音辨識"
+      },
+      {
+        "id": "C",
+        "text": "K-means 分群"
+      },
+      {
+        "id": "D",
+        "text": "只比對商品名稱的關鍵字搜尋"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "共同嵌入空間讓文字可以檢索影像。",
+      "correctRationale": "文字與圖片向量化後比較相似度，不依賴商品名稱字面。",
+      "optionRationales": {
+        "A": "正確。以文搜圖。",
+        "B": "與語音無關。",
+        "C": "分群不負責檢索。",
+        "D": "名稱沒有關鍵字會找不到。"
+      },
+      "commonTrap": "以為搜尋只能比對文字欄位。",
+      "lessonAnchor": "L21104"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "以文搜圖"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21104-0007",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21104",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列哪一項是多模態 AI 的例子？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只處理數值表格的迴歸模型"
+      },
+      {
+        "id": "B",
+        "text": "只用一張圖判斷是貓或狗"
+      },
+      {
+        "id": "C",
+        "text": "結合設備的聲音、震動訊號與影像判斷是否異常"
+      },
+      {
+        "id": "D",
+        "text": "只用文字訓練的垃圾郵件分類器"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "多模態處理兩種以上資料型態。",
+      "correctRationale": "聲音、震動、影像是不同模態的感測資料。",
+      "optionRationales": {
+        "A": "單一表格資料。",
+        "B": "單一影像模態。",
+        "C": "正確。多種資料型態。",
+        "D": "單一文字模態。"
+      },
+      "commonTrap": "把多個同類輸入誤認為多模態。",
+      "lessonAnchor": "L21104"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "多模態定義"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L21104-0008",
+    "level": "middle",
+    "subject": "L21",
+    "topic": "L211",
+    "competencyCode": "L21104",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "設計多模態應用時，相較純文字，通常需要特別注意的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "多模態完全沒有隱私問題"
+      },
+      {
+        "id": "B",
+        "text": "多模態不需要任何資料"
+      },
+      {
+        "id": "C",
+        "text": "多模態一定比較便宜"
+      },
+      {
+        "id": "D",
+        "text": "影像與影片的運算量或 Token 成本通常遠高於文字，且影像可能含人臉、車牌等個資"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "多模態帶來額外成本與隱私考量。",
+      "correctRationale": "影像需更多運算；影像中的人臉、車牌屬個資，需妥善處理。",
+      "optionRationales": {
+        "A": "影像可能含個資。",
+        "B": "需要成對資料。",
+        "C": "通常較貴。",
+        "D": "正確。成本與個資。"
+      },
+      "commonTrap": "忽略影像資料的成本與隱私。",
+      "lessonAnchor": "L21104"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "成本"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  }
+]

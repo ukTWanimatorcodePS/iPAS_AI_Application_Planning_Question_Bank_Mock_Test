@@ -1,0 +1,1952 @@
+[
+  {
+    "id": "original-L23303-0001",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列程式由混淆矩陣計算精確率與召回率，執行後輸出為何？",
+    "code": "tp, fp, fn, tn = 40, 10, 20, 30\nprecision = tp / (tp + fp)\nrecall = tp / (tp + fn)\nprint(round(precision, 2), round(recall, 2))",
+    "codeLanguage": "python",
+    "verification": {
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {},
+      "verifiedAt": "2026-11-19",
+      "kind": "python-stdout",
+      "expectedStdout": "0.8 0.67"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": "0.67 0.8"
+      },
+      {
+        "id": "B",
+        "text": "0.8 0.8"
+      },
+      {
+        "id": "C",
+        "text": "0.7 0.6"
+      },
+      {
+        "id": "D",
+        "text": "0.8 0.67"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "Precision = TP/(TP+FP)，Recall = TP/(TP+FN)。",
+      "correctRationale": "precision = 40/50 = 0.8；recall = 40/60 ≈ 0.6667，四捨五入到小數兩位為 0.67。",
+      "optionRationales": {
+        "A": "精確率與召回率的順序相反。",
+        "B": "召回率的分母是 TP + FN = 60，不是 50。",
+        "C": "0.7 是 accuracy（(40+30)/100），不是精確率。",
+        "D": "正確。0.8 與 0.67。"
+      },
+      "commonTrap": "把 FP 與 FN 放錯公式。",
+      "lessonAnchor": "L23303"
+    },
+    "difficulty": 2,
+    "tags": [
+      "Python",
+      "評估指標"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "codeWalkthrough": [
+      "`tp, fp, fn, tn = 40, 10, 20, 30` 一次指定四個變數。",
+      "`precision = 40 / (40 + 10)` = 0.8。",
+      "`recall = 40 / (40 + 20)` = 0.6666…。",
+      "`round(..., 2)` 四捨五入到小數 2 位：0.8 與 0.67。",
+      "輸出 `0.8 0.67`（0.80 的尾數 0 不會顯示）。"
+    ]
+  },
+  {
+    "id": "original-L23303-0002",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列程式比對實際值與預測值計算準確率，執行後輸出為何？",
+    "code": "y_true = [1, 0, 1, 1, 0, 1]\ny_pred = [1, 0, 0, 1, 1, 1]\nacc = sum(t == p for t, p in zip(y_true, y_pred)) / len(y_true)\nprint(f\"{acc:.2f}\")",
+    "codeLanguage": "python",
+    "verification": {
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {},
+      "verifiedAt": "2026-11-19",
+      "kind": "python-stdout",
+      "expectedStdout": "0.67"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": "0.50"
+      },
+      {
+        "id": "B",
+        "text": "0.67"
+      },
+      {
+        "id": "C",
+        "text": "0.83"
+      },
+      {
+        "id": "D",
+        "text": "4"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "`zip` 逐一配對兩個串列；布林值 True 加總時視為 1。",
+      "correctRationale": "6 筆中有 4 筆預測與實際相同（第 1、2、4、6 筆），4/6 ≈ 0.6667，格式化為 0.67。",
+      "optionRationales": {
+        "A": "相同的筆數是 4 筆，不是 3 筆。",
+        "B": "正確。4/6 ≈ 0.67。",
+        "C": "有 2 筆預測錯誤，不是 1 筆。",
+        "D": "4 是答對筆數，程式輸出的是比例。"
+      },
+      "commonTrap": "逐筆比對時算錯筆數，或忘記除以總數。",
+      "lessonAnchor": "L23303"
+    },
+    "difficulty": 2,
+    "tags": [
+      "Python",
+      "準確率"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "codeWalkthrough": [
+      "`zip(y_true, y_pred)` 逐一配對：(1,1)(0,0)(1,0)(1,1)(0,1)(1,1)。",
+      "`t == p` 產生布林值，相同為 True：共 4 個 True。",
+      "`sum(...)` 中 True 視為 1，合計 4；除以長度 6 得 0.6666…。",
+      "f-string `{acc:.2f}` 格式化為小數 2 位，輸出 `0.67`。"
+    ]
+  },
+  {
+    "id": "original-L23303-0003",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列哪一種做法最可能造成「資料洩漏（Data Leakage）」，使評估結果過度樂觀？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只用訓練集計算平均與標準差，再套用到測試集"
+      },
+      {
+        "id": "B",
+        "text": "使用分層抽樣維持類別比例"
+      },
+      {
+        "id": "C",
+        "text": "在切分訓練與測試集之前，就用全部資料計算標準化參數"
+      },
+      {
+        "id": "D",
+        "text": "時間序列資料以時間先後切分"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "前處理的統計量必須只用訓練資料計算。",
+      "correctRationale": "先用全部資料計算平均與標準差，測試集的資訊就混入訓練流程，使測試分數不再代表真實表現。",
+      "optionRationales": {
+        "A": "這是避免洩漏的正確做法。",
+        "B": "分層抽樣不會造成洩漏。",
+        "C": "正確。測試集資訊混入前處理。",
+        "D": "依時間切分正是避免時間序列洩漏的做法。"
+      },
+      "commonTrap": "以為前處理不算「訓練」，因此不會洩漏。",
+      "lessonAnchor": "L23303"
+    },
+    "difficulty": 3,
+    "tags": [
+      "資料洩漏"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "applied",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L23303-0004",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "某二元分類模型的 ROC-AUC 為 0.5，這代表什麼？",
+    "options": [
+      {
+        "id": "A",
+        "text": "模型的區分能力大約等同隨機猜測"
+      },
+      {
+        "id": "B",
+        "text": "模型完美區分兩個類別"
+      },
+      {
+        "id": "C",
+        "text": "模型的準確率一定是 50%"
+      },
+      {
+        "id": "D",
+        "text": "模型的召回率一定是 100%"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "AUC 越接近 1 越好；0.5 約等於隨機猜測。",
+      "correctRationale": "AUC 是隨機抽一個正例與一個負例時，模型給正例較高分數的機率；0.5 代表沒有區分能力。",
+      "optionRationales": {
+        "A": "正確。約等同隨機猜測。",
+        "B": "完美區分時 AUC = 1。",
+        "C": "AUC 與準確率是不同指標，AUC 0.5 不代表準確率恰為 50%。",
+        "D": "AUC 不代表某個特定門檻下的召回率。"
+      },
+      "commonTrap": "把 AUC 與準確率畫上等號。",
+      "lessonAnchor": "L23303"
+    },
+    "difficulty": 2,
+    "tags": [
+      "ROC-AUC"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L23303-0005",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "要訓練模型預測未來三個月的商品銷量，切分訓練與測試資料時應如何處理？",
+    "options": [
+      {
+        "id": "A",
+        "text": "完全隨機打亂後切分"
+      },
+      {
+        "id": "B",
+        "text": "依時間先後切分：用較早的資料訓練、較晚的資料測試"
+      },
+      {
+        "id": "C",
+        "text": "用測試集反覆調整超參數直到分數最高"
+      },
+      {
+        "id": "D",
+        "text": "只使用訓練集評估即可"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "時間序列預測必須避免用未來資訊預測過去。",
+      "correctRationale": "依時間切分才能模擬真實情境（只知道過去），避免資料洩漏。",
+      "optionRationales": {
+        "A": "隨機打亂會讓模型看到未來資料，造成洩漏。",
+        "B": "正確。依時間切分。",
+        "C": "反覆用測試集調參會讓測試結果失真。",
+        "D": "只看訓練集無法評估泛化能力。"
+      },
+      "commonTrap": "把一般資料的隨機切分方法直接用在時間序列。",
+      "lessonAnchor": "L23303"
+    },
+    "difficulty": 2,
+    "tags": [
+      "驗證策略"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L23303-0006",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列 Python 程式計算 F1-score，執行後輸出為何？",
+    "code": "p, r = 0.5, 1.0\nprint(round(2 * p * r / (p + r), 3))",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "0.667",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {},
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "精確率 p = 0.5、召回率 r = 1.0。",
+      "分子 2 × 0.5 × 1.0 = 1.0；分母 0.5 + 1.0 = 1.5。",
+      "1.0 / 1.5 ≈ 0.6667。",
+      "`round(..., 3)` 輸出 `0.667`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "0.75"
+      },
+      {
+        "id": "B",
+        "text": "0.667"
+      },
+      {
+        "id": "C",
+        "text": "0.5"
+      },
+      {
+        "id": "D",
+        "text": "1.0"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "F1 = 2PR / (P + R)，是精確率與召回率的調和平均。",
+      "correctRationale": "2 × 0.5 × 1.0 / 1.5 ≈ 0.667。",
+      "optionRationales": {
+        "A": "0.75 是算術平均，不是 F1。",
+        "B": "正確。調和平均 ≈ 0.667。",
+        "C": "0.5 是精確率。",
+        "D": "1.0 是召回率。"
+      },
+      "commonTrap": "把 F1 誤當成算術平均。",
+      "lessonAnchor": "L23303"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "F1"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23303-0007",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "5 折交叉驗證（5-fold CV）的做法是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "資料分成 5 份，輪流以其中 1 份驗證、其餘 4 份訓練，共訓練 5 次並平均結果"
+      },
+      {
+        "id": "B",
+        "text": "把資料複製 5 份一起訓練"
+      },
+      {
+        "id": "C",
+        "text": "用測試集重複驗證 5 次"
+      },
+      {
+        "id": "D",
+        "text": "只訓練 1 次，用 5% 資料驗證"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "K 折交叉驗證讓每筆資料都輪流當驗證資料。",
+      "correctRationale": "平均 K 次結果，評估比單次切分更穩定。",
+      "optionRationales": {
+        "A": "正確。輪流驗證取平均。",
+        "B": "複製資料會造成洩漏。",
+        "C": "測試集不應反覆使用。",
+        "D": "這不是 5 折交叉驗證。"
+      },
+      "commonTrap": "不了解交叉驗證流程。",
+      "lessonAnchor": "L23303"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "交叉驗證"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23303-0008",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "某迴歸模型在測試集上的 R² 為 −0.3。這代表什麼？",
+    "options": [
+      {
+        "id": "A",
+        "text": "模型非常完美"
+      },
+      {
+        "id": "B",
+        "text": "R² 不可能為負，一定是算錯"
+      },
+      {
+        "id": "C",
+        "text": "模型表現比「一律預測平均值」還差"
+      },
+      {
+        "id": "D",
+        "text": "模型解釋了 30% 的變異"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "R² = 1 − 殘差平方和 / 總平方和，可能為負。",
+      "correctRationale": "負值表示模型預測誤差比直接預測平均值還大。",
+      "optionRationales": {
+        "A": "負值代表很差。",
+        "B": "R² 可以為負。",
+        "C": "正確。比預測平均值還差。",
+        "D": "負號不能忽略。"
+      },
+      "commonTrap": "以為 R² 一定介於 0 與 1。",
+      "lessonAnchor": "L23303"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "R²"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23301-0001",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列 Python 程式以訓練集擬合標準化參數並轉換測試資料，執行後輸出為何？",
+    "code": "import numpy as np\nfrom sklearn.preprocessing import StandardScaler\n\ntrain = np.array([[0.0], [10.0]])\ntest = np.array([[20.0]])\nsc = StandardScaler().fit(train)\nprint(sc.mean_[0], sc.transform(test)[0, 0])",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "5.0 3.0",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {
+        "numpy": "2.4.6",
+        "scikit-learn": "1.8.0"
+      },
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "訓練資料為 0 與 10，平均 5。",
+      "StandardScaler 使用母體標準差：√((25 + 25) / 2) = 5。",
+      "`fit(train)` 只用訓練集學參數；`sc.mean_[0]` 為 5.0。",
+      "`transform(test)`：(20 − 5) / 5 = 3.0。",
+      "輸出 `5.0 3.0`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "10.0 2.0"
+      },
+      {
+        "id": "B",
+        "text": "20.0 1.0"
+      },
+      {
+        "id": "C",
+        "text": "5.0 1.5"
+      },
+      {
+        "id": "D",
+        "text": "5.0 3.0"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "StandardScaler 只用訓練集計算平均與標準差（母體標準差），再套用到測試資料。",
+      "correctRationale": "訓練集平均 5、標準差 5；(20 − 5) / 5 = 3.0。",
+      "optionRationales": {
+        "A": "平均數算錯。",
+        "B": "用了測試資料本身擬合，這正是資料洩漏。",
+        "C": "把標準差算成 10（誤用全距）。",
+        "D": "正確。平均 5.0、轉換後 3.0。"
+      },
+      "commonTrap": "以測試資料擬合前處理參數。",
+      "lessonAnchor": "L23301"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "標準化"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23301-0002",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列 Python 程式以 pandas 進行 One-Hot 編碼，執行後輸出為何？",
+    "code": "import pandas as pd\n\ndf = pd.DataFrame({\"pay\": [\"cash\", \"card\", \"cash\", \"mobile\"]})\nprint(pd.get_dummies(df[\"pay\"]).shape)",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "(4, 3)",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {
+        "pandas": "3.0.2"
+      },
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "pay 欄有 4 筆資料，類別為 cash、card、mobile 三種。",
+      "`pd.get_dummies` 為每個類別建立一個 0/1（布林）欄位。",
+      "結果有 4 列、3 欄。",
+      "`.shape` 輸出 `(4, 3)`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "(4, 3)"
+      },
+      {
+        "id": "B",
+        "text": "(4, 1)"
+      },
+      {
+        "id": "C",
+        "text": "(3, 4)"
+      },
+      {
+        "id": "D",
+        "text": "(4, 4)"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "`pd.get_dummies` 為每個類別建立一個欄位。",
+      "correctRationale": "4 筆資料、3 種付款方式，結果為 4 列 3 欄。",
+      "optionRationales": {
+        "A": "正確。4 列 × 3 個類別欄。",
+        "B": "編碼後不再是單一欄位。",
+        "C": "列與欄的方向相反。",
+        "D": "類別只有 3 種，不是 4 種。"
+      },
+      "commonTrap": "不了解 One-Hot 編碼後的維度。",
+      "lessonAnchor": "L23301"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "One-Hot"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23301-0003",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "建立模型時，下列前處理順序何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "不切分資料，直接評估"
+      },
+      {
+        "id": "B",
+        "text": "先切分訓練／測試資料，只用訓練集擬合填補值與縮放參數，再套用到測試集"
+      },
+      {
+        "id": "C",
+        "text": "先用全部資料標準化，再切分"
+      },
+      {
+        "id": "D",
+        "text": "測試集重新擬合一套獨立的縮放參數"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "前處理參數只能由訓練資料學得。",
+      "correctRationale": "否則測試集的資訊會洩漏到訓練流程中。",
+      "optionRationales": {
+        "A": "無法評估泛化。",
+        "B": "正確。否則測試集的資訊會洩漏到訓練流程中。",
+        "C": "造成資料洩漏。",
+        "D": "推論時會與訓練不一致。"
+      },
+      "commonTrap": "前處理造成資料洩漏。",
+      "lessonAnchor": "L23301"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "前處理順序"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23301-0004",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "物流資料中「郵遞區號」有上千種類別。若使用 One-Hot 會產生過多欄位。較合適的處理方式是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "使用目標編碼或頻率編碼，並以交叉驗證方式計算以避免洩漏"
+      },
+      {
+        "id": "B",
+        "text": "對每個郵遞區號手動寫規則"
+      },
+      {
+        "id": "C",
+        "text": "直接刪除所有郵遞區號資訊"
+      },
+      {
+        "id": "D",
+        "text": "把郵遞區號當成連續數值大小比較"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "高基數類別常用目標編碼、頻率編碼或嵌入。",
+      "correctRationale": "目標編碼使用了標籤，需以交叉驗證計算避免洩漏。",
+      "optionRationales": {
+        "A": "正確。目標編碼使用了標籤，需以交叉驗證計算避免洩漏。",
+        "B": "不可行且難以維護。",
+        "C": "可能失去重要資訊。",
+        "D": "郵遞區號數值大小沒有意義。"
+      },
+      "commonTrap": "高基數類別處理不當。",
+      "lessonAnchor": "L23301"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "目標編碼"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23301-0005",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "信用評分模型中，下列哪一個衍生特徵最可能比原始欄位更具預測力？",
+    "options": [
+      {
+        "id": "A",
+        "text": "申請編號"
+      },
+      {
+        "id": "B",
+        "text": "申請人姓名的字數"
+      },
+      {
+        "id": "C",
+        "text": "申請表填寫時使用的瀏覽器顏色"
+      },
+      {
+        "id": "D",
+        "text": "負債收入比（每月應付金額 ÷ 月收入）"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "好的特徵常來自領域知識。",
+      "correctRationale": "負債收入比直接反映還款壓力，比單看收入或負債更有意義。",
+      "optionRationales": {
+        "A": "識別碼沒有預測意義。",
+        "B": "與信用風險無關。",
+        "C": "與信用風險無關。",
+        "D": "正確。具業務意義的比率特徵。"
+      },
+      "commonTrap": "只使用原始欄位，不做特徵工程。",
+      "lessonAnchor": "L23301"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "特徵建構"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23301-0006",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列三種特徵選擇方法中，哪一種是「在模型訓練過程中自動完成選擇」？",
+    "options": [
+      {
+        "id": "A",
+        "text": "過濾法（依相關係數事先篩選）"
+      },
+      {
+        "id": "B",
+        "text": "嵌入法（如 L1 正則化使部分權重為 0）"
+      },
+      {
+        "id": "C",
+        "text": "包裝法（反覆訓練評估特徵組合）"
+      },
+      {
+        "id": "D",
+        "text": "人工隨機挑選"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "特徵選擇分為過濾法、包裝法、嵌入法。",
+      "correctRationale": "嵌入法在訓練時同步完成選擇，例如 L1 正則化或樹模型的特徵重要性。",
+      "optionRationales": {
+        "A": "過濾法在訓練前獨立進行。",
+        "B": "正確。訓練過程中選擇。",
+        "C": "包裝法需反覆訓練外部評估。",
+        "D": "不是系統化方法。"
+      },
+      "commonTrap": "混淆特徵選擇方法。",
+      "lessonAnchor": "L23301"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "特徵選擇"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23301-0007",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "使用 scikit-learn 的 Pipeline 把前處理與模型串在一起，主要好處是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "讓模型準確率保證提升"
+      },
+      {
+        "id": "B",
+        "text": "取代所有特徵工程"
+      },
+      {
+        "id": "C",
+        "text": "交叉驗證時每一折自動只在訓練部分擬合前處理，避免洩漏，且上線推論流程一致"
+      },
+      {
+        "id": "D",
+        "text": "讓資料不需要切分"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "Pipeline 讓前處理與模型成為一個整體。",
+      "correctRationale": "減少手動步驟造成的錯誤與訓練／推論不一致。",
+      "optionRationales": {
+        "A": "不保證提升準確率。",
+        "B": "仍需設計特徵。",
+        "C": "正確。防洩漏並確保一致。",
+        "D": "仍需切分評估。"
+      },
+      "commonTrap": "手動前處理容易洩漏。",
+      "lessonAnchor": "L23301"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Pipeline"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23301-0008",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「教育程度：國中、高中、大學、碩士、博士」這類有順序的類別，較適合哪一種編碼方式？",
+    "options": [
+      {
+        "id": "A",
+        "text": "刪除此欄位"
+      },
+      {
+        "id": "B",
+        "text": "順序編碼（保留大小順序）"
+      },
+      {
+        "id": "C",
+        "text": "以字串長度編碼"
+      },
+      {
+        "id": "D",
+        "text": "One-Hot 編碼並刻意打亂順序"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "有序類別適合順序編碼。",
+      "correctRationale": "保留「博士 > 碩士 > 大學」的順序資訊。",
+      "optionRationales": {
+        "A": "可能失去重要資訊。",
+        "B": "正確。保留「博士 > 碩士 > 大學」的順序資訊。",
+        "C": "字串長度沒有意義。",
+        "D": "One-Hot 會失去順序資訊。"
+      },
+      "commonTrap": "有序與無序類別使用相同編碼。",
+      "lessonAnchor": "L23301"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "順序編碼"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23302-0001",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "梯度提升樹的 AUC 比邏輯迴歸高 0.005，但法規要求能清楚說明各因素影響，且邏輯迴歸部署成本較低。較合理的選擇是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "選擇邏輯迴歸，因效能差距極小且可解釋性與成本更符合需求"
+      },
+      {
+        "id": "B",
+        "text": "一律選擇分數最高的模型"
+      },
+      {
+        "id": "C",
+        "text": "兩者都不用"
+      },
+      {
+        "id": "D",
+        "text": "改用完全無法解釋的大型模型"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "模型選擇需在效能、可解釋性、成本間取捨。",
+      "correctRationale": "效能差距微小時，選擇符合限制條件的簡單模型（奧坎剃刀）。",
+      "optionRationales": {
+        "A": "正確。效能差距微小時，選擇符合限制條件的簡單模型（奧坎剃刀）。",
+        "B": "忽略法規與成本。",
+        "C": "有可行選項。",
+        "D": "違反可解釋性要求。"
+      },
+      "commonTrap": "只看離線指標選模型。",
+      "lessonAnchor": "L23302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "模型選擇"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23302-0002",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「沒有免費午餐定理（No Free Lunch）」對模型選擇的啟示是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "最新的演算法永遠最好"
+      },
+      {
+        "id": "B",
+        "text": "只要用深度學習就不需比較"
+      },
+      {
+        "id": "C",
+        "text": "沒有一種演算法在所有問題上都最好，需依問題實驗比較"
+      },
+      {
+        "id": "D",
+        "text": "所有演算法效能都相同"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "演算法表現取決於問題與資料。",
+      "correctRationale": "應建立 baseline 並在相同條件下比較候選模型。",
+      "optionRationales": {
+        "A": "新不代表適合。",
+        "B": "仍需比較。",
+        "C": "正確。應建立 baseline 並在相同條件下比較候選模型。",
+        "D": "在特定問題上會有差異。"
+      },
+      "commonTrap": "迷信某一種演算法。",
+      "lessonAnchor": "L23302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "沒有免費午餐"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23302-0003",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "比較三個候選模型時，下列做法何者最正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "用不同指標比較不同模型"
+      },
+      {
+        "id": "B",
+        "text": "每個模型各自挑選對自己最有利的測試資料"
+      },
+      {
+        "id": "C",
+        "text": "只比較訓練集上的分數"
+      },
+      {
+        "id": "D",
+        "text": "使用相同的資料切分、相同的評估指標與交叉驗證"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "公平比較需要一致的評估條件。",
+      "correctRationale": "否則差異可能來自資料或指標，而非模型本身。",
+      "optionRationales": {
+        "A": "無法比較。",
+        "B": "不公平且會高估。",
+        "C": "訓練分數無法代表泛化。",
+        "D": "正確。否則差異可能來自資料或指標，而非模型本身。"
+      },
+      "commonTrap": "在不一致的條件下比較模型。",
+      "lessonAnchor": "L23302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "公平比較"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23302-0004",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "對複雜模型的單一預測說明「各特徵貢獻了多少」，常用的事後解釋工具是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "CDC"
+      },
+      {
+        "id": "B",
+        "text": "IoU"
+      },
+      {
+        "id": "C",
+        "text": "BLEU"
+      },
+      {
+        "id": "D",
+        "text": "SHAP"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "SHAP 以 Shapley 值估計每個特徵對預測的貢獻。",
+      "correctRationale": "可用於滿足可解釋性需求，但仍需謹慎解讀。",
+      "optionRationales": {
+        "A": "CDC 是資料擷取技術。",
+        "B": "IoU 是偵測指標。",
+        "C": "BLEU 是翻譯指標。",
+        "D": "正確。可用於滿足可解釋性需求，但仍需謹慎解讀。"
+      },
+      "commonTrap": "以為複雜模型完全無法解釋。",
+      "lessonAnchor": "L23302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "SHAP"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23302-0005",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "推薦模型必須在手機上離線執行，且回應時間需低於 50 毫秒。下列哪一項做法最合適？",
+    "options": [
+      {
+        "id": "A",
+        "text": "取消所有效能評估"
+      },
+      {
+        "id": "B",
+        "text": "直接部署雲端最大模型"
+      },
+      {
+        "id": "C",
+        "text": "以知識蒸餾或量化產生輕量模型，再評估效能與延遲"
+      },
+      {
+        "id": "D",
+        "text": "提高模型層數以增加準確率"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "部署限制會影響模型選擇。",
+      "correctRationale": "蒸餾與量化可縮小模型、降低延遲，需確認效能下降可接受。",
+      "optionRationales": {
+        "A": "需要評估。",
+        "B": "無法離線且延遲高。",
+        "C": "正確。蒸餾與量化可縮小模型、降低延遲，需確認效能下降可接受。",
+        "D": "增加延遲。"
+      },
+      "commonTrap": "忽略部署環境限制。",
+      "lessonAnchor": "L23302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "部署限制"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23302-0006",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "設計深度學習模型時，下列哪一組「任務 → 輸出層」對應最正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "二元分類 → sigmoid；多類別單標籤 → softmax；迴歸 → 線性輸出"
+      },
+      {
+        "id": "B",
+        "text": "迴歸 → softmax；二元分類 → 線性輸出"
+      },
+      {
+        "id": "C",
+        "text": "多類別單標籤 → ReLU"
+      },
+      {
+        "id": "D",
+        "text": "所有任務都用 softmax"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "輸出層依任務決定。",
+      "correctRationale": "正確的輸出層搭配對應的損失函數，模型才能有效學習。",
+      "optionRationales": {
+        "A": "正確的輸出層搭配對應的損失函數，模型才能有效學習。",
+        "B": "對應錯誤。",
+        "C": "ReLU 多用於隱藏層。",
+        "D": "迴歸不適用 softmax。"
+      },
+      "commonTrap": "輸出層與任務不匹配。",
+      "lessonAnchor": "L23302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "架構設計"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23302-0007",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "在效能相近的情況下偏好較簡單的模型，這個原則的主要理由是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "簡單模型不需要資料"
+      },
+      {
+        "id": "B",
+        "text": "簡單模型通常較易解釋、成本較低、較不易過擬合且易於維護"
+      },
+      {
+        "id": "C",
+        "text": "簡單模型一定準確率最高"
+      },
+      {
+        "id": "D",
+        "text": "複雜模型不能部署"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "奧坎剃刀：如無必要，勿增實體。",
+      "correctRationale": "複雜度帶來的成本與風險，應由明顯的效益支撐。",
+      "optionRationales": {
+        "A": "仍需資料。",
+        "B": "正確。複雜度帶來的成本與風險，應由明顯的效益支撐。",
+        "C": "不保證最高。",
+        "D": "複雜模型可以部署。"
+      },
+      "commonTrap": "一味追求複雜模型。",
+      "lessonAnchor": "L23302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "奧坎剃刀"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23302-0008",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "客服團隊要建立工單分類模型，已有數萬筆標註資料。下列哪一種流程最合理？",
+    "options": [
+      {
+        "id": "A",
+        "text": "先以 TF-IDF＋邏輯迴歸建立 baseline，再比較微調預訓練語言模型的效益與成本"
+      },
+      {
+        "id": "B",
+        "text": "不做任何比較直接上線最大模型"
+      },
+      {
+        "id": "C",
+        "text": "直接從零預訓練大型語言模型"
+      },
+      {
+        "id": "D",
+        "text": "只用規則人工分類"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "從簡單 baseline 開始，再評估複雜方法是否值得。",
+      "correctRationale": "以相同評估集比較效果、延遲與成本。",
+      "optionRationales": {
+        "A": "正確。baseline 再比較。",
+        "B": "缺乏比較依據。",
+        "C": "成本極高且不必要。",
+        "D": "未善用已有資料。"
+      },
+      "commonTrap": "略過 baseline。",
+      "lessonAnchor": "L23302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "起點選擇"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23304-0001",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23304",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列 Python 程式計算超參數網格的組合數，執行後輸出為何？",
+    "code": "from itertools import product\n\nprint(len(list(product([0.01, 0.1], [3, 5, 7], [100, 200]))))",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "12",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {},
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "三個超參數分別有 2、3、2 個候選值。",
+      "`product(...)` 產生所有組合（笛卡兒積）。",
+      "`list(...)` 轉為串列，`len` 計算數量：2 × 3 × 2 = 12。",
+      "輸出 `12`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "6"
+      },
+      {
+        "id": "B",
+        "text": "7"
+      },
+      {
+        "id": "C",
+        "text": "3"
+      },
+      {
+        "id": "D",
+        "text": "12"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "網格搜尋的組合數為各超參數選項數相乘。",
+      "correctRationale": "2 × 3 × 2 = 12。",
+      "optionRationales": {
+        "A": "只算了前兩個超參數。",
+        "B": "7 是選項數相加。",
+        "C": "3 是超參數個數。",
+        "D": "正確。2×3×2 = 12。"
+      },
+      "commonTrap": "把組合數算成相加。",
+      "lessonAnchor": "L23304"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "網格搜尋"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23304-0002",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23304",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列 Python 程式比較不同分類門檻下預測為正類的數量，執行後輸出為何？",
+    "code": "probs = [0.9, 0.4, 0.35, 0.2]\nprint(sum(p >= 0.5 for p in probs), sum(p >= 0.3 for p in probs))",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "1 3",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {},
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "probs 為模型輸出的 4 個正類機率。",
+      "`p >= 0.5` 只有 0.9 成立，加總 True 得 1。",
+      "`p >= 0.3` 有 0.9、0.4、0.35 成立，得 3。",
+      "輸出 `1 3`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "3 1"
+      },
+      {
+        "id": "B",
+        "text": "1 3"
+      },
+      {
+        "id": "C",
+        "text": "2 3"
+      },
+      {
+        "id": "D",
+        "text": "1 4"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "降低門檻會讓更多樣本被預測為正類（召回率提高、精確率可能下降）。",
+      "correctRationale": "≥ 0.5 只有 0.9；≥ 0.3 有 0.9、0.4、0.35。",
+      "optionRationales": {
+        "A": "順序相反。",
+        "B": "正確。門檻 0.5 有 1 個、0.3 有 3 個。",
+        "C": "0.4 未達 0.5。",
+        "D": "0.2 未達 0.3。"
+      },
+      "commonTrap": "不了解門檻調整的效果。",
+      "lessonAnchor": "L23304"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "門檻"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23304-0003",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23304",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "超參數有 6 個、每個有多種候選值，計算資源有限。相較網格搜尋，下列哪一種方法通常更有效率？",
+    "options": [
+      {
+        "id": "A",
+        "text": "用測試集手動嘗試"
+      },
+      {
+        "id": "B",
+        "text": "網格搜尋所有組合"
+      },
+      {
+        "id": "C",
+        "text": "隨機搜尋或貝氏最佳化"
+      },
+      {
+        "id": "D",
+        "text": "只用預設值不調整"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "高維超參數空間中，網格搜尋組合數爆炸。",
+      "correctRationale": "隨機搜尋在相同預算下常找到不錯設定；貝氏最佳化依過去結果選擇下一組。",
+      "optionRationales": {
+        "A": "測試集不能用來調參。",
+        "B": "組合數過多。",
+        "C": "正確。隨機搜尋在相同預算下常找到不錯設定；貝氏最佳化依過去結果選擇下一組。",
+        "D": "可能錯失更好設定。"
+      },
+      "commonTrap": "高維時仍使用網格搜尋。",
+      "lessonAnchor": "L23304"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "搜尋方法"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23304-0004",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23304",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "模型訓練誤差 1%、驗證誤差 18%。下列哪一組改善方向最合適？",
+    "options": [
+      {
+        "id": "A",
+        "text": "刪除驗證集"
+      },
+      {
+        "id": "B",
+        "text": "增加資料或資料增強、加強正則化、簡化模型、提早停止"
+      },
+      {
+        "id": "C",
+        "text": "增加模型層數並移除正則化"
+      },
+      {
+        "id": "D",
+        "text": "只延長訓練時間"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "訓練與驗證差距大是過擬合。",
+      "correctRationale": "應提升泛化能力，而不是讓模型更複雜。",
+      "optionRationales": {
+        "A": "無法監控泛化。",
+        "B": "正確。應提升泛化能力，而不是讓模型更複雜。",
+        "C": "會加重過擬合。",
+        "D": "可能加重過擬合。"
+      },
+      "commonTrap": "依錯誤診斷選擇改善方向。",
+      "lessonAnchor": "L23304"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "改善方向"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23304-0005",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23304",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「提早停止（Early Stopping）」的做法是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只要訓練誤差下降就繼續訓練到最後"
+      },
+      {
+        "id": "B",
+        "text": "依據測試集分數決定停止點"
+      },
+      {
+        "id": "C",
+        "text": "監控驗證集表現，當連續多個回合不再改善時停止訓練"
+      },
+      {
+        "id": "D",
+        "text": "訓練一開始就停止"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "提早停止是防止過擬合的方法。",
+      "correctRationale": "在驗證表現最佳附近停止，避免持續學習雜訊。",
+      "optionRationales": {
+        "A": "可能過擬合。",
+        "B": "測試集不應參與。",
+        "C": "正確。依驗證表現停止。",
+        "D": "沒有訓練就無法學習。"
+      },
+      "commonTrap": "以測試集決定停止點。",
+      "lessonAnchor": "L23304"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "提早停止"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23304-0006",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23304",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "既要調整超參數，又想避免「用同一份資料調參與評估」造成的樂觀偏差，可以使用哪一種方法？",
+    "options": [
+      {
+        "id": "A",
+        "text": "巢狀交叉驗證：內層調參、外層評估"
+      },
+      {
+        "id": "B",
+        "text": "不調參"
+      },
+      {
+        "id": "C",
+        "text": "在同一份驗證集上調參並直接報告分數"
+      },
+      {
+        "id": "D",
+        "text": "只在訓練集上評估"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "在同一份驗證資料上調參又報告分數，會高估模型表現（樂觀偏差）。",
+      "correctRationale": "巢狀交叉驗證以內層交叉驗證調參、外層交叉驗證評估，讓評估資料不參與調參，因此能降低調參造成的樂觀偏差；它是較可靠的估計，但不保證完全不偏。",
+      "optionRationales": {
+        "A": "正確。內層調參、外層評估，評估資料不參與調參，可降低樂觀偏差。",
+        "B": "可能錯失更好模型。",
+        "C": "分數偏樂觀。",
+        "D": "無法評估泛化。"
+      },
+      "commonTrap": "用調參的同一份資料報告效能。",
+      "lessonAnchor": "L23304"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "巢狀交叉驗證"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23304-0007",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23304",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "把模型權重從 32 位元浮點數量化為 8 位元整數，主要效益與代價是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "模型會變得更大"
+      },
+      {
+        "id": "B",
+        "text": "不會有任何變化"
+      },
+      {
+        "id": "C",
+        "text": "準確率一定大幅提升"
+      },
+      {
+        "id": "D",
+        "text": "模型變小、推論變快，但可能有些微準確率下降，需評估"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "量化是常見的模型壓縮方法。",
+      "correctRationale": "可大幅降低記憶體與延遲，部署前需確認準確率下降在可接受範圍。",
+      "optionRationales": {
+        "A": "模型會變小。",
+        "B": "有明顯變化。",
+        "C": "通常不會提升。",
+        "D": "正確。變小變快、需評估精度。"
+      },
+      "commonTrap": "以為壓縮沒有代價。",
+      "lessonAnchor": "L23304"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "模型壓縮"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23304-0008",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L233",
+    "competencyCode": "L23304",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "線上模型每月以新資料訓練一個「挑戰者」模型，只有在相同評估條件下勝過現行「冠軍」模型才替換。這種做法的主要目的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "避免使用新資料"
+      },
+      {
+        "id": "B",
+        "text": "讓模型版本越多越好"
+      },
+      {
+        "id": "C",
+        "text": "持續改善模型，同時避免未經驗證的新模型降低線上表現"
+      },
+      {
+        "id": "D",
+        "text": "取代所有監控"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "冠軍／挑戰者是持續優化的常見機制。",
+      "correctRationale": "確保每次替換都有實證改善，並保留回退能力。",
+      "optionRationales": {
+        "A": "正是使用新資料。",
+        "B": "版本多不是目標。",
+        "C": "正確。持續改善且可控。",
+        "D": "仍需監控。"
+      },
+      "commonTrap": "直接用新模型覆蓋舊模型。",
+      "lessonAnchor": "L23304"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "持續優化"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  }
+]

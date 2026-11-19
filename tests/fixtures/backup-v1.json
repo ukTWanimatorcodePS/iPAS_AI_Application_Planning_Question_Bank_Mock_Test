@@ -1,0 +1,53 @@
+{
+  "app": "ipas-ai-prep",
+  "schemaVersion": 1,
+  "exportedAt": "2026-11-19T01:00:00.000Z",
+  "data": {
+    "settings": {
+      "id": "user",
+      "level": "junior",
+      "track": "both",
+      "studyGoal": { "junior": "2027 年初", "middle": "2027 年中" },
+      "restDays": [0, 6],
+      "dailyMinutes": { "min": 60, "max": 90 },
+      "theme": "system",
+      "highContrast": false,
+      "fontScale": 1,
+      "passThreshold": 80,
+      "reviewIntervals": [1, 3, 7, 14],
+      "onboarded": true,
+      "updatedAt": "2026-11-19T00:50:00.000Z"
+    },
+    "lessonProgress": [
+      { "code": "L11101", "level": "junior", "visitedAt": "2026-11-19T00:40:00.000Z", "completedAt": "2026-11-19T00:45:00.000Z", "lastPosition": "h-核心講解", "timeSpentSec": 600 }
+    ],
+    "quizSessions": [
+      {
+        "sessionId": "s-test-0001",
+        "level": "junior",
+        "mode": "practice",
+        "subject": "L11",
+        "scopeLabel": "L11101 AI 的定義與分類",
+        "competencyCodes": ["L11101"],
+        "questionIds": ["original-L11101-0001", "original-L11101-0002"],
+        "answers": { "original-L11101-0001": ["A"], "original-L11101-0002": ["C"] },
+        "revealed": ["original-L11101-0001", "original-L11101-0002"],
+        "flagged": [],
+        "currentIndex": 1,
+        "startAt": "2026-11-19T00:46:00.000Z",
+        "submittedAt": "2026-11-19T00:48:00.000Z",
+        "durationSec": 120,
+        "timeLimitSec": null,
+        "rawScore": 1,
+        "validCount": 2
+      }
+    ],
+    "attempts": [
+      { "questionId": "original-L11101-0001", "sessionId": "s-test-0001", "level": "junior", "subject": "L11", "competencyCode": "L11101", "mode": "practice", "selectedIds": ["A"], "correct": false, "timeMs": 30000, "answeredAt": "2026-11-19T00:47:00.000Z" },
+      { "questionId": "original-L11101-0002", "sessionId": "s-test-0001", "level": "junior", "subject": "L11", "competencyCode": "L11101", "mode": "practice", "selectedIds": ["C"], "correct": true, "timeMs": 25000, "answeredAt": "2026-11-19T00:47:30.000Z" }
+    ],
+    "reviewItems": [
+      { "questionId": "original-L11101-0001", "level": "junior", "subject": "L11", "competencyCode": "L11101", "mistakeCount": 1, "correctStreak": 0, "intervalDays": 1, "nextDueAt": "2026-11-20T00:47:00.000Z", "masteryStatus": "unresolved", "reason": "unknown", "firstWrongAt": "2026-11-19T00:47:00.000Z", "lastWrongAt": "2026-11-19T00:47:00.000Z", "lastAnsweredAt": "2026-11-19T00:47:00.000Z" }
+    ]
+  }
+}

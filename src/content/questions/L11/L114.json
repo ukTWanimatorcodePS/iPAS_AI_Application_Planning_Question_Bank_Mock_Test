@@ -1,0 +1,2288 @@
+[
+  {
+    "id": "original-L11401-0001",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列哪一項應用屬於生成式 AI？",
+    "options": [
+      {
+        "id": "A",
+        "text": "判斷一封郵件是否為垃圾郵件"
+      },
+      {
+        "id": "B",
+        "text": "辨識照片中的人是誰"
+      },
+      {
+        "id": "C",
+        "text": "預測客戶是否會流失"
+      },
+      {
+        "id": "D",
+        "text": "依文字描述產生一張新的商品示意圖"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "鑑別式 AI 做判斷與分類；生成式 AI 產生新內容。",
+      "correctRationale": "依描述產生新圖片是生成新內容，屬生成式 AI。",
+      "optionRationales": {
+        "A": "垃圾郵件判斷是分類任務，屬鑑別式。",
+        "B": "人臉辨識是判斷身分，屬鑑別式。",
+        "C": "流失預測是分類，屬鑑別式。",
+        "D": "正確。產生新的內容。"
+      },
+      "commonTrap": "把「看起來很聰明」的應用都當成生成式 AI。",
+      "lessonAnchor": "L11401"
+    },
+    "difficulty": 1,
+    "tags": [
+      "生成式 AI"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11401-0002",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "大型語言模型有時會產生看似合理但與事實不符的內容（幻覺），主要原因是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "模型會刻意說謊"
+      },
+      {
+        "id": "B",
+        "text": "模型依機率預測下一個 Token 生成文字，並非查詢經驗證的事實資料庫"
+      },
+      {
+        "id": "C",
+        "text": "使用者的網路速度太慢"
+      },
+      {
+        "id": "D",
+        "text": "模型參數太少，參數多的模型就完全不會發生"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "幻覺源自生成機制：模型產生「統計上可能」的文字，而不是檢索事實。",
+      "correctRationale": "LLM 的目標是生成通順合理的下一個 Token，訓練資料不足、過時或提示模糊時就可能編造內容。",
+      "optionRationales": {
+        "A": "模型沒有意圖，不是刻意說謊。",
+        "B": "正確。依機率生成，不保證事實正確。",
+        "C": "網路速度與生成內容的正確性無關。",
+        "D": "大型模型也會產生幻覺，只是頻率可能不同。"
+      },
+      "commonTrap": "認為只要模型夠大或夠新就不會有幻覺。",
+      "lessonAnchor": "L11401"
+    },
+    "difficulty": 2,
+    "tags": [
+      "幻覺"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11401-0003",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "生成對抗網路（GAN）的基本架構是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "由生成器與判別器兩個網路互相競爭訓練"
+      },
+      {
+        "id": "B",
+        "text": "只有一個逐步去除雜訊的網路"
+      },
+      {
+        "id": "C",
+        "text": "用多棵決策樹投票"
+      },
+      {
+        "id": "D",
+        "text": "把文件切段後存入向量資料庫"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "GAN 由生成器產生假資料、判別器分辨真假，兩者對抗提升。",
+      "correctRationale": "生成器努力騙過判別器，判別器努力辨別真偽，競爭讓生成品質提升。",
+      "optionRationales": {
+        "A": "正確。生成器與判別器對抗。",
+        "B": "逐步去噪是擴散模型的機制。",
+        "C": "多棵決策樹投票是隨機森林。",
+        "D": "這是 RAG 的檢索前處理。"
+      },
+      "commonTrap": "混淆 GAN 與擴散模型的生成機制。",
+      "lessonAnchor": "L11401"
+    },
+    "difficulty": 2,
+    "tags": [
+      "生成技術"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11401-0004",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "使用生成式 AI 擷取發票資料時，希望每次輸出穩定一致，較適合怎麼調整「溫度（temperature）」？",
+    "options": [
+      {
+        "id": "A",
+        "text": "調高溫度以增加創意"
+      },
+      {
+        "id": "B",
+        "text": "溫度與輸出無關"
+      },
+      {
+        "id": "C",
+        "text": "調低溫度以降低隨機性"
+      },
+      {
+        "id": "D",
+        "text": "溫度越高越正確"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "溫度控制生成的隨機程度：低溫穩定、高溫多樣。",
+      "correctRationale": "資料擷取需要一致且可預期的輸出，應調低溫度。",
+      "optionRationales": {
+        "A": "高溫度增加多樣性，適合發想，不適合資料擷取。",
+        "B": "溫度直接影響取樣的隨機性。",
+        "C": "正確。低溫度輸出較穩定。",
+        "D": "溫度高低與正確性沒有正比關係，高溫反而更容易偏離。"
+      },
+      "commonTrap": "以為溫度越高模型越聰明。",
+      "lessonAnchor": "L11401"
+    },
+    "difficulty": 1,
+    "tags": [
+      "參數設定"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11402-0001",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於「檢索增強生成（RAG）」的運作方式，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "先從知識庫檢索與問題相關的資料，再連同問題提供給語言模型生成答案"
+      },
+      {
+        "id": "B",
+        "text": "把公司文件直接寫入模型參數，所以每次更新文件都必須重新訓練"
+      },
+      {
+        "id": "C",
+        "text": "只使用關鍵字比對，不使用語言模型"
+      },
+      {
+        "id": "D",
+        "text": "用判別器分辨生成內容真假"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "RAG = 檢索（Retrieval）＋ 生成（Generation），不改變模型參數。",
+      "correctRationale": "檢索到的段落放入提示作為依據，讓模型根據最新、內部資料回答並可附來源。",
+      "optionRationales": {
+        "A": "正確。檢索後帶入提示再生成。",
+        "B": "這描述的是微調；RAG 不改參數，文件更新只需更新知識庫。",
+        "C": "RAG 的生成步驟需要語言模型，檢索也常用語意向量。",
+        "D": "這是 GAN 的判別器概念。"
+      },
+      "commonTrap": "把 RAG 誤解為把文件「訓練進」模型。",
+      "lessonAnchor": "L11402"
+    },
+    "difficulty": 2,
+    "tags": [
+      "RAG"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11402-0002",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "公司內部規章每月更新，想建立能回答最新規章且附上出處的問答機器人，較適合的做法是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "每次更新都從頭預訓練一個新的大型語言模型"
+      },
+      {
+        "id": "B",
+        "text": "直接使用一般聊天機器人，不提供任何公司資料"
+      },
+      {
+        "id": "C",
+        "text": "建立 RAG：把規章存入知識庫，回答時檢索相關條文作為依據"
+      },
+      {
+        "id": "D",
+        "text": "只用影像辨識模型處理"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "知識經常更新、需要引用出處時，RAG 通常比重新訓練更合適。",
+      "correctRationale": "RAG 只需更新知識庫即可反映新規章，並可在回答中附上檢索到的條文。",
+      "optionRationales": {
+        "A": "預訓練成本極高，且無法快速反映每月更新。",
+        "B": "一般聊天機器人不知道公司內部規章，容易產生幻覺。",
+        "C": "正確。更新知識庫即可、能附出處。",
+        "D": "規章是文字資料，影像辨識不適用。"
+      },
+      "commonTrap": "以為要讓模型懂公司資料就一定要重新訓練。",
+      "lessonAnchor": "L11402"
+    },
+    "difficulty": 2,
+    "tags": [
+      "RAG",
+      "微調"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11402-0003",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "行銷團隊用生成式 AI 產生 20 種廣告文案，再用點擊率預測模型挑出最佳的 3 種。這屬於哪一種整合模式？",
+    "options": [
+      {
+        "id": "A",
+        "text": "鑑別 → 生成"
+      },
+      {
+        "id": "B",
+        "text": "生成 → 鑑別"
+      },
+      {
+        "id": "C",
+        "text": "檢索 → 生成"
+      },
+      {
+        "id": "D",
+        "text": "只有鑑別式 AI"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "整合模式依流程順序區分。",
+      "correctRationale": "先由生成式 AI 產生候選，再由鑑別式模型評估篩選，是「生成 → 鑑別」。",
+      "optionRationales": {
+        "A": "鑑別 → 生成是先判斷再產出，例如先分類客訴再生成回覆。",
+        "B": "正確。先生成候選再由鑑別模型篩選。",
+        "C": "檢索 → 生成是 RAG，此例沒有檢索知識庫。",
+        "D": "流程中有生成式 AI 產生文案。"
+      },
+      "commonTrap": "只看參與的模型種類，沒有注意流程順序。",
+      "lessonAnchor": "L11402"
+    },
+    "difficulty": 2,
+    "tags": [
+      "整合模式"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11402-0004",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "在 RAG 系統中，把文字轉換為「向量嵌入（Embedding）」的主要目的為何？",
+    "options": [
+      {
+        "id": "A",
+        "text": "壓縮檔案以節省硬碟空間"
+      },
+      {
+        "id": "B",
+        "text": "加密文件以防止外洩"
+      },
+      {
+        "id": "C",
+        "text": "讓模型參數變多"
+      },
+      {
+        "id": "D",
+        "text": "以數值向量表示語意，以便依語意相似度檢索相關段落"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "Embedding 將文字映射成能表示語意的向量。",
+      "correctRationale": "問題與文件段落都轉成向量後，可用相似度找出語意相近的內容，即使用字不同也能找到。",
+      "optionRationales": {
+        "A": "Embedding 的目的不是壓縮檔案。",
+        "B": "Embedding 不是加密，不能保護機密。",
+        "C": "Embedding 不會改變生成模型的參數量。",
+        "D": "正確。用語意向量做相似度檢索。"
+      },
+      "commonTrap": "把 Embedding 誤解為壓縮或加密。",
+      "lessonAnchor": "L11402"
+    },
+    "difficulty": 2,
+    "tags": [
+      "Embedding"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11401-0005",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "鑑別式模型（Discriminative Model）主要學習的是什麼？",
+    "options": [
+      {
+        "id": "A",
+        "text": "資料的儲存位置"
+      },
+      {
+        "id": "B",
+        "text": "整個資料的分布，以便產生新樣本"
+      },
+      {
+        "id": "C",
+        "text": "把文字轉成語音"
+      },
+      {
+        "id": "D",
+        "text": "在給定輸入 x 的情況下，輸出 y 屬於哪一類，即 P(y|x) 或決策邊界"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "鑑別式模型專注於「區分」不同類別。",
+      "correctRationale": "它學習輸入與標籤之間的決策邊界，用於分類或預測。",
+      "optionRationales": {
+        "A": "與儲存位置無關。",
+        "B": "學習資料分布以產生新樣本是生成式模型。",
+        "C": "文字轉語音是一種應用，不是鑑別式的定義。",
+        "D": "正確。學習 P(y|x) 與決策邊界。"
+      },
+      "commonTrap": "把鑑別式與生成式的學習目標對調。",
+      "lessonAnchor": "L11401"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "鑑別式 AI"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11401-0006",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列哪一項應用最屬於鑑別式 AI？",
+    "options": [
+      {
+        "id": "A",
+        "text": "合成一段新的背景音樂"
+      },
+      {
+        "id": "B",
+        "text": "依提示詞產生插畫"
+      },
+      {
+        "id": "C",
+        "text": "依申請資料預測貸款是否會違約"
+      },
+      {
+        "id": "D",
+        "text": "自動撰寫新聞稿草稿"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "鑑別式 AI 做判斷、分類、預測。",
+      "correctRationale": "違約預測是在「會違約／不會違約」之間做判斷。",
+      "optionRationales": {
+        "A": "合成音樂屬生成式。",
+        "B": "產生插畫屬生成式。",
+        "C": "正確。做判斷預測。",
+        "D": "撰寫新聞稿屬生成式。"
+      },
+      "commonTrap": "把「預測」與「生成」混淆。",
+      "lessonAnchor": "L11401"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "鑑別式 AI"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11401-0007",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "Transformer 架構中的「自注意力（Self-Attention）」機制，主要作用是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "讓序列中每個位置都能參考其他位置的資訊，捕捉長距離關係"
+      },
+      {
+        "id": "B",
+        "text": "把資料加密後傳輸"
+      },
+      {
+        "id": "C",
+        "text": "刪除重複的訓練資料"
+      },
+      {
+        "id": "D",
+        "text": "固定每個詞只有一種意思"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "自注意力讓模型依上下文動態決定要關注哪些詞。",
+      "correctRationale": "例如理解代名詞「它」指的是前文哪個名詞，需要參考距離很遠的詞。",
+      "optionRationales": {
+        "A": "正確。捕捉序列內的關聯。",
+        "B": "與加密無關。",
+        "C": "與資料去重無關。",
+        "D": "自注意力正好能依上下文處理一詞多義。"
+      },
+      "commonTrap": "不清楚 Transformer 的核心機制。",
+      "lessonAnchor": "L11401"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Transformer"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11401-0008",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "大型語言模型（LLM）在預訓練階段主要學習的任務是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "把圖片分類成貓或狗"
+      },
+      {
+        "id": "B",
+        "text": "根據前文預測下一個 Token"
+      },
+      {
+        "id": "C",
+        "text": "把顧客分群"
+      },
+      {
+        "id": "D",
+        "text": "計算資料的平均數"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "LLM 透過大量文字學習「預測下一個 Token」。",
+      "correctRationale": "透過這個簡單目標，模型學到語法、知識與一定的推理模式。",
+      "optionRationales": {
+        "A": "影像分類是鑑別式任務。",
+        "B": "正確。預測下一個 Token。",
+        "C": "分群是非監督式學習。",
+        "D": "平均數是統計量。"
+      },
+      "commonTrap": "以為 LLM 是在資料庫中查詢答案。",
+      "lessonAnchor": "L11401"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "LLM"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11401-0009",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「擴散模型（Diffusion Model）」生成圖片的基本機制是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "讓生成器與判別器互相對抗"
+      },
+      {
+        "id": "B",
+        "text": "把多張現有圖片剪貼拼接"
+      },
+      {
+        "id": "C",
+        "text": "依照固定規則畫出幾何圖形"
+      },
+      {
+        "id": "D",
+        "text": "學習逐步去除雜訊，從隨機雜訊中還原出圖片"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "擴散模型的訓練：加入雜訊再學會去除；生成：從雜訊逐步去噪。",
+      "correctRationale": "許多文生圖工具採用擴散模型，並以文字提示引導去噪方向。",
+      "optionRationales": {
+        "A": "這是 GAN。",
+        "B": "擴散模型不是剪貼現有圖片。",
+        "C": "不是規則式繪圖。",
+        "D": "正確。逐步去噪。"
+      },
+      "commonTrap": "把擴散模型與 GAN 的機制混淆。",
+      "lessonAnchor": "L11401"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "擴散模型"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11401-0010",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "變分自編碼器（VAE）能用來生成新資料，主要是因為它？",
+    "options": [
+      {
+        "id": "A",
+        "text": "使用多棵決策樹投票"
+      },
+      {
+        "id": "B",
+        "text": "只能做資料加密"
+      },
+      {
+        "id": "C",
+        "text": "把資料壓縮到潛在空間（latent space），可從潛在空間取樣再解碼產生新樣本"
+      },
+      {
+        "id": "D",
+        "text": "直接複製訓練資料"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "VAE 由編碼器與解碼器組成，學習連續的潛在空間。",
+      "correctRationale": "在潛在空間中取樣不同的點，經解碼器可得到新的、相似但不同的資料。",
+      "optionRationales": {
+        "A": "這是隨機森林。",
+        "B": "VAE 不是加密技術。",
+        "C": "正確。潛在空間取樣再解碼。",
+        "D": "生成的是新樣本，不是複製。"
+      },
+      "commonTrap": "把壓縮編碼誤認為加密。",
+      "lessonAnchor": "L11401"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "VAE"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11401-0011",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "在大型語言模型中，「Token」指的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "一張完整的圖片"
+      },
+      {
+        "id": "B",
+        "text": "模型處理文字的基本單位，可能是一個字、詞或詞的一部分"
+      },
+      {
+        "id": "C",
+        "text": "一種資料庫"
+      },
+      {
+        "id": "D",
+        "text": "使用者的登入密碼"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "Token 是 LLM 切分文字的單位，計費與上下文長度常以 Token 計算。",
+      "correctRationale": "同一段中文切出的 Token 數量依模型的分詞方式而定。",
+      "optionRationales": {
+        "A": "不是圖片。",
+        "B": "正確。處理文字的基本單位。",
+        "C": "不是資料庫。",
+        "D": "與密碼無關。"
+      },
+      "commonTrap": "以為一個中文字一定等於一個 Token。",
+      "lessonAnchor": "L11401"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Token"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11401-0012",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於「預訓練（Pre-training）」與「微調（Fine-tuning）」，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "兩者都不會改變模型參數"
+      },
+      {
+        "id": "B",
+        "text": "預訓練是在微調之後進行"
+      },
+      {
+        "id": "C",
+        "text": "預訓練用大量通用資料建立基礎能力；微調用較少的特定領域資料讓模型適應特定任務"
+      },
+      {
+        "id": "D",
+        "text": "微調一定要使用比預訓練更多的資料"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "先預訓練成基礎模型，再依需求微調。",
+      "correctRationale": "例如通用語言模型經法律文件微調後，更擅長法律用語。",
+      "optionRationales": {
+        "A": "兩者都會調整參數；只寫提示才不改參數。",
+        "B": "順序相反。",
+        "C": "正確描述兩者。",
+        "D": "微調通常使用較少資料。"
+      },
+      "commonTrap": "把微調與提示工程混為一談。",
+      "lessonAnchor": "L11401"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "預訓練",
+      "微調"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11401-0013",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「基礎模型（Foundation Model）」最適當的描述是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "一種資料庫管理系統"
+      },
+      {
+        "id": "B",
+        "text": "專門用於加密的演算法"
+      },
+      {
+        "id": "C",
+        "text": "只能執行單一任務的小模型"
+      },
+      {
+        "id": "D",
+        "text": "以大量資料預訓練、可再透過提示或微調應用到多種下游任務的模型"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "基礎模型是通用的起點。",
+      "correctRationale": "同一個基礎模型可用於摘要、翻譯、問答等多種任務。",
+      "optionRationales": {
+        "A": "不是資料庫。",
+        "B": "不是加密演算法。",
+        "C": "基礎模型通常規模大、用途廣。",
+        "D": "正確。預訓練、可延伸到多任務。"
+      },
+      "commonTrap": "不清楚預訓練模型的角色。",
+      "lessonAnchor": "L11401"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "基礎模型"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11401-0014",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "使用生成式 AI 時，「提示（Prompt）」指的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "提供給模型的指令與上下文內容"
+      },
+      {
+        "id": "B",
+        "text": "模型的授權費用"
+      },
+      {
+        "id": "C",
+        "text": "模型的訓練資料庫"
+      },
+      {
+        "id": "D",
+        "text": "模型的硬體規格"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "Prompt 是使用者與模型溝通的輸入。",
+      "correctRationale": "提示的清楚程度與提供的背景資訊，會影響輸出的品質。",
+      "optionRationales": {
+        "A": "正確。指令與上下文。",
+        "B": "授權費用與提示無關。",
+        "C": "訓練資料不是提示。",
+        "D": "硬體規格與提示無關。"
+      },
+      "commonTrap": "忽略提示品質對輸出的影響。",
+      "lessonAnchor": "L11401"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Prompt"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11401-0015",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "行銷團隊想用生成式 AI 發想大量不同風格的活動標語，希望每次產出都有變化。較適合怎麼調整溫度（temperature）？",
+    "options": [
+      {
+        "id": "A",
+        "text": "溫度只影響速度，不影響內容"
+      },
+      {
+        "id": "B",
+        "text": "溫度只能在訓練時設定"
+      },
+      {
+        "id": "C",
+        "text": "適度調高溫度，增加輸出的多樣性"
+      },
+      {
+        "id": "D",
+        "text": "把溫度調到最低，讓每次輸出完全相同"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "溫度越高，取樣越隨機、越多樣。",
+      "correctRationale": "發想類任務需要多樣性，可適度調高溫度；但過高可能產生不通順或離題內容。",
+      "optionRationales": {
+        "A": "溫度影響取樣的隨機性，進而影響內容。",
+        "B": "溫度是推論時的生成參數。",
+        "C": "正確。調高以增加多樣性。",
+        "D": "低溫度讓輸出穩定，不利發想。"
+      },
+      "commonTrap": "以為溫度與內容無關。",
+      "lessonAnchor": "L11401"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "溫度"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11401-0016",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "詢問某語言模型最近一週發生的新聞，它給出過時或錯誤的資訊。最可能的原因是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "模型只能回答數學問題"
+      },
+      {
+        "id": "B",
+        "text": "模型故意隱瞞資訊"
+      },
+      {
+        "id": "C",
+        "text": "使用者的螢幕解析度太低"
+      },
+      {
+        "id": "D",
+        "text": "模型的知識受限於訓練資料的截止時間，且可能產生幻覺"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "模型只知道訓練資料截止前的資訊。",
+      "correctRationale": "若沒有連網檢索或 RAG，模型無法得知新資訊，還可能編造內容。",
+      "optionRationales": {
+        "A": "語言模型可回答多種問題。",
+        "B": "模型沒有意圖。",
+        "C": "解析度與回答內容無關。",
+        "D": "正確。訓練截止時間與幻覺。"
+      },
+      "commonTrap": "以為語言模型隨時掌握最新資訊。",
+      "lessonAnchor": "L11401"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "生成式 AI 限制"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11401-0017",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於生成式 AI 的「幻覺」與「偏見」，下列區分何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "兩者是同一件事"
+      },
+      {
+        "id": "B",
+        "text": "幻覺是產生與事實不符的內容；偏見是對特定群體產生不公平或刻板印象的輸出"
+      },
+      {
+        "id": "C",
+        "text": "偏見是指模型回答太慢"
+      },
+      {
+        "id": "D",
+        "text": "幻覺只會出現在圖片生成"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "兩者都是生成式 AI 的風險，但性質不同。",
+      "correctRationale": "幻覺是正確性問題；偏見是公平性問題，常來自訓練資料中的社會偏差。",
+      "optionRationales": {
+        "A": "性質不同，處理方式也不同。",
+        "B": "正確。兩種不同問題。",
+        "C": "偏見與速度無關。",
+        "D": "文字生成也常出現幻覺。"
+      },
+      "commonTrap": "把所有錯誤輸出都稱為幻覺。",
+      "lessonAnchor": "L11401"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "幻覺",
+      "偏見"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11401-0018",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "在生成對抗網路（GAN）中，「判別器（Discriminator）」的工作是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "分辨輸入的資料是真實資料還是生成器產生的假資料"
+      },
+      {
+        "id": "B",
+        "text": "調整溫度參數"
+      },
+      {
+        "id": "C",
+        "text": "產生新的假資料"
+      },
+      {
+        "id": "D",
+        "text": "把資料切分成訓練集與測試集"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "GAN 中生成器負責造假、判別器負責辨真假。",
+      "correctRationale": "判別器越強，生成器就必須產生更逼真的資料才能騙過它。",
+      "optionRationales": {
+        "A": "正確。辨別真假。",
+        "B": "溫度是語言模型的取樣參數。",
+        "C": "產生資料是生成器的工作。",
+        "D": "與資料切分無關。"
+      },
+      "commonTrap": "把生成器與判別器的角色對調。",
+      "lessonAnchor": "L11401"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "GAN"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11401-0019",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "律師事務所想用生成式 AI 起草合約。下列哪一種使用方式最恰當？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只要 AI 產出格式漂亮就代表內容正確"
+      },
+      {
+        "id": "B",
+        "text": "把 AI 產出當作草稿，由律師逐條審閱、查證法條後才使用"
+      },
+      {
+        "id": "C",
+        "text": "禁止律師修改 AI 產出的內容"
+      },
+      {
+        "id": "D",
+        "text": "直接把 AI 產出的合約交給客戶簽署"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "生成內容可能有幻覺或遺漏，專業領域需人工審閱。",
+      "correctRationale": "律師負責最終內容，AI 只是加速草擬的工具。",
+      "optionRationales": {
+        "A": "格式漂亮不代表內容正確。",
+        "B": "正確。草稿加專業審閱。",
+        "C": "禁止修改違背人類監督原則。",
+        "D": "未經審閱可能包含錯誤條款或虛構法條。"
+      },
+      "commonTrap": "把 AI 產出當作最終成品。",
+      "lessonAnchor": "L11401"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "人工審閱"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11401-0020",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列哪一組「應用 → AI 類型」的對應全部正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "信用評分 → 生成式；聊天機器人回覆 → 鑑別式"
+      },
+      {
+        "id": "B",
+        "text": "瑕疵檢測 → 生成式；翻譯 → 鑑別式"
+      },
+      {
+        "id": "C",
+        "text": "垃圾郵件分類 → 鑑別式；會議逐字稿自動摘要 → 生成式"
+      },
+      {
+        "id": "D",
+        "text": "人臉辨識 → 生成式；文生圖 → 鑑別式"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "判斷類別屬鑑別式；產出新內容屬生成式。",
+      "correctRationale": "分類郵件是判斷；摘要需要產生新的文字，屬生成式。",
+      "optionRationales": {
+        "A": "兩組都對調了。",
+        "B": "瑕疵檢測是判斷任務屬鑑別式，翻譯產生新文字屬生成式，兩組都錯。",
+        "C": "正確。兩組都正確。",
+        "D": "兩組都對調了。"
+      },
+      "commonTrap": "只看任務名稱，沒有判斷輸出是「標籤」還是「新內容」。",
+      "lessonAnchor": "L11401"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "鑑別式 AI",
+      "生成式 AI"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11402-0005",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "客服系統先用分類模型判斷客訴屬於「退貨、帳務、物流」哪一類，再依類別由語言模型產生對應的回覆草稿。這屬於哪一種整合模式？",
+    "options": [
+      {
+        "id": "A",
+        "text": "鑑別 → 生成"
+      },
+      {
+        "id": "B",
+        "text": "生成 → 鑑別"
+      },
+      {
+        "id": "C",
+        "text": "合成資料 → 訓練鑑別模型"
+      },
+      {
+        "id": "D",
+        "text": "只有生成式 AI"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "依流程順序判斷整合模式。",
+      "correctRationale": "先由鑑別式模型分類，再依結果交由生成式模型產出內容。",
+      "optionRationales": {
+        "A": "正確。先判斷再產出。",
+        "B": "生成 → 鑑別是先產出候選再篩選。",
+        "C": "此流程沒有產生訓練資料。",
+        "D": "流程中有分類模型參與。"
+      },
+      "commonTrap": "只看出現哪些模型，忽略先後順序。",
+      "lessonAnchor": "L11402"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "整合模式"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11402-0006",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "某工廠的「罕見瑕疵」樣本非常少，瑕疵檢測模型召回率偏低。下列哪一種整合做法最可能有幫助？",
+    "options": [
+      {
+        "id": "A",
+        "text": "刪除所有瑕疵樣本以平衡資料"
+      },
+      {
+        "id": "B",
+        "text": "改用文字聊天機器人判斷瑕疵"
+      },
+      {
+        "id": "C",
+        "text": "只提高模型的推論速度"
+      },
+      {
+        "id": "D",
+        "text": "用生成式模型產生合成的瑕疵影像，經人工檢查後擴充訓練資料"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "生成式 AI 可產生合成資料，協助鑑別式模型學習罕見情況。",
+      "correctRationale": "合成資料需經檢查，確保與真實瑕疵相似且不引入錯誤。",
+      "optionRationales": {
+        "A": "刪除瑕疵樣本會讓模型更學不會。",
+        "B": "聊天機器人無法直接判斷影像瑕疵。",
+        "C": "速度與召回率無關。",
+        "D": "正確。合成資料擴充罕見樣本。"
+      },
+      "commonTrap": "不知道生成式 AI 可以協助訓練鑑別式模型。",
+      "lessonAnchor": "L11402"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "合成資料"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11402-0007",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "使用生成式 AI 產生的合成資料來訓練模型時，最需要注意的風險是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "合成資料不需要任何檢查"
+      },
+      {
+        "id": "B",
+        "text": "使用合成資料就不受任何法規限制"
+      },
+      {
+        "id": "C",
+        "text": "合成資料一定比真實資料好"
+      },
+      {
+        "id": "D",
+        "text": "合成資料可能與真實分布不同或放大既有偏誤，需驗證品質"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "合成資料是工具，不是萬靈丹。",
+      "correctRationale": "若生成模型本身有偏誤，合成資料會把偏誤帶入下游模型；也要確認與真實情境的差距。",
+      "optionRationales": {
+        "A": "需要品質檢查。",
+        "B": "若合成資料源自個資，仍可能涉及法規。",
+        "C": "合成資料不一定比較好。",
+        "D": "正確。需驗證分布與偏誤。"
+      },
+      "commonTrap": "以為合成資料越多越好。",
+      "lessonAnchor": "L11402"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "合成資料"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11402-0008",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "建置企業內部規章問答的 RAG 系統，下列步驟順序何者最合理？",
+    "options": [
+      {
+        "id": "A",
+        "text": "文件切成段落 → 轉成向量存入向量資料庫 → 使用者提問時檢索相似段落 → 將段落與問題放入提示交由 LLM 生成答案"
+      },
+      {
+        "id": "B",
+        "text": "先讓 LLM 回答 → 再把答案存入資料庫 → 最後切分文件"
+      },
+      {
+        "id": "C",
+        "text": "把所有文件拿去重新預訓練模型 → 再刪除文件"
+      },
+      {
+        "id": "D",
+        "text": "使用者提問 → 直接回答 → 不需任何文件"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "RAG：切段 → 向量化 → 檢索 → 帶入提示生成。",
+      "correctRationale": "先準備可檢索的知識庫，使用時才依問題檢索並生成。",
+      "optionRationales": {
+        "A": "正確順序。",
+        "B": "順序顛倒，答案沒有依據。",
+        "C": "RAG 不需要重新預訓練模型。",
+        "D": "缺少檢索步驟，就不是 RAG。"
+      },
+      "commonTrap": "不清楚 RAG 的建置與查詢流程。",
+      "lessonAnchor": "L11402"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "RAG"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11402-0009",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "相較於直接詢問一般語言模型，RAG 系統的主要優點之一是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "完全不需要任何資料"
+      },
+      {
+        "id": "B",
+        "text": "保證回答 100% 正確"
+      },
+      {
+        "id": "C",
+        "text": "能根據最新的內部資料回答，並附上引用的來源段落"
+      },
+      {
+        "id": "D",
+        "text": "可以不需要語言模型"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "RAG 結合檢索與生成。",
+      "correctRationale": "回答依據來自檢索的文件，因此可用最新資料並附出處，方便查證。",
+      "optionRationales": {
+        "A": "RAG 需要知識庫資料。",
+        "B": "仍可能出錯，只能降低幻覺。",
+        "C": "正確。使用最新資料並附來源。",
+        "D": "生成步驟需要語言模型。"
+      },
+      "commonTrap": "以為 RAG 能完全消除錯誤。",
+      "lessonAnchor": "L11402"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "RAG"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11402-0010",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "RAG 問答系統仍然答錯問題，下列哪一種原因最可能？",
+    "options": [
+      {
+        "id": "A",
+        "text": "使用者提問用了中文"
+      },
+      {
+        "id": "B",
+        "text": "檢索步驟沒有找到正確的段落，模型只能依不相關的資料作答"
+      },
+      {
+        "id": "C",
+        "text": "RAG 系統不會使用任何文件"
+      },
+      {
+        "id": "D",
+        "text": "向量資料庫一定會讓答案變錯"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "RAG 的品質取決於檢索品質。",
+      "correctRationale": "切段方式不佳、文件過時或問題措辭不同，都可能讓檢索找不到正確內容。",
+      "optionRationales": {
+        "A": "中文提問本身不會導致錯誤。",
+        "B": "正確。檢索失敗。",
+        "C": "RAG 的核心就是使用文件。",
+        "D": "向量資料庫是工具，不是錯誤的必然原因。"
+      },
+      "commonTrap": "以為有 RAG 就不會出錯。",
+      "lessonAnchor": "L11402"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "RAG"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11402-0011",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「向量資料庫（Vector Database）」主要的功能是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "儲存向量嵌入，並依向量相似度快速找出語意相近的資料"
+      },
+      {
+        "id": "B",
+        "text": "只能依資料建立的時間排序"
+      },
+      {
+        "id": "C",
+        "text": "負責產生圖片"
+      },
+      {
+        "id": "D",
+        "text": "把資料轉成 Excel 表格"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "向量資料庫支援相似度搜尋。",
+      "correctRationale": "問題轉成向量後，可找出語意最接近的文件段落，是 RAG 的關鍵元件。",
+      "optionRationales": {
+        "A": "正確。相似度檢索。",
+        "B": "不是只按時間排序。",
+        "C": "不負責生成圖片。",
+        "D": "與表格轉換無關。"
+      },
+      "commonTrap": "把向量資料庫當成一般關聯式資料庫。",
+      "lessonAnchor": "L11402"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "向量資料庫"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11402-0012",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "使用者查詢「出差住宿費怎麼報？」，但規章原文寫的是「差旅宿泊費用申請」。哪一種檢索方式較可能找到正確段落？",
+    "options": [
+      {
+        "id": "A",
+        "text": "隨機挑選段落"
+      },
+      {
+        "id": "B",
+        "text": "只比對完全相同字詞的關鍵字搜尋"
+      },
+      {
+        "id": "C",
+        "text": "依檔案大小排序"
+      },
+      {
+        "id": "D",
+        "text": "以語意向量相似度為基礎的向量檢索"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "向量檢索比對語意，關鍵字搜尋比對字面。",
+      "correctRationale": "「住宿費」與「宿泊費用」字面不同但語意相近，向量檢索較能找到。",
+      "optionRationales": {
+        "A": "隨機挑選無法保證相關。",
+        "B": "字面不同時容易漏找。",
+        "C": "檔案大小與內容相關性無關。",
+        "D": "正確。語意相近即可找到。"
+      },
+      "commonTrap": "以為只要有搜尋功能，結果都一樣。",
+      "lessonAnchor": "L11402"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "向量檢索"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11402-0013",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於 RAG 與微調（Fine-tuning）的差異，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "RAG 會把文件永久寫入模型參數"
+      },
+      {
+        "id": "B",
+        "text": "微調不需要任何資料"
+      },
+      {
+        "id": "C",
+        "text": "RAG 不改變模型參數，透過檢索把資料放入提示；微調則用資料調整模型參數"
+      },
+      {
+        "id": "D",
+        "text": "兩者都會重新預訓練整個模型"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "RAG 改的是輸入內容；微調改的是模型本身。",
+      "correctRationale": "知識常更新、需附出處時多用 RAG；需要改變模型的風格或特定任務能力時可考慮微調。",
+      "optionRationales": {
+        "A": "RAG 不寫入參數。",
+        "B": "微調需要特定領域資料。",
+        "C": "正確區分。",
+        "D": "兩者都不是重新預訓練。"
+      },
+      "commonTrap": "把 RAG 誤以為是一種訓練。",
+      "lessonAnchor": "L11402"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "RAG",
+      "微調"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11402-0014",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "公司建置內部 RAG 問答系統，知識庫中包含一般員工不該看到的人事薪資文件。設計時最重要的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "把所有文件都開放給所有人以提高回答品質"
+      },
+      {
+        "id": "B",
+        "text": "檢索時依使用者權限過濾文件，避免模型把無權限的內容引用到回答中"
+      },
+      {
+        "id": "C",
+        "text": "只要模型夠聰明就會自動保密"
+      },
+      {
+        "id": "D",
+        "text": "不需考慮，因為是內部系統"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "RAG 的回答來自檢索內容，權限控管必須在檢索階段落實。",
+      "correctRationale": "若檢索不分權限，任何人都可能透過提問取得機密資訊。",
+      "optionRationales": {
+        "A": "全面開放會造成資訊外洩。",
+        "B": "正確。依權限過濾檢索結果。",
+        "C": "不能依賴模型自行保密。",
+        "D": "內部系統同樣需要權限控管。"
+      },
+      "commonTrap": "忽略 RAG 可能繞過原有的文件權限。",
+      "lessonAnchor": "L11402"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "RAG",
+      "權限"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11402-0015",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「人機協作（Human-in-the-loop）」在 AI 整合應用中指的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "在 AI 流程的關鍵節點保留人工判斷、確認或修正"
+      },
+      {
+        "id": "B",
+        "text": "由人工完成所有工作，不使用 AI"
+      },
+      {
+        "id": "C",
+        "text": "讓 AI 監督人類的工作時數"
+      },
+      {
+        "id": "D",
+        "text": "完全由 AI 自動決策，不需任何人"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "人機協作結合 AI 效率與人的判斷。",
+      "correctRationale": "例如 AI 產生摘要、專員確認後才送出，可兼顧效率與品質。",
+      "optionRationales": {
+        "A": "正確。關鍵節點保留人工。",
+        "B": "完全人工沒有使用 AI。",
+        "C": "這不是人機協作的意義。",
+        "D": "完全自動化沒有人參與。"
+      },
+      "commonTrap": "以為人機協作是「人做一半、AI 做一半」的分工比例。",
+      "lessonAnchor": "L11402"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "人機協作"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11402-0016",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "社群平台用語言模型生成貼文建議，再以分類模型檢查是否含仇恨或違規內容，違規者不予顯示。分類模型在此扮演的角色是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "負責合成訓練資料"
+      },
+      {
+        "id": "B",
+        "text": "生成更多貼文"
+      },
+      {
+        "id": "C",
+        "text": "提供檢索用的知識庫"
+      },
+      {
+        "id": "D",
+        "text": "鑑別式把關，篩除不當的生成內容"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "生成 → 鑑別模式中，鑑別式模型負責把關。",
+      "correctRationale": "分類模型判斷內容是否違規，降低生成式 AI 產出有害內容的風險。",
+      "optionRationales": {
+        "A": "此流程不是在產生訓練資料。",
+        "B": "分類模型不負責生成內容。",
+        "C": "此流程沒有檢索步驟。",
+        "D": "正確。鑑別式把關。"
+      },
+      "commonTrap": "不清楚整合流程中各模型的角色。",
+      "lessonAnchor": "L11402"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "內容審核"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11402-0017",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "為什麼常把鑑別式 AI 與生成式 AI 結合使用？",
+    "options": [
+      {
+        "id": "A",
+        "text": "結合後就不需要任何資料"
+      },
+      {
+        "id": "B",
+        "text": "結合後一定能完全取代人工"
+      },
+      {
+        "id": "C",
+        "text": "鑑別式擅長可量化評估的判斷，生成式擅長產出內容與自然語言互動，兩者可互補"
+      },
+      {
+        "id": "D",
+        "text": "兩者無法同時使用"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "整合可截長補短。",
+      "correctRationale": "用鑑別式模型把關生成內容，或用生成式模型把鑑別結果轉成易懂的說明。",
+      "optionRationales": {
+        "A": "仍需要資料。",
+        "B": "高風險節點仍需人工。",
+        "C": "正確。互補。",
+        "D": "兩者可以整合在同一流程。"
+      },
+      "commonTrap": "以為整合後就能完全自動化。",
+      "lessonAnchor": "L11402"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "整合價值"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11402-0018",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "銀行設計 AI 客服流程，希望兼顧效率、正確性與風險控管。下列哪一個流程最合適？",
+    "options": [
+      {
+        "id": "A",
+        "text": "把客戶問題貼到外部免費 AI 服務後直接回覆"
+      },
+      {
+        "id": "B",
+        "text": "意圖分類模型判斷問題類型 → RAG 依內部規章生成回覆草稿並附來源 → 涉及金額或爭議時由專員確認後送出"
+      },
+      {
+        "id": "C",
+        "text": "LLM 直接回答所有問題，不提供來源也不經人工"
+      },
+      {
+        "id": "D",
+        "text": "全部問題都由人工回答，不使用 AI"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "整合鑑別、檢索生成與人機協作。",
+      "correctRationale": "分類提升分流效率，RAG 提高正確性與可查證性，人工確認高風險回覆。",
+      "optionRationales": {
+        "A": "會造成客戶資料外洩。",
+        "B": "正確。兼顧效率、正確與風險。",
+        "C": "缺乏依據與把關，風險高。",
+        "D": "沒有善用 AI 提升效率。"
+      },
+      "commonTrap": "只追求自動化程度，忽略風險控管。",
+      "lessonAnchor": "L11402"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "客服流程"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11402-0019",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "開發團隊用生成式 AI 產生程式碼，再交由自動化測試程式檢查是否符合規格，未通過者重新生成。這個流程最接近哪一種整合概念？",
+    "options": [
+      {
+        "id": "A",
+        "text": "鑑別 → 生成"
+      },
+      {
+        "id": "B",
+        "text": "生成 → 驗證把關：先產生候選內容，再用可量化的檢查篩選"
+      },
+      {
+        "id": "C",
+        "text": "合成資料 → 訓練鑑別模型"
+      },
+      {
+        "id": "D",
+        "text": "RAG 檢索增強"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "先生成、再以可客觀判斷的機制檢查，是生成 → 鑑別（把關）的延伸。",
+      "correctRationale": "自動化測試提供明確的通過標準，能有效篩掉錯誤的生成結果。",
+      "optionRationales": {
+        "A": "流程順序相反。",
+        "B": "正確。生成後驗證。",
+        "C": "此流程並未訓練新模型。",
+        "D": "此流程沒有檢索文件。"
+      },
+      "commonTrap": "以為生成內容不需要驗證就能直接使用。",
+      "lessonAnchor": "L11402"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "生成與驗證"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11402-0020",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L114",
+    "competencyCode": "L11402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列關於 RAG 的敘述，何者「最正確」？",
+    "options": [
+      {
+        "id": "A",
+        "text": "RAG 只能用於影像資料"
+      },
+      {
+        "id": "B",
+        "text": "RAG 能完全消除幻覺，不需任何人工檢查"
+      },
+      {
+        "id": "C",
+        "text": "RAG 會永久改變模型的參數"
+      },
+      {
+        "id": "D",
+        "text": "RAG 能降低幻覺並提供可查證的來源，但仍需檢查回答品質"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "RAG 降低但無法消除幻覺。",
+      "correctRationale": "檢索失誤或模型誤解內容仍可能出錯，重要情境仍需人工檢查。",
+      "optionRationales": {
+        "A": "RAG 常用於文字知識問答。",
+        "B": "無法完全消除。",
+        "C": "不改變參數。",
+        "D": "正確。降低幻覺但仍需檢查。"
+      },
+      "commonTrap": "把「降低」誤認為「消除」。",
+      "lessonAnchor": "L11402"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "RAG"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  }
+]

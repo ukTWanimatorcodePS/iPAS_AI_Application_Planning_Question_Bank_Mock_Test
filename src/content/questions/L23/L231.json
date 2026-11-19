@@ -1,0 +1,1461 @@
+[
+  {
+    "id": "original-L23101-0001",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L231",
+    "competencyCode": "L23101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列 Python 程式以貝氏定理計算後驗機率，執行後輸出為何？",
+    "code": "p_a = 0.3\np_b_given_a = 0.8\np_b_given_not_a = 0.2\np_b = p_b_given_a * p_a + p_b_given_not_a * (1 - p_a)\nprint(round(p_b_given_a * p_a / p_b, 3))",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "0.632",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {},
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "先驗 P(A) = 0.3，P(B|A) = 0.8，P(B|非A) = 0.2。",
+      "全機率：P(B) = 0.8×0.3 + 0.2×0.7 = 0.24 + 0.14 = 0.38。",
+      "貝氏定理：P(A|B) = 0.24 / 0.38 ≈ 0.6316。",
+      "`round(..., 3)` 輸出 `0.632`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "0.24"
+      },
+      {
+        "id": "B",
+        "text": "0.38"
+      },
+      {
+        "id": "C",
+        "text": "0.632"
+      },
+      {
+        "id": "D",
+        "text": "0.8"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "P(A|B) = P(B|A)P(A) / P(B)，其中 P(B) 以全機率公式計算。",
+      "correctRationale": "P(B) = 0.8×0.3 + 0.2×0.7 = 0.38；後驗 = 0.24 / 0.38 ≈ 0.632。",
+      "optionRationales": {
+        "A": "0.24 只是分子 P(B|A)P(A)。",
+        "B": "0.38 是 P(B)。",
+        "C": "正確。0.24/0.38 ≈ 0.632。",
+        "D": "0.8 是 P(B|A)，不是 P(A|B)。"
+      },
+      "commonTrap": "把 P(B|A) 誤當成 P(A|B)。",
+      "lessonAnchor": "L23101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "貝氏定理"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23101-0002",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L231",
+    "competencyCode": "L23101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "某疾病盛行率 1%，檢驗敏感度 99%、偽陽性率 5%。一個人檢驗呈陽性，他真的罹病的機率最接近？",
+    "options": [
+      {
+        "id": "A",
+        "text": "約 17%"
+      },
+      {
+        "id": "B",
+        "text": "約 1%"
+      },
+      {
+        "id": "C",
+        "text": "約 99%"
+      },
+      {
+        "id": "D",
+        "text": "約 95%"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "盛行率低時，陽性結果中偽陽性占多數。",
+      "correctRationale": "0.99×0.01 ÷ (0.99×0.01 + 0.05×0.99) ≈ 0.167。",
+      "optionRationales": {
+        "A": "正確。約 16.7%。",
+        "B": "1% 是盛行率（未考慮檢驗結果）。",
+        "C": "99% 是敏感度，不是陽性預測值。",
+        "D": "95% 是特異度。"
+      },
+      "commonTrap": "忽略基本比率（盛行率）。",
+      "lessonAnchor": "L23101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "基本比率"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23101-0003",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L231",
+    "competencyCode": "L23101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "單純貝氏分類器之所以稱為「單純（Naive）」，是因為它假設？",
+    "options": [
+      {
+        "id": "A",
+        "text": "所有特徵都完全相同"
+      },
+      {
+        "id": "B",
+        "text": "資料一定服從均勻分佈"
+      },
+      {
+        "id": "C",
+        "text": "只能有一個特徵"
+      },
+      {
+        "id": "D",
+        "text": "在給定類別下，各特徵彼此條件獨立"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "條件獨立假設讓計算變得簡單。",
+      "correctRationale": "雖然現實中特徵常有關聯，但在文字分類等任務上仍常有不錯效果。",
+      "optionRationales": {
+        "A": "不是假設特徵相同。",
+        "B": "不要求均勻分佈。",
+        "C": "可有多個特徵。",
+        "D": "正確。雖然現實中特徵常有關聯，但在文字分類等任務上仍常有不錯效果。"
+      },
+      "commonTrap": "不了解單純貝氏的假設。",
+      "lessonAnchor": "L23101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "單純貝氏"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23101-0004",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L231",
+    "competencyCode": "L23101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "二元分類模型輸出「屬於正類的機率」，訓練時最常用的損失函數是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "平均絕對誤差（MAE）"
+      },
+      {
+        "id": "B",
+        "text": "交叉熵（Binary Cross-Entropy）"
+      },
+      {
+        "id": "C",
+        "text": "IoU"
+      },
+      {
+        "id": "D",
+        "text": "均方誤差（MSE）"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "交叉熵衡量預測機率與真實標籤的差異。",
+      "correctRationale": "最小化交叉熵等同於最大化概似。",
+      "optionRationales": {
+        "A": "MAE 常用於迴歸。",
+        "B": "正確。分類常用交叉熵。",
+        "C": "IoU 用於物件偵測評估。",
+        "D": "MSE 常用於迴歸。"
+      },
+      "commonTrap": "分類問題使用迴歸損失。",
+      "lessonAnchor": "L23101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "損失函數"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23101-0005",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L231",
+    "competencyCode": "L23101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「最大概似估計（MLE）」的核心想法是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "隨機選擇參數"
+      },
+      {
+        "id": "B",
+        "text": "選擇讓訓練時間最短的參數"
+      },
+      {
+        "id": "C",
+        "text": "選擇讓觀察到的資料出現機率最大的參數值"
+      },
+      {
+        "id": "D",
+        "text": "選擇讓模型最複雜的參數"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "MLE 以資料的概似函數估計參數。",
+      "correctRationale": "例如擲硬幣 10 次 7 次正面，MLE 估計正面機率為 0.7。",
+      "optionRationales": {
+        "A": "不是隨機。",
+        "B": "與訓練時間無關。",
+        "C": "正確。例如擲硬幣 10 次 7 次正面，MLE 估計正面機率為 0.7。",
+        "D": "與複雜度無關。"
+      },
+      "commonTrap": "不了解參數估計的原理。",
+      "lessonAnchor": "L23101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "MLE"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23101-0006",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L231",
+    "competencyCode": "L23101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於偏差（Bias）與變異（Variance），下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "模型太簡單通常偏差高；模型太複雜通常變異高"
+      },
+      {
+        "id": "B",
+        "text": "變異高代表欠擬合"
+      },
+      {
+        "id": "C",
+        "text": "兩者可以同時無限降低而沒有取捨"
+      },
+      {
+        "id": "D",
+        "text": "偏差高代表過擬合"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "偏差—變異權衡描述模型複雜度的影響。",
+      "correctRationale": "簡單模型系統性誤差大；複雜模型對資料波動敏感。",
+      "optionRationales": {
+        "A": "正確。簡單模型系統性誤差大；複雜模型對資料波動敏感。",
+        "B": "變異高對應過擬合。",
+        "C": "通常存在取捨。",
+        "D": "偏差高對應欠擬合。"
+      },
+      "commonTrap": "把偏差、變異與過／欠擬合對應錯誤。",
+      "lessonAnchor": "L23101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "偏差",
+      "變異"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23101-0007",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L231",
+    "competencyCode": "L23101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "兩特徵的共變異數為正值，代表什麼？",
+    "options": [
+      {
+        "id": "A",
+        "text": "兩者一定有因果關係"
+      },
+      {
+        "id": "B",
+        "text": "兩者完全獨立"
+      },
+      {
+        "id": "C",
+        "text": "兩者的平均數相同"
+      },
+      {
+        "id": "D",
+        "text": "兩者傾向同方向變動（一個高時另一個也偏高）"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "共變異數衡量兩變數共同變動的方向。",
+      "correctRationale": "正值表示同向變動；其大小受單位影響，需標準化成相關係數比較強度。",
+      "optionRationales": {
+        "A": "共變不代表因果。",
+        "B": "獨立時共變異數為 0。",
+        "C": "與平均數是否相同無關。",
+        "D": "正確。正值表示同向變動；其大小受單位影響，需標準化成相關係數比較強度。"
+      },
+      "commonTrap": "把共變異數大小直接當作關聯強度。",
+      "lessonAnchor": "L23101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "共變異數"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23101-0008",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L231",
+    "competencyCode": "L23101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "垃圾郵件過濾器原本估計一封信是垃圾信的機率為 20%，看到信中出現「免費中獎」後，更新為 85%。這兩個機率分別稱為？",
+    "options": [
+      {
+        "id": "A",
+        "text": "型一錯誤與型二錯誤"
+      },
+      {
+        "id": "B",
+        "text": "後驗機率與先驗機率"
+      },
+      {
+        "id": "C",
+        "text": "先驗機率與後驗機率"
+      },
+      {
+        "id": "D",
+        "text": "概似與證據"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "貝氏推論：先驗 × 概似 → 後驗。",
+      "correctRationale": "看到證據前的估計是先驗，看到證據後更新的是後驗。",
+      "optionRationales": {
+        "A": "這是假設檢定概念。",
+        "B": "順序相反。",
+        "C": "正確。先驗 → 後驗。",
+        "D": "概似是 P(證據|類別)。"
+      },
+      "commonTrap": "先驗與後驗弄反。",
+      "lessonAnchor": "L23101"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "先驗後驗"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23102-0001",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L231",
+    "competencyCode": "L23102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列 Python 程式進行矩陣乘法並查看結果維度，執行後輸出為何？",
+    "code": "import numpy as np\n\nA = np.ones((3, 4))\nB = np.ones((4, 2))\nprint((A @ B).shape)",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "(3, 2)",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {
+        "numpy": "2.4.6"
+      },
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "`np.ones((3, 4))` 建立 3 列 4 欄、元素皆為 1 的矩陣。",
+      "`np.ones((4, 2))` 建立 4 列 2 欄的矩陣。",
+      "`A @ B` 為矩陣乘法，內側維度 4 相同可相乘。",
+      "結果維度為 (3, 2)，`.shape` 輸出 `(3, 2)`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "(3, 4)"
+      },
+      {
+        "id": "B",
+        "text": "(3, 2)"
+      },
+      {
+        "id": "C",
+        "text": "(2, 3)"
+      },
+      {
+        "id": "D",
+        "text": "(4, 4)"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "矩陣乘法 (m×n)(n×p) = (m×p)。",
+      "correctRationale": "(3×4) 乘 (4×2) 得到 (3×2)。",
+      "optionRationales": {
+        "A": "這是 A 的維度。",
+        "B": "正確。結果為 3×2。",
+        "C": "維度順序相反。",
+        "D": "內側維度 4 會消失，不會出現 4×4。"
+      },
+      "commonTrap": "矩陣乘法的維度規則不熟。",
+      "lessonAnchor": "L23102"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "矩陣維度"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23102-0002",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L231",
+    "competencyCode": "L23102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列 Python 程式計算向量的 L2 與 L1 範數，執行後輸出為何？",
+    "code": "import numpy as np\n\nv = np.array([3, 4])\nprint(np.linalg.norm(v), np.abs(v).sum())",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "5.0 7",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {
+        "numpy": "2.4.6"
+      },
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "`v` 為向量 [3, 4]。",
+      "`np.linalg.norm(v)` 預設計算 L2 範數：√(9 + 16) = 5.0（浮點數）。",
+      "`np.abs(v).sum()` 計算 L1 範數：3 + 4 = 7（整數）。",
+      "輸出 `5.0 7`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "5.0 7"
+      },
+      {
+        "id": "B",
+        "text": "5.0 5.0"
+      },
+      {
+        "id": "C",
+        "text": "7 5.0"
+      },
+      {
+        "id": "D",
+        "text": "25 7"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "L2 範數為平方和開根號；L1 範數為絕對值和。",
+      "correctRationale": "√(3² + 4²) = 5.0；|3| + |4| = 7。",
+      "optionRationales": {
+        "A": "正確。L2 = 5.0、L1 = 7。",
+        "B": "L1 範數是 7。",
+        "C": "順序相反。",
+        "D": "25 是平方和，尚未開根號。"
+      },
+      "commonTrap": "混淆 L1 與 L2 範數。",
+      "lessonAnchor": "L23102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "範數"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23102-0003",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L231",
+    "competencyCode": "L23102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "在 RAG 的語意檢索中，常用「餘弦相似度」比較問題與文件的嵌入向量，原因是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "它只看向量方向、不受向量長度影響，適合比較語意相近程度"
+      },
+      {
+        "id": "B",
+        "text": "它一定介於 0 和 100 之間"
+      },
+      {
+        "id": "C",
+        "text": "它可以取代所有模型"
+      },
+      {
+        "id": "D",
+        "text": "它計算的是兩向量的距離總和"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "餘弦相似度衡量兩向量夾角。",
+      "correctRationale": "文字嵌入的長度不一定代表語意，方向較能反映語意相近程度。",
+      "optionRationales": {
+        "A": "正確。文字嵌入的長度不一定代表語意，方向較能反映語意相近程度。",
+        "B": "範圍是 −1 到 1。",
+        "C": "只是相似度計算。",
+        "D": "這不是餘弦相似度的定義。"
+      },
+      "commonTrap": "不清楚相似度指標的特性。",
+      "lessonAnchor": "L23102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "餘弦相似度"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23102-0004",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L231",
+    "competencyCode": "L23102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "使用 PCA 降維之前，通常需要先對特徵做標準化，主要原因是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "讓資料筆數增加"
+      },
+      {
+        "id": "B",
+        "text": "避免數值範圍大的特徵主導主成分方向"
+      },
+      {
+        "id": "C",
+        "text": "讓特徵變成類別資料"
+      },
+      {
+        "id": "D",
+        "text": "PCA 只接受負數"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "PCA 依變異大小找方向。",
+      "correctRationale": "若某特徵單位很大（如收入以元計），其變異會主導結果。",
+      "optionRationales": {
+        "A": "筆數不變。",
+        "B": "正確。若某特徵單位很大（如收入以元計），其變異會主導結果。",
+        "C": "仍為數值。",
+        "D": "PCA 可處理任意實數，沒有只接受負數的限制。"
+      },
+      "commonTrap": "未標準化就做 PCA。",
+      "lessonAnchor": "L23102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "PCA"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23102-0005",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L231",
+    "competencyCode": "L23102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "前兩個主成分的特徵值分別為 6 與 3，全部特徵值總和為 10。前兩個主成分的解釋變異比例為？",
+    "options": [
+      {
+        "id": "A",
+        "text": "30%"
+      },
+      {
+        "id": "B",
+        "text": "9%"
+      },
+      {
+        "id": "C",
+        "text": "90%"
+      },
+      {
+        "id": "D",
+        "text": "60%"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "解釋變異比例 = 選取的特徵值總和 ÷ 全部特徵值總和。",
+      "correctRationale": "(6 + 3) ÷ 10 = 0.9，即 90%。",
+      "optionRationales": {
+        "A": "只計算第二主成分。",
+        "B": "忘記除以總和後換算百分比。",
+        "C": "正確。9/10 = 90%。",
+        "D": "只計算第一主成分。"
+      },
+      "commonTrap": "不會計算解釋變異比例。",
+      "lessonAnchor": "L23102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "PCA"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23102-0006",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L231",
+    "competencyCode": "L23102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "在 NumPy 中，`A * B` 與 `A @ B` 的差別是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "`*` 是矩陣乘法；`@` 是逐元素相乘"
+      },
+      {
+        "id": "B",
+        "text": "`@` 用於字串相接"
+      },
+      {
+        "id": "C",
+        "text": "兩者完全相同"
+      },
+      {
+        "id": "D",
+        "text": "`*` 是逐元素相乘；`@` 是矩陣乘法"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "NumPy 以不同運算子區分兩種乘法。",
+      "correctRationale": "逐元素相乘要求形狀相同（或可廣播）；矩陣乘法要求內側維度相同。",
+      "optionRationales": {
+        "A": "方向相反。",
+        "B": "`@` 是矩陣乘法。",
+        "C": "兩者不同。",
+        "D": "正確。逐元素相乘要求形狀相同（或可廣播）；矩陣乘法要求內側維度相同。"
+      },
+      "commonTrap": "混用兩種乘法造成錯誤結果。",
+      "lessonAnchor": "L23102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "NumPy 運算"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23102-0007",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L231",
+    "competencyCode": "L23102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "一張 28×28 像素的灰階影像，攤平成向量輸入全連接網路時，向量長度為多少？",
+    "options": [
+      {
+        "id": "A",
+        "text": "784"
+      },
+      {
+        "id": "B",
+        "text": "2828"
+      },
+      {
+        "id": "C",
+        "text": "56"
+      },
+      {
+        "id": "D",
+        "text": "28"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "攤平就是把所有像素排成一列。",
+      "correctRationale": "28 × 28 = 784。",
+      "optionRationales": {
+        "A": "正確。28×28 = 784。",
+        "B": "不是乘積。",
+        "C": "28 + 28 = 56，算法錯誤。",
+        "D": "只有一列的長度。"
+      },
+      "commonTrap": "攤平維度計算錯誤。",
+      "lessonAnchor": "L23102"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料表示"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23102-0008",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L231",
+    "competencyCode": "L23102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於 PCA 與特徵選擇，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "特徵選擇會產生新的組合特徵"
+      },
+      {
+        "id": "B",
+        "text": "兩者都會保留原始特徵"
+      },
+      {
+        "id": "C",
+        "text": "PCA 一定比特徵選擇更好"
+      },
+      {
+        "id": "D",
+        "text": "PCA 產生原特徵的線性組合（可解釋性較低）；特徵選擇保留原始特徵子集"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "降維有兩種思路：轉換與選擇。",
+      "correctRationale": "需要可解釋性時，特徵選擇通常較易說明。",
+      "optionRationales": {
+        "A": "方向相反。",
+        "B": "PCA 產生新特徵。",
+        "C": "依需求而定。",
+        "D": "正確。需要可解釋性時，特徵選擇通常較易說明。"
+      },
+      "commonTrap": "混淆降維與特徵選擇。",
+      "lessonAnchor": "L23102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "PCA",
+      "特徵選擇"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23103-0001",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L231",
+    "competencyCode": "L23103",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列 Python 程式以梯度下降最小化 L(w) = w²，執行後輸出為何？",
+    "code": "w, lr = 10.0, 0.25\nfor _ in range(2):\n    w = w - lr * 2 * w\nprint(w)",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "2.5",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {},
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "初始 w = 10.0，學習率 0.25。",
+      "梯度為 2w；第 1 次：10 − 0.25×20 = 5.0。",
+      "第 2 次：5.0 − 0.25×10 = 2.5。",
+      "`range(2)` 只執行兩次，輸出 `2.5`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "0.0"
+      },
+      {
+        "id": "B",
+        "text": "2.5"
+      },
+      {
+        "id": "C",
+        "text": "7.5"
+      },
+      {
+        "id": "D",
+        "text": "5.0"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "L(w) = w² 的梯度為 2w，更新規則 w ← w − η·2w。",
+      "correctRationale": "第一次：10 − 0.25×20 = 5.0；第二次：5 − 0.25×10 = 2.5。",
+      "optionRationales": {
+        "A": "兩次更新還不會到達最小值 0。",
+        "B": "正確。兩次更新後為 2.5。",
+        "C": "方向錯誤，梯度下降應減去梯度。",
+        "D": "這只是第一次更新的結果。"
+      },
+      "commonTrap": "更新次數或梯度計算錯誤。",
+      "lessonAnchor": "L23103"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "梯度下降"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23103-0002",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L231",
+    "competencyCode": "L23103",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列 Python 程式計算一個 epoch 的參數更新次數，執行後輸出為何？",
+    "code": "import math\n\nprint(math.ceil(1050 / 100))",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "11",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {},
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "1050 / 100 = 10.5（浮點數）。",
+      "`math.ceil` 無條件進位為 11。",
+      "代表 10 個完整批次加 1 個 50 筆的批次。",
+      "輸出 `11`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "10"
+      },
+      {
+        "id": "B",
+        "text": "10.5"
+      },
+      {
+        "id": "C",
+        "text": "11"
+      },
+      {
+        "id": "D",
+        "text": "1050"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "一個 epoch 的更新次數 = 資料筆數 ÷ 批次大小，無條件進位（最後一批不足仍會更新）。",
+      "correctRationale": "1050 ÷ 100 = 10.5，進位為 11。",
+      "optionRationales": {
+        "A": "忽略了最後不足一批的資料。",
+        "B": "更新次數必須是整數。",
+        "C": "正確。最後 50 筆也構成一批，共 11 次。",
+        "D": "這是資料筆數。"
+      },
+      "commonTrap": "忘記最後一批也會更新。",
+      "lessonAnchor": "L23103"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "Epoch"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23103-0003",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L231",
+    "competencyCode": "L23103",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "訓練過程中損失值劇烈震盪，甚至變成 NaN。最優先應檢查與調整的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "模型名稱"
+      },
+      {
+        "id": "B",
+        "text": "測試集大小"
+      },
+      {
+        "id": "C",
+        "text": "資料是否有中文欄位名稱"
+      },
+      {
+        "id": "D",
+        "text": "學習率是否過大"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "學習率過大會讓參數更新跨過最小值，導致震盪或發散。",
+      "correctRationale": "可調降學習率、使用學習率排程或梯度裁剪。",
+      "optionRationales": {
+        "A": "模型名稱無關。",
+        "B": "測試集大小不影響訓練穩定性。",
+        "C": "欄位名稱與數值穩定性無關。",
+        "D": "正確。可調降學習率、使用學習率排程或梯度裁剪。"
+      },
+      "commonTrap": "不會診斷訓練不穩定的原因。",
+      "lessonAnchor": "L23103"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "學習率"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23103-0004",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L231",
+    "competencyCode": "L23103",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "比較批次、隨機與小批次梯度下降，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "小批次梯度下降兼顧運算效率與更新穩定性，是深度學習的主流做法"
+      },
+      {
+        "id": "B",
+        "text": "隨機梯度下降每次使用全部資料"
+      },
+      {
+        "id": "C",
+        "text": "批次梯度下降的更新雜訊最大"
+      },
+      {
+        "id": "D",
+        "text": "三者完全相同"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "三種方法差在每次更新使用的資料量。",
+      "correctRationale": "批次穩定但慢；SGD 快但雜訊大；小批次折衷並善用 GPU 平行運算。",
+      "optionRationales": {
+        "A": "正確。批次穩定但慢；SGD 快但雜訊大；小批次折衷並善用 GPU 平行運算。",
+        "B": "SGD 每次只用一筆。",
+        "C": "批次的更新最穩定。",
+        "D": "使用資料量不同。"
+      },
+      "commonTrap": "混淆三種梯度下降。",
+      "lessonAnchor": "L23103"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "梯度下降變體"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23103-0005",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L231",
+    "competencyCode": "L23103",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "Adam 最佳化器的主要特點是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "每次都使用固定且相同的學習率"
+      },
+      {
+        "id": "B",
+        "text": "只能用於線性迴歸"
+      },
+      {
+        "id": "C",
+        "text": "結合動量與自適應學習率，依各參數梯度大小自動調整更新幅度"
+      },
+      {
+        "id": "D",
+        "text": "不需要計算梯度"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "Adam 是深度學習常用的預設最佳化器。",
+      "correctRationale": "它累積梯度的一階與二階動量，使各參數有不同的有效學習率。",
+      "optionRationales": {
+        "A": "學習率會自適應調整。",
+        "B": "廣泛用於神經網路。",
+        "C": "正確。動量＋自適應學習率。",
+        "D": "仍需梯度。"
+      },
+      "commonTrap": "不清楚最佳化器的差異。",
+      "lessonAnchor": "L23103"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Adam"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23103-0006",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L231",
+    "competencyCode": "L23103",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於神經網路的損失函數，下列敘述何者最正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只能用窮舉法求解"
+      },
+      {
+        "id": "B",
+        "text": "通常是非凸函數，梯度下降可能停在局部最小值或鞍點"
+      },
+      {
+        "id": "C",
+        "text": "一定是凸函數，只有一個最小值"
+      },
+      {
+        "id": "D",
+        "text": "不需要最小化"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "凸函數只有一個全域最小值；神經網路多為非凸。",
+      "correctRationale": "實務上透過良好初始化、動量、學習率排程等方法得到不錯的解。",
+      "optionRationales": {
+        "A": "窮舉不可行。",
+        "B": "正確。實務上透過良好初始化、動量、學習率排程等方法得到不錯的解。",
+        "C": "神經網路損失多為非凸。",
+        "D": "訓練目標就是最小化損失。"
+      },
+      "commonTrap": "以為梯度下降一定找到全域最佳解。",
+      "lessonAnchor": "L23103"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "凸性"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23103-0007",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L231",
+    "competencyCode": "L23103",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "深層網路使用 sigmoid 激活函數時，前面幾層幾乎學不到東西。最可能的原因與對策是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "資料太多；刪除資料"
+      },
+      {
+        "id": "B",
+        "text": "模型太小；不需處理"
+      },
+      {
+        "id": "C",
+        "text": "梯度消失；改用 ReLU、加入殘差連接或批次正規化"
+      },
+      {
+        "id": "D",
+        "text": "梯度爆炸；把學習率調到極大"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "sigmoid 的導數最大只有 0.25，連乘後梯度迅速變小。",
+      "correctRationale": "ReLU、殘差連接、批次正規化能緩解梯度消失。",
+      "optionRationales": {
+        "A": "與資料量無關。",
+        "B": "需要處理。",
+        "C": "正確。梯度消失及對策。",
+        "D": "症狀是梯度變小，不是爆炸。"
+      },
+      "commonTrap": "不會診斷深層網路訓練問題。",
+      "lessonAnchor": "L23103"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "梯度問題"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L23103-0008",
+    "level": "middle",
+    "subject": "L23",
+    "topic": "L231",
+    "competencyCode": "L23103",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於 L1 與 L2 正則化，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "L1 只能用於影像"
+      },
+      {
+        "id": "B",
+        "text": "L2 會讓所有權重變成 0"
+      },
+      {
+        "id": "C",
+        "text": "兩者都會增加過擬合"
+      },
+      {
+        "id": "D",
+        "text": "L1 傾向讓部分權重變成 0（具特徵選擇效果）；L2 讓權重整體變小但通常不為 0"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "正則化在損失中加入權重懲罰。",
+      "correctRationale": "L1 的懲罰在 0 附近不平滑，容易得到稀疏解；L2 使權重平滑縮小。",
+      "optionRationales": {
+        "A": "適用各種模型。",
+        "B": "L2 很少讓權重恰為 0。",
+        "C": "兩者用於降低過擬合。",
+        "D": "正確。L1 的懲罰在 0 附近不平滑，容易得到稀疏解；L2 使權重平滑縮小。"
+      },
+      "commonTrap": "混淆 L1 與 L2 的效果。",
+      "lessonAnchor": "L23103"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "正則化"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  }
+]

@@ -1,0 +1,2177 @@
+[
+  {
+    "id": "original-L12101-0001",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於 No Code 與 Low Code 的差異，下列敘述何者最正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "兩者完全相同，只是名稱不同"
+      },
+      {
+        "id": "B",
+        "text": "Low Code 以視覺化開發為主，但允許在需要時撰寫少量程式擴充功能"
+      },
+      {
+        "id": "C",
+        "text": "No Code 需要大量撰寫程式碼"
+      },
+      {
+        "id": "D",
+        "text": "Low Code 只能用來製作網站，不能做流程自動化"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "No Code 完全不寫程式；Low Code 以視覺化為主、可寫少量程式。",
+      "correctRationale": "是否允許撰寫程式碼是兩者最主要的差異，Low Code 因此擴充彈性較高。",
+      "optionRationales": {
+        "A": "兩者在是否撰寫程式上有明確差異。",
+        "B": "正確。可搭配少量程式擴充。",
+        "C": "No Code 的定義就是不需撰寫程式。",
+        "D": "Low Code 平台也常用於流程與企業應用開發。"
+      },
+      "commonTrap": "把 No Code 與 Low Code 視為同義詞。",
+      "lessonAnchor": "L12101"
+    },
+    "difficulty": 1,
+    "tags": [
+      "No Code",
+      "Low Code"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "basic",
+    "questionType": "comparison",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L12101-0002",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「每當有人送出線上報名表單，就自動寄確認信並把資料寫入試算表」，這最屬於哪一類 No Code 平台功能？",
+    "options": [
+      {
+        "id": "A",
+        "text": "影像生成"
+      },
+      {
+        "id": "B",
+        "text": "模型微調"
+      },
+      {
+        "id": "C",
+        "text": "資料加密"
+      },
+      {
+        "id": "D",
+        "text": "流程自動化（觸發 → 動作）"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "流程自動化平台以「觸發 → 條件 → 動作」串接多個服務。",
+      "correctRationale": "表單送出是觸發，寄信與寫入試算表是動作，是典型流程自動化。",
+      "optionRationales": {
+        "A": "影像生成與此流程無關。",
+        "B": "微調是調整模型參數，與串接服務無關。",
+        "C": "加密是資安措施，不是流程自動化。",
+        "D": "正確。觸發後自動執行動作。"
+      },
+      "commonTrap": "把所有自動化都稱為 AI。",
+      "lessonAnchor": "L12101"
+    },
+    "difficulty": 1,
+    "tags": [
+      "流程自動化"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L12101-0003",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "財務部門的舊系統沒有提供 API，人員每天必須登入網頁下載報表再貼到 Excel。若想自動化這個重複的畫面操作，較適合哪一種工具？",
+    "options": [
+      {
+        "id": "A",
+        "text": "RPA（機器人流程自動化）"
+      },
+      {
+        "id": "B",
+        "text": "文生圖模型"
+      },
+      {
+        "id": "C",
+        "text": "向量資料庫"
+      },
+      {
+        "id": "D",
+        "text": "K-means 分群"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "RPA 以軟體機器人模擬人在電腦上的操作，適合無 API 的舊系統。",
+      "correctRationale": "登入、點選、下載、貼上屬規則明確的重複畫面操作，正是 RPA 的典型用途。",
+      "optionRationales": {
+        "A": "正確。模擬人工畫面操作。",
+        "B": "文生圖用於生成圖片，與報表下載無關。",
+        "C": "向量資料庫用於語意檢索。",
+        "D": "K-means 是分群演算法，不能操作系統畫面。"
+      },
+      "commonTrap": "以為 RPA 本身一定具有學習能力（多數 RPA 為規則式）。",
+      "lessonAnchor": "L12101"
+    },
+    "difficulty": 2,
+    "tags": [
+      "RPA"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L12102-0001",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "公司在某 No Code 平台上建立了大量應用與資料，後來想更換平台時發現資料與流程難以匯出，必須全部重做。這描述的是哪一種限制？",
+    "options": [
+      {
+        "id": "A",
+        "text": "過擬合"
+      },
+      {
+        "id": "B",
+        "text": "資料漂移"
+      },
+      {
+        "id": "C",
+        "text": "提示注入"
+      },
+      {
+        "id": "D",
+        "text": "供應商綁定（Vendor Lock-in）"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "供應商綁定指過度依賴特定平台，轉換成本高。",
+      "correctRationale": "應用與資料都依賴特定平台的格式與功能，換平台需重建，就是供應商綁定。",
+      "optionRationales": {
+        "A": "過擬合是機器學習模型的問題。",
+        "B": "資料漂移是模型上線後資料分布改變。",
+        "C": "提示注入是生成式 AI 的攻擊手法。",
+        "D": "正確。轉換平台成本高。"
+      },
+      "commonTrap": "只看初期導入成本，忽略日後轉換成本。",
+      "lessonAnchor": "L12102"
+    },
+    "difficulty": 2,
+    "tags": [
+      "供應商綁定"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L12102-0002",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列哪一種系統最不適合完全以 No Code 平台建置？",
+    "options": [
+      {
+        "id": "A",
+        "text": "部門內部的請假申請流程"
+      },
+      {
+        "id": "B",
+        "text": "每秒需處理數千筆交易、需高度客製的對外支付核心系統"
+      },
+      {
+        "id": "C",
+        "text": "活動報名表單與自動確認信"
+      },
+      {
+        "id": "D",
+        "text": "驗證新服務構想的簡易原型"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "No Code 適合內部流程、原型；高併發、高度客製的核心系統需專業開發。",
+      "correctRationale": "核心支付系統對效能、安全、客製化與稽核要求極高，超出多數 No Code 平台的能力。",
+      "optionRationales": {
+        "A": "內部請假流程規模小、變動快，很適合 No Code。",
+        "B": "正確。高併發、高度客製的核心系統不適合。",
+        "C": "報名表單是 No Code 的典型應用。",
+        "D": "原型驗證是 No Code 的強項。"
+      },
+      "commonTrap": "以為 No Code 能取代所有系統開發。",
+      "lessonAnchor": "L12102"
+    },
+    "difficulty": 2,
+    "tags": [
+      "適用情境"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L12102-0003",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "業務人員未經 IT 部門審查，自行用 No Code 工具建立應用並串接客戶資料。這種「影子 IT」最主要的風險是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "開發速度太慢"
+      },
+      {
+        "id": "B",
+        "text": "無法使用拖拉介面"
+      },
+      {
+        "id": "C",
+        "text": "可能造成資料外洩、權限失控與無人維護"
+      },
+      {
+        "id": "D",
+        "text": "一定會提升資安等級"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "公民開發需搭配 IT 治理：白名單、權限控管、盤點與負責人。",
+      "correctRationale": "未經審查的應用可能把客戶資料暴露給不當對象，離職或改組後也可能無人維護。",
+      "optionRationales": {
+        "A": "No Code 通常開發很快，速度不是問題所在。",
+        "B": "使用拖拉介面並非風險。",
+        "C": "正確。資料外洩與治理問題。",
+        "D": "缺乏管控反而可能降低資安等級。"
+      },
+      "commonTrap": "只看到業務自主的好處，忽略治理需求。",
+      "lessonAnchor": "L12102"
+    },
+    "difficulty": 2,
+    "tags": [
+      "影子 IT",
+      "治理"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L12101-0004",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「No Code（無程式碼）」平台的主要特色是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "透過拖拉元件與設定選項建置應用，完全不需撰寫程式"
+      },
+      {
+        "id": "B",
+        "text": "只能用來訓練大型語言模型"
+      },
+      {
+        "id": "C",
+        "text": "必須使用專業程式語言從零開發"
+      },
+      {
+        "id": "D",
+        "text": "只能由資深工程師使用"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "No Code 讓非技術人員也能建置應用。",
+      "correctRationale": "以圖形化介面、範本與設定完成表單、流程或網站。",
+      "optionRationales": {
+        "A": "正確。完全不寫程式。",
+        "B": "No Code 的用途很廣，不限模型訓練。",
+        "C": "這是傳統開發。",
+        "D": "No Code 主要對象是業務人員。"
+      },
+      "commonTrap": "把 No Code 與 Low Code 混淆。",
+      "lessonAnchor": "L12101"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "No Code"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12101-0005",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "Low Code（低程式碼）平台最適合哪一類使用者？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只需要瀏覽網頁的訪客"
+      },
+      {
+        "id": "B",
+        "text": "只負責硬體維修的人員"
+      },
+      {
+        "id": "C",
+        "text": "具基礎技術能力的人員或 IT 團隊，需要視覺化開發並可撰寫少量程式擴充功能"
+      },
+      {
+        "id": "D",
+        "text": "完全不能接觸任何程式碼的使用者"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "Low Code 以視覺化為主，必要時可寫程式。",
+      "correctRationale": "能加速 IT 團隊的開發，也讓具基礎能力的人員實作較複雜的邏輯。",
+      "optionRationales": {
+        "A": "訪客不是開發者。",
+        "B": "硬體維修與軟體開發平台無關。",
+        "C": "正確。具基礎技術能力者。",
+        "D": "完全不寫程式較適合 No Code。"
+      },
+      "commonTrap": "以為 Low Code 只給完全不懂技術的人使用。",
+      "lessonAnchor": "L12101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Low Code"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12101-0006",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「公民開發者（Citizen Developer）」指的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "政府機關的資訊工程師"
+      },
+      {
+        "id": "B",
+        "text": "專門寫作業系統的工程師"
+      },
+      {
+        "id": "C",
+        "text": "不屬於 IT 部門、但使用 No Code / Low Code 工具開發應用的業務人員"
+      },
+      {
+        "id": "D",
+        "text": "參與選舉投票的公民"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "公民開發者是業務端的應用開發者。",
+      "correctRationale": "他們最懂業務流程，用低／無程式工具快速實作需求。",
+      "optionRationales": {
+        "A": "不限於政府機關。",
+        "B": "作業系統開發屬專業工程。",
+        "C": "正確。業務人員自行開發。",
+        "D": "與選舉無關。"
+      },
+      "commonTrap": "從字面誤解「公民」的意思。",
+      "lessonAnchor": "L12101"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "公民開發者"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12101-0007",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「AutoML」工具的主要功能是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "自動化完成特徵處理、模型選擇與超參數調整，降低建立機器學習模型的門檻"
+      },
+      {
+        "id": "B",
+        "text": "自動產生網站的配色"
+      },
+      {
+        "id": "C",
+        "text": "自動修理電腦硬體"
+      },
+      {
+        "id": "D",
+        "text": "自動撰寫法律合約"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "AutoML 讓非專家也能訓練模型。",
+      "correctRationale": "使用者上傳資料、指定預測目標，工具自動嘗試多種模型並調參。",
+      "optionRationales": {
+        "A": "正確。自動化建模流程。",
+        "B": "與網站配色無關。",
+        "C": "與硬體維修無關。",
+        "D": "撰寫合約是生成式 AI 的應用，不是 AutoML。"
+      },
+      "commonTrap": "把 AutoML 誤當成生成式 AI。",
+      "lessonAnchor": "L12101"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "AutoML"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12101-0008",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "門市店長沒有程式背景，想用過去兩年的每日銷售資料預測下個月的銷量。較適合使用哪一類 No Code / Low Code 工具？",
+    "options": [
+      {
+        "id": "A",
+        "text": "RPA 機器人模擬點選"
+      },
+      {
+        "id": "B",
+        "text": "AutoML 平台：上傳資料、指定預測欄位，由平台自動建模"
+      },
+      {
+        "id": "C",
+        "text": "網站建置平台"
+      },
+      {
+        "id": "D",
+        "text": "文生圖工具"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "AutoML 適合非專家建立預測模型。",
+      "correctRationale": "店長只需提供資料與預測目標，平台自動完成模型選擇與調參。",
+      "optionRationales": {
+        "A": "RPA 是模擬畫面操作，不是建模。",
+        "B": "正確。適合預測建模。",
+        "C": "網站建置不負責預測。",
+        "D": "文生圖與銷售預測無關。"
+      },
+      "commonTrap": "依工具名稱而非任務需求選工具。",
+      "lessonAnchor": "L12101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "AutoML"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12101-0009",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "自動化流程：「收到報價單 Email → 若金額大於 10 萬 → 通知主管並建立簽核單」。其中「金額大於 10 萬」屬於流程的哪一部分？",
+    "options": [
+      {
+        "id": "A",
+        "text": "資料來源（Source）"
+      },
+      {
+        "id": "B",
+        "text": "觸發（Trigger）"
+      },
+      {
+        "id": "C",
+        "text": "動作（Action）"
+      },
+      {
+        "id": "D",
+        "text": "條件（Condition）"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "流程自動化常見結構：觸發 → 條件 → 動作。",
+      "correctRationale": "收到 Email 是觸發；金額大於 10 萬是判斷條件；通知與建立簽核單是動作。",
+      "optionRationales": {
+        "A": "這不是觸發 → 條件 → 動作結構中的一環。",
+        "B": "觸發是啟動流程的事件，即收到 Email。",
+        "C": "動作是通知主管與建立簽核單。",
+        "D": "正確。判斷是否繼續執行的條件。"
+      },
+      "commonTrap": "把觸發與條件混淆。",
+      "lessonAnchor": "L12101"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "觸發條件動作"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12101-0010",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "要串接兩個系統交換資料，若系統有提供 API，相較於使用 RPA 模擬畫面操作，通常的優點是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "API 一定不需要任何權限"
+      },
+      {
+        "id": "B",
+        "text": "RPA 永遠比 API 穩定"
+      },
+      {
+        "id": "C",
+        "text": "API 直接交換資料，較穩定且不受畫面改版影響"
+      },
+      {
+        "id": "D",
+        "text": "兩者完全沒有差異"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "API 是系統之間正式的資料交換介面。",
+      "correctRationale": "RPA 依賴畫面元素位置，畫面改版就可能失效；API 結構較穩定。",
+      "optionRationales": {
+        "A": "API 通常需要授權與金鑰管理。",
+        "B": "RPA 易受介面變動影響。",
+        "C": "正確。API 較穩定。",
+        "D": "兩者機制不同。"
+      },
+      "commonTrap": "在有 API 的情況下仍優先使用 RPA。",
+      "lessonAnchor": "L12101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "RPA",
+      "API"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12101-0011",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於 RPA（機器人流程自動化），下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "RPA 必須有實體機器人"
+      },
+      {
+        "id": "B",
+        "text": "多數 RPA 是依規則模擬人的電腦操作，本身不一定具有學習能力，但可搭配 AI 元件"
+      },
+      {
+        "id": "C",
+        "text": "RPA 只能用在工廠產線"
+      },
+      {
+        "id": "D",
+        "text": "RPA 一定是生成式 AI"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "RPA 的「機器人」是軟體機器人。",
+      "correctRationale": "它擅長重複性高、規則明確的電腦操作；搭配 OCR 或語言模型時才具備 AI 能力。",
+      "optionRationales": {
+        "A": "RPA 的機器人是軟體。",
+        "B": "正確。規則式為主，可搭配 AI。",
+        "C": "RPA 常用於辦公室後勤作業。",
+        "D": "RPA 不一定涉及生成式 AI。"
+      },
+      "commonTrap": "把 RPA 的「機器人」想成實體機器人或 AI。",
+      "lessonAnchor": "L12101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "RPA"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12101-0012",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "業務部門想快速建立「客戶拜訪紀錄」的線上填寫表單，並把資料存成可查詢的表格。最適合哪一類 No Code 平台？",
+    "options": [
+      {
+        "id": "A",
+        "text": "表單／資料庫平台"
+      },
+      {
+        "id": "B",
+        "text": "程式碼編譯器"
+      },
+      {
+        "id": "C",
+        "text": "AutoML 平台"
+      },
+      {
+        "id": "D",
+        "text": "影片生成工具"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "表單／資料庫平台用於蒐集與管理資料。",
+      "correctRationale": "可快速建立表單、儲存紀錄、設定權限與檢視方式。",
+      "optionRationales": {
+        "A": "正確。蒐集與管理資料。",
+        "B": "編譯器屬傳統開發工具。",
+        "C": "AutoML 用於建模。",
+        "D": "影片工具不處理表單。"
+      },
+      "commonTrap": "依名稱判斷而非依需求選擇平台類型。",
+      "lessonAnchor": "L12101"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "平台類型"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12101-0013",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "行銷人員想在不寫程式的情況下，用範本拖拉出活動網頁並發布，最適合使用？",
+    "options": [
+      {
+        "id": "A",
+        "text": "RPA 工具"
+      },
+      {
+        "id": "B",
+        "text": "向量資料庫"
+      },
+      {
+        "id": "C",
+        "text": "資料加密軟體"
+      },
+      {
+        "id": "D",
+        "text": "網站／App 建置平台"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "網站建置平台提供範本與元件。",
+      "correctRationale": "拖拉排版後即可發布，適合活動頁等需求。",
+      "optionRationales": {
+        "A": "RPA 模擬操作，不負責網頁設計。",
+        "B": "向量資料庫用於語意檢索。",
+        "C": "加密軟體不負責建站。",
+        "D": "正確。範本拖拉建站。"
+      },
+      "commonTrap": "不熟悉 No Code 平台的類型。",
+      "lessonAnchor": "L12101"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "平台類型"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12101-0014",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "在流程自動化平台中加入語言模型步驟：「收到客戶來信 → 由語言模型產生 3 行摘要 → 寫入工單系統」。這主要展現了什麼？",
+    "options": [
+      {
+        "id": "A",
+        "text": "No Code 流程可結合生成式 AI 處理文字任務"
+      },
+      {
+        "id": "B",
+        "text": "語言模型取代了整個工單系統"
+      },
+      {
+        "id": "C",
+        "text": "No Code 平台不能處理任何文字"
+      },
+      {
+        "id": "D",
+        "text": "此流程一定需要撰寫大量程式"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "No Code / Low Code 平台常提供 AI 步驟元件。",
+      "correctRationale": "業務人員可直接把摘要、分類、翻譯等 AI 能力串進流程。",
+      "optionRationales": {
+        "A": "正確。結合生成式 AI。",
+        "B": "語言模型只是流程中的一個步驟。",
+        "C": "平台可處理文字。",
+        "D": "透過現成元件設定即可。"
+      },
+      "commonTrap": "以為使用 AI 一定要寫程式。",
+      "lessonAnchor": "L12101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "生成式 AI 整合"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12101-0015",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "部分 Low Code 平台允許使用者「用自然語言描述需求」，例如輸入「建立一個請假申請表，送出後通知主管」，平台就自動產生表單與流程。這是哪一種結合？",
+    "options": [
+      {
+        "id": "A",
+        "text": "RPA 模擬滑鼠點擊"
+      },
+      {
+        "id": "B",
+        "text": "以生成式 AI 協助產生應用元件與流程"
+      },
+      {
+        "id": "C",
+        "text": "資料投毒攻擊"
+      },
+      {
+        "id": "D",
+        "text": "K-means 分群"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "生成式 AI 讓建置應用的門檻再降低。",
+      "correctRationale": "使用者描述需求，平台生成初版表單與流程，再由使用者調整確認。",
+      "optionRationales": {
+        "A": "RPA 不負責從需求描述產生應用。",
+        "B": "正確。生成式 AI 輔助建置。",
+        "C": "資料投毒是攻擊手法。",
+        "D": "分群與建置應用無關。"
+      },
+      "commonTrap": "不知道生成式 AI 可協助開發應用。",
+      "lessonAnchor": "L12101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "生成式 AI 整合"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12101-0016",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "人資部門想建立回答員工常見問題的聊天機器人，並以公司規章為依據。在 No Code 平台上較合適的做法是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "要求每位員工自行訓練一個大型語言模型"
+      },
+      {
+        "id": "B",
+        "text": "把規章貼到公開社群讓員工自己找"
+      },
+      {
+        "id": "C",
+        "text": "以拖拉方式建立聊天機器人，串接規章知識庫並設定權限與人工轉接"
+      },
+      {
+        "id": "D",
+        "text": "使用 RPA 模擬人工回覆"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "No Code 平台常提供聊天機器人建置與知識庫串接。",
+      "correctRationale": "以規章為依據回答，並保留轉接人工，兼顧效率與正確性。",
+      "optionRationales": {
+        "A": "每人訓練模型成本極高且不必要。",
+        "B": "公開規章可能外洩內部資訊。",
+        "C": "正確。串接知識庫並設權限與轉接。",
+        "D": "RPA 不擅長理解問題並回答。"
+      },
+      "commonTrap": "以為建聊天機器人一定要從頭訓練模型。",
+      "lessonAnchor": "L12101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "聊天機器人"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12101-0017",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "企業推動公民開發者計畫時，下列哪一項配套最重要？",
+    "options": [
+      {
+        "id": "A",
+        "text": "完全禁止 IT 部門介入"
+      },
+      {
+        "id": "B",
+        "text": "讓員工自由串接任何外部服務"
+      },
+      {
+        "id": "C",
+        "text": "不需要任何人負責維護"
+      },
+      {
+        "id": "D",
+        "text": "由 IT 提供核准的平台、資料權限與安全規範，並盤點員工建立的應用"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "公民開發需要 IT 治理配合。",
+      "correctRationale": "平台白名單、權限控管與應用盤點，可避免影子 IT 與資料外洩。",
+      "optionRationales": {
+        "A": "缺少 IT 治理容易產生風險。",
+        "B": "任意串接可能外洩資料。",
+        "C": "應用需要負責人維護。",
+        "D": "正確。IT 治理配套。"
+      },
+      "commonTrap": "只看到公民開發的速度優勢。",
+      "lessonAnchor": "L12101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "公民開發者",
+      "治理"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12101-0018",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "依「需要撰寫程式碼的程度」由多到少排序，下列何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "三者撰寫程式碼的程度相同"
+      },
+      {
+        "id": "B",
+        "text": "No Code → Low Code → 傳統開發"
+      },
+      {
+        "id": "C",
+        "text": "Low Code → 傳統開發 → No Code"
+      },
+      {
+        "id": "D",
+        "text": "傳統開發 → Low Code → No Code"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "三者可視為一條光譜。",
+      "correctRationale": "傳統開發全部寫程式；Low Code 以視覺化為主、可寫少量程式；No Code 不寫程式。",
+      "optionRationales": {
+        "A": "三者差異正在於程式碼的多寡。",
+        "B": "順序相反。",
+        "C": "順序錯誤。",
+        "D": "正確。由多到少正確。"
+      },
+      "commonTrap": "光譜的方向記反。",
+      "lessonAnchor": "L12101"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "開發方式"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12101-0019",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "IT 部門要在一個月內為業務單位建立含審批流程、與 ERP 串接、並有少數特殊計算邏輯的內部應用。較適合的方式是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "用 RPA 錄製所有畫面操作取代系統"
+      },
+      {
+        "id": "B",
+        "text": "只能使用完全不允許寫程式的 No Code 平台"
+      },
+      {
+        "id": "C",
+        "text": "使用 Low Code 平台以視覺化快速建置，特殊邏輯再撰寫少量程式擴充"
+      },
+      {
+        "id": "D",
+        "text": "必須從零用傳統方式開發，不可使用任何平台"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "Low Code 兼顧開發速度與擴充彈性。",
+      "correctRationale": "標準功能用視覺化元件，特殊計算與系統串接以少量程式補足。",
+      "optionRationales": {
+        "A": "RPA 不適合取代整個應用系統。",
+        "B": "純 No Code 可能無法實作特殊邏輯與串接。",
+        "C": "正確。速度與彈性兼顧。",
+        "D": "可行但較慢，未必是最佳選擇。"
+      },
+      "commonTrap": "不了解 Low Code 的定位。",
+      "lessonAnchor": "L12101"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Low Code"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12102-0004",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "行銷部門用 No Code 平台，兩天內就完成活動報名頁與自動確認信。這最能說明 No Code 的哪一項優勢？",
+    "options": [
+      {
+        "id": "A",
+        "text": "效能一定優於傳統開發"
+      },
+      {
+        "id": "B",
+        "text": "開發速度快"
+      },
+      {
+        "id": "C",
+        "text": "完全沒有授權成本"
+      },
+      {
+        "id": "D",
+        "text": "可以無限客製化"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "No Code 透過範本與拖拉元件大幅縮短開發時間。",
+      "correctRationale": "簡單、標準化的需求能在極短時間內上線。",
+      "optionRationales": {
+        "A": "效能不一定優於傳統開發。",
+        "B": "正確。開發快速。",
+        "C": "No Code 通常有訂閱或授權費用。",
+        "D": "客製化正是 No Code 的限制之一。"
+      },
+      "commonTrap": "把 No Code 的優點過度延伸。",
+      "lessonAnchor": "L12102"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "優勢"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12102-0005",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "由最懂流程的業務人員直接用 No Code 建置應用，可以「減少需求轉譯落差」。這句話的意思是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "不必先把需求轉述給工程師再實作，減少溝通過程中的誤解"
+      },
+      {
+        "id": "B",
+        "text": "不再需要任何需求"
+      },
+      {
+        "id": "C",
+        "text": "程式碼會自動翻譯成英文"
+      },
+      {
+        "id": "D",
+        "text": "業務人員可以不遵守公司規範"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "傳統開發需要「業務描述需求 → 工程師理解 → 實作」，每一步都可能失真。",
+      "correctRationale": "業務人員自己動手，能更貼近實際需求。",
+      "optionRationales": {
+        "A": "正確。減少轉述造成的誤解。",
+        "B": "仍然需要清楚的需求。",
+        "C": "與語言翻譯無關。",
+        "D": "仍需遵守規範與治理。"
+      },
+      "commonTrap": "只記得「貼近業務」卻不懂其原因。",
+      "lessonAnchor": "L12102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "優勢"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12102-0006",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "公司請假流程每季都會調整簽核規則。使用 No Code 建置此流程的主要好處是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "一旦建好就永遠不能修改"
+      },
+      {
+        "id": "B",
+        "text": "規則變動時可以快速修改並重新發布"
+      },
+      {
+        "id": "C",
+        "text": "一定不需要任何人維護"
+      },
+      {
+        "id": "D",
+        "text": "效能會隨修改次數自動提升"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "No Code 易於修改迭代。",
+      "correctRationale": "需求變動頻繁的流程，用視覺化工具調整比改寫程式快得多。",
+      "optionRationales": {
+        "A": "可以隨時修改。",
+        "B": "正確。易於迭代。",
+        "C": "仍需要負責人維護。",
+        "D": "修改次數與效能無關。"
+      },
+      "commonTrap": "忽略「易於迭代」也是重要的優勢。",
+      "lessonAnchor": "L12102"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "優勢"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12102-0007",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "團隊想在 No Code 平台實作一套特殊的計價演算法，卻發現平台元件無法表達這種邏輯。這反映了哪一項限制？",
+    "options": [
+      {
+        "id": "A",
+        "text": "客製化受限"
+      },
+      {
+        "id": "B",
+        "text": "供應商綁定"
+      },
+      {
+        "id": "C",
+        "text": "資料漂移"
+      },
+      {
+        "id": "D",
+        "text": "過擬合"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "No Code 的功能受限於平台提供的元件。",
+      "correctRationale": "特殊、複雜的商業邏輯可能無法用現成元件實作，需要 Low Code 或傳統開發。",
+      "optionRationales": {
+        "A": "正確。平台元件無法表達特殊邏輯。",
+        "B": "供應商綁定是指轉換平台的成本。",
+        "C": "資料漂移是模型資料分布改變。",
+        "D": "過擬合是模型問題。"
+      },
+      "commonTrap": "把各種限制混為一談。",
+      "lessonAnchor": "L12102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "限制",
+      "客製化"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12102-0008",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "一個用 No Code 建立的內部報名系統，開放給全公司兩萬名員工同時使用後，速度變得非常慢。這主要反映哪一項限制？",
+    "options": [
+      {
+        "id": "A",
+        "text": "資料最小化"
+      },
+      {
+        "id": "B",
+        "text": "模型的溫度設定太高"
+      },
+      {
+        "id": "C",
+        "text": "提示注入"
+      },
+      {
+        "id": "D",
+        "text": "可擴展性與效能限制"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "No Code 平台在大量使用者或資料時可能效能不足。",
+      "correctRationale": "設計時需評估使用規模，必要時採用可擴展的架構。",
+      "optionRationales": {
+        "A": "資料最小化是個資原則。",
+        "B": "溫度是生成式 AI 的參數。",
+        "C": "提示注入是資安攻擊。",
+        "D": "正確。規模擴大後效能不足。"
+      },
+      "commonTrap": "只用小規模試用結果推論全面上線的表現。",
+      "lessonAnchor": "L12102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "限制",
+      "擴展性"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12102-0009",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "某 No Code 平台依「使用人數 × 每月費用」計價。公司從 20 人試用擴大到 2,000 人使用時，最需要重新評估的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "是否需要更換網路線"
+      },
+      {
+        "id": "B",
+        "text": "平台介面的顏色"
+      },
+      {
+        "id": "C",
+        "text": "授權成本與總持有成本（TCO）是否仍然划算"
+      },
+      {
+        "id": "D",
+        "text": "員工的打字速度"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "No Code 初期成本低，但規模化後費用可能大幅上升。",
+      "correctRationale": "擴大使用前應試算長期費用，並與其他方案比較 TCO。",
+      "optionRationales": {
+        "A": "與網路線無關。",
+        "B": "顏色與成本無關。",
+        "C": "正確。規模化後的總成本。",
+        "D": "與打字速度無關。"
+      },
+      "commonTrap": "以為 No Code 一定比較便宜。",
+      "lessonAnchor": "L12102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "授權成本",
+      "TCO"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12102-0010",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "企業想讓 No Code 應用與核心 ERP 系統進行即時、雙向且複雜的資料同步。最可能遇到的情況是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "深度整合複雜度高，常需要專業開發或 Low Code 擴充協助"
+      },
+      {
+        "id": "B",
+        "text": "No Code 平台一定能免設定完成所有整合"
+      },
+      {
+        "id": "C",
+        "text": "整合完全不需要考慮資料一致性"
+      },
+      {
+        "id": "D",
+        "text": "ERP 會自動變成 No Code 平台"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "與核心系統的深度整合是 No Code 的常見限制。",
+      "correctRationale": "即時雙向同步涉及錯誤處理、資料一致性與權限，常需專業技術。",
+      "optionRationales": {
+        "A": "正確。整合複雜，需專業協助。",
+        "B": "現成連接器未必涵蓋所有需求。",
+        "C": "資料一致性是整合的關鍵問題。",
+        "D": "ERP 不會自動轉換。"
+      },
+      "commonTrap": "低估系統整合的難度。",
+      "lessonAnchor": "L12102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "限制",
+      "整合"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12102-0011",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "新創團隊想驗證一個新服務是否有市場，但資源有限。下列哪一種策略最合理？",
+    "options": [
+      {
+        "id": "A",
+        "text": "一開始就投入大量資金用傳統方式開發完整系統"
+      },
+      {
+        "id": "B",
+        "text": "先用 No Code 快速做出可用原型（MVP）驗證需求，用戶成長後再評估以專業開發重建"
+      },
+      {
+        "id": "C",
+        "text": "不做任何原型，直接正式發表"
+      },
+      {
+        "id": "D",
+        "text": "只做市場調查，永遠不做產品"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "常見做法是先用 No Code 驗證，再依成果決定是否重建。",
+      "correctRationale": "可用最低成本確認市場需求，避免投入大量資源在不被需要的產品上。",
+      "optionRationales": {
+        "A": "尚未驗證需求就大量投入，風險高。",
+        "B": "正確。先驗證、再擴大。",
+        "C": "沒有原型就無法驗證。",
+        "D": "最終仍需要產品才能驗證價值。"
+      },
+      "commonTrap": "以為 No Code 與傳統開發只能二選一。",
+      "lessonAnchor": "L12102"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "混合策略"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12102-0012",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「概念驗證（PoC, Proof of Concept）」的目的為何？",
+    "options": [
+      {
+        "id": "A",
+        "text": "取代所有正式測試"
+      },
+      {
+        "id": "B",
+        "text": "全面上線給所有使用者"
+      },
+      {
+        "id": "C",
+        "text": "撰寫系統的使用者手冊"
+      },
+      {
+        "id": "D",
+        "text": "以小規模方式驗證某個想法或技術是否可行"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "PoC 用最小成本驗證可行性。",
+      "correctRationale": "確認可行後再投入更多資源，進入試點或正式開發。",
+      "optionRationales": {
+        "A": "PoC 不能取代正式測試。",
+        "B": "全面上線是後期階段。",
+        "C": "手冊撰寫不是 PoC 的目的。",
+        "D": "正確。小規模驗證可行性。"
+      },
+      "commonTrap": "把 PoC 當成正式上線。",
+      "lessonAnchor": "L12102"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "PoC"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12102-0013",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "選擇 No Code 平台時，下列哪一項做法最能降低「供應商綁定」的風險？",
+    "options": [
+      {
+        "id": "A",
+        "text": "不留任何資料備份"
+      },
+      {
+        "id": "B",
+        "text": "選擇功能最多但資料無法匯出的平台"
+      },
+      {
+        "id": "C",
+        "text": "優先選擇資料與流程設定可完整匯出、並支援標準格式或 API 的平台"
+      },
+      {
+        "id": "D",
+        "text": "把所有業務都集中在單一平台上"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "資料可攜性是降低供應商綁定的關鍵。",
+      "correctRationale": "能匯出資料與設定，日後轉換平台時才不必從零開始。",
+      "optionRationales": {
+        "A": "沒有備份會讓轉換更困難、風險更高。",
+        "B": "無法匯出會加重綁定。",
+        "C": "正確。確保資料可攜。",
+        "D": "過度集中會提高依賴程度。"
+      },
+      "commonTrap": "選平台時只看功能，不看退出成本。",
+      "lessonAnchor": "L12102"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "供應商綁定"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12102-0014",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列哪一種情境「最適合」採用 No Code 平台？",
+    "options": [
+      {
+        "id": "A",
+        "text": "需要極度客製化演算法的高頻交易系統"
+      },
+      {
+        "id": "B",
+        "text": "部門內部使用、需求經常變動、使用人數有限的流程應用"
+      },
+      {
+        "id": "C",
+        "text": "必須通過嚴格稽核但平台無法提供紀錄的醫療設備軟體"
+      },
+      {
+        "id": "D",
+        "text": "每秒處理上萬筆交易的核心支付系統"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "No Code 適合規模小、變動快的內部應用。",
+      "correctRationale": "核心、高併發、高度客製或嚴格法規系統較不適合。",
+      "optionRationales": {
+        "A": "高度客製演算法不適合。",
+        "B": "正確。典型適用情境。",
+        "C": "無法滿足稽核要求的平台不適合。",
+        "D": "高併發核心系統不適合。"
+      },
+      "commonTrap": "不會判斷 No Code 的適用範圍。",
+      "lessonAnchor": "L12102"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "適用情境"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12102-0015",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "為了在推廣 No Code 的同時降低資安風險，IT 部門最優先應建立的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "取消所有帳號密碼以方便使用"
+      },
+      {
+        "id": "B",
+        "text": "禁止所有員工使用任何軟體"
+      },
+      {
+        "id": "C",
+        "text": "讓員工自行決定可以串接哪些外部服務"
+      },
+      {
+        "id": "D",
+        "text": "核准平台白名單、資料分級與連接器權限規範"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "治理讓業務自主與安全兼顧。",
+      "correctRationale": "白名單與資料分級規範能控制資料流向，避免影子 IT。",
+      "optionRationales": {
+        "A": "取消驗證嚴重違反資安原則。",
+        "B": "全面禁止會失去效益。",
+        "C": "任意串接容易造成資料外洩。",
+        "D": "正確。平台白名單與資料規範。"
+      },
+      "commonTrap": "把治理理解為全面禁止。",
+      "lessonAnchor": "L12102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "治理"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12102-0016",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "醫療機構想用某 No Code 平台建置涉及病人資料的流程，但平台無法提供完整的存取紀錄與稽核功能。最適當的判斷是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "此平台無法滿足法規與稽核要求，不應用於該流程，應另尋符合要求的方案"
+      },
+      {
+        "id": "B",
+        "text": "把病人資料改成圖片就不需要稽核"
+      },
+      {
+        "id": "C",
+        "text": "只要開發速度快，就可以忽略稽核需求"
+      },
+      {
+        "id": "D",
+        "text": "先上線，等出事再補紀錄"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "嚴格法規的系統，平台必須能提供合規所需的功能。",
+      "correctRationale": "病人資料屬敏感個資，缺乏存取紀錄將無法證明合規，也無法追查事件。",
+      "optionRationales": {
+        "A": "正確。不符合合規需求就不採用。",
+        "B": "改變格式不影響資料的敏感性。",
+        "C": "速度不能凌駕法規要求。",
+        "D": "事後補救無法彌補已發生的違規。"
+      },
+      "commonTrap": "把開發速度放在合規之上。",
+      "lessonAnchor": "L12102"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "法規",
+      "稽核"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12102-0017",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「可擴展性（Scalability）」指的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "系統可以更換顏色主題"
+      },
+      {
+        "id": "B",
+        "text": "系統可以列印報表"
+      },
+      {
+        "id": "C",
+        "text": "系統在使用者、資料量或交易量增加時，仍能維持服務品質的能力"
+      },
+      {
+        "id": "D",
+        "text": "系統畫面可以放大縮小"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "可擴展性是評估平台是否適合長期成長的重要指標。",
+      "correctRationale": "若擴展性不足，使用量增加時會變慢或無法服務。",
+      "optionRationales": {
+        "A": "主題顏色與擴展性無關。",
+        "B": "列印功能與擴展性無關。",
+        "C": "正確。因應成長的能力。",
+        "D": "畫面縮放是介面功能。"
+      },
+      "commonTrap": "從字面誤解「擴展」。",
+      "lessonAnchor": "L12102"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "可擴展性"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12102-0018",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「使用 No Code 平台一定比傳統開發便宜。」這個說法的主要問題是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "完全正確，沒有任何問題"
+      },
+      {
+        "id": "B",
+        "text": "忽略授權費隨規模增加、轉換成本與長期維運，需比較總持有成本"
+      },
+      {
+        "id": "C",
+        "text": "No Code 平台永遠免費"
+      },
+      {
+        "id": "D",
+        "text": "傳統開發不需要任何成本"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "初期便宜不代表長期便宜。",
+      "correctRationale": "使用人數增加、綁定特定平台、日後轉換的成本，都要納入 TCO。",
+      "optionRationales": {
+        "A": "說法過於絕對。",
+        "B": "正確。需比較 TCO。",
+        "C": "多數平台需付費。",
+        "D": "傳統開發也有人力與維運成本。"
+      },
+      "commonTrap": "只比較初期導入成本。",
+      "lessonAnchor": "L12102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "成本"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12102-0019",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L121",
+    "competencyCode": "L12102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "某 No Code 平台的資料只能存放在國外機房，但公司所屬產業法規要求特定客戶資料須存放於國內。最適當的做法是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "把資料分成很多小檔案上傳就沒問題"
+      },
+      {
+        "id": "B",
+        "text": "請員工私下使用個人帳號"
+      },
+      {
+        "id": "C",
+        "text": "確認法規要求後，選擇能符合資料存放地要求的方案，或不將受規範資料放上該平台"
+      },
+      {
+        "id": "D",
+        "text": "直接使用，因為是雲端服務就不受限制"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "資料存放地點可能受到法規或合約限制。",
+      "correctRationale": "平台選擇需符合資料落地要求，否則受規範資料不應放上去。",
+      "optionRationales": {
+        "A": "拆分檔案不改變資料存放地點。",
+        "B": "私人帳號更難控管，形成影子 IT。",
+        "C": "正確。依法規選擇方案。",
+        "D": "雲端服務仍須符合法規。"
+      },
+      "commonTrap": "忽略資料存放地點的法規限制。",
+      "lessonAnchor": "L12102"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料落地"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  }
+]

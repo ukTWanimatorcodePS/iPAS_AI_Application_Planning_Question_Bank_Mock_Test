@@ -1,0 +1,246 @@
+{
+  "lastCheckedAt": "2026-11-19",
+  "checkedPages": [
+    "https://ipd.nat.gov.tw/ipas/certification/AIAP/exam-info",
+    "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+    "https://ipd.nat.gov.tw/ipas/certification/AIAP/news"
+  ],
+  "findings": [
+    "評鑑內容範圍最新版仍為 115.06（2026-06-02），本站課綱與之一致。",
+    "官網最新消息未見 116 年（2027）簡章；115 年簡章係於 114.12.24 公告，2027 年考期與規則尚未公布。",
+    "115 年獲證條件：初級同時報考全科平均 70 分且每科不低於 60 分，非同時報考則每科 70 分；中級科目 1＋科目 2 各 70 分取得數據分析證書，科目 1＋科目 3 各 70 分取得機器學習證書。",
+    "115 年度簡章（115.04 版）§2.3：每科目為單選題 50 題、電腦化測驗；初級每科 75 分鐘、中級每科 90 分鐘；中級科目 2、3 同一時段擇一應考，且包含程式相關題型。",
+    "官方公告試題可公開下載，但查核頁面未見明示允許轉載、重製或改作的授權條款，因此本站只提供連結，不收錄題目內容。",
+    "初級（11404）與中級（1150410）學習指引勘誤表已逐項對照本站講義與題庫（2026-11-19），未發現本站採用勘誤前的錯誤說法。"
+  ],
+  "reuseStatus": "link-only",
+  "documents": [
+    {
+      "id": "syllabus-11506",
+      "type": "syllabus",
+      "level": "both",
+      "subject": null,
+      "title": "AI 應用規劃師能力鑑定 評鑑內容範圍參考（115.06）",
+      "version": "115.06",
+      "publishedAt": "2026-06-02",
+      "url": "https://www.ipas.org.tw/api/proxy/uploads/certification_attachment/8039a24c849c4fb4a6dd7f942576d4f8/AI%E6%87%89%E7%94%A8%E8%A6%8F%E5%8A%83%E5%B8%AB%E8%83%BD%E5%8A%9B%E9%91%91%E5%AE%9A_%E8%A9%95%E9%91%91%E5%85%A7%E5%AE%B9%E7%AF%84%E5%9C%8D%E5%8F%83%E8%80%83_11506_20260602161501.pdf"
+    },
+    {
+      "id": "brochure-115",
+      "type": "brochure",
+      "level": "both",
+      "subject": null,
+      "title": "115 年度 AI 應用規劃師能力鑑定簡章（初、中級）115.04 版",
+      "version": "115.04",
+      "publishedAt": "2026-04-10",
+      "url": "https://www.ipas.org.tw/api/proxy/uploads/certification_attachment/8039a24c849c4fb4a6dd7f942576d4f8/115%E5%B9%B4%E5%BA%A6AI%E6%87%89%E7%94%A8%E8%A6%8F%E5%8A%83%E5%B8%AB%E8%83%BD%E5%8A%9B%E9%91%91%E5%AE%9A%E7%B0%A1%E7%AB%A0(%E5%88%9D%E3%80%81%E4%B8%AD%E7%B4%9A)_0410_20260410144503.pdf"
+    },
+    {
+      "id": "credit-115",
+      "type": "rules",
+      "level": "middle",
+      "subject": null,
+      "title": "115 年度 AI 應用規劃師能力鑑定（中級科目抵免辦法）11501 版",
+      "version": "11501",
+      "publishedAt": null,
+      "url": "https://ipd.nat.gov.tw/ipas/certification/AIAP/exam-info"
+    },
+    {
+      "id": "guide-L11",
+      "type": "guide",
+      "level": "junior",
+      "subject": "L11",
+      "title": "學習指引 初級科目 1 人工智慧基礎概論（1141203 版）",
+      "version": "1141203",
+      "publishedAt": "2025-12-22",
+      "url": "https://www.ipas.org.tw/api/proxy/uploads/certification_resource/bf93f438f7be48d295c1b40a34d79f3d/AI%E6%87%89%E7%94%A8%E8%A6%8F%E5%8A%83%E5%B8%AB(%E5%88%9D%E7%B4%9A)-%E5%AD%B8%E7%BF%92%E6%8C%87%E5%BC%95-%E7%A7%91%E7%9B%AE1_%E4%BA%BA%E5%B7%A5%E6%99%BA%E6%85%A7%E5%9F%BA%E7%A4%8E%E6%A6%82%E8%AB%961141203_20251222172144.pdf"
+    },
+    {
+      "id": "guide-L12",
+      "type": "guide",
+      "level": "junior",
+      "subject": "L12",
+      "title": "學習指引 初級科目 2 生成式 AI 應用與規劃",
+      "version": "114123",
+      "publishedAt": "2025-12-22",
+      "url": "https://www.ipas.org.tw/api/proxy/uploads/certification_resource/bf93f438f7be48d295c1b40a34d79f3d/AI%E6%87%89%E7%94%A8%E8%A6%8F%E5%8A%83%E5%B8%AB(%E5%88%9D%E7%B4%9A)-%E5%AD%B8%E7%BF%92%E6%8C%87%E5%BC%95-%E7%A7%91%E7%9B%AE2_%E7%94%9F%E6%88%90%E5%BC%8FAI%E6%87%89%E7%94%A8%E8%88%87%E8%A6%8F%E5%8A%83114123_20251222172159.pdf"
+    },
+    {
+      "id": "guide-L21",
+      "type": "guide",
+      "level": "middle",
+      "subject": "L21",
+      "title": "學習指引 中級科目 1 人工智慧技術應用規劃",
+      "version": null,
+      "publishedAt": "2025-12-22",
+      "url": "https://www.ipas.org.tw/api/proxy/uploads/certification_resource/bf93f438f7be48d295c1b40a34d79f3d/AI%E6%87%89%E7%94%A8%E8%A6%8F%E5%8A%83%E5%B8%AB(%E4%B8%AD%E7%B4%9A)-%E5%AD%B8%E7%BF%92%E6%8C%87%E5%BC%95-%E7%A7%91%E7%9B%AE1%E4%BA%BA%E5%B7%A5%E6%99%BA%E6%85%A7%E6%8A%80%E8%A1%93%E6%87%89%E7%94%A8%E8%A6%8F%E5%8A%83_20251222101833.pdf"
+    },
+    {
+      "id": "guide-L22",
+      "type": "guide",
+      "level": "middle",
+      "subject": "L22",
+      "title": "學習指引 中級科目 2 大數據處理分析與應用",
+      "version": null,
+      "publishedAt": "2025-12-22",
+      "url": "https://www.ipas.org.tw/api/proxy/uploads/certification_resource/bf93f438f7be48d295c1b40a34d79f3d/AI%E6%87%89%E7%94%A8%E8%A6%8F%E5%8A%83%E5%B8%AB(%E4%B8%AD%E7%B4%9A)-%E5%AD%B8%E7%BF%92%E6%8C%87%E5%BC%95-%E7%A7%91%E7%9B%AE2%E5%A4%A7%E6%95%B8%E6%93%9A%E8%99%95%E7%90%86%E5%88%86%E6%9E%90%E8%88%87%E6%87%89%E7%94%A8_20251222101850.pdf"
+    },
+    {
+      "id": "guide-L23",
+      "type": "guide",
+      "level": "middle",
+      "subject": "L23",
+      "title": "學習指引 中級科目 3 機器學習技術與應用",
+      "version": null,
+      "publishedAt": "2025-12-22",
+      "url": "https://www.ipas.org.tw/api/proxy/uploads/certification_resource/bf93f438f7be48d295c1b40a34d79f3d/AI%E6%87%89%E7%94%A8%E8%A6%8F%E5%8A%83%E5%B8%AB(%E4%B8%AD%E7%B4%9A)-%E5%AD%B8%E7%BF%92%E6%8C%87%E5%BC%95-%E7%A7%91%E7%9B%AE3%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92%E6%8A%80%E8%A1%93%E8%88%87%E6%87%89%E7%94%A8_20251222101907.pdf"
+    },
+    {
+      "id": "errata-junior",
+      "type": "errata",
+      "level": "junior",
+      "subject": null,
+      "title": "初級學習指引勘誤表（11404）",
+      "version": "11404",
+      "publishedAt": "2025-12-22",
+      "url": "https://www.ipas.org.tw/api/proxy/uploads/certification_resource/bf93f438f7be48d295c1b40a34d79f3d/AI%E6%87%89%E7%94%A8%E8%A6%8F%E5%8A%83%E5%B8%AB(%E5%88%9D%E7%B4%9A)%E5%AD%B8%E7%BF%92%E6%8C%87%E5%BC%95%E5%8B%98%E8%AA%A4%E8%A1%A811404_20251222101819.pdf"
+    },
+    {
+      "id": "errata-middle",
+      "type": "errata",
+      "level": "middle",
+      "subject": null,
+      "title": "中級學習指引勘誤表（1150410）",
+      "version": "1150410",
+      "publishedAt": "2026-04-10",
+      "url": "https://www.ipas.org.tw/api/proxy/uploads/certification_resource/bf93f438f7be48d295c1b40a34d79f3d/AI%E6%87%89%E7%94%A8%E8%A6%8F%E5%8A%83%E5%B8%AB(%E4%B8%AD%E7%B4%9A)_%E5%AD%B8%E7%BF%92%E6%8C%87%E5%BC%95%E5%8B%98%E8%AA%A4%E8%A1%A8_1150410_20260410150331.pdf"
+    }
+  ],
+  "examPapers": [
+    {
+      "level": "junior",
+      "subject": "L11",
+      "year": 2025,
+      "rocYear": 114,
+      "session": "第四梯次",
+      "announcedAt": "2025-11-20"
+    },
+    {
+      "level": "junior",
+      "subject": "L12",
+      "year": 2025,
+      "rocYear": 114,
+      "session": "第四梯次",
+      "announcedAt": "2025-11-20"
+    },
+    {
+      "level": "junior",
+      "subject": "L11",
+      "year": 2026,
+      "rocYear": 115,
+      "session": "第一次",
+      "announcedAt": null
+    },
+    {
+      "level": "junior",
+      "subject": "L12",
+      "year": 2026,
+      "rocYear": 115,
+      "session": "第一次",
+      "announcedAt": null
+    },
+    {
+      "level": "junior",
+      "subject": "L11",
+      "year": 2026,
+      "rocYear": 115,
+      "session": "第二次",
+      "announcedAt": null
+    },
+    {
+      "level": "junior",
+      "subject": "L12",
+      "year": 2026,
+      "rocYear": 115,
+      "session": "第二次",
+      "announcedAt": null
+    },
+    {
+      "level": "junior",
+      "subject": "L11",
+      "year": 2026,
+      "rocYear": 115,
+      "session": "第三次",
+      "announcedAt": null
+    },
+    {
+      "level": "junior",
+      "subject": "L12",
+      "year": 2026,
+      "rocYear": 115,
+      "session": "第三次",
+      "announcedAt": null
+    },
+    {
+      "level": "middle",
+      "subject": "L21",
+      "year": 2025,
+      "rocYear": 114,
+      "session": "第二梯次",
+      "announcedAt": "2025-11-20"
+    },
+    {
+      "level": "middle",
+      "subject": "L22",
+      "year": 2025,
+      "rocYear": 114,
+      "session": "第二梯次",
+      "announcedAt": "2025-11-20"
+    },
+    {
+      "level": "middle",
+      "subject": "L23",
+      "year": 2025,
+      "rocYear": 114,
+      "session": "第二梯次",
+      "announcedAt": "2025-11-20"
+    },
+    {
+      "level": "middle",
+      "subject": "L21",
+      "year": 2026,
+      "rocYear": 115,
+      "session": "第一次",
+      "announcedAt": null
+    },
+    {
+      "level": "middle",
+      "subject": "L22",
+      "year": 2026,
+      "rocYear": 115,
+      "session": "第一次",
+      "announcedAt": null
+    },
+    {
+      "level": "middle",
+      "subject": "L23",
+      "year": 2026,
+      "rocYear": 115,
+      "session": "第一次",
+      "announcedAt": null
+    }
+  ],
+  "examPapersPage": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+  "examSchedule2026": {
+    "junior": [
+      "2026-03-21",
+      "2026-05-16",
+      "2026-08-15",
+      "2026-11-07"
+    ],
+    "middle": [
+      "2026-05-23",
+      "2026-11-14"
+    ]
+  }
+}

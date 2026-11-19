@@ -1,0 +1,1828 @@
+[
+  {
+    "id": "original-L22401-0001",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "模型訓練誤差 2%、驗證誤差 20%，且隨訓練資料增加，驗證誤差持續下降。增加更多資料是否可能有幫助？",
+    "options": [
+      {
+        "id": "A",
+        "text": "沒有幫助，應刪除資料"
+      },
+      {
+        "id": "B",
+        "text": "無法判斷"
+      },
+      {
+        "id": "C",
+        "text": "可能有幫助，這是過擬合（高變異）的典型情況"
+      },
+      {
+        "id": "D",
+        "text": "沒有幫助，這是欠擬合"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "學習曲線可判斷增加資料是否有用。",
+      "correctRationale": "訓練與驗證差距大且仍在縮小，增加資料通常能改善。",
+      "optionRationales": {
+        "A": "刪除資料使情況更糟。",
+        "B": "學習曲線可以判斷。",
+        "C": "正確。過擬合時增加資料常有幫助。",
+        "D": "欠擬合是兩者都高。"
+      },
+      "commonTrap": "不會判讀學習曲線。",
+      "lessonAnchor": "L22401"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "學習曲線"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22401-0002",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "模型訓練誤差與驗證誤差都約 35% 且很接近。此時下列哪一項最可能改善模型？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只增加更多同類型的資料"
+      },
+      {
+        "id": "B",
+        "text": "提高模型能力或加入更有預測力的特徵"
+      },
+      {
+        "id": "C",
+        "text": "加強正則化"
+      },
+      {
+        "id": "D",
+        "text": "減少特徵"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "兩者都高且接近代表欠擬合（高偏差）。",
+      "correctRationale": "模型能力不足時，增加資料幫助有限，應提升模型或特徵。",
+      "optionRationales": {
+        "A": "欠擬合時增加資料幫助有限。",
+        "B": "正確。欠擬合應提升模型或特徵。",
+        "C": "正則化會使欠擬合更嚴重。",
+        "D": "減少特徵通常更差。"
+      },
+      "commonTrap": "以為增加資料能解決所有問題。",
+      "lessonAnchor": "L22401"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "學習曲線"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22401-0003",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "模型太大，單一 GPU 的記憶體放不下，應採用哪一種分散式訓練方式？",
+    "options": [
+      {
+        "id": "A",
+        "text": "改用 CSV 格式"
+      },
+      {
+        "id": "B",
+        "text": "資料平行：每台機器放完整模型處理不同資料"
+      },
+      {
+        "id": "C",
+        "text": "模型平行：把模型的不同部分放到不同裝置"
+      },
+      {
+        "id": "D",
+        "text": "只減少訓練資料"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "資料平行解決資料量大；模型平行解決模型太大。",
+      "correctRationale": "模型無法完整放入單一裝置時，需將模型切分。",
+      "optionRationales": {
+        "A": "與檔案格式無關。",
+        "B": "資料平行要求每台放得下完整模型。",
+        "C": "正確。模型太大用模型平行。",
+        "D": "與資料量無關。"
+      },
+      "commonTrap": "混淆兩種平行方式。",
+      "lessonAnchor": "L22401"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "分散式訓練"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22401-0004",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「特徵儲存庫（Feature Store）」最主要解決的問題是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "集中管理特徵定義，確保訓練（離線）與推論（線上）使用一致的特徵計算"
+      },
+      {
+        "id": "B",
+        "text": "儲存模型的原始碼"
+      },
+      {
+        "id": "C",
+        "text": "取代資料庫的備份"
+      },
+      {
+        "id": "D",
+        "text": "產生行銷文案"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "特徵儲存庫避免訓練／服務偏差。",
+      "correctRationale": "同一份特徵邏輯同時供應離線訓練與線上推論，並可重複使用。",
+      "optionRationales": {
+        "A": "正確。同一份特徵邏輯同時供應離線訓練與線上推論，並可重複使用。",
+        "B": "原始碼由版本控制系統管理。",
+        "C": "不是備份工具。",
+        "D": "與文案無關。"
+      },
+      "commonTrap": "不了解特徵平台的價值。",
+      "lessonAnchor": "L22401"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "特徵儲存庫"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22401-0005",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "模型離線測試表現很好，上線後卻明顯變差。調查發現訓練時「近 7 天消費金額」用每日批次計算，上線時卻用另一套即時程式計算，兩者定義略有不同。這屬於？",
+    "options": [
+      {
+        "id": "A",
+        "text": "欠擬合"
+      },
+      {
+        "id": "B",
+        "text": "訓練／服務偏差（Training-Serving Skew）"
+      },
+      {
+        "id": "C",
+        "text": "型二錯誤"
+      },
+      {
+        "id": "D",
+        "text": "資料去重"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "訓練與上線時特徵計算不一致會使效能下降。",
+      "correctRationale": "應共用同一份特徵定義（如特徵儲存庫），並監控線上特徵分布。",
+      "optionRationales": {
+        "A": "離線表現很好，不是欠擬合。",
+        "B": "正確。訓練／服務偏差。",
+        "C": "統計檢定概念。",
+        "D": "清理步驟。"
+      },
+      "commonTrap": "以為離線效果好上線就一定好。",
+      "lessonAnchor": "L22401"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "訓練服務偏差"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22401-0006",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "大型資料集無法一次放入記憶體訓練時，常用的做法是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "每次都把全部資料載入記憶體"
+      },
+      {
+        "id": "B",
+        "text": "只訓練前 10 筆資料"
+      },
+      {
+        "id": "C",
+        "text": "放棄訓練"
+      },
+      {
+        "id": "D",
+        "text": "以小批次（mini-batch）分批讀取資料並逐步更新參數"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "小批次訓練是大規模訓練的基本做法。",
+      "correctRationale": "每次讀一批資料計算梯度並更新，可處理遠大於記憶體的資料。",
+      "optionRationales": {
+        "A": "記憶體不足。",
+        "B": "資料太少無法代表全貌。",
+        "C": "可透過小批次解決。",
+        "D": "正確。每次讀一批資料計算梯度並更新，可處理遠大於記憶體的資料。"
+      },
+      "commonTrap": "不了解大資料的訓練方式。",
+      "lessonAnchor": "L22401"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "小批次"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22401-0007",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列關於「資料量」與「模型效能」的敘述，何者最正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "資料量增加通常有助泛化，但前提是資料品質與代表性良好"
+      },
+      {
+        "id": "B",
+        "text": "資料越多，模型一定越準"
+      },
+      {
+        "id": "C",
+        "text": "資料量與模型效能無關"
+      },
+      {
+        "id": "D",
+        "text": "低品質資料只要夠多就能抵銷錯誤"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "資料量與品質同等重要。",
+      "correctRationale": "偏差或錯誤的資料再多，也會讓模型學到錯誤模式。",
+      "optionRationales": {
+        "A": "正確。偏差或錯誤的資料再多，也會讓模型學到錯誤模式。",
+        "B": "過度簡化。",
+        "C": "資料量通常有影響。",
+        "D": "系統性錯誤無法被數量抵銷。"
+      },
+      "commonTrap": "迷信資料量。",
+      "lessonAnchor": "L22401"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料品質"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22401-0008",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22401",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "建立「下個月是否流失」模型時，特徵中包含「是否已申請退租」。這最可能造成什麼問題？",
+    "options": [
+      {
+        "id": "A",
+        "text": "欠擬合"
+      },
+      {
+        "id": "B",
+        "text": "資料洩漏：此特徵幾乎等同答案，且預測當下可能還無法取得"
+      },
+      {
+        "id": "C",
+        "text": "模型太小"
+      },
+      {
+        "id": "D",
+        "text": "沒有任何問題"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "特徵必須是預測當下可取得的資訊。",
+      "correctRationale": "「已申請退租」幾乎等於流失本身，會讓離線分數虛高。",
+      "optionRationales": {
+        "A": "洩漏會讓分數虛高，而非欠擬合。",
+        "B": "正確。「已申請退租」幾乎等於流失本身，會讓離線分數虛高。",
+        "C": "與模型大小無關。",
+        "D": "這是嚴重問題。"
+      },
+      "commonTrap": "使用與標籤直接相關的未來資訊當特徵。",
+      "lessonAnchor": "L22401"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料洩漏"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22402-0001",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "影音平台新上架一部影片，尚無任何觀看紀錄。要推薦給可能喜歡的使用者，較適合哪一種方法？",
+    "options": [
+      {
+        "id": "A",
+        "text": "隨機推薦給所有人"
+      },
+      {
+        "id": "B",
+        "text": "等一年後再推薦"
+      },
+      {
+        "id": "C",
+        "text": "純協同過濾：依觀看此片的使用者相似度推薦"
+      },
+      {
+        "id": "D",
+        "text": "內容式推薦：依影片類型、演員、描述等屬性比對使用者偏好"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "新物件缺乏互動資料，是冷啟動問題。",
+      "correctRationale": "內容式推薦只需要物件屬性，不依賴歷史互動。",
+      "optionRationales": {
+        "A": "缺乏個人化，效果差。",
+        "B": "會錯失推廣時機。",
+        "C": "新影片沒有互動紀錄，協同過濾無從計算。",
+        "D": "正確。內容式推薦只需要物件屬性，不依賴歷史互動。"
+      },
+      "commonTrap": "忽略冷啟動問題。",
+      "lessonAnchor": "L22402"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "推薦系統",
+      "冷啟動"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22402-0002",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「買了這本書的人也買了那本書」這種推薦方式，屬於哪一種？",
+    "options": [
+      {
+        "id": "A",
+        "text": "影像分類"
+      },
+      {
+        "id": "B",
+        "text": "內容式推薦"
+      },
+      {
+        "id": "C",
+        "text": "協同過濾（Collaborative Filtering）"
+      },
+      {
+        "id": "D",
+        "text": "規則式專家系統"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "協同過濾依使用者行為的相似性推薦。",
+      "correctRationale": "不需理解商品內容，而是從大量購買行為中找出關聯。",
+      "optionRationales": {
+        "A": "與影像無關。",
+        "B": "內容式依商品屬性。",
+        "C": "正確。不需理解商品內容，而是從大量購買行為中找出關聯。",
+        "D": "不是人工規則。"
+      },
+      "commonTrap": "混淆協同過濾與內容式推薦。",
+      "lessonAnchor": "L22402"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "推薦系統"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22402-0003",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "建立「下個月是否流失」模型時，關於觀察窗（計算特徵的期間）與預測窗（要預測的期間），下列何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "特徵可以使用預測窗內的資料以提高準確率"
+      },
+      {
+        "id": "B",
+        "text": "特徵只能使用觀察窗內的資料，兩個期間不可重疊，否則會資料洩漏"
+      },
+      {
+        "id": "C",
+        "text": "不需要區分期間"
+      },
+      {
+        "id": "D",
+        "text": "兩個期間應該完全重疊"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "觀察窗在前、預測窗在後。",
+      "correctRationale": "若特徵使用預測期間的資料，就等於偷看答案。",
+      "optionRationales": {
+        "A": "這是資料洩漏。",
+        "B": "正確。若特徵使用預測期間的資料，就等於偷看答案。",
+        "C": "時間設計是流失模型的關鍵。",
+        "D": "重疊會洩漏。"
+      },
+      "commonTrap": "特徵使用了未來資訊。",
+      "lessonAnchor": "L22402"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "觀察窗"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22402-0004",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "工廠設備從未標註過「故障」資料，但想及早發現異常的感測器讀值。較適合的起步方法是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只使用人工每年檢查一次"
+      },
+      {
+        "id": "B",
+        "text": "直接訓練監督式分類模型"
+      },
+      {
+        "id": "C",
+        "text": "放棄偵測"
+      },
+      {
+        "id": "D",
+        "text": "以非監督式異常偵測（如孤立森林）標出異常，再由技師確認並累積標籤"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "缺乏標籤時可用非監督方法。",
+      "correctRationale": "偵測結果經人工確認後回饋成標籤，逐步轉向監督式模型。",
+      "optionRationales": {
+        "A": "頻率過低。",
+        "B": "沒有標籤無法訓練監督式模型。",
+        "C": "可以先用非監督方法。",
+        "D": "正確。非監督起步並累積標籤。"
+      },
+      "commonTrap": "以為沒有標籤就無法偵測異常。",
+      "lessonAnchor": "L22402"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "異常偵測"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22402-0005",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "孤立森林（Isolation Forest）偵測異常的基本想法是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "異常點與多數資料差異大，用隨機切分很快就能被「孤立」出來"
+      },
+      {
+        "id": "B",
+        "text": "需要每筆資料都有異常標籤"
+      },
+      {
+        "id": "C",
+        "text": "以生成器與判別器對抗"
+      },
+      {
+        "id": "D",
+        "text": "異常點一定位在資料中心"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "異常點較稀少且特殊，切分少數幾次就能隔離。",
+      "correctRationale": "平均隔離路徑越短，越可能是異常。",
+      "optionRationales": {
+        "A": "正確。越容易被孤立越異常。",
+        "B": "屬非監督式方法。",
+        "C": "這是 GAN。",
+        "D": "異常點通常遠離中心。"
+      },
+      "commonTrap": "不了解孤立森林的原理。",
+      "lessonAnchor": "L22402"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "孤立森林"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22402-0006",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "信用違約模型中，「是否違約」通常要在放款後 12 個月才能確定。這種現象對模型開發的主要影響是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "模型會自動知道結果"
+      },
+      {
+        "id": "B",
+        "text": "可以立即取得所有標籤"
+      },
+      {
+        "id": "C",
+        "text": "標籤延遲：最新資料還沒有標籤，評估與再訓練必須考慮時間落差"
+      },
+      {
+        "id": "D",
+        "text": "不需要任何標籤"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "部分業務的結果需要時間才會發生。",
+      "correctRationale": "最新樣本缺乏標籤，模型監控需搭配替代指標，再訓練也會有時間落差。",
+      "optionRationales": {
+        "A": "模型無法預知。",
+        "B": "結果需要時間發生。",
+        "C": "正確。最新樣本缺乏標籤，模型監控需搭配替代指標，再訓練也會有時間落差。",
+        "D": "監督式模型需要標籤。"
+      },
+      "commonTrap": "忽略標籤延遲對監控與再訓練的影響。",
+      "lessonAnchor": "L22402"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "標籤延遲"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22402-0007",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "詐欺偵測中，漏抓一筆詐欺平均損失 3 萬元，誤報一筆僅需 100 元的人工覆核成本。調整模型決策門檻時，較合理的方向是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "門檻固定為 0.5 不需調整"
+      },
+      {
+        "id": "B",
+        "text": "只看準確率決定門檻"
+      },
+      {
+        "id": "C",
+        "text": "適度降低門檻以提高召回率，接受較多誤報"
+      },
+      {
+        "id": "D",
+        "text": "提高門檻以減少誤報，即使漏抓更多"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "門檻應依錯誤成本決定。",
+      "correctRationale": "漏抓成本遠高於誤報成本時，應提高召回率。",
+      "optionRationales": {
+        "A": "門檻應依業務調整。",
+        "B": "不平衡資料不適合只看準確率。",
+        "C": "正確。依成本提高召回率。",
+        "D": "漏抓代價高，不宜犧牲召回率。"
+      },
+      "commonTrap": "使用預設門檻而不考慮業務成本。",
+      "lessonAnchor": "L22402"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "評估"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22402-0008",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22402",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "建立流失預測模型時，「近 30 天使用次數比前 30 天下降幅度」屬於哪一類特徵？",
+    "options": [
+      {
+        "id": "A",
+        "text": "原始識別碼"
+      },
+      {
+        "id": "B",
+        "text": "彙總與變化率特徵，能捕捉行為趨勢"
+      },
+      {
+        "id": "C",
+        "text": "模型超參數"
+      },
+      {
+        "id": "D",
+        "text": "標籤"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "大數據常透過時間窗彙總與比較建立特徵。",
+      "correctRationale": "使用量下降常是流失前兆，比單一時點數值更有預測力。",
+      "optionRationales": {
+        "A": "識別碼不具預測意義。",
+        "B": "正確。使用量下降常是流失前兆，比單一時點數值更有預測力。",
+        "C": "超參數是模型設定。",
+        "D": "標籤是要預測的結果。"
+      },
+      "commonTrap": "只使用原始欄位而不做特徵工程。",
+      "lessonAnchor": "L22402"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "特徵工程"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22403-0001",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22403",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "大型語言模型的預訓練資料需要「去重」，主要原因是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "去重是為了加密"
+      },
+      {
+        "id": "B",
+        "text": "去重可以自動產生標籤"
+      },
+      {
+        "id": "C",
+        "text": "去重可以讓資料變多"
+      },
+      {
+        "id": "D",
+        "text": "重複內容會讓模型過度記憶特定文字並浪費運算，影響泛化"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "資料品質對生成模型影響很大。",
+      "correctRationale": "重複資料會被模型反覆學習，可能直接背出內容並降低多樣性。",
+      "optionRationales": {
+        "A": "與加密無關。",
+        "B": "不產生標籤。",
+        "C": "去重會使資料變少。",
+        "D": "正確。避免過度記憶與浪費。"
+      },
+      "commonTrap": "以為資料越多越好，不處理重複。",
+      "lessonAnchor": "L22403"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料去重"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22403-0002",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22403",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於「指令資料」與「偏好資料」，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "指令資料是「指令—理想回應」配對；偏好資料是人類對多個回應的優劣排序，用於對齊"
+      },
+      {
+        "id": "B",
+        "text": "兩者完全相同"
+      },
+      {
+        "id": "C",
+        "text": "偏好資料只包含圖片"
+      },
+      {
+        "id": "D",
+        "text": "指令資料用於影像分割"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "兩者用於不同的訓練階段。",
+      "correctRationale": "指令微調讓模型會遵循指令；偏好資料（如 RLHF）讓回應更符合人類期望。",
+      "optionRationales": {
+        "A": "正確。指令微調讓模型會遵循指令；偏好資料（如 RLHF）讓回應更符合人類期望。",
+        "B": "用途不同。",
+        "C": "偏好資料多為文字排序。",
+        "D": "與影像分割無關。"
+      },
+      "commonTrap": "混淆兩種資料。",
+      "lessonAnchor": "L22403"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "指令資料",
+      "偏好資料"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22403-0003",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22403",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "企業的產品規格每週更新，希望內部助理能回答最新規格。這些資料最適合放在哪裡？",
+    "options": [
+      {
+        "id": "A",
+        "text": "寫死在提示詞裡永不更新"
+      },
+      {
+        "id": "B",
+        "text": "重新預訓練大型模型的語料"
+      },
+      {
+        "id": "C",
+        "text": "RAG 知識庫，定期同步更新"
+      },
+      {
+        "id": "D",
+        "text": "只放在員工的記憶中"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "常更新的知識適合 RAG。",
+      "correctRationale": "更新知識庫即可反映最新內容，並能附上來源。",
+      "optionRationales": {
+        "A": "無法隨資料更新。",
+        "B": "成本高且無法每週更新。",
+        "C": "正確。RAG 知識庫。",
+        "D": "無法被系統使用。"
+      },
+      "commonTrap": "用預訓練處理常變動的知識。",
+      "lessonAnchor": "L22403"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "RAG 知識庫"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22403-0004",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22403",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "建立 RAG 知識庫時，把長文件依標題與段落切成適當大小的「塊（chunk）」，並保留標題與來源資訊，主要目的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "加密文件內容"
+      },
+      {
+        "id": "B",
+        "text": "讓文件變得更長"
+      },
+      {
+        "id": "C",
+        "text": "刪除所有標題"
+      },
+      {
+        "id": "D",
+        "text": "提高檢索精準度，並讓回答能引用正確出處"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "切塊大小與中繼資料影響檢索品質。",
+      "correctRationale": "太大會混入無關內容，太小會失去上下文；保留來源才能附上出處。",
+      "optionRationales": {
+        "A": "不是加密。",
+        "B": "目的不是加長。",
+        "C": "標題有助理解內容。",
+        "D": "正確。提高檢索品質並可附來源。"
+      },
+      "commonTrap": "整份文件不切塊直接索引。",
+      "lessonAnchor": "L22403"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "文件切塊"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22403-0005",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22403",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "反覆以模型自己生成的資料訓練新模型，可能導致什麼現象？",
+    "options": [
+      {
+        "id": "A",
+        "text": "模型參數自動變少"
+      },
+      {
+        "id": "B",
+        "text": "模型崩壞：輸出多樣性與品質逐代下降"
+      },
+      {
+        "id": "C",
+        "text": "模型一定越來越準確"
+      },
+      {
+        "id": "D",
+        "text": "資料隱私問題自動消失"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "合成資料需與真實資料混合並驗證。",
+      "correctRationale": "持續只學習模型產物，會逐漸遺失真實資料的長尾與多樣性。",
+      "optionRationales": {
+        "A": "與參數量無關。",
+        "B": "正確。持續只學習模型產物，會逐漸遺失真實資料的長尾與多樣性。",
+        "C": "不一定變好。",
+        "D": "與隱私無關。"
+      },
+      "commonTrap": "以為合成資料可以無限取代真實資料。",
+      "lessonAnchor": "L22403"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "模型崩壞"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22403-0006",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22403",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "生成式 AI 訓練資料的治理中，為什麼要保存「資料來源與授權」紀錄？",
+    "options": [
+      {
+        "id": "A",
+        "text": "便於確認著作權與授權合規、處理移除請求與稽核"
+      },
+      {
+        "id": "B",
+        "text": "可以取代資料去重"
+      },
+      {
+        "id": "C",
+        "text": "讓模型推論速度變快"
+      },
+      {
+        "id": "D",
+        "text": "讓模型自動產生更多資料"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "資料來源紀錄是生成式 AI 治理的重要環節。",
+      "correctRationale": "面對權利人或主管機關的詢問時，能說明資料來源並採取對應措施。",
+      "optionRationales": {
+        "A": "正確。面對權利人或主管機關的詢問時，能說明資料來源並採取對應措施。",
+        "B": "不能取代去重。",
+        "C": "與速度無關。",
+        "D": "不產生資料。"
+      },
+      "commonTrap": "不記錄訓練資料的來源。",
+      "lessonAnchor": "L22403"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "治理"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22403-0007",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22403",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "銀行想測試新的詐欺偵測流程，但不希望在測試環境使用真實客戶交易資料。較適合的做法是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "用隨機亂數當作交易資料，不需檢查"
+      },
+      {
+        "id": "B",
+        "text": "使用依真實資料統計特性產生的合成資料，並檢查其代表性"
+      },
+      {
+        "id": "C",
+        "text": "把真實資料直接複製到測試環境"
+      },
+      {
+        "id": "D",
+        "text": "不做任何測試"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "合成資料可在保護隱私下支援測試。",
+      "correctRationale": "需確認合成資料保留關鍵分布與模式，否則測試結果不具參考性。",
+      "optionRationales": {
+        "A": "純亂數無法反映真實模式。",
+        "B": "正確。保護隱私並檢查代表性。",
+        "C": "增加外洩風險。",
+        "D": "缺乏測試風險高。"
+      },
+      "commonTrap": "測試環境直接使用真實個資。",
+      "lessonAnchor": "L22403"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "合成資料"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22403-0008",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22403",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "建立生成式 AI 的評測題組時，為什麼要避免評測題與訓練資料重疊？",
+    "options": [
+      {
+        "id": "A",
+        "text": "評測不需要題目"
+      },
+      {
+        "id": "B",
+        "text": "重疊可以讓評測更準確"
+      },
+      {
+        "id": "C",
+        "text": "評測題越少越好"
+      },
+      {
+        "id": "D",
+        "text": "重疊會讓模型因「看過答案」而高估真實能力"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "評測資料污染會使結果失真。",
+      "correctRationale": "模型可能只是記住了答案，而非真正具備能力。",
+      "optionRationales": {
+        "A": "評測需要題組。",
+        "B": "方向相反。",
+        "C": "題目需有代表性。",
+        "D": "正確。模型可能只是記住了答案，而非真正具備能力。"
+      },
+      "commonTrap": "用訓練過的資料評測模型。",
+      "lessonAnchor": "L22403"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "評測"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22404-0001",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22404",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "多家醫院想共同訓練疾病預測模型，但病歷不能離開各醫院。較適合的技術是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "把病歷公開到網路"
+      },
+      {
+        "id": "B",
+        "text": "放棄合作"
+      },
+      {
+        "id": "C",
+        "text": "聯邦學習：各院在本地訓練，只分享模型更新"
+      },
+      {
+        "id": "D",
+        "text": "把所有病歷集中到一台伺服器"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "聯邦學習讓資料留在本地。",
+      "correctRationale": "各方只交換模型參數或梯度，降低集中資料的隱私風險。",
+      "optionRationales": {
+        "A": "嚴重外洩。",
+        "B": "可用聯邦學習合作。",
+        "C": "正確。各方只交換模型參數或梯度，降低集中資料的隱私風險。",
+        "D": "違反限制。"
+      },
+      "commonTrap": "以為合作建模一定要集中資料。",
+      "lessonAnchor": "L22404"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "聯邦學習"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22404-0002",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22404",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "差分隱私中的參數 ε（epsilon）越小，代表什麼？",
+    "options": [
+      {
+        "id": "A",
+        "text": "隱私保護越強，但加入的雜訊越多、結果準確度可能較低"
+      },
+      {
+        "id": "B",
+        "text": "模型參數越多"
+      },
+      {
+        "id": "C",
+        "text": "隱私保護越弱"
+      },
+      {
+        "id": "D",
+        "text": "資料量越大"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "ε 控制隱私與準確度的取捨。",
+      "correctRationale": "ε 小代表個人資料對結果的影響被限制得更嚴格。",
+      "optionRationales": {
+        "A": "正確。保護強、準確度較低。",
+        "B": "與模型參數無關。",
+        "C": "方向相反。",
+        "D": "與資料量無關。"
+      },
+      "commonTrap": "把 ε 的方向記反。",
+      "lessonAnchor": "L22404"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "差分隱私"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22404-0003",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22404",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "釋出研究資料前，將年齡改為 5 歲區間、地址改為縣市，使每筆紀錄在這些欄位上至少與另外 4 筆相同。這達到了？",
+    "options": [
+      {
+        "id": "A",
+        "text": "同態加密"
+      },
+      {
+        "id": "B",
+        "text": "5-匿名（k = 5）"
+      },
+      {
+        "id": "C",
+        "text": "資料投毒"
+      },
+      {
+        "id": "D",
+        "text": "差分隱私"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "k-匿名要求每筆紀錄至少與 k−1 筆在準識別欄位上無法區分。",
+      "correctRationale": "至少與 4 筆相同，即每組至少 5 筆，k = 5。",
+      "optionRationales": {
+        "A": "同態加密是在加密狀態下運算。",
+        "B": "正確。至少與 4 筆相同，即每組至少 5 筆，k = 5。",
+        "C": "投毒是攻擊手法。",
+        "D": "差分隱私是加雜訊。"
+      },
+      "commonTrap": "k 值計算錯誤（k 包含自己）。",
+      "lessonAnchor": "L22404"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "k-匿名"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22404-0004",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22404",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "某資料集達到 k-匿名，但同一組內所有人的診斷都是「糖尿病」。這顯示 k-匿名的什麼限制？",
+    "options": [
+      {
+        "id": "A",
+        "text": "即使無法辨識是哪一筆，仍可推知該組人的敏感屬性"
+      },
+      {
+        "id": "B",
+        "text": "k-匿名可以防止所有推論"
+      },
+      {
+        "id": "C",
+        "text": "資料已被完全加密"
+      },
+      {
+        "id": "D",
+        "text": "沒有任何限制"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "k-匿名只保證無法區分個體，不保證敏感屬性不被推知。",
+      "correctRationale": "若組內敏感屬性一致，得知某人屬於該組即可推知其診斷（同質性攻擊）。",
+      "optionRationales": {
+        "A": "正確。屬性仍可能被推知。",
+        "B": "無法防止所有推論。",
+        "C": "k-匿名不是加密。",
+        "D": "存在明顯限制。"
+      },
+      "commonTrap": "高估 k-匿名的保護力。",
+      "lessonAnchor": "L22404"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "k-匿名限制"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22404-0005",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22404",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「RBAC（角色存取控制）」的做法是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "依使用者的生日決定權限"
+      },
+      {
+        "id": "B",
+        "text": "取消所有權限控管"
+      },
+      {
+        "id": "C",
+        "text": "依使用者的角色授予對應的存取權限"
+      },
+      {
+        "id": "D",
+        "text": "所有人都擁有管理員權限"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "RBAC 依職務角色管理權限。",
+      "correctRationale": "例如分析師可讀取去識別化資料，只有特定人員可存取原始個資。",
+      "optionRationales": {
+        "A": "生日與職務需求無關，不能作為授權依據。",
+        "B": "缺乏控管。",
+        "C": "正確。例如分析師可讀取去識別化資料，只有特定人員可存取原始個資。",
+        "D": "違反最小權限。"
+      },
+      "commonTrap": "權限管理過於寬鬆。",
+      "lessonAnchor": "L22404"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "RBAC"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22404-0006",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22404",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "依 GDPR 第 35 條，若處理可能對個人權利造成高度風險，例如「以自動化處理（含剖析）對個人進行系統性且廣泛的評估，並據此作出具法律效果或類似重大影響的決定」，或「大規模處理特種個資」，控管者在處理前應進行哪一種評估？",
+    "options": [
+      {
+        "id": "A",
+        "text": "財務審計"
+      },
+      {
+        "id": "B",
+        "text": "負載測試"
+      },
+      {
+        "id": "C",
+        "text": "使用者介面測試"
+      },
+      {
+        "id": "D",
+        "text": "資料保護影響評估（DPIA）"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "DPIA 是 GDPR 對「可能造成高度風險」之處理所要求的事前評估；第 35 條第 3 項列出須進行的典型情形。",
+      "correctRationale": "GDPR 第 35 條要求可能對自然人權利與自由造成高度風險的處理，須事前進行資料保護影響評估（DPIA）。第 3 項列出的情形包括：以自動化處理（含剖析）進行系統性且廣泛的評估並據以作出具法律效果或類似重大影響的決定、大規模處理特種個資或犯罪資料、大規模系統性監控公共區域。並非任何「自動化評分」都必然觸發。",
+      "optionRationales": {
+        "A": "財務審計與隱私無關。",
+        "B": "負載測試評估系統效能。",
+        "C": "介面測試評估易用性。",
+        "D": "正確。題幹描述的正是 GDPR 第 35 條第 3 項所列、須事前進行 DPIA 的高度風險處理。"
+      },
+      "commonTrap": "以為只要有任何自動化評分就一定要做 DPIA；關鍵在於是否屬於可能造成高度風險的處理（如據以作出具法律效果或類似重大影響的決定）。",
+      "lessonAnchor": "L22404"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "DPIA"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22404-0007",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22404",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於「傳輸加密」與「靜態加密」，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "兩者完全相同"
+      },
+      {
+        "id": "B",
+        "text": "傳輸加密保護資料在網路傳送過程中；靜態加密保護儲存在磁碟或資料庫中的資料"
+      },
+      {
+        "id": "C",
+        "text": "靜態加密只用於網路傳輸"
+      },
+      {
+        "id": "D",
+        "text": "有了傳輸加密就不需要權限控管"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "資料在不同狀態需要不同保護。",
+      "correctRationale": "例如 TLS 保護傳輸、儲存加密保護磁碟遺失或被竊時的資料。",
+      "optionRationales": {
+        "A": "保護時機不同。",
+        "B": "正確。例如 TLS 保護傳輸、儲存加密保護磁碟遺失或被竊時的資料。",
+        "C": "方向相反。",
+        "D": "加密不能取代權限控管。"
+      },
+      "commonTrap": "只做其中一種加密。",
+      "lessonAnchor": "L22404"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "加密"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22404-0008",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L224",
+    "competencyCode": "L22404",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "AI 服務以模型自動決定是否核准貸款，申請人要求了解被拒原因。從合規與信任角度，較適當的設計是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "公開所有其他申請人的資料作為比較"
+      },
+      {
+        "id": "B",
+        "text": "回覆「這是 AI 決定，無法說明」"
+      },
+      {
+        "id": "C",
+        "text": "拒絕回應任何詢問"
+      },
+      {
+        "id": "D",
+        "text": "提供主要拒絕原因的說明，並提供人工覆核與申訴管道"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "自動化決策需重視可解釋與當事人權利。",
+      "correctRationale": "提供說明與人工覆核，兼顧合規與信任。",
+      "optionRationales": {
+        "A": "侵害他人隱私。",
+        "B": "不符透明與問責。",
+        "C": "違反當事人權利。",
+        "D": "正確。說明＋人工覆核。"
+      },
+      "commonTrap": "把 AI 決策當作免責理由。",
+      "lessonAnchor": "L22404"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "合規"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  }
+]

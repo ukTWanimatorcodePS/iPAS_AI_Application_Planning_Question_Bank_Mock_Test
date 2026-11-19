@@ -1,0 +1,2287 @@
+[
+  {
+    "id": "original-L11301-0001",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "想預測「顧客下個月的消費金額」，這屬於哪一類機器學習任務？",
+    "options": [
+      {
+        "id": "A",
+        "text": "分類"
+      },
+      {
+        "id": "B",
+        "text": "分群"
+      },
+      {
+        "id": "C",
+        "text": "迴歸"
+      },
+      {
+        "id": "D",
+        "text": "降維"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "分類預測類別，迴歸預測連續數值。",
+      "correctRationale": "消費金額是連續數值，因此是迴歸任務。",
+      "optionRationales": {
+        "A": "分類輸出類別，例如「會／不會回購」。",
+        "B": "分群是非監督式學習，沒有要預測的目標值。",
+        "C": "正確。預測連續數值。",
+        "D": "降維是減少特徵數量的技術，不是預測任務。"
+      },
+      "commonTrap": "看到「預測」就以為是分類。",
+      "lessonAnchor": "L11301"
+    },
+    "difficulty": 1,
+    "tags": [
+      "分類與迴歸"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11301-0002",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "某模型在訓練資料上的準確率為 99%，在測試資料上只有 65%。最可能的狀況是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "過擬合"
+      },
+      {
+        "id": "B",
+        "text": "欠擬合"
+      },
+      {
+        "id": "C",
+        "text": "資料完全沒有雜訊"
+      },
+      {
+        "id": "D",
+        "text": "模型泛化能力非常好"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "過擬合：訓練表現好、新資料表現差；欠擬合：兩者都差。",
+      "correctRationale": "訓練與測試表現落差大，代表模型記住了訓練資料細節與雜訊，泛化能力不足。",
+      "optionRationales": {
+        "A": "正確。訓練好、測試差，是過擬合。",
+        "B": "欠擬合時訓練表現也會很差。",
+        "C": "測試表現差無法推論資料沒有雜訊，反而模型可能學到了雜訊。",
+        "D": "測試表現差代表泛化能力不佳。"
+      },
+      "commonTrap": "只看訓練準確率就認為模型很好。",
+      "lessonAnchor": "L11301"
+    },
+    "difficulty": 2,
+    "tags": [
+      "過擬合"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11301-0003",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "行銷部門手上只有顧客的消費紀錄，沒有任何標籤，希望把顧客自動分成幾個相似群體。適合使用？",
+    "options": [
+      {
+        "id": "A",
+        "text": "監督式學習的分類"
+      },
+      {
+        "id": "B",
+        "text": "強化學習"
+      },
+      {
+        "id": "C",
+        "text": "監督式學習的迴歸"
+      },
+      {
+        "id": "D",
+        "text": "非監督式學習的分群"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "沒有標籤、要找出相似群體，是非監督式學習的分群。",
+      "correctRationale": "分群不需要事先知道正確答案，依資料相似度自動分組。",
+      "optionRationales": {
+        "A": "分類需要事先有類別標籤。",
+        "B": "強化學習透過與環境互動與獎勵學習行動策略，不適用於此。",
+        "C": "迴歸需要數值標籤。",
+        "D": "正確。無標籤、找相似群體。"
+      },
+      "commonTrap": "以為分群需要先有標籤。",
+      "lessonAnchor": "L11301"
+    },
+    "difficulty": 1,
+    "tags": [
+      "學習類型"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "basic",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11301-0004",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "將資料切分為訓練集、驗證集、測試集時，「測試集」的主要用途為何？",
+    "options": [
+      {
+        "id": "A",
+        "text": "用來調整超參數並反覆挑選最佳模型"
+      },
+      {
+        "id": "B",
+        "text": "在模型開發完成後，評估模型對未見資料的泛化表現"
+      },
+      {
+        "id": "C",
+        "text": "用來增加訓練資料量"
+      },
+      {
+        "id": "D",
+        "text": "用來替缺失值填補數值"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "訓練集學參數、驗證集調超參數、測試集做最終評估。",
+      "correctRationale": "測試集在開發過程中不應被使用，最後才拿來估計模型面對新資料的表現。",
+      "optionRationales": {
+        "A": "這是驗證集的用途；用測試集調參會造成資料洩漏、評估過度樂觀。",
+        "B": "正確。最終評估泛化表現。",
+        "C": "測試集不應拿來訓練。",
+        "D": "測試集與缺失值填補無關。"
+      },
+      "commonTrap": "用測試集調參，導致測試分數無法代表真實表現。",
+      "lessonAnchor": "L11301"
+    },
+    "difficulty": 2,
+    "tags": [
+      "資料切分"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11301-0005",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列哪一項屬於「超參數（hyperparameter）」？",
+    "options": [
+      {
+        "id": "A",
+        "text": "線性迴歸學到的係數"
+      },
+      {
+        "id": "B",
+        "text": "神經網路訓練後的權重"
+      },
+      {
+        "id": "C",
+        "text": "訓練前設定的學習率"
+      },
+      {
+        "id": "D",
+        "text": "模型輸出的預測值"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "參數由資料學得；超參數在訓練前由人設定。",
+      "correctRationale": "學習率控制每次更新參數的幅度，需在訓練前設定，屬於超參數。",
+      "optionRationales": {
+        "A": "迴歸係數是從資料學到的參數。",
+        "B": "權重是訓練過程中學到的參數。",
+        "C": "正確。學習率在訓練前設定。",
+        "D": "預測值是模型的輸出，不是參數。"
+      },
+      "commonTrap": "把「參數」與「超參數」混淆。",
+      "lessonAnchor": "L11301"
+    },
+    "difficulty": 2,
+    "tags": [
+      "超參數"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11302-0001",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於「邏輯迴歸（Logistic Regression）」，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "主要用於預測連續數值，例如房價"
+      },
+      {
+        "id": "B",
+        "text": "主要用於分類問題，輸出屬於某類別的機率"
+      },
+      {
+        "id": "C",
+        "text": "是一種非監督式分群方法"
+      },
+      {
+        "id": "D",
+        "text": "只能用於影像資料"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "邏輯迴歸名稱有「迴歸」，但實際用於分類。",
+      "correctRationale": "邏輯迴歸透過 S 形函數將輸出轉為 0～1 的機率，再依門檻判斷類別。",
+      "optionRationales": {
+        "A": "預測連續數值是線性迴歸的任務。",
+        "B": "正確。輸出機率，用於分類。",
+        "C": "邏輯迴歸需要標籤，屬監督式學習。",
+        "D": "可用於各種表格資料，不限影像。"
+      },
+      "commonTrap": "被名稱中的「迴歸」誤導。",
+      "lessonAnchor": "L11302"
+    },
+    "difficulty": 1,
+    "tags": [
+      "常見模型"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "basic",
+    "questionType": "comparison",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11302-0002",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "醫院用模型做疾病初步篩檢，最擔心「真正患病的人沒有被找出來」。此時應特別重視哪一個指標？",
+    "options": [
+      {
+        "id": "A",
+        "text": "準確率（Accuracy）"
+      },
+      {
+        "id": "B",
+        "text": "精確率（Precision）"
+      },
+      {
+        "id": "C",
+        "text": "R 平方（R²）"
+      },
+      {
+        "id": "D",
+        "text": "召回率（Recall）"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "召回率＝TP/(TP+FN)，衡量真正的正例被找出多少。",
+      "correctRationale": "漏診（FN）代價高時要提高召回率，寧可多轉診再由醫師確認。",
+      "optionRationales": {
+        "A": "準確率在不平衡資料下可能很高卻漏掉大部分病人。",
+        "B": "精確率重視「預測為陽性的有多少是真的」，關注誤報。",
+        "C": "R² 是迴歸指標，不適用於分類。",
+        "D": "正確。重視減少漏抓。"
+      },
+      "commonTrap": "把精確率與召回率的意義弄反。",
+      "lessonAnchor": "L11302"
+    },
+    "difficulty": 2,
+    "tags": [
+      "評估指標"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11302-0003",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "信用卡交易中只有 0.5% 是詐欺。某模型把所有交易都預測為「正常」，準確率高達 99.5%。這說明了什麼？",
+    "options": [
+      {
+        "id": "A",
+        "text": "在資料不平衡時，只看準確率可能嚴重誤導，應搭配召回率、精確率等指標"
+      },
+      {
+        "id": "B",
+        "text": "這個模型非常優秀，可以直接上線"
+      },
+      {
+        "id": "C",
+        "text": "準確率越高的模型一定越有用"
+      },
+      {
+        "id": "D",
+        "text": "應該刪除所有詐欺資料讓資料平衡"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "不平衡資料下準確率會被多數類別主導。",
+      "correctRationale": "這個模型一筆詐欺都抓不到（召回率 0），卻有很高準確率，所以必須看其他指標。",
+      "optionRationales": {
+        "A": "正確。不平衡資料要搭配其他指標。",
+        "B": "它完全抓不到詐欺，沒有實用價值。",
+        "C": "準確率高不代表能解決問題。",
+        "D": "刪除詐欺資料會讓模型無法學習要偵測的目標。"
+      },
+      "commonTrap": "只用準確率評估不平衡資料的分類模型。",
+      "lessonAnchor": "L11302"
+    },
+    "difficulty": 2,
+    "tags": [
+      "評估指標",
+      "不平衡資料"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11302-0004",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "K-means 演算法中的「K」代表什麼？",
+    "options": [
+      {
+        "id": "A",
+        "text": "參考的最近鄰居數"
+      },
+      {
+        "id": "B",
+        "text": "決策樹的最大深度"
+      },
+      {
+        "id": "C",
+        "text": "要分出的群數"
+      },
+      {
+        "id": "D",
+        "text": "訓練的回合數"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "K-means 是非監督式分群，K 為事先指定的群數。",
+      "correctRationale": "K-means 反覆將資料點分配到最近的 K 個中心並更新中心位置。",
+      "optionRationales": {
+        "A": "這是 KNN（K 近鄰）的 K。",
+        "B": "決策樹深度與 K-means 無關。",
+        "C": "正確。K 代表群數。",
+        "D": "訓練回合數不是 K 的意思。"
+      },
+      "commonTrap": "把 K-means 與 KNN 混淆。",
+      "lessonAnchor": "L11302"
+    },
+    "difficulty": 1,
+    "tags": [
+      "常見模型"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11302-0005",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「隨機森林（Random Forest）」最主要的特點是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "結合多棵決策樹的結果（集成學習），通常比單一決策樹更不易過擬合"
+      },
+      {
+        "id": "B",
+        "text": "只使用一棵非常深的決策樹"
+      },
+      {
+        "id": "C",
+        "text": "一種不需要資料的規則式系統"
+      },
+      {
+        "id": "D",
+        "text": "專門用於生成圖片的模型"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "隨機森林以多棵在不同樣本與特徵上訓練的決策樹投票或平均。",
+      "correctRationale": "多棵樹集成可降低單棵樹的變異，因此通常更穩定、較不易過擬合。",
+      "optionRationales": {
+        "A": "正確。集成多棵決策樹。",
+        "B": "單一深樹容易過擬合，正是隨機森林想改善的問題。",
+        "C": "隨機森林需要資料訓練，是機器學習模型。",
+        "D": "它是分類／迴歸模型，不是生成模型。"
+      },
+      "commonTrap": "以為「森林」只是很大的一棵樹。",
+      "lessonAnchor": "L11302"
+    },
+    "difficulty": 2,
+    "tags": [
+      "集成學習"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11301-0006",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於機器學習中的「訓練」與「推論」，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "訓練完成後模型就不能再使用"
+      },
+      {
+        "id": "B",
+        "text": "兩者都是在調整模型參數"
+      },
+      {
+        "id": "C",
+        "text": "訓練是用資料調整模型參數；推論是用訓練好的模型對新資料做預測"
+      },
+      {
+        "id": "D",
+        "text": "推論一定比訓練需要更多資料"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "訓練＝學習參數；推論＝使用模型預測。",
+      "correctRationale": "例如用歷史交易訓練詐欺模型，上線後對每筆新交易進行推論判斷。",
+      "optionRationales": {
+        "A": "訓練完成後正是要拿來推論使用。",
+        "B": "推論時通常不改變參數。",
+        "C": "正確。訓練學參數、推論做預測。",
+        "D": "推論只需輸入要預測的資料。"
+      },
+      "commonTrap": "把訓練與推論混為一談。",
+      "lessonAnchor": "L11301"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "comparison",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "訓練與推論"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11301-0007",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "機器學習中的「泛化（Generalization）」能力是指？",
+    "options": [
+      {
+        "id": "A",
+        "text": "模型在沒看過的新資料上仍能有良好表現的能力"
+      },
+      {
+        "id": "B",
+        "text": "模型把訓練資料完全背下來的能力"
+      },
+      {
+        "id": "C",
+        "text": "模型檔案可以在不同電腦上開啟"
+      },
+      {
+        "id": "D",
+        "text": "模型能同時處理文字與影像"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "泛化是機器學習的核心目標。",
+      "correctRationale": "只在訓練資料表現好卻無法泛化，就是過擬合。",
+      "optionRationales": {
+        "A": "正確。在新資料上的表現。",
+        "B": "把資料背下來反而容易過擬合。",
+        "C": "這是檔案相容性問題。",
+        "D": "這是多模態能力。"
+      },
+      "commonTrap": "把「記住訓練資料」誤當成「學會」。",
+      "lessonAnchor": "L11301"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "泛化"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11301-0008",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "依過去已標記「垃圾郵件／正常郵件」的資料，訓練模型判斷新郵件是否為垃圾郵件。這屬於？",
+    "options": [
+      {
+        "id": "A",
+        "text": "強化學習問題"
+      },
+      {
+        "id": "B",
+        "text": "監督式學習的分類問題"
+      },
+      {
+        "id": "C",
+        "text": "非監督式學習的分群問題"
+      },
+      {
+        "id": "D",
+        "text": "監督式學習的迴歸問題"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "有標籤＋預測類別＝監督式分類。",
+      "correctRationale": "每封郵件都有正確答案（垃圾或正常），模型學習輸入與類別的對應。",
+      "optionRationales": {
+        "A": "強化學習透過與環境互動與獎勵學習。",
+        "B": "正確。有標籤、預測類別。",
+        "C": "分群不使用標籤。",
+        "D": "迴歸預測的是連續數值。"
+      },
+      "commonTrap": "分類與迴歸的判斷依據是輸出型態。",
+      "lessonAnchor": "L11301"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "分類"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11301-0009",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "工廠有十萬張產品照片，但只有其中兩千張由專家標註了是否有瑕疵。若想同時利用已標註與未標註的照片訓練模型，較適合哪種學習方式？",
+    "options": [
+      {
+        "id": "A",
+        "text": "純規則式專家系統"
+      },
+      {
+        "id": "B",
+        "text": "只使用未標註資料的分群"
+      },
+      {
+        "id": "C",
+        "text": "強化學習"
+      },
+      {
+        "id": "D",
+        "text": "半監督式學習"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "半監督式學習結合少量標註資料與大量未標註資料。",
+      "correctRationale": "標註成本高時，用少量標註搭配大量未標註資料，可提升模型表現。",
+      "optionRationales": {
+        "A": "專家系統不從資料學習。",
+        "B": "只做分群無法直接利用已有的瑕疵標註。",
+        "C": "強化學習需要環境與獎勵訊號。",
+        "D": "正確。少量標註＋大量未標註。"
+      },
+      "commonTrap": "以為有部分標籤就只能用監督式學習。",
+      "lessonAnchor": "L11301"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "半監督式學習"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11301-0010",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "AI 透過與遊戲環境不斷對弈，贏棋得到獎勵、輸棋受到懲罰，逐步學會好的下棋策略。這屬於？",
+    "options": [
+      {
+        "id": "A",
+        "text": "強化學習"
+      },
+      {
+        "id": "B",
+        "text": "非監督式學習"
+      },
+      {
+        "id": "C",
+        "text": "資料清理"
+      },
+      {
+        "id": "D",
+        "text": "監督式學習"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "強化學習：代理人與環境互動，依獎勵訊號學習行動策略。",
+      "correctRationale": "沒有事先標好每一步的正確答案，而是從結果的獎懲中學習。",
+      "optionRationales": {
+        "A": "正確。依獎勵學習策略。",
+        "B": "非監督式學習是找資料結構，沒有獎勵。",
+        "C": "資料清理是前處理步驟。",
+        "D": "監督式學習需要每筆資料的正確標籤。"
+      },
+      "commonTrap": "看到「學習」就以為一定要有標籤。",
+      "lessonAnchor": "L11301"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "強化學習"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11301-0011",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "模型在訓練資料與測試資料的準確率都只有約 55%，最可能的狀況與改善方向是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "模型非常完美，不需調整"
+      },
+      {
+        "id": "B",
+        "text": "資料漂移，與模型能力無關"
+      },
+      {
+        "id": "C",
+        "text": "欠擬合，可考慮增加模型複雜度或加入更有用的特徵"
+      },
+      {
+        "id": "D",
+        "text": "過擬合，應立即減少訓練資料"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "欠擬合：訓練與測試表現都差。",
+      "correctRationale": "模型太簡單或特徵不足，連訓練資料的規律都學不好。",
+      "optionRationales": {
+        "A": "55% 的表現明顯不足。",
+        "B": "資料漂移是上線後的分布改變，此處訓練表現就很差。",
+        "C": "正確。兩者皆差，是欠擬合。",
+        "D": "過擬合是訓練好、測試差。"
+      },
+      "commonTrap": "過擬合與欠擬合的判斷方式弄反。",
+      "lessonAnchor": "L11301"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "欠擬合"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11301-0012",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列哪一項做法「最有助於」改善過擬合？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只用訓練集評估模型"
+      },
+      {
+        "id": "B",
+        "text": "刪除測試集"
+      },
+      {
+        "id": "C",
+        "text": "讓模型更複雜並增加訓練回合"
+      },
+      {
+        "id": "D",
+        "text": "增加訓練資料量、使用正則化或簡化模型"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "過擬合是模型過度記住訓練資料的細節與雜訊。",
+      "correctRationale": "更多資料、正則化、簡化模型、提早停止等方法可提升泛化能力。",
+      "optionRationales": {
+        "A": "只看訓練集會掩蓋過擬合。",
+        "B": "刪除測試集就無法發現問題。",
+        "C": "這樣通常會讓過擬合更嚴重。",
+        "D": "正確。常見的過擬合改善方法。"
+      },
+      "commonTrap": "以為模型越複雜越好。",
+      "lessonAnchor": "L11301"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "過擬合"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11301-0013",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "資料切分為訓練集、驗證集、測試集時，「驗證集」的主要用途是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "用來儲存模型檔案"
+      },
+      {
+        "id": "B",
+        "text": "在開發過程中比較不同模型與超參數，協助選出較佳設定"
+      },
+      {
+        "id": "C",
+        "text": "取代測試集做最終公開報告"
+      },
+      {
+        "id": "D",
+        "text": "用來增加訓練資料量"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "驗證集用於模型選擇與調參。",
+      "correctRationale": "測試集保留到最後一次評估，以免在反覆調參中被「看過」而失去客觀性。",
+      "optionRationales": {
+        "A": "與儲存模型檔案無關。",
+        "B": "正確。用於選模型、調參。",
+        "C": "最終評估應使用測試集。",
+        "D": "驗證集不參與參數學習。"
+      },
+      "commonTrap": "驗證集與測試集的用途混淆。",
+      "lessonAnchor": "L11301"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "驗證集"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11301-0014",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "資料量很少時，為了讓模型評估更穩定，常使用哪一種方法？",
+    "options": [
+      {
+        "id": "A",
+        "text": "K 折交叉驗證（K-fold Cross Validation）"
+      },
+      {
+        "id": "B",
+        "text": "不切分資料，直接用訓練集評估"
+      },
+      {
+        "id": "C",
+        "text": "把資料複製十倍"
+      },
+      {
+        "id": "D",
+        "text": "只用一筆資料測試"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "K 折交叉驗證讓每筆資料輪流當作驗證資料。",
+      "correctRationale": "資料分成 K 份，輪流用其中一份驗證、其餘訓練，取平均結果，降低單次切分的運氣成分。",
+      "optionRationales": {
+        "A": "正確。輪流驗證、取平均。",
+        "B": "用訓練集評估會高估表現。",
+        "C": "複製資料不會增加新資訊，還可能造成洩漏。",
+        "D": "一筆資料無法代表整體表現。"
+      },
+      "commonTrap": "資料少時隨意切分，使評估結果不穩定。",
+      "lessonAnchor": "L11301"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "交叉驗證"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11301-0015",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "建立房價預測模型時，「坪數、屋齡、樓層」與「成交價格」分別稱為？",
+    "options": [
+      {
+        "id": "A",
+        "text": "訓練集與測試集"
+      },
+      {
+        "id": "B",
+        "text": "標籤與特徵"
+      },
+      {
+        "id": "C",
+        "text": "超參數與參數"
+      },
+      {
+        "id": "D",
+        "text": "特徵（Feature）與標籤（Label）"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "特徵是輸入變數，標籤是要預測的答案。",
+      "correctRationale": "模型學習從坪數、屋齡等特徵預測成交價格這個標籤。",
+      "optionRationales": {
+        "A": "訓練集與測試集是資料切分，不是變數角色。",
+        "B": "順序相反。",
+        "C": "超參數是訓練前設定的值，如學習率。",
+        "D": "正確。輸入是特徵、答案是標籤。"
+      },
+      "commonTrap": "把特徵與標籤的角色弄反。",
+      "lessonAnchor": "L11301"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "scenario",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "特徵與標籤"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11301-0016",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "傳統程式設計與機器學習的根本差異，下列描述何者最正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "機器學習完全不需要人參與"
+      },
+      {
+        "id": "B",
+        "text": "傳統程式由人寫規則產生答案；機器學習由資料與答案學出規則"
+      },
+      {
+        "id": "C",
+        "text": "兩者沒有差別"
+      },
+      {
+        "id": "D",
+        "text": "傳統程式不需要電腦"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "傳統程式：規則＋資料 → 答案；機器學習：資料＋答案 → 規則（模型）。",
+      "correctRationale": "機器學習適合規則難以明確寫出的問題，例如影像辨識。",
+      "optionRationales": {
+        "A": "機器學習仍需要人定義問題、準備資料與評估。",
+        "B": "正確。知識來源不同。",
+        "C": "兩者在產生規則的方式上根本不同。",
+        "D": "兩者都在電腦上執行。"
+      },
+      "commonTrap": "以為機器學習完全不需要人。",
+      "lessonAnchor": "L11301"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "機器學習"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11301-0017",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "把有數百個欄位的資料壓縮成少數幾個綜合指標，以便視覺化與加快運算，這屬於哪一類任務？",
+    "options": [
+      {
+        "id": "A",
+        "text": "強化學習"
+      },
+      {
+        "id": "B",
+        "text": "迴歸（監督式學習）"
+      },
+      {
+        "id": "C",
+        "text": "降維（非監督式學習）"
+      },
+      {
+        "id": "D",
+        "text": "分類（監督式學習）"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "降維是常見的非監督式學習任務。",
+      "correctRationale": "在不使用標籤的情況下，找出能保留主要資訊的少數維度。",
+      "optionRationales": {
+        "A": "強化學習需要環境與獎勵。",
+        "B": "迴歸需要數值標籤。",
+        "C": "正確。降維屬非監督式。",
+        "D": "分類需要類別標籤。"
+      },
+      "commonTrap": "以為非監督式學習只有分群。",
+      "lessonAnchor": "L11301"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "非監督式學習"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11301-0018",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "團隊在開發過程中每改一次超參數就看一次測試集分數，最後挑出測試集分數最高的設定，並對外宣稱準確率 95%。這個做法的主要問題是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "95% 太低，應該繼續調到 100%"
+      },
+      {
+        "id": "B",
+        "text": "沒有問題，這是標準流程"
+      },
+      {
+        "id": "C",
+        "text": "超參數不能調整"
+      },
+      {
+        "id": "D",
+        "text": "測試集已間接參與調參，95% 很可能高估真實表現"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "測試集只能在最後評估一次。",
+      "correctRationale": "反覆依測試集分數挑選設定，等於讓模型間接「看過」測試集，評估結果會過度樂觀。",
+      "optionRationales": {
+        "A": "追求 100% 容易過擬合。",
+        "B": "這違反測試集的使用原則。",
+        "C": "調整超參數是正常的，但應使用驗證集。",
+        "D": "正確。測試集被用來調參，評估失真。"
+      },
+      "commonTrap": "用測試集調參。",
+      "lessonAnchor": "L11301"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料洩漏",
+      "測試集"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11301-0019",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "在強化學習中，「獎勵（Reward）」扮演什麼角色？",
+    "options": [
+      {
+        "id": "A",
+        "text": "用來決定資料切分比例"
+      },
+      {
+        "id": "B",
+        "text": "代表每筆資料的正確標籤"
+      },
+      {
+        "id": "C",
+        "text": "告訴代理人某個行動結果的好壞，引導它學習能獲得更多累積獎勵的策略"
+      },
+      {
+        "id": "D",
+        "text": "用來加密模型參數"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "獎勵訊號是強化學習的學習依據。",
+      "correctRationale": "代理人嘗試不同行動，根據獎勵調整策略，以最大化長期累積獎勵。",
+      "optionRationales": {
+        "A": "與資料切分無關。",
+        "B": "標籤是監督式學習的概念。",
+        "C": "正確。引導學習策略。",
+        "D": "與加密無關。"
+      },
+      "commonTrap": "把獎勵與監督式學習的標籤混為一談。",
+      "lessonAnchor": "L11301"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "強化學習"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11301-0020",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "房仲公司擁有過去五年的成交紀錄（含坪數、地段、成交價），想預測新物件的合理成交價。最適合的學習方式與任務是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "監督式學習的分類"
+      },
+      {
+        "id": "B",
+        "text": "監督式學習的迴歸"
+      },
+      {
+        "id": "C",
+        "text": "強化學習"
+      },
+      {
+        "id": "D",
+        "text": "非監督式學習的分群"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "有歷史答案（成交價）且預測連續數值 → 監督式迴歸。",
+      "correctRationale": "成交價是標籤，坪數與地段是特徵，模型學習兩者關係後預測新物件的價格。",
+      "optionRationales": {
+        "A": "分類輸出的是類別，不是價格數值。",
+        "B": "正確。有標籤、預測數值。",
+        "C": "此問題沒有互動環境與獎勵。",
+        "D": "分群不會預測價格。"
+      },
+      "commonTrap": "先看「有沒有標籤」，再看「輸出是類別還是數值」。",
+      "lessonAnchor": "L11301"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "學習類型選擇"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11302-0006",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「線性迴歸（Linear Regression）」最適合用於哪一類問題？",
+    "options": [
+      {
+        "id": "A",
+        "text": "預測連續數值，例如依坪數預測房價"
+      },
+      {
+        "id": "B",
+        "text": "從無標籤資料中找出異常交易"
+      },
+      {
+        "id": "C",
+        "text": "把顧客分成數個群組"
+      },
+      {
+        "id": "D",
+        "text": "判斷圖片中是貓還是狗"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "線性迴歸用直線（或超平面）擬合輸入與數值輸出的關係。",
+      "correctRationale": "它屬於監督式學習中的迴歸，輸出為連續數值。",
+      "optionRationales": {
+        "A": "正確。預測連續數值。",
+        "B": "無標籤異常偵測不是線性迴歸的用途。",
+        "C": "分群是非監督式學習，如 K-means。",
+        "D": "判斷類別是分類問題。"
+      },
+      "commonTrap": "把線性迴歸和邏輯迴歸的用途混淆。",
+      "lessonAnchor": "L11302"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "線性迴歸"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11302-0007",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於「決策樹（Decision Tree）」，下列敘述何者最正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "以一連串是非問題切分資料，規則直觀易懂，但樹太深時容易過擬合"
+      },
+      {
+        "id": "B",
+        "text": "一定比隨機森林更不容易過擬合"
+      },
+      {
+        "id": "C",
+        "text": "必須先把資料轉成影像才能使用"
+      },
+      {
+        "id": "D",
+        "text": "只能用於非監督式分群"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "決策樹可解釋性高，但單棵深樹容易記住雜訊。",
+      "correctRationale": "限制最大深度、剪枝或改用隨機森林，可降低過擬合。",
+      "optionRationales": {
+        "A": "正確。直觀但易過擬合。",
+        "B": "隨機森林集成多棵樹，通常較不易過擬合。",
+        "C": "決策樹適合表格資料。",
+        "D": "決策樹多用於監督式分類與迴歸。"
+      },
+      "commonTrap": "把決策樹與隨機森林的特性對調。",
+      "lessonAnchor": "L11302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "決策樹"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11302-0008",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "支援向量機（SVM）在分類時的核心想法是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "逐步去除影像中的雜訊"
+      },
+      {
+        "id": "B",
+        "text": "讓多棵決策樹投票"
+      },
+      {
+        "id": "C",
+        "text": "找出每個點最近的 K 個鄰居"
+      },
+      {
+        "id": "D",
+        "text": "找出能讓兩類資料之間間隔（margin）最大的分界線或超平面"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "SVM 追求最大間隔的分界。",
+      "correctRationale": "間隔越大，對新資料的分類通常越穩健。",
+      "optionRationales": {
+        "A": "這是擴散模型的生成機制。",
+        "B": "這是隨機森林。",
+        "C": "這是 KNN。",
+        "D": "正確。最大間隔。"
+      },
+      "commonTrap": "把不同模型的核心想法混淆。",
+      "lessonAnchor": "L11302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "SVM"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11302-0009",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "K 近鄰（KNN）分類器在預測新資料的類別時，通常怎麼做？",
+    "options": [
+      {
+        "id": "A",
+        "text": "訓練一個多層神經網路"
+      },
+      {
+        "id": "B",
+        "text": "找出與新資料最接近的 K 筆訓練資料，依它們的類別多數決"
+      },
+      {
+        "id": "C",
+        "text": "依專家寫好的規則判斷"
+      },
+      {
+        "id": "D",
+        "text": "先把資料分成 K 群再隨機挑一群"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "KNN 依距離找最近的 K 個鄰居。",
+      "correctRationale": "分類時取鄰居中最多的類別；迴歸時取鄰居數值的平均。",
+      "optionRationales": {
+        "A": "KNN 不是神經網路。",
+        "B": "正確。最近鄰多數決。",
+        "C": "KNN 是從資料比對，不是人工規則。",
+        "D": "這是對 K-means 的錯誤描述，且 KNN 不做分群。"
+      },
+      "commonTrap": "KNN 與 K-means 名稱相似但用途不同。",
+      "lessonAnchor": "L11302"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "KNN"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11302-0010",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於 KNN 與 K-means 的比較，下列何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "兩者都是非監督式學習"
+      },
+      {
+        "id": "B",
+        "text": "兩者的 K 都代表群數"
+      },
+      {
+        "id": "C",
+        "text": "KNN 是監督式學習，K 是鄰居數；K-means 是非監督式分群，K 是群數"
+      },
+      {
+        "id": "D",
+        "text": "KNN 是分群演算法，K-means 是分類演算法"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "名字都有 K，但學習類型與 K 的意義不同。",
+      "correctRationale": "KNN 需要有標籤的訓練資料；K-means 不需要標籤，依相似度分群。",
+      "optionRationales": {
+        "A": "KNN 需要標籤，是監督式。",
+        "B": "KNN 的 K 是鄰居數。",
+        "C": "正確對照。",
+        "D": "用途相反。"
+      },
+      "commonTrap": "被相同的字母 K 誤導。",
+      "lessonAnchor": "L11302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "KNN",
+      "K-means"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11302-0011",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "類神經網路（尤其是多層的深度網路）通常最適合哪一類情境？",
+    "options": [
+      {
+        "id": "A",
+        "text": "需要每一步都能被法規人員逐條解釋的簡單決策"
+      },
+      {
+        "id": "B",
+        "text": "資料量大、包含影像、語音或文字等複雜非線性關係的問題"
+      },
+      {
+        "id": "C",
+        "text": "完全沒有任何資料的問題"
+      },
+      {
+        "id": "D",
+        "text": "只有十幾筆資料的小型表格"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "神經網路擅長學習複雜的非線性關係，但需要較多資料。",
+      "correctRationale": "影像、語音、文字等資料的特徵複雜，深度網路能自動學習多層次特徵。",
+      "optionRationales": {
+        "A": "神經網路可解釋性較低。",
+        "B": "正確。大量、複雜、非結構化資料。",
+        "C": "沒有資料無法訓練。",
+        "D": "資料太少時容易過擬合。"
+      },
+      "commonTrap": "以為神經網路適合所有問題。",
+      "lessonAnchor": "L11302"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "類神經網路"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11302-0012",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "銀行需要向被拒貸的申請人說明主要原因，且主管機關要求模型可被審查。較適合優先考慮哪類模型？",
+    "options": [
+      {
+        "id": "A",
+        "text": "K-means 分群"
+      },
+      {
+        "id": "B",
+        "text": "文生圖模型"
+      },
+      {
+        "id": "C",
+        "text": "邏輯迴歸或決策樹等可解釋性較高的模型"
+      },
+      {
+        "id": "D",
+        "text": "參數極多、難以解釋的深度神經網路"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "需要說明理由的情境，可解釋性是重要的選型條件。",
+      "correctRationale": "邏輯迴歸的係數、決策樹的分支條件都容易轉成人能理解的原因。",
+      "optionRationales": {
+        "A": "分群無法直接輸出核准與否。",
+        "B": "文生圖與貸款判斷無關。",
+        "C": "正確。可解釋性高。",
+        "D": "深度網路通常較難解釋。"
+      },
+      "commonTrap": "只追求準確率，忽略可解釋性需求。",
+      "lessonAnchor": "L11302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "可解釋性",
+      "模型選擇"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11302-0013",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "垃圾郵件過濾器若把重要的客戶來信誤判為垃圾郵件，代價很高。此時應特別重視哪一個指標？",
+    "options": [
+      {
+        "id": "A",
+        "text": "R 平方"
+      },
+      {
+        "id": "B",
+        "text": "平均絕對誤差（MAE）"
+      },
+      {
+        "id": "C",
+        "text": "召回率（Recall）"
+      },
+      {
+        "id": "D",
+        "text": "精確率（Precision）"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "精確率衡量「被預測為正類的，有多少真的是正類」。",
+      "correctRationale": "誤報（FP，把正常信判成垃圾）代價高時，應提高精確率。",
+      "optionRationales": {
+        "A": "R² 是迴歸指標。",
+        "B": "MAE 是迴歸指標。",
+        "C": "召回率重視不要漏抓垃圾郵件。",
+        "D": "正確。降低誤報。"
+      },
+      "commonTrap": "精確率與召回率適用情境相反。",
+      "lessonAnchor": "L11302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "精確率"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11302-0014",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "某模型預測 40 筆為「詐欺」，其中 30 筆確實是詐欺、10 筆其實正常。此模型的精確率為？",
+    "options": [
+      {
+        "id": "A",
+        "text": "0.75"
+      },
+      {
+        "id": "B",
+        "text": "1.33"
+      },
+      {
+        "id": "C",
+        "text": "0.25"
+      },
+      {
+        "id": "D",
+        "text": "0.30"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "精確率 = TP / (TP + FP)。",
+      "correctRationale": "30 / (30 + 10) = 0.75。",
+      "optionRationales": {
+        "A": "正確。30/40 = 0.75。",
+        "B": "比率不會大於 1。",
+        "C": "0.25 是誤報比例 10/40。",
+        "D": "0.30 不符合公式。"
+      },
+      "commonTrap": "把 FP 與 FN 放錯位置。",
+      "lessonAnchor": "L11302"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "精確率"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11302-0015",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "實際有 50 筆詐欺交易，模型抓到其中 30 筆、漏掉 20 筆。此模型的召回率為？",
+    "options": [
+      {
+        "id": "A",
+        "text": "0.4"
+      },
+      {
+        "id": "B",
+        "text": "0.75"
+      },
+      {
+        "id": "C",
+        "text": "1.67"
+      },
+      {
+        "id": "D",
+        "text": "0.6"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "召回率 = TP / (TP + FN)。",
+      "correctRationale": "30 / (30 + 20) = 0.6。",
+      "optionRationales": {
+        "A": "0.4 是漏抓比例。",
+        "B": "0.75 不是此題資料算出的召回率。",
+        "C": "比率不會大於 1。",
+        "D": "正確。30/50 = 0.6。"
+      },
+      "commonTrap": "混淆精確率與召回率的分母。",
+      "lessonAnchor": "L11302"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "召回率"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11302-0016",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "F1-score 的意義是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "迴歸模型的誤差總和"
+      },
+      {
+        "id": "B",
+        "text": "準確率的平方"
+      },
+      {
+        "id": "C",
+        "text": "精確率與召回率的調和平均，兼顧兩者"
+      },
+      {
+        "id": "D",
+        "text": "模型訓練的回合數"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "F1 = 2PR / (P + R)。",
+      "correctRationale": "當精確率與召回率都重要、或資料不平衡時，F1 能提供單一綜合指標。",
+      "optionRationales": {
+        "A": "F1 是分類指標。",
+        "B": "與準確率平方無關。",
+        "C": "正確。兩者的調和平均。",
+        "D": "不是訓練回合數。"
+      },
+      "commonTrap": "以為 F1 是算術平均。",
+      "lessonAnchor": "L11302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "F1"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11302-0017",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "比較迴歸指標 MAE 與 RMSE，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "RMSE 的單位是原始單位的平方"
+      },
+      {
+        "id": "B",
+        "text": "RMSE 先平方再開根號，對大誤差的懲罰比 MAE 重"
+      },
+      {
+        "id": "C",
+        "text": "MAE 一定大於 RMSE"
+      },
+      {
+        "id": "D",
+        "text": "兩者都只適用於分類問題"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "MAE 線性看待誤差；RMSE 放大大誤差。",
+      "correctRationale": "若少數大誤差代價特別高，RMSE 更能反映此問題。",
+      "optionRationales": {
+        "A": "開根號後與原始單位相同；MSE 才是平方單位。",
+        "B": "正確。RMSE 懲罰大誤差。",
+        "C": "一般情況下 RMSE ≥ MAE。",
+        "D": "兩者是迴歸指標。"
+      },
+      "commonTrap": "把 MSE 與 RMSE 的單位混淆。",
+      "lessonAnchor": "L11302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "MAE",
+      "RMSE"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11302-0018",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "迴歸模型的 R²（決定係數）越接近 1，代表什麼？",
+    "options": [
+      {
+        "id": "A",
+        "text": "模型能解釋目標變數變異的比例越高"
+      },
+      {
+        "id": "B",
+        "text": "模型的運算速度越快"
+      },
+      {
+        "id": "C",
+        "text": "資料筆數越多"
+      },
+      {
+        "id": "D",
+        "text": "模型越容易過擬合"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "R² 衡量模型解釋資料變異的程度。",
+      "correctRationale": "R² 越接近 1，代表預測值越能貼近實際值的變化。",
+      "optionRationales": {
+        "A": "正確。解釋變異比例高。",
+        "B": "與速度無關。",
+        "C": "與資料筆數無直接關係。",
+        "D": "R² 高不必然是過擬合，但須搭配測試集確認。"
+      },
+      "commonTrap": "只看訓練集 R² 就判斷模型很好。",
+      "lessonAnchor": "L11302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "R²"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11302-0019",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "建模時先建立一個簡單的「基準模型（Baseline）」，主要目的為何？",
+    "options": [
+      {
+        "id": "A",
+        "text": "作為比較依據，確認更複雜的模型是否真的帶來改善"
+      },
+      {
+        "id": "B",
+        "text": "用來加密資料"
+      },
+      {
+        "id": "C",
+        "text": "讓專案時程變長"
+      },
+      {
+        "id": "D",
+        "text": "取代所有後續模型"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "Baseline 提供最低標準的參考線。",
+      "correctRationale": "例如「全部預測多數類別」或簡單迴歸；若複雜模型贏不了 baseline，就不值得採用。",
+      "optionRationales": {
+        "A": "正確。作為比較基準。",
+        "B": "與加密無關。",
+        "C": "目的不是拖延時程。",
+        "D": "Baseline 是參考，不是最終模型。"
+      },
+      "commonTrap": "直接用複雜模型，不知道它是否真的比較好。",
+      "lessonAnchor": "L11302"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "基準模型"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11302-0020",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L113",
+    "competencyCode": "L11302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "零售業者要用會員的表格資料（年齡、消費次數、平均金額等數十個欄位）預測是否回購。在不特別要求逐條解釋的情況下，下列哪一類模型常是不錯的起點？",
+    "options": [
+      {
+        "id": "A",
+        "text": "文生圖擴散模型"
+      },
+      {
+        "id": "B",
+        "text": "隨機森林或梯度提升樹等樹模型集成"
+      },
+      {
+        "id": "C",
+        "text": "只能處理影像的卷積神經網路"
+      },
+      {
+        "id": "D",
+        "text": "K-means 分群"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "表格資料的分類問題，樹模型集成常有穩健的表現。",
+      "correctRationale": "隨機森林、梯度提升樹能處理數值與類別特徵、非線性關係，且對特徵縮放不敏感。",
+      "optionRationales": {
+        "A": "擴散模型用於生成圖片。",
+        "B": "正確。表格資料常用的強勢方法。",
+        "C": "卷積神經網路主要用於影像。",
+        "D": "分群不會直接輸出是否回購。"
+      },
+      "commonTrap": "以為最新、最大的模型一定最適合。",
+      "lessonAnchor": "L11302"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "模型選擇"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  }
+]

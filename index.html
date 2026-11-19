@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="依 iPAS AI 應用規劃師評鑑範圍自主學習：講義、練題、錯題補強。獨立學習工具，非 iPAS 官方平台。" />
+    <meta name="theme-color" content="#4355dc" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <title>AI 備考室｜iPAS 學習平台</title>
+    <script>
+      // 在 React 載入前套用主題，避免閃爍（僅讀取 localStorage 的 UI 偏好）
+      try {
+        var p = JSON.parse(localStorage.getItem('ipas-ui-prefs') || '{}');
+        var dark = p.theme === 'dark' || (p.theme !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+        if (p.highContrast) document.documentElement.dataset.contrast = 'high';
+        if (p.fontScale) document.documentElement.style.setProperty('--font-scale', String(p.fontScale));
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <noscript>本網站需要啟用 JavaScript。</noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

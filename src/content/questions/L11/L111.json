@@ -1,0 +1,2310 @@
+[
+  {
+    "id": "original-L11101-0001",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列哪一項最符合「人工智慧」的描述？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只有裝在人形機器人上的軟體才算 AI"
+      },
+      {
+        "id": "B",
+        "text": "讓系統執行辨識、推理或決策等需要人類智慧之任務的技術"
+      },
+      {
+        "id": "C",
+        "text": "任何需要連網的電腦程式都屬於 AI"
+      },
+      {
+        "id": "D",
+        "text": "所有 AI 都具有人類等級的自我意識"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "AI 的定義著重於「執行需要智慧的任務」的能力，而非外觀、連網或意識。",
+      "correctRationale": "AI 是讓電腦完成感知、理解、推理、決策等通常需要人類智慧之任務的技術領域。",
+      "optionRationales": {
+        "A": "AI 可以只是純軟體，例如翻譯或推薦系統，不需要實體機器人。",
+        "B": "正確。這是以能力與任務為核心的 AI 定義。",
+        "C": "連網與否不是判定 AI 的標準，許多連網程式只是固定流程。",
+        "D": "現有 AI 都屬於狹義 AI，並不具備自我意識。"
+      },
+      "commonTrap": "以「機器人」「連網」「意識」等表面特徵判斷是否為 AI。",
+      "example": "手機相簿自動依人臉分類照片，沒有機器人也屬於 AI 應用。",
+      "lessonAnchor": "L11101"
+    },
+    "difficulty": 1,
+    "tags": [
+      "AI 定義"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11101-0002",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於人工智慧（AI）、機器學習（ML）與深度學習（DL）三者的關係，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "三者是彼此獨立、互不包含的領域"
+      },
+      {
+        "id": "B",
+        "text": "機器學習包含人工智慧，人工智慧包含深度學習"
+      },
+      {
+        "id": "C",
+        "text": "人工智慧包含機器學習，機器學習包含深度學習"
+      },
+      {
+        "id": "D",
+        "text": "深度學習包含機器學習，機器學習包含人工智慧"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "AI ⊃ ML ⊃ DL：深度學習是機器學習的一種，機器學習是實現 AI 的一種方法。",
+      "correctRationale": "AI 是最大的範疇；機器學習是讓系統從資料學習的 AI 方法；深度學習是使用多層神經網路的機器學習方法。",
+      "optionRationales": {
+        "A": "三者有明確的包含關係，並非互相獨立。",
+        "B": "包含方向錯誤：AI 範疇大於機器學習。",
+        "C": "正確。由大到小為 AI → ML → DL。",
+        "D": "包含方向完全相反。"
+      },
+      "commonTrap": "把包含關係的方向記反。",
+      "example": "規則式專家系統屬於 AI 但不屬於機器學習；決策樹屬於機器學習但不屬於深度學習。",
+      "lessonAnchor": "L11101"
+    },
+    "difficulty": 1,
+    "tags": [
+      "AI 分類",
+      "機器學習"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "basic",
+    "questionType": "comparison",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11101-0003",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "某工廠使用一套系統，在產線相機拍到產品後自動判斷是否有刮痕。依能力範圍分類，這套系統最可能屬於下列哪一種？",
+    "options": [
+      {
+        "id": "A",
+        "text": "狹義 AI（弱 AI）"
+      },
+      {
+        "id": "B",
+        "text": "通用人工智慧（AGI）"
+      },
+      {
+        "id": "C",
+        "text": "超級人工智慧（ASI）"
+      },
+      {
+        "id": "D",
+        "text": "不屬於任何 AI，只是一般排程程式"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "只專精單一任務（瑕疵檢測）的系統屬於狹義 AI，也是目前所有商用 AI 的類型。",
+      "correctRationale": "瑕疵檢測只處理特定影像辨識任務，不具跨領域通用能力，因此屬於狹義 AI。",
+      "optionRationales": {
+        "A": "正確。專注於單一任務的 AI 即狹義 AI。",
+        "B": "AGI 需具備跨領域學習與解決問題能力，目前尚未實現。",
+        "C": "ASI 指在幾乎所有領域都超越人類，屬理論討論。",
+        "D": "系統需從影像判斷有無刮痕，屬於感知型 AI 任務，並非固定流程的排程程式。"
+      },
+      "commonTrap": "看到「自動判斷」就以為是很高階的 AI，或誤以為影像檢測只是一般程式。",
+      "lessonAnchor": "L11101"
+    },
+    "difficulty": 2,
+    "tags": [
+      "AI 分類"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11101-0004",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "早期醫療診斷系統由醫師將判斷邏輯寫成大量「如果…則…」規則。這類系統屬於哪一種 AI 實作方式？",
+    "options": [
+      {
+        "id": "A",
+        "text": "深度學習"
+      },
+      {
+        "id": "B",
+        "text": "非監督式學習"
+      },
+      {
+        "id": "C",
+        "text": "生成式 AI"
+      },
+      {
+        "id": "D",
+        "text": "規則式（符號式）AI／專家系統"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "知識由人撰寫成規則、而非從資料學得，是規則式 AI（專家系統）的特徵。",
+      "correctRationale": "專家系統以知識庫與推論規則模擬專家判斷，規則由人工建立。",
+      "optionRationales": {
+        "A": "深度學習是從大量資料訓練多層神經網路，不是由人工撰寫規則。",
+        "B": "非監督式學習是機器學習的一種，需從未標記資料中找出結構。",
+        "C": "生成式 AI 是產生新內容的模型，與人工規則判斷無關。",
+        "D": "正確。人工撰寫的「如果…則…」規則即規則式 AI 的核心。"
+      },
+      "commonTrap": "誤以為 AI 一定要從資料學習；規則式系統雖不學習，仍屬 AI。",
+      "lessonAnchor": "L11101"
+    },
+    "difficulty": 2,
+    "tags": [
+      "AI 分類",
+      "專家系統"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11102-0001",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "企業導入 AI 進行履歷初篩，下列哪一項做法最符合負責任 AI 的治理精神？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只追求篩選速度，其他影響之後再說"
+      },
+      {
+        "id": "B",
+        "text": "既然由 AI 自動評分，就取消人工申訴管道"
+      },
+      {
+        "id": "C",
+        "text": "檢查訓練資料是否造成群體偏誤，並建立人工覆核與申訴流程"
+      },
+      {
+        "id": "D",
+        "text": "公開所有應徵者的履歷資料以展示透明度"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "AI 治理重視公平性、人類監督與問責，高影響決策需保留覆核與申訴。",
+      "correctRationale": "檢查偏誤對應公平性，人工覆核與申訴對應人類監督與問責，是高風險應用的核心治理措施。",
+      "optionRationales": {
+        "A": "速度不是唯一目標，忽略公平與隱私可能造成歧視與法律風險。",
+        "B": "自動化不代表免除監督，取消申訴違反問責與人類監督原則。",
+        "C": "正確。兼顧公平性、人類監督與問責。",
+        "D": "透明度不等於公開個資，此舉反而違反隱私保護。"
+      },
+      "commonTrap": "把「透明」誤解為「公開資料」，或認為自動化就不需要人工監督。",
+      "example": "某些國家已要求招聘演算法定期進行偏誤稽核。",
+      "lessonAnchor": "L11102"
+    },
+    "difficulty": 2,
+    "tags": [
+      "AI 治理",
+      "公平性"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11102-0002",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於負責任 AI 的「透明度」原則，下列敘述何者最適當？",
+    "options": [
+      {
+        "id": "A",
+        "text": "讓使用者知道正在與 AI 互動，並能理解影響決策的主要依據"
+      },
+      {
+        "id": "B",
+        "text": "將訓練資料（包含個人資料）全部公開下載"
+      },
+      {
+        "id": "C",
+        "text": "公開模型所有原始碼才算符合透明度"
+      },
+      {
+        "id": "D",
+        "text": "只要模型準確率夠高，就不需要說明判斷依據"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "透明度著重於揭露 AI 的使用與可理解的判斷依據，同時仍須保護隱私與營業秘密。",
+      "correctRationale": "告知 AI 使用並說明主要判斷依據，讓受影響者能理解與提出異議，是透明度的核心。",
+      "optionRationales": {
+        "A": "正確。揭露 AI 使用並提供可理解的依據。",
+        "B": "公開個資會違反隱私保護，透明度不等於公開所有資料。",
+        "C": "原始碼公開並非透明度的必要條件，重點是可理解的說明。",
+        "D": "準確率高不代表免除說明義務，受影響者仍需要理由。"
+      },
+      "commonTrap": "把透明度與「公開一切資料或程式碼」劃上等號。",
+      "example": "信用卡申請被拒時，銀行說明主要原因是「近期負債比過高」。",
+      "lessonAnchor": "L11102"
+    },
+    "difficulty": 1,
+    "tags": [
+      "AI 治理",
+      "透明度"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "basic",
+    "questionType": "comparison",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11102-0003",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "某公司的 AI 預測模型上線時表現良好，半年後準確率明顯下降。最可能的原因與正確的治理做法是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "模型會自動老化損壞，只能購買新硬體"
+      },
+      {
+        "id": "B",
+        "text": "使用者太多導致模型變笨，應限制使用人數"
+      },
+      {
+        "id": "C",
+        "text": "AI 不需要監控，下降屬於正常波動不必處理"
+      },
+      {
+        "id": "D",
+        "text": "輸入資料分布已改變（資料漂移），應持續監控並定期再評估或重新訓練"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "治理貫穿生命週期，上線後需監控資料漂移與效能衰退。",
+      "correctRationale": "真實世界的資料會隨時間改變，使模型面對與訓練時不同的分布，因此要監控並適時重新訓練。",
+      "optionRationales": {
+        "A": "模型參數不會因時間自行損壞，問題通常來自資料改變。",
+        "B": "一般推論服務的使用人數不會改變模型參數。",
+        "C": "忽略效能下降可能造成錯誤決策，違反持續監控原則。",
+        "D": "正確。資料漂移是效能下降的常見原因，持續監控與再評估是正確做法。"
+      },
+      "commonTrap": "以為上線前審查一次就足夠。",
+      "example": "疫情期間消費行為劇烈改變，許多需求預測模型都需要重新訓練。",
+      "lessonAnchor": "L11102"
+    },
+    "difficulty": 2,
+    "tags": [
+      "AI 治理",
+      "監控"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11102-0004",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "負責任 AI 原則中的「問責（Accountability）」最直接對應下列哪項措施？",
+    "options": [
+      {
+        "id": "A",
+        "text": "盡量讓模型參數越多越好"
+      },
+      {
+        "id": "B",
+        "text": "明確指定 AI 系統的負責單位，並保留決策紀錄以供稽核"
+      },
+      {
+        "id": "C",
+        "text": "讓 AI 自行決定所有事項以減少人為錯誤"
+      },
+      {
+        "id": "D",
+        "text": "只在發生問題時才開始建立管理制度"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "問責要求有明確的負責人與可追溯的紀錄，出問題時能究責與改善。",
+      "correctRationale": "指定負責單位與保留紀錄，才能在事件發生時追查原因、界定責任並改善。",
+      "optionRationales": {
+        "A": "模型大小與問責無關。",
+        "B": "正確。明確責任歸屬與可稽核紀錄。",
+        "C": "讓 AI 自行決定所有事項反而削弱人類監督與責任歸屬。",
+        "D": "問責機制應事先建立，而非事後補救。"
+      },
+      "commonTrap": "誤以為出錯時可以把責任推給 AI 本身。",
+      "lessonAnchor": "L11102"
+    },
+    "difficulty": 2,
+    "tags": [
+      "AI 治理",
+      "問責"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11102-0005",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "依常見的「風險分級」治理思維，下列哪一種 AI 應用通常需要最嚴格的控管？",
+    "options": [
+      {
+        "id": "A",
+        "text": "遊戲中非玩家角色的對話生成"
+      },
+      {
+        "id": "B",
+        "text": "音樂串流平台的歌曲推薦"
+      },
+      {
+        "id": "C",
+        "text": "用於決定求職者是否進入面試的篩選系統"
+      },
+      {
+        "id": "D",
+        "text": "電子郵件的垃圾信過濾"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "對個人權益影響越大的應用（就業、信用、醫療、執法），治理要求越嚴格。",
+      "correctRationale": "求職篩選直接影響個人的就業機會，屬於高影響、高風險應用，需要更多測試、透明度與人類監督。",
+      "optionRationales": {
+        "A": "遊戲對話對個人權益影響低。",
+        "B": "推薦錯誤的影響有限，風險較低。",
+        "C": "正確。影響就業機會，屬高風險應用。",
+        "D": "垃圾信過濾雖可能誤判，但對基本權益影響相對有限。"
+      },
+      "commonTrap": "用「技術難度」而非「對人的影響」判斷風險高低。",
+      "example": "歐盟 AI 法將就業招募用途的 AI 列為高風險類別。",
+      "lessonAnchor": "L11102"
+    },
+    "difficulty": 2,
+    "tags": [
+      "AI 治理",
+      "風險分級"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11101-0005",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「圖靈測試（Turing Test）」主要用來檢驗什麼？",
+    "options": [
+      {
+        "id": "A",
+        "text": "程式碼中是否存在安全漏洞"
+      },
+      {
+        "id": "B",
+        "text": "電腦每秒可以執行多少次運算"
+      },
+      {
+        "id": "C",
+        "text": "機器在對話中的表現能否讓人難以分辨它是機器還是人類"
+      },
+      {
+        "id": "D",
+        "text": "機器是否真的具有自我意識與情感"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "圖靈測試是「以行為衡量智慧」的代表：看機器的外在表現是否像人。",
+      "correctRationale": "測試者透過文字與對方交談，若無法可靠地區分對方是機器或人，就認為機器展現了類似人類的智慧行為。",
+      "optionRationales": {
+        "A": "資安檢測與圖靈測試無關。",
+        "B": "運算速度是硬體效能指標，與圖靈測試無關。",
+        "C": "正確。以對話行為判斷是否像人類。",
+        "D": "圖靈測試只觀察外在行為，無法也不打算證明機器有意識。"
+      },
+      "commonTrap": "把「表現得像人」誤解為「有意識」。",
+      "example": "客服聊天機器人回答流暢，讓使用者以為是真人，就是行為層面的「像人」。",
+      "lessonAnchor": "L11101"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "AI 定義",
+      "圖靈測試"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11101-0006",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "從「理性代理人（Rational Agent）」的觀點，一個 AI 系統被認為是理性的，關鍵在於？",
+    "options": [
+      {
+        "id": "A",
+        "text": "每次都能得到完美無誤的結果"
+      },
+      {
+        "id": "B",
+        "text": "必須使用深度學習模型"
+      },
+      {
+        "id": "C",
+        "text": "外觀必須像人類"
+      },
+      {
+        "id": "D",
+        "text": "能根據所感知的環境資訊，採取最可能達成目標的行動"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "理性代理人觀點以「是否做出最有利於達成目標的行動」衡量智慧。",
+      "correctRationale": "代理人從環境取得資訊，在有限資訊下選擇期望效果最好的行動，不要求完美，也不限定技術。",
+      "optionRationales": {
+        "A": "在資訊不完整時，理性決策也可能出錯，重點是「期望上最好」。",
+        "B": "規則式、搜尋演算法等也能構成理性代理人，不限深度學習。",
+        "C": "理性與外觀無關，軟體代理人也可以是理性的。",
+        "D": "正確。依環境資訊選擇最能達成目標的行動。"
+      },
+      "commonTrap": "以為理性代理人等於「永遠正確」。",
+      "example": "掃地機器人依感測到的障礙物與電量決定路線與何時回充。",
+      "lessonAnchor": "L11101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "AI 定義",
+      "理性代理人"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11101-0007",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列哪一個系統最「不」適合稱為人工智慧應用？",
+    "options": [
+      {
+        "id": "A",
+        "text": "辨識發票影像並擷取金額的系統"
+      },
+      {
+        "id": "B",
+        "text": "依語音指令設定鬧鐘的語音助理"
+      },
+      {
+        "id": "C",
+        "text": "每天早上 8 點依固定排程自動寄出同一份報表的程式"
+      },
+      {
+        "id": "D",
+        "text": "依顧客瀏覽紀錄推薦商品的系統"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "固定流程的自動化不等於 AI；AI 需處理感知、理解、推理或學習等任務。",
+      "correctRationale": "排程寄信只是依時間觸發固定動作，不需要感知、理解或決策能力。",
+      "optionRationales": {
+        "A": "影像辨識屬感知型 AI 任務。",
+        "B": "語音辨識與語意理解屬 AI 任務。",
+        "C": "正確。只是固定流程的自動化。",
+        "D": "推薦需要從行為資料推論偏好，屬 AI 應用。"
+      },
+      "commonTrap": "把所有「自動化」都當成 AI。",
+      "lessonAnchor": "L11101"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "scenario",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "AI 與自動化"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11101-0008",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "工廠中依照預先寫好的固定軌跡、重複焊接同一位置的機械手臂，最適合如何描述？",
+    "options": [
+      {
+        "id": "A",
+        "text": "是生成式 AI"
+      },
+      {
+        "id": "B",
+        "text": "因為是機器人，所以一定是 AI"
+      },
+      {
+        "id": "C",
+        "text": "是機器人，但不一定具備 AI 能力"
+      },
+      {
+        "id": "D",
+        "text": "是通用人工智慧（AGI）"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "機器人是能與實體環境互動的機械系統；是否有 AI 要看它是否具備感知、學習或決策能力。",
+      "correctRationale": "只依固定軌跡重複動作，沒有根據環境變化做判斷，屬於傳統自動化機器人。",
+      "optionRationales": {
+        "A": "生成式 AI 是產生新內容的模型，與固定焊接動作無關。",
+        "B": "「機器人＝AI」是常見錯誤，機器人可以沒有 AI。",
+        "C": "正確。有實體但不一定有 AI。",
+        "D": "AGI 需具跨領域通用能力，焊接手臂遠遠不是。"
+      },
+      "commonTrap": "把「機器人」與「AI」畫上等號。",
+      "example": "若加上相機辨識焊點位置並自動調整，才具備感知型 AI 能力。",
+      "lessonAnchor": "L11101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "AI 與機器人"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11101-0009",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "大型語言模型能寫文章、翻譯、寫程式。就目前主流看法，它在能力分類上最適合如何描述？",
+    "options": [
+      {
+        "id": "A",
+        "text": "仍屬狹義 AI（弱 AI），尚未被普遍認定為已實現通用人工智慧（AGI）"
+      },
+      {
+        "id": "B",
+        "text": "具有自我意識的通用人工智慧"
+      },
+      {
+        "id": "C",
+        "text": "不屬於任何 AI 類型"
+      },
+      {
+        "id": "D",
+        "text": "已經是超級人工智慧（ASI）"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "LLM 雖能處理多種語言任務，但一般仍不視為已實現 AGI。",
+      "correctRationale": "AGI 指能像人一樣跨領域學習與解決各種問題；LLM 仍有幻覺、缺乏穩定推理與真實世界理解等限制。",
+      "optionRationales": {
+        "A": "正確。目前主流看法仍視為狹義 AI。",
+        "B": "沒有證據顯示 LLM 具自我意識。",
+        "C": "LLM 明確屬於 AI。",
+        "D": "ASI 指幾乎所有領域都超越人類，屬理論討論。"
+      },
+      "commonTrap": "看到能做很多事就認定為 AGI。",
+      "lessonAnchor": "L11101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "AI 分類",
+      "AGI"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11101-0010",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「超級人工智慧（Artificial Superintelligence, ASI）」指的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只會下圍棋的 AI"
+      },
+      {
+        "id": "B",
+        "text": "由專家撰寫規則的系統"
+      },
+      {
+        "id": "C",
+        "text": "目前手機上的語音助理"
+      },
+      {
+        "id": "D",
+        "text": "在幾乎所有領域都超越人類能力的假想人工智慧"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "依能力範圍：狹義 AI（現況）→ AGI（研究目標）→ ASI（理論）。",
+      "correctRationale": "ASI 是理論上的概念，指智慧全面超越人類，目前並不存在。",
+      "optionRationales": {
+        "A": "只會下棋的 AI 是典型的狹義 AI。",
+        "B": "規則式系統是依實作方法的分類，與能力等級無關。",
+        "C": "語音助理屬於狹義 AI。",
+        "D": "正確。ASI 的定義。"
+      },
+      "commonTrap": "把依能力分類與依方法分類混在一起。",
+      "lessonAnchor": "L11101"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "AI 分類",
+      "ASI"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11101-0011",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "判斷一個系統屬於「規則式 AI」還是「機器學習」，最關鍵的依據是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "系統是否使用電腦執行"
+      },
+      {
+        "id": "B",
+        "text": "系統是否有圖形化介面"
+      },
+      {
+        "id": "C",
+        "text": "系統的開發費用高低"
+      },
+      {
+        "id": "D",
+        "text": "系統的判斷知識是由人撰寫規則，還是從資料中學習而來"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "規則式與機器學習的差別在「知識從哪裡來」。",
+      "correctRationale": "規則式由專家把知識寫成規則；機器學習則從資料自動找出規律。",
+      "optionRationales": {
+        "A": "兩者都在電腦上執行。",
+        "B": "介面設計與 AI 實作方法無關。",
+        "C": "費用不是分類依據。",
+        "D": "正確。看知識來源。"
+      },
+      "commonTrap": "以表面特徵（介面、成本）判斷技術類型。",
+      "lessonAnchor": "L11101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "規則式 AI",
+      "機器學習"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11101-0012",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "早期的專家系統（規則式 AI）在實務上最常遇到的限制是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "規則難以窮舉，知識更新與維護成本高"
+      },
+      {
+        "id": "B",
+        "text": "完全無法解釋判斷理由"
+      },
+      {
+        "id": "C",
+        "text": "一定需要大量 GPU 才能運作"
+      },
+      {
+        "id": "D",
+        "text": "只能處理影像資料"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "規則式系統可解釋、可控，但規則會隨情境爆炸性增加，維護困難。",
+      "correctRationale": "真實世界例外情況很多，專家需不斷補寫規則，規則之間也可能互相衝突。",
+      "optionRationales": {
+        "A": "正確。規則難窮舉、維護成本高。",
+        "B": "相反地，規則式系統通常容易解釋，因為可以追溯觸發了哪條規則。",
+        "C": "規則式系統通常不需要大量 GPU。",
+        "D": "專家系統多處理符號化的知識，並非只能處理影像。"
+      },
+      "commonTrap": "把深度學習的缺點（難解釋、需大量算力）套到規則式系統上。",
+      "lessonAnchor": "L11101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "專家系統"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11101-0013",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "深度學習（Deep Learning）特別擅長處理下列哪一類資料？",
+    "options": [
+      {
+        "id": "A",
+        "text": "由專家撰寫的規則"
+      },
+      {
+        "id": "B",
+        "text": "只有少量欄位的小型表格"
+      },
+      {
+        "id": "C",
+        "text": "影像、語音、文字等非結構化資料"
+      },
+      {
+        "id": "D",
+        "text": "只能處理數字，無法處理文字"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "深度學習使用多層類神經網路，能自動學習複雜特徵。",
+      "correctRationale": "多層網路可從原始像素、聲波、文字中自動萃取特徵，因此在非結構化資料表現突出。",
+      "optionRationales": {
+        "A": "專家規則屬於規則式 AI。",
+        "B": "小型表格資料常用決策樹、迴歸等傳統模型即可，深度學習未必較好。",
+        "C": "正確。擅長非結構化資料。",
+        "D": "深度學習可處理文字（例如語言模型）。"
+      },
+      "commonTrap": "以為深度學習在任何資料上都一定最好。",
+      "lessonAnchor": "L11101"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "深度學習"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11101-0014",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "手機語音助理先把使用者說的話轉換成文字，這一步驟主要屬於哪一類 AI 任務？",
+    "options": [
+      {
+        "id": "A",
+        "text": "生成"
+      },
+      {
+        "id": "B",
+        "text": "感知"
+      },
+      {
+        "id": "C",
+        "text": "推理與決策"
+      },
+      {
+        "id": "D",
+        "text": "規則撰寫"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "AI 任務常分為感知、理解、推理決策、生成。",
+      "correctRationale": "把聲音訊號辨識成文字，是從外界訊號中「感知」資訊，與影像辨識同屬感知任務。",
+      "optionRationales": {
+        "A": "生成是產生新內容，例如合成語音或寫文章。",
+        "B": "正確。語音辨識屬感知。",
+        "C": "推理決策是依資訊選擇行動，例如規劃路線。",
+        "D": "規則撰寫不是 AI 任務類型。"
+      },
+      "commonTrap": "把「語音辨識（感知）」與「語音合成（生成）」混淆。",
+      "lessonAnchor": "L11101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "AI 任務類型"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11101-0015",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "導航 App 依即時路況，從多條路線中選出預估最快抵達的路線。這主要屬於哪一類 AI 任務？",
+    "options": [
+      {
+        "id": "A",
+        "text": "推理與決策"
+      },
+      {
+        "id": "B",
+        "text": "感知"
+      },
+      {
+        "id": "C",
+        "text": "生成"
+      },
+      {
+        "id": "D",
+        "text": "資料清理"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "推理決策任務是依目前資訊與目標，評估選項並做出選擇。",
+      "correctRationale": "比較多條路線的預估時間並選擇最佳者，是典型的規劃與決策。",
+      "optionRationales": {
+        "A": "正確。依資訊選擇最佳行動。",
+        "B": "感知是辨識外界訊號，例如辨識路標影像。",
+        "C": "生成是產生新的內容。",
+        "D": "資料清理是資料前處理步驟，不是 AI 任務類型。"
+      },
+      "commonTrap": "只要看到「即時資料」就以為是感知任務。",
+      "lessonAnchor": "L11101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "AI 任務類型"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11101-0016",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "電商平台輸入商品規格後，由 AI 自動寫出一段商品介紹文案。這屬於哪一類 AI 任務？",
+    "options": [
+      {
+        "id": "A",
+        "text": "分群"
+      },
+      {
+        "id": "B",
+        "text": "推理與決策"
+      },
+      {
+        "id": "C",
+        "text": "生成"
+      },
+      {
+        "id": "D",
+        "text": "感知"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "生成任務是產生新的文字、圖片、聲音或程式碼。",
+      "correctRationale": "依規格產出原本不存在的文案，屬於生成任務。",
+      "optionRationales": {
+        "A": "分群是把資料分組，不會寫出文案。",
+        "B": "這裡的主要產出是內容，而非在選項中做決策。",
+        "C": "正確。產生新內容。",
+        "D": "感知是辨識既有訊號，不是產出新文字。"
+      },
+      "commonTrap": "把所有語言相關任務都當成「理解」。",
+      "lessonAnchor": "L11101"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "AI 任務類型"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11101-0017",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "品牌把社群留言自動判斷為「正面、負面、中立」三類。這主要屬於哪一類 AI 任務？",
+    "options": [
+      {
+        "id": "A",
+        "text": "強化學習"
+      },
+      {
+        "id": "B",
+        "text": "生成"
+      },
+      {
+        "id": "C",
+        "text": "感知（如影像辨識）"
+      },
+      {
+        "id": "D",
+        "text": "理解（如情緒分析、文字分類）"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "理解類任務是解讀文字或語意，例如分類與情緒分析。",
+      "correctRationale": "判斷留言的情緒傾向需要理解語意，屬於理解類任務。",
+      "optionRationales": {
+        "A": "強化學習是學習方法，不是此處描述的任務類型。",
+        "B": "此任務沒有產生新內容。",
+        "C": "留言是文字，不是影像訊號。",
+        "D": "正確。解讀語意並分類。"
+      },
+      "commonTrap": "把學習方法與任務類型兩種分類角度混在一起。",
+      "lessonAnchor": "L11101"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "AI 任務類型"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11101-0018",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "某銀行用「決策樹」模型，依客戶歷史資料預測是否可能違約。關於此系統的分類，下列何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "屬於規則式專家系統，因為決策樹有規則"
+      },
+      {
+        "id": "B",
+        "text": "屬於機器學習，但不屬於深度學習"
+      },
+      {
+        "id": "C",
+        "text": "屬於深度學習，因為它能做預測"
+      },
+      {
+        "id": "D",
+        "text": "不屬於 AI，因為沒有使用神經網路"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "AI ⊃ ML ⊃ DL：決策樹是機器學習模型，但不是多層神經網路。",
+      "correctRationale": "決策樹的分支條件是從資料中學出來的，所以是機器學習；它不使用多層神經網路，因此不是深度學習。",
+      "optionRationales": {
+        "A": "決策樹的規則由資料學得，與專家人工撰寫規則不同。",
+        "B": "正確。屬 ML、不屬 DL。",
+        "C": "能做預測不代表是深度學習，許多傳統模型也能預測。",
+        "D": "AI 不限於神經網路，機器學習本來就屬於 AI。"
+      },
+      "commonTrap": "看到「規則」就以為是專家系統；看到「預測」就以為是深度學習。",
+      "lessonAnchor": "L11101"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "AI 分類",
+      "機器學習"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11101-0019",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "業務簡報宣稱：「導入 AI 後，系統會自己變聰明，不需要任何資料或專業知識。」最適當的回應是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "完全正確，AI 一旦導入就能自動學會所有事"
+      },
+      {
+        "id": "B",
+        "text": "AI 只需要更好的硬體，不需要資料"
+      },
+      {
+        "id": "C",
+        "text": "只要系統有連網，就能自動取得所需知識"
+      },
+      {
+        "id": "D",
+        "text": "機器學習需要資料學習、規則式 AI 需要專家知識，AI 系統仍須資料、設計與持續維護"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "不論哪種 AI 實作方式，都需要知識或資料來源，且需要維護。",
+      "correctRationale": "機器學習從資料學習，品質不佳的資料會導致錯誤；規則式 AI 需要專家撰寫規則。",
+      "optionRationales": {
+        "A": "這是誇大說法，忽略資料、設計與維護成本。",
+        "B": "硬體只影響運算速度，無法取代資料。",
+        "C": "連網不等於能取得正確、合法、適用的知識。",
+        "D": "正確。AI 需要資料或知識與持續維護。"
+      },
+      "commonTrap": "被「AI 會自動變聰明」的行銷語言誤導。",
+      "lessonAnchor": "L11101"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "AI 迷思"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11101-0020",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11101",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "相較於深度學習，規則式 AI 最主要的優點是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "判斷邏輯清楚、容易解釋，行為較可預期"
+      },
+      {
+        "id": "B",
+        "text": "能自動從大量影像學習特徵"
+      },
+      {
+        "id": "C",
+        "text": "不需要任何人參與設計"
+      },
+      {
+        "id": "D",
+        "text": "在所有任務上準確率都最高"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "規則式系統的每個判斷都能追溯到具體規則。",
+      "correctRationale": "因為規則由人撰寫，系統為何做出某個決定可以清楚說明，行為也容易預測與控制。",
+      "optionRationales": {
+        "A": "正確。可解釋、可預期。",
+        "B": "自動學習影像特徵是深度學習的強項。",
+        "C": "規則式系統需要專家設計規則。",
+        "D": "在複雜感知任務中，規則式系統通常不如機器學習。"
+      },
+      "commonTrap": "把各種方法的優缺點對調。",
+      "lessonAnchor": "L11101"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "規則式 AI"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11102-0006",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於「AI 治理（AI Governance）」，下列敘述何者最正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只在模型上線前審查一次即可"
+      },
+      {
+        "id": "B",
+        "text": "涵蓋 AI 設計、開發、部署與使用的政策、角色責任、流程與監督機制"
+      },
+      {
+        "id": "C",
+        "text": "目的就是讓 AI 運作越快越好"
+      },
+      {
+        "id": "D",
+        "text": "只是指遵守法律，與內部規範無關"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "AI 治理是貫穿 AI 生命週期的管理機制。",
+      "correctRationale": "治理包含法遵，也包含內部政策、倫理原則、角色分工與上線後的監控。",
+      "optionRationales": {
+        "A": "治理需持續進行，上線後也要監控。",
+        "B": "正確。完整描述治理範圍。",
+        "C": "治理重點在風險與責任，不是速度。",
+        "D": "法遵只是治理的一部分。"
+      },
+      "commonTrap": "把治理窄化為「法規遵循」或「一次性審查」。",
+      "lessonAnchor": "L11102"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "AI 治理"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11102-0007",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "某貸款模型對 A 族群的錯誤拒貸率明顯高於 B 族群。若要落實「公平性」原則，最優先的做法是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "刪除所有 A 族群的申請資料"
+      },
+      {
+        "id": "B",
+        "text": "因為整體準確率高，所以不需處理"
+      },
+      {
+        "id": "C",
+        "text": "比較各族群的錯誤率，檢查訓練資料代表性與特徵，並調整模型或流程"
+      },
+      {
+        "id": "D",
+        "text": "把模型改成完全不揭露給任何人知道"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "公平性要求檢查 AI 是否對特定群體造成不合理差別待遇。",
+      "correctRationale": "先量測各群體的表現差異，再追查資料偏誤或代理特徵，並修正模型或加入人工覆核。",
+      "optionRationales": {
+        "A": "刪除資料會讓該群體更被忽視，也可能違法。",
+        "B": "整體準確率高仍可能掩蓋群體間不公平。",
+        "C": "正確。量測差異並修正。",
+        "D": "隱藏模型與公平性無關，反而違反透明原則。"
+      },
+      "commonTrap": "只看整體準確率，忽略分群表現。",
+      "example": "郵遞區號可能間接代表族群，成為「代理特徵」造成偏誤。",
+      "lessonAnchor": "L11102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "公平性"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11102-0008",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "醫院導入 AI 判讀 X 光片協助醫師。下列哪一種設計最符合「人類監督（Human Oversight）」原則？",
+    "options": [
+      {
+        "id": "A",
+        "text": "醫師只能照 AI 的建議下診斷，不得修改"
+      },
+      {
+        "id": "B",
+        "text": "為了效率，關閉所有人工覆核"
+      },
+      {
+        "id": "C",
+        "text": "AI 判讀後直接通知病人診斷結果，不經醫師"
+      },
+      {
+        "id": "D",
+        "text": "AI 標記可疑區域，由醫師確認後才做出診斷，並可推翻 AI 建議"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "人類監督要求在重要決策中保留人可監控、覆核或推翻的機制。",
+      "correctRationale": "AI 作為輔助、最終決定由醫師負責並可推翻，符合高風險領域的人類監督要求。",
+      "optionRationales": {
+        "A": "醫師不能修改等於形式監督，沒有實質作用。",
+        "B": "關閉覆核違反人類監督原則。",
+        "C": "不經醫師直接通知，缺乏人類監督與問責。",
+        "D": "正確。人可覆核並推翻。"
+      },
+      "commonTrap": "把「有人在流程中」誤認為「有人類監督」，實際上人必須能介入與推翻。",
+      "lessonAnchor": "L11102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "人類監督"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11102-0009",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「可解釋性（Explainability）」在 AI 治理中指的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "能說明模型為何產生某個輸出或決策的程度"
+      },
+      {
+        "id": "B",
+        "text": "模型可以被翻譯成多種語言"
+      },
+      {
+        "id": "C",
+        "text": "模型的程式碼行數很少"
+      },
+      {
+        "id": "D",
+        "text": "模型的運算速度很快"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "可解釋性讓受影響者與管理者理解 AI 的判斷依據。",
+      "correctRationale": "例如說明拒貸的主要原因，讓申請人能理解並提出異議。",
+      "optionRationales": {
+        "A": "正確。說明判斷依據的能力。",
+        "B": "與語言翻譯無關。",
+        "C": "程式碼長短不代表可解釋。",
+        "D": "速度與可解釋性無關。"
+      },
+      "commonTrap": "把「可解釋」理解成「簡單」或「快速」。",
+      "lessonAnchor": "L11102"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "可解釋性"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11102-0010",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「透明度」與「隱私保護」看似衝突。下列哪一種做法最能兼顧兩者？",
+    "options": [
+      {
+        "id": "A",
+        "text": "公開完整訓練資料集，包含個人資料"
+      },
+      {
+        "id": "B",
+        "text": "揭露 AI 的使用與主要判斷依據，但不公開可識別個人的資料"
+      },
+      {
+        "id": "C",
+        "text": "為保護隱私，完全不告知使用者有使用 AI"
+      },
+      {
+        "id": "D",
+        "text": "將所有個資加上姓名後公告"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "透明是揭露「如何使用 AI 與判斷依據」，不是公開個資。",
+      "correctRationale": "告知使用 AI 並說明主要因素，同時對個資做最小化與保護，即可兼顧。",
+      "optionRationales": {
+        "A": "公開含個資的訓練資料違反隱私保護。",
+        "B": "正確。揭露機制與依據，保護個資。",
+        "C": "完全不告知違反透明度原則。",
+        "D": "公告個資嚴重違反隱私。"
+      },
+      "commonTrap": "以為兩個原則只能二選一。",
+      "lessonAnchor": "L11102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "透明度",
+      "隱私"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11102-0011",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "為了在 AI 系統出錯時能追查原因並釐清責任，最基本應建立的機制是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只保留成功案例的紀錄"
+      },
+      {
+        "id": "B",
+        "text": "讓每位員工都能任意修改模型"
+      },
+      {
+        "id": "C",
+        "text": "保留模型版本、輸入輸出與決策紀錄，並指定負責單位"
+      },
+      {
+        "id": "D",
+        "text": "出錯時直接刪除所有紀錄以免外洩"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "問責需要可追溯的紀錄與明確的負責人。",
+      "correctRationale": "有版本與決策紀錄，才能重現問題、找出原因並改善。",
+      "optionRationales": {
+        "A": "只留成功案例會掩蓋問題。",
+        "B": "任意修改破壞版本控管與責任歸屬。",
+        "C": "正確。可追溯紀錄＋負責單位。",
+        "D": "刪除紀錄使事故無法調查。"
+      },
+      "commonTrap": "忽略「紀錄」對問責的重要性。",
+      "lessonAnchor": "L11102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "問責",
+      "紀錄"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11102-0012",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "負責任 AI 中「安全與穩健（Safety & Robustness）」原則，最直接對應下列哪一項措施？",
+    "options": [
+      {
+        "id": "A",
+        "text": "讓模型輸出越有創意越好"
+      },
+      {
+        "id": "B",
+        "text": "盡量蒐集更多個人資料"
+      },
+      {
+        "id": "C",
+        "text": "在異常輸入、對抗攻擊或極端情境下測試系統，並設計備援與停用機制"
+      },
+      {
+        "id": "D",
+        "text": "只在晴天測試自駕車"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "穩健性要求系統在非預期情況下仍可靠，或能安全失效。",
+      "correctRationale": "壓力測試、對抗測試、備援與停用開關，都是確保安全穩健的措施。",
+      "optionRationales": {
+        "A": "創意與安全穩健無關。",
+        "B": "蒐集更多個資與安全無關，還增加風險。",
+        "C": "正確。測試極端情境並設計備援。",
+        "D": "只在理想條件測試無法確認穩健性。"
+      },
+      "commonTrap": "只在理想條件下驗證系統。",
+      "example": "自駕系統需在雨天、夜間、標線模糊等情境測試。",
+      "lessonAnchor": "L11102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "安全與穩健"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11102-0013",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "電商的推薦模型上線一年後，新商品類別大量增加，點擊率持續下降。依 AI 治理精神，下列哪一組做法最適當？",
+    "options": [
+      {
+        "id": "A",
+        "text": "定期監控效能指標，發現資料分布改變時重新評估並更新模型，並記錄變更"
+      },
+      {
+        "id": "B",
+        "text": "既然上線前已審查，維持原狀即可"
+      },
+      {
+        "id": "C",
+        "text": "直接關閉所有推薦功能且不分析原因"
+      },
+      {
+        "id": "D",
+        "text": "只要提高伺服器規格就能解決"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "治理貫穿生命週期：上線後持續監控、再評估與變更紀錄。",
+      "correctRationale": "商品結構改變造成資料漂移，需監控並適時重新訓練，同時留下紀錄以供稽核。",
+      "optionRationales": {
+        "A": "正確。監控、再評估、更新並記錄。",
+        "B": "上線前審查不能保證日後持續有效。",
+        "C": "不分析原因就關閉，無法改善也浪費價值。",
+        "D": "硬體效能與資料漂移造成的效果下降無關。"
+      },
+      "commonTrap": "以為上線前審查一次就足夠。",
+      "lessonAnchor": "L11102"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "生命週期",
+      "監控"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11102-0014",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「資料漂移（Data Drift）」指的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "訓練資料被加密"
+      },
+      {
+        "id": "B",
+        "text": "資料庫被移到另一台伺服器"
+      },
+      {
+        "id": "C",
+        "text": "使用者忘記密碼"
+      },
+      {
+        "id": "D",
+        "text": "模型上線後，實際輸入資料的分布與訓練時的資料不同"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "資料漂移是模型效能下降的常見原因。",
+      "correctRationale": "真實世界改變（例如消費習慣、季節），使模型面對與訓練時不同的資料。",
+      "optionRationales": {
+        "A": "加密是資安措施。",
+        "B": "搬移伺服器是基礎設施變動，不是資料漂移。",
+        "C": "密碼問題與資料漂移無關。",
+        "D": "正確。分布改變。"
+      },
+      "commonTrap": "把「漂移」理解為資料存放位置移動。",
+      "lessonAnchor": "L11102"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料漂移"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11102-0015",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於「AI 治理」與「法規遵循」的關係，下列敘述何者最正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "法規遵循的範圍比治理更廣"
+      },
+      {
+        "id": "B",
+        "text": "法規遵循是 AI 治理的一部分，治理範圍還包含內部政策、倫理與風險管理"
+      },
+      {
+        "id": "C",
+        "text": "兩者完全相同"
+      },
+      {
+        "id": "D",
+        "text": "有了 AI 治理就不需要遵守法律"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "治理範圍較廣，法遵是其中必要的一環。",
+      "correctRationale": "即使法律尚未規範，組織仍可透過內部政策與倫理原則管理 AI 風險。",
+      "optionRationales": {
+        "A": "範圍關係說反了。",
+        "B": "正確。法遵屬於治理的一部分。",
+        "C": "兩者範圍不同。",
+        "D": "治理不能取代守法。"
+      },
+      "commonTrap": "把治理窄化為法遵。",
+      "lessonAnchor": "L11102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "治理與法遵"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11102-0016",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "公司同時導入兩個 AI 系統：A 為員工內部的文件搜尋助理；B 為決定是否錄取求職者的篩選系統。治理資源有限時，最合理的安排是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "對 B 系統投入更嚴格的測試、偏誤檢查、文件紀錄與人工覆核"
+      },
+      {
+        "id": "B",
+        "text": "兩者完全採用相同且最寬鬆的管理"
+      },
+      {
+        "id": "C",
+        "text": "只管理 A 系統，因為員工使用次數較多"
+      },
+      {
+        "id": "D",
+        "text": "兩者都不需治理，因為都是內部使用"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "依風險分級配置治理資源：對個人權益影響越大，要求越嚴格。",
+      "correctRationale": "錄取決策直接影響求職者的權益，屬高風險應用，應投入更多控管。",
+      "optionRationales": {
+        "A": "正確。依影響程度分級管理。",
+        "B": "一視同仁會讓高風險系統控管不足。",
+        "C": "使用次數多不代表風險高。",
+        "D": "B 系統影響外部求職者，且內部使用也需治理。"
+      },
+      "commonTrap": "以使用頻率而非影響程度判斷風險。",
+      "lessonAnchor": "L11102"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "風險分級"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11102-0017",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "客服聊天機器人在對話開始時告知「您正在與 AI 助理對話，需要時可轉接真人」，主要落實了哪些原則？",
+    "options": [
+      {
+        "id": "A",
+        "text": "資料最小化與加密"
+      },
+      {
+        "id": "B",
+        "text": "透明度與人類監督"
+      },
+      {
+        "id": "C",
+        "text": "過擬合與正則化"
+      },
+      {
+        "id": "D",
+        "text": "供應商綁定"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "揭露 AI 使用屬透明度；提供轉接真人屬人類監督與使用者選擇權。",
+      "correctRationale": "使用者知道在和 AI 互動，且能在需要時取得人工協助。",
+      "optionRationales": {
+        "A": "此做法沒有涉及資料蒐集或加密。",
+        "B": "正確。透明與人類監督。",
+        "C": "這是機器學習訓練概念。",
+        "D": "這是 No Code 平台的限制。"
+      },
+      "commonTrap": "只記得原則名稱，無法對應到具體措施。",
+      "lessonAnchor": "L11102"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "揭露"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11102-0018",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "歐盟《人工智慧法》（EU AI Act）在管理 AI 時採取的主要架構是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "所有 AI 一律禁止使用"
+      },
+      {
+        "id": "B",
+        "text": "只管理參數量超過一定規模的模型，其餘不管"
+      },
+      {
+        "id": "C",
+        "text": "依 AI 應用對人的風險高低分級，風險越高要求越嚴格"
+      },
+      {
+        "id": "D",
+        "text": "只要求使用開源模型"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "EU AI Act 是風險分級（risk-based）管理的代表。",
+      "correctRationale": "依用途的風險程度分級，高風險用途（如招募、信用評分）需要更多文件、測試、透明度與人類監督。",
+      "optionRationales": {
+        "A": "並非全面禁止，而是依風險管理。",
+        "B": "分級依據主要是用途與風險，不只是模型規模。",
+        "C": "正確。風險分級管理。",
+        "D": "沒有要求一律使用開源模型。"
+      },
+      "commonTrap": "把風險分級誤解為「一律禁止」或「只看技術規模」。",
+      "lessonAnchor": "L11102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "風險分級",
+      "EU AI Act"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11102-0019",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "美國 NIST 的 AI 風險管理框架（AI RMF）以哪四項核心功能協助組織管理 AI 風險？",
+    "options": [
+      {
+        "id": "A",
+        "text": "計畫（Plan）、執行（Do）、檢查（Check）、行動（Act）"
+      },
+      {
+        "id": "B",
+        "text": "機密性、完整性、可用性、可靠性"
+      },
+      {
+        "id": "C",
+        "text": "蒐集、清理、建模、部署"
+      },
+      {
+        "id": "D",
+        "text": "治理（Govern）、對應（Map）、衡量（Measure）、管理（Manage）"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "NIST AI RMF 的四項功能：Govern、Map、Measure、Manage。",
+      "correctRationale": "治理建立文化與責任；對應辨識情境與風險；衡量評估風險；管理排序並處理風險。",
+      "optionRationales": {
+        "A": "PDCA 是一般品質管理循環。",
+        "B": "這是資安 CIA 加上其他屬性，不是 AI RMF。",
+        "C": "這是資料／模型開發流程。",
+        "D": "正確。NIST AI RMF 四功能。"
+      },
+      "commonTrap": "把不同框架的名詞混在一起。",
+      "lessonAnchor": "L11102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "NIST AI RMF"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11102-0020",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "員工發現公司的 AI 客服在特定問題上持續給出錯誤且可能造成損害的回答。依治理精神，組織最應事先建立的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "事件通報管道、暫停或停用機制，以及根因分析與改善流程"
+      },
+      {
+        "id": "B",
+        "text": "直接刪除所有對話紀錄"
+      },
+      {
+        "id": "C",
+        "text": "禁止員工回報 AI 問題，以免影響士氣"
+      },
+      {
+        "id": "D",
+        "text": "等到下次年度審查再處理"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "治理包含事件應變：通報、停用、調查、改善與紀錄。",
+      "correctRationale": "有通報與停用機制，問題能及時止損；根因分析能避免再次發生。",
+      "optionRationales": {
+        "A": "正確。通報、停用、改善。",
+        "B": "刪除紀錄使調查無法進行。",
+        "C": "壓制回報會讓風險擴大。",
+        "D": "等待年度審查會延誤處理、擴大損害。"
+      },
+      "commonTrap": "只重視事前審查，忽略事後應變。",
+      "lessonAnchor": "L11102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "事件應變"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  }
+]

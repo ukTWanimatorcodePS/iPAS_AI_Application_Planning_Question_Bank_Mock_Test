@@ -1,0 +1,3425 @@
+[
+  {
+    "id": "original-L12301-0001",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "企業評估是否導入生成式 AI 時，最適當的第一步是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "看競爭對手用了哪個工具就跟著買"
+      },
+      {
+        "id": "B",
+        "text": "釐清要解決的業務痛點、目標與成功指標"
+      },
+      {
+        "id": "C",
+        "text": "先購買最大的模型授權"
+      },
+      {
+        "id": "D",
+        "text": "先讓全體員工自由使用再說"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "導入應從問題出發，而非從工具出發。",
+      "correctRationale": "先定義痛點與成功指標，才能判斷生成式 AI 是否適合、要選什麼方案與如何衡量成效。",
+      "optionRationales": {
+        "A": "跟風導入可能與自身需求不符。",
+        "B": "正確。以業務問題與目標為起點。",
+        "C": "未定義需求就購買可能浪費成本。",
+        "D": "缺乏規範與目標就全面開放，可能造成資料外洩與成效不明。"
+      },
+      "commonTrap": "工具導向而非問題導向。",
+      "lessonAnchor": "L12301"
+    },
+    "difficulty": 1,
+    "tags": [
+      "導入評估"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "basic",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L12301-0002",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "計算生成式 AI 方案的「總持有成本（TCO）」時，下列哪一組最完整？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只有軟體授權費"
+      },
+      {
+        "id": "B",
+        "text": "只有硬體採購費"
+      },
+      {
+        "id": "C",
+        "text": "只有員工薪資"
+      },
+      {
+        "id": "D",
+        "text": "授權或 API 費用、整合開發、維運監控、教育訓練與風險控管成本"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "TCO 涵蓋整個生命週期的所有成本。",
+      "correctRationale": "除授權費外，整合、維運、訓練與風險控管都是實際支出，忽略會低估成本。",
+      "optionRationales": {
+        "A": "只算授權費會低估成本。",
+        "B": "雲端方案不一定需要硬體，且仍有其他成本。",
+        "C": "薪資只是其中一部分。",
+        "D": "正確。涵蓋生命週期的主要成本。"
+      },
+      "commonTrap": "只用授權費估算成本。",
+      "lessonAnchor": "L12301"
+    },
+    "difficulty": 2,
+    "tags": [
+      "TCO"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L12301-0003",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "公司第一次導入生成式 AI，下列哪一個場景通常最適合當作起點？",
+    "options": [
+      {
+        "id": "A",
+        "text": "讓 AI 自動核准所有貸款申請"
+      },
+      {
+        "id": "B",
+        "text": "讓 AI 直接對病患開立處方"
+      },
+      {
+        "id": "C",
+        "text": "內部會議紀錄摘要，由與會者確認後發布"
+      },
+      {
+        "id": "D",
+        "text": "讓 AI 不經審閱自動發布對外新聞稿"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "起點宜選高價值、高可行、錯誤可由人工把關的場景。",
+      "correctRationale": "會議摘要價值明確、錯誤影響有限且可由人確認，適合累積經驗與信任。",
+      "optionRationales": {
+        "A": "貸款核准屬高風險決策，不適合作為第一個全自動場景。",
+        "B": "醫療處方屬高風險，需專業人員負責。",
+        "C": "正確。可人工把關、影響可控。",
+        "D": "對外發布無審閱，錯誤可能直接損害商譽。"
+      },
+      "commonTrap": "第一個專案就挑最核心、最高風險的流程。",
+      "lessonAnchor": "L12301"
+    },
+    "difficulty": 2,
+    "tags": [
+      "場景排序"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L12301-0004",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "為什麼導入生成式 AI 前，應先蒐集流程現況的「基準值」（例如平均處理時間）？",
+    "options": [
+      {
+        "id": "A",
+        "text": "因為法規規定一定要蒐集"
+      },
+      {
+        "id": "B",
+        "text": "才能在導入後與現況比較，客觀衡量改善成效"
+      },
+      {
+        "id": "C",
+        "text": "基準值可以用來訓練模型"
+      },
+      {
+        "id": "D",
+        "text": "基準值越低越好看"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "沒有導入前的數據，就無法證明導入帶來的改善。",
+      "correctRationale": "基準值與導入後的 KPI 比較，才能計算節省的時間與 ROI。",
+      "optionRationales": {
+        "A": "基準值的主要目的是成效衡量，不是因為一定有法規要求。",
+        "B": "正確。用於導入前後比較。",
+        "C": "基準值是衡量指標，不是訓練資料。",
+        "D": "基準值應忠實反映現況，而非求好看。"
+      },
+      "commonTrap": "導入後才想要怎麼衡量成效。",
+      "lessonAnchor": "L12301"
+    },
+    "difficulty": 2,
+    "tags": [
+      "KPI",
+      "基準值"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L12302-0001",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於概念驗證（PoC）與試點（Pilot），下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "兩者相同，只是名稱不同"
+      },
+      {
+        "id": "B",
+        "text": "PoC 一定要給全公司使用"
+      },
+      {
+        "id": "C",
+        "text": "試點完成就代表專案結束，不需監控"
+      },
+      {
+        "id": "D",
+        "text": "PoC 著重驗證技術可行；試點則在真實環境、有限使用者中運行以驗證實際效益與流程"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "導入階段：目標設定 → PoC → Pilot → 擴大部署 → 持續優化。",
+      "correctRationale": "PoC 小規模驗證可行性；Pilot 進入真實業務環境，蒐集使用回饋與實際成效。",
+      "optionRationales": {
+        "A": "兩者目的與環境不同。",
+        "B": "PoC 規模小，不會給全公司使用。",
+        "C": "上線後仍需持續監控與優化。",
+        "D": "正確描述兩者差異。"
+      },
+      "commonTrap": "PoC 成功就直接全面上線。",
+      "lessonAnchor": "L12302"
+    },
+    "difficulty": 2,
+    "tags": [
+      "PoC",
+      "試點"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L12302-0002",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "在分階段導入計畫中，每個階段結束時設置「Go / No-Go 檢核點」的主要目的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "讓專案時程拉長"
+      },
+      {
+        "id": "B",
+        "text": "依預先訂定的標準決定是否進入下一階段，未達標即調整或停止，避免沉沒成本"
+      },
+      {
+        "id": "C",
+        "text": "確保所有專案都一定會繼續"
+      },
+      {
+        "id": "D",
+        "text": "取代風險管理"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "檢核點以成功標準為依據做出繼續、調整或停止的決策。",
+      "correctRationale": "及早發現不可行或效益不足，可以調整方向或停止，避免投入更多資源。",
+      "optionRationales": {
+        "A": "目的不是拉長時程。",
+        "B": "正確。依標準決定是否前進。",
+        "C": "檢核點可能得出停止的結論。",
+        "D": "檢核點是治理機制之一，不能取代風險管理。"
+      },
+      "commonTrap": "把檢核點當成形式流程，而非真正可能喊停的決策點。",
+      "lessonAnchor": "L12302"
+    },
+    "difficulty": 2,
+    "tags": [
+      "Go / No-Go"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L12302-0003",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "導入生成式 AI 時，下列哪一項最屬於「變革管理」的做法？",
+    "options": [
+      {
+        "id": "A",
+        "text": "向員工說明導入目的，並依角色提供訓練與使用規範"
+      },
+      {
+        "id": "B",
+        "text": "只購買工具，不做任何溝通"
+      },
+      {
+        "id": "C",
+        "text": "禁止員工提出任何回饋"
+      },
+      {
+        "id": "D",
+        "text": "只由 IT 部門決定所有使用方式"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "變革管理協助人員理解並適應改變：溝通、訓練、規範與支援。",
+      "correctRationale": "說明目的可降低抗拒，分角色訓練與規範讓員工會用、敢用且用得正確。",
+      "optionRationales": {
+        "A": "正確。溝通目的並分角色訓練與規範。",
+        "B": "缺乏溝通容易造成抗拒或誤用。",
+        "C": "回饋是持續改善的重要來源。",
+        "D": "導入需要業務、法務、資安與使用者共同參與。"
+      },
+      "commonTrap": "以為導入只是技術問題。",
+      "lessonAnchor": "L12302"
+    },
+    "difficulty": 2,
+    "tags": [
+      "變革管理"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L12303-0001",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "企業與 AI 服務供應商簽訂合約，要求若發生資料外洩由供應商負擔賠償責任。這屬於哪一種風險應對策略？",
+    "options": [
+      {
+        "id": "A",
+        "text": "規避"
+      },
+      {
+        "id": "B",
+        "text": "轉移"
+      },
+      {
+        "id": "C",
+        "text": "接受"
+      },
+      {
+        "id": "D",
+        "text": "降低"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "風險應對：規避、降低、轉移、接受。",
+      "correctRationale": "透過合約或保險把部分風險後果轉由第三方承擔，屬於轉移。",
+      "optionRationales": {
+        "A": "規避是停止該活動以消除風險。",
+        "B": "正確。把風險後果轉給第三方。",
+        "C": "接受是自行承擔風險。",
+        "D": "降低是採取措施減少可能性或影響，例如加密、權限控管。"
+      },
+      "commonTrap": "把轉移與降低混淆。",
+      "lessonAnchor": "L12303"
+    },
+    "difficulty": 2,
+    "tags": [
+      "風險應對"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L12303-0002",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "醫院決定「禁止使用生成式 AI 直接產生診斷結論」，以避免誤診風險。這屬於哪一種風險應對策略？",
+    "options": [
+      {
+        "id": "A",
+        "text": "轉移"
+      },
+      {
+        "id": "B",
+        "text": "接受"
+      },
+      {
+        "id": "C",
+        "text": "降低"
+      },
+      {
+        "id": "D",
+        "text": "規避"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "規避是透過不進行某項活動來消除風險。",
+      "correctRationale": "直接禁止該用途，讓這類風險不會發生，屬於規避。",
+      "optionRationales": {
+        "A": "轉移是把風險交給第三方承擔。",
+        "B": "接受是知道風險但選擇承擔。",
+        "C": "降低是繼續使用但加入控制措施，例如人工覆核。",
+        "D": "正確。停止該活動以消除風險。"
+      },
+      "commonTrap": "把「禁止」誤認為「降低」。",
+      "lessonAnchor": "L12303"
+    },
+    "difficulty": 2,
+    "tags": [
+      "風險應對"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L12303-0003",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "攻擊者在模型「訓練階段」混入刻意設計的錯誤資料，使模型學到錯誤行為。這種攻擊稱為？",
+    "options": [
+      {
+        "id": "A",
+        "text": "提示注入"
+      },
+      {
+        "id": "B",
+        "text": "越獄"
+      },
+      {
+        "id": "C",
+        "text": "資料投毒"
+      },
+      {
+        "id": "D",
+        "text": "影子 IT"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "資料投毒發生在訓練階段；提示注入與越獄發生在推論（使用）階段。",
+      "correctRationale": "惡意資料混入訓練集，會讓模型在特定情況下做出攻擊者想要的錯誤輸出。",
+      "optionRationales": {
+        "A": "提示注入是在使用時透過輸入內容操縱模型。",
+        "B": "越獄是用提示繞過安全限制，發生在使用階段。",
+        "C": "正確。在訓練資料中下毒。",
+        "D": "影子 IT 是未經管理的系統，不是攻擊手法。"
+      },
+      "commonTrap": "沒有區分攻擊發生在訓練階段還是推論階段。",
+      "lessonAnchor": "L12303"
+    },
+    "difficulty": 2,
+    "tags": [
+      "資安風險"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L12303-0004",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "使用「風險矩陣」評估生成式 AI 風險時，通常以哪兩個面向決定風險等級？",
+    "options": [
+      {
+        "id": "A",
+        "text": "發生的可能性與造成的影響程度"
+      },
+      {
+        "id": "B",
+        "text": "模型參數量與訓練時間"
+      },
+      {
+        "id": "C",
+        "text": "使用者人數與網路速度"
+      },
+      {
+        "id": "D",
+        "text": "開發語言與作業系統"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "風險等級 ≈ 可能性 × 影響。",
+      "correctRationale": "同時考量發生機率與後果嚴重性，排出處理優先順序。",
+      "optionRationales": {
+        "A": "正確。可能性 × 影響。",
+        "B": "模型大小與訓練時間不是風險矩陣的評估軸。",
+        "C": "人數與網速可能影響曝險，但不是風險矩陣的兩軸。",
+        "D": "技術選型與風險矩陣無關。"
+      },
+      "commonTrap": "只看發生機率而忽略影響程度。",
+      "lessonAnchor": "L12303"
+    },
+    "difficulty": 1,
+    "tags": [
+      "風險評估"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L12301-0005",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "評估生成式 AI 導入時，下列哪一組評估面向最完整？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只看工具是否熱門"
+      },
+      {
+        "id": "B",
+        "text": "只看授權價格"
+      },
+      {
+        "id": "C",
+        "text": "業務價值、技術可行性、資料準備度、成本、風險與合規、組織準備度"
+      },
+      {
+        "id": "D",
+        "text": "只看員工是否喜歡"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "導入評估需要多面向綜合判斷。",
+      "correctRationale": "只看單一面向容易導入失敗或產生未預期的風險。",
+      "optionRationales": {
+        "A": "熱門不代表適合。",
+        "B": "價格只是成本的一部分。",
+        "C": "正確。涵蓋主要評估面向。",
+        "D": "員工喜好屬組織準備度的一部分，仍不完整。"
+      },
+      "commonTrap": "以單一面向決定是否導入。",
+      "lessonAnchor": "L12301"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "評估面向"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12301-0006",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "製造商想讓 AI 依歷史維修紀錄建議故障原因，卻發現過去紀錄多為手寫、格式不一且大量缺漏。依導入評估，最適當的判斷是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "放棄所有數位轉型計畫"
+      },
+      {
+        "id": "B",
+        "text": "資料準備度不足，應先整理與數位化資料，或調整導入範圍"
+      },
+      {
+        "id": "C",
+        "text": "資料不重要，直接導入即可"
+      },
+      {
+        "id": "D",
+        "text": "只要換更大的模型就能解決"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "資料準備度是導入評估的重要面向。",
+      "correctRationale": "資料品質不足時，模型難以產生可靠建議，應先補強資料。",
+      "optionRationales": {
+        "A": "可調整範圍或先整理資料，而非全部放棄。",
+        "B": "正確。先補強資料。",
+        "C": "資料品質會直接影響結果。",
+        "D": "更大的模型無法彌補資料缺陷。"
+      },
+      "commonTrap": "忽略資料準備度。",
+      "lessonAnchor": "L12301"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料準備度"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12301-0007",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "公司高層要求導入 AI，但第一線主管不支持、員工也不知道如何使用。這主要反映哪一個評估面向的不足？",
+    "options": [
+      {
+        "id": "A",
+        "text": "組織準備度"
+      },
+      {
+        "id": "B",
+        "text": "資料加密"
+      },
+      {
+        "id": "C",
+        "text": "模型參數量"
+      },
+      {
+        "id": "D",
+        "text": "技術可行性"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "組織準備度包含主管支持、員工技能與流程配合。",
+      "correctRationale": "即使技術可行，組織未準備好也難以落地。",
+      "optionRationales": {
+        "A": "正確。人與流程準備不足。",
+        "B": "加密是資安措施。",
+        "C": "模型大小與此問題無關。",
+        "D": "問題不在技術本身。"
+      },
+      "commonTrap": "只評估技術，不評估人。",
+      "lessonAnchor": "L12301"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "組織準備度"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12301-0008",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "評估「生成式 AI 是否適合某項任務」時，下列哪一個問題最關鍵？",
+    "options": [
+      {
+        "id": "A",
+        "text": "工具的介面顏色是否好看？"
+      },
+      {
+        "id": "B",
+        "text": "此任務可接受的錯誤率是多少？錯誤能否被人工發現與修正？"
+      },
+      {
+        "id": "C",
+        "text": "供應商的辦公室在哪裡？"
+      },
+      {
+        "id": "D",
+        "text": "模型名稱是否容易記？"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "技術可行性要考慮 AI 的錯誤特性。",
+      "correctRationale": "生成式 AI 可能出錯，任務若不容許錯誤且難以檢查，就不適合直接使用。",
+      "optionRationales": {
+        "A": "與可行性無關。",
+        "B": "正確。錯誤容忍度與可檢查性。",
+        "C": "與可行性無關。",
+        "D": "與可行性無關。"
+      },
+      "commonTrap": "忽略生成式 AI 會出錯的特性。",
+      "lessonAnchor": "L12301"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "技術可行性"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12301-0009",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "導入評估中的「風險與合規」面向，主要檢視哪些事項？",
+    "options": [
+      {
+        "id": "A",
+        "text": "公司 Logo 的顏色"
+      },
+      {
+        "id": "B",
+        "text": "員工午餐的預算"
+      },
+      {
+        "id": "C",
+        "text": "辦公室的裝潢風格"
+      },
+      {
+        "id": "D",
+        "text": "個資、著作權、幻覺造成的損害與產業法規要求"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "風險與合規面向檢視導入可能帶來的法律與營運風險。",
+      "correctRationale": "例如處理個資是否合法、生成內容是否侵權、錯誤資訊是否造成損害。",
+      "optionRationales": {
+        "A": "與 AI 導入無關。",
+        "B": "與 AI 導入無關。",
+        "C": "與 AI 導入無關。",
+        "D": "正確。法律與營運風險。"
+      },
+      "commonTrap": "導入前沒有評估法律風險。",
+      "lessonAnchor": "L12301"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "風險與合規"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12301-0010",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "某生成式 AI 方案一年總成本 100 萬元，預估一年帶來 150 萬元效益。其投資報酬率（ROI）為？",
+    "options": [
+      {
+        "id": "A",
+        "text": "66.7%"
+      },
+      {
+        "id": "B",
+        "text": "250%"
+      },
+      {
+        "id": "C",
+        "text": "50%"
+      },
+      {
+        "id": "D",
+        "text": "150%"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "ROI = (效益 − 成本) ÷ 成本。",
+      "correctRationale": "(150 − 100) ÷ 100 = 0.5，即 50%。",
+      "optionRationales": {
+        "A": "66.7% 是成本除以效益。",
+        "B": "250% 不符合公式。",
+        "C": "正確。(150−100)/100 = 50%。",
+        "D": "150% 是效益除以成本，未扣除成本。"
+      },
+      "commonTrap": "忘記先扣除成本。",
+      "lessonAnchor": "L12301"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "ROI"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12301-0011",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "理賠文件處理時間從每件 20 分鐘降為 8 分鐘，每月處理 1,000 件。每月約可節省多少工時？",
+    "options": [
+      {
+        "id": "A",
+        "text": "12 小時"
+      },
+      {
+        "id": "B",
+        "text": "333 小時"
+      },
+      {
+        "id": "C",
+        "text": "200 小時"
+      },
+      {
+        "id": "D",
+        "text": "120 小時"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "節省工時 = 每件節省時間 × 件數。",
+      "correctRationale": "(20 − 8) × 1,000 = 12,000 分鐘 = 200 小時。",
+      "optionRationales": {
+        "A": "12 是每件節省的分鐘數。",
+        "B": "333 小時是 20 分鐘 × 1,000 件換算的原本總工時。",
+        "C": "正確。12,000 分鐘 = 200 小時。",
+        "D": "120 小時計算錯誤。"
+      },
+      "commonTrap": "單位換算錯誤，或忘記乘上件數。",
+      "lessonAnchor": "L12301"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "效益估算"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12301-0012",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "在「價值 × 可行性」矩陣中，「價值高但目前可行性低」的場景，較合適的處理方式是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "與「價值低、可行性低」的場景同等對待"
+      },
+      {
+        "id": "B",
+        "text": "立即全面導入"
+      },
+      {
+        "id": "C",
+        "text": "永遠放棄"
+      },
+      {
+        "id": "D",
+        "text": "列為策略性投資，長期規劃並逐步補足資料與技術條件"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "矩陣用來排定優先順序。",
+      "correctRationale": "高價值但條件不足的場景值得投資，但需先補足條件，不宜倉促導入。",
+      "optionRationales": {
+        "A": "價值低、可行性低的場景通常暫緩。",
+        "B": "條件不足時倉促導入容易失敗。",
+        "C": "價值高，值得規劃。",
+        "D": "正確。策略性投資、長期規劃。"
+      },
+      "commonTrap": "把矩陣四象限的對策搞混。",
+      "lessonAnchor": "L12301"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "場景排序"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12301-0013",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "在「價值 × 可行性」矩陣中，「價值低但可行性高」的場景，較合適的定位是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "絕對不能執行"
+      },
+      {
+        "id": "B",
+        "text": "可順手完成的小改善，但不應排擠高價值專案的資源"
+      },
+      {
+        "id": "C",
+        "text": "一定要投入最多預算"
+      },
+      {
+        "id": "D",
+        "text": "最優先的策略性投資"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "價值低、可行性高的場景適合快速完成的小改善。",
+      "correctRationale": "可累積經驗，但資源分配上不應優先於高價值專案。",
+      "optionRationales": {
+        "A": "可以執行，只是優先順序較低。",
+        "B": "正確。順手的小改善。",
+        "C": "價值低不宜投入最多資源。",
+        "D": "最優先的是價值高、可行性高的場景。"
+      },
+      "commonTrap": "只看可行性就決定優先順序。",
+      "lessonAnchor": "L12301"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "場景排序"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12301-0014",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列哪一個是導入 AI 客服回覆輔助後，最適合追蹤的 KPI？",
+    "options": [
+      {
+        "id": "A",
+        "text": "平均回覆時間與客戶滿意度"
+      },
+      {
+        "id": "B",
+        "text": "辦公室的用電量"
+      },
+      {
+        "id": "C",
+        "text": "員工的身高"
+      },
+      {
+        "id": "D",
+        "text": "會議室的數量"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "KPI 應直接反映導入目標。",
+      "correctRationale": "回覆輔助的目標是更快、更好地回覆客戶，因此追蹤回覆時間與滿意度。",
+      "optionRationales": {
+        "A": "正確。直接反映目標。",
+        "B": "與導入目標無關。",
+        "C": "與導入目標無關。",
+        "D": "與導入目標無關。"
+      },
+      "commonTrap": "KPI 與導入目標脫節。",
+      "lessonAnchor": "L12301"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "KPI"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12301-0015",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "比較「採購 SaaS」與「自建／地端部署」生成式 AI 方案，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "兩者沒有取捨"
+      },
+      {
+        "id": "B",
+        "text": "SaaS 導入快但客製化與資料控制有限；自建資料控制最高，但成本與技術門檻也最高"
+      },
+      {
+        "id": "C",
+        "text": "自建一定比 SaaS 快上線"
+      },
+      {
+        "id": "D",
+        "text": "SaaS 一定比自建更能控制資料"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "方案選擇是速度、成本、控制力之間的取捨。",
+      "correctRationale": "應依資料敏感度、預算與技術能力選擇，也可採混合方式。",
+      "optionRationales": {
+        "A": "兩者存在明顯取捨。",
+        "B": "正確描述取捨。",
+        "C": "自建通常需要更長時間。",
+        "D": "SaaS 的資料由服務商處理。"
+      },
+      "commonTrap": "以為有一種方案在所有面向都最好。",
+      "lessonAnchor": "L12301"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "自建與採購"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12301-0016",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "公司想把生成式 AI 嵌入既有的客服系統，又不想自建模型。三種方案中較適合哪一種？",
+    "options": [
+      {
+        "id": "A",
+        "text": "不使用任何系統"
+      },
+      {
+        "id": "B",
+        "text": "只讓員工使用網頁版聊天介面"
+      },
+      {
+        "id": "C",
+        "text": "自行從零訓練大型模型"
+      },
+      {
+        "id": "D",
+        "text": "透過 API 串接模型服務"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "API 串接介於採購與自建之間。",
+      "correctRationale": "不需自建模型，又能把 AI 嵌入既有系統，但需要開發能力。",
+      "optionRationales": {
+        "A": "無法達成目標。",
+        "B": "網頁版無法嵌入既有系統流程。",
+        "C": "自建成本與門檻最高，且題目說不想自建。",
+        "D": "正確。API 串接。"
+      },
+      "commonTrap": "不了解三種方案的差異。",
+      "lessonAnchor": "L12301"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "API 串接"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12301-0017",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列哪一個導入理由「最不」恰當？",
+    "options": [
+      {
+        "id": "A",
+        "text": "「競爭對手都用了，我們也要買一套，用途之後再想」"
+      },
+      {
+        "id": "B",
+        "text": "「新進員工找不到內部規章，希望提升查詢效率」"
+      },
+      {
+        "id": "C",
+        "text": "「客服回覆時間過長，希望縮短 50%」"
+      },
+      {
+        "id": "D",
+        "text": "「文件摘要耗費大量人力，希望降低工時」"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "導入應從具體業務問題出發。",
+      "correctRationale": "先買工具再找用途，容易浪費資源且難以衡量成效。",
+      "optionRationales": {
+        "A": "正確。工具導向，最不恰當。",
+        "B": "有明確問題與目標。",
+        "C": "有明確問題與目標。",
+        "D": "有明確問題與目標。"
+      },
+      "commonTrap": "跟風導入，缺乏明確目標。",
+      "lessonAnchor": "L12301"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "問題導向"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12301-0018",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "律師事務所評估用生成式 AI 起草合約初稿：效益高，但條款錯誤的代價也高。最適當的導入評估結論是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "因為有風險，任何情況都不得使用"
+      },
+      {
+        "id": "B",
+        "text": "只要選最貴的工具就沒有風險"
+      },
+      {
+        "id": "C",
+        "text": "可以導入作為草稿工具，但必須搭配保密環境與律師逐條審閱的流程"
+      },
+      {
+        "id": "D",
+        "text": "因為效益高，可直接讓 AI 定稿"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "高價值、高風險場景需要搭配控制措施。",
+      "correctRationale": "把 AI 定位為輔助，並以保密環境與專業審閱控制風險。",
+      "optionRationales": {
+        "A": "可透過控制措施降低風險，不必全面禁止。",
+        "B": "價格高不代表風險低。",
+        "C": "正確。導入並設控制措施。",
+        "D": "直接定稿風險過高。"
+      },
+      "commonTrap": "風險評估只有「全用」或「全不用」兩種選項。",
+      "lessonAnchor": "L12301"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "風險評估"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12301-0019",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "評估生成式 AI 的效益時，除了節省工時之外，下列哪一項也應納入考量？",
+    "options": [
+      {
+        "id": "A",
+        "text": "員工的通勤距離"
+      },
+      {
+        "id": "B",
+        "text": "錯誤率降低、處理量提升與顧客滿意度改善"
+      },
+      {
+        "id": "C",
+        "text": "辦公室的樓層高度"
+      },
+      {
+        "id": "D",
+        "text": "公司成立的年份"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "效益包含效率、品質與顧客體驗。",
+      "correctRationale": "只看工時可能低估價值，也可能忽略品質下降的風險。",
+      "optionRationales": {
+        "A": "與導入效益無關。",
+        "B": "正確。品質與體驗效益。",
+        "C": "與導入效益無關。",
+        "D": "與導入效益無關。"
+      },
+      "commonTrap": "只用節省工時衡量效益。",
+      "lessonAnchor": "L12301"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "效益"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12301-0020",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12301",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "要比較導入前後的成效，下列哪一項是「基準值」的例子？",
+    "options": [
+      {
+        "id": "A",
+        "text": "供應商宣稱可節省 80% 時間"
+      },
+      {
+        "id": "B",
+        "text": "同業平均回覆時間"
+      },
+      {
+        "id": "C",
+        "text": "導入前三個月的平均客服回覆時間為 8 分鐘"
+      },
+      {
+        "id": "D",
+        "text": "導入後希望達到 3 分鐘"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "基準值是自家導入前的實際數據。",
+      "correctRationale": "有實際基準才能客觀計算改善幅度。",
+      "optionRationales": {
+        "A": "這是供應商的宣稱，未經驗證。",
+        "B": "同業數據可參考，但不是自家的基準。",
+        "C": "正確。自家導入前的實測值。",
+        "D": "這是目標值。"
+      },
+      "commonTrap": "把目標或廠商宣稱當成基準。",
+      "lessonAnchor": "L12301"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "基準值"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12302-0004",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "生成式 AI 分階段導入的常見順序為何？",
+    "options": [
+      {
+        "id": "A",
+        "text": "目標設定 → 概念驗證（PoC）→ 試點（Pilot）→ 擴大部署 → 持續優化"
+      },
+      {
+        "id": "B",
+        "text": "持續優化 → 目標設定 → 擴大部署"
+      },
+      {
+        "id": "C",
+        "text": "直接擴大部署即可"
+      },
+      {
+        "id": "D",
+        "text": "擴大部署 → 試點 → 概念驗證 → 目標設定"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "分階段可降低風險並逐步驗證。",
+      "correctRationale": "每個階段結束前檢核是否達標，再進入下一階段。",
+      "optionRationales": {
+        "A": "正確順序。",
+        "B": "順序錯誤。",
+        "C": "跳過驗證階段，風險高。",
+        "D": "順序相反。"
+      },
+      "commonTrap": "跳過 PoC 或試點直接全面上線。",
+      "lessonAnchor": "L12302"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "導入階段"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12302-0005",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "導入規劃的「目標設定」階段，主要產出是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "已完成的正式系統"
+      },
+      {
+        "id": "B",
+        "text": "全公司的使用手冊"
+      },
+      {
+        "id": "C",
+        "text": "年度績效考核結果"
+      },
+      {
+        "id": "D",
+        "text": "專案範圍、KPI 與基準值、成功標準等內容（如專案章程）"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "目標設定階段定義「要做什麼、做到什麼程度」。",
+      "correctRationale": "明確的範圍與成功標準，是後續 Go/No-Go 判斷的依據。",
+      "optionRationales": {
+        "A": "正式系統是後期產出。",
+        "B": "手冊多在擴大部署階段完成。",
+        "C": "與績效考核無關。",
+        "D": "正確。範圍、KPI 與成功標準。"
+      },
+      "commonTrap": "沒有事先定義成功標準。",
+      "lessonAnchor": "L12302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "目標設定"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12302-0006",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「試點（Pilot）」階段的主要目的為何？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只在實驗室驗證技術是否可行"
+      },
+      {
+        "id": "B",
+        "text": "一次推廣到所有部門"
+      },
+      {
+        "id": "C",
+        "text": "在真實業務環境、有限使用者中運行，驗證實際效益並蒐集回饋調整流程"
+      },
+      {
+        "id": "D",
+        "text": "撰寫採購合約"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "試點是從驗證走向推廣的關鍵階段。",
+      "correctRationale": "真實環境會暴露 PoC 時未發現的流程、資料與使用者問題。",
+      "optionRationales": {
+        "A": "這較接近 PoC。",
+        "B": "全面推廣是擴大部署。",
+        "C": "正確。真實環境、有限範圍。",
+        "D": "採購合約不是試點目的。"
+      },
+      "commonTrap": "把 PoC 與試點混淆。",
+      "lessonAnchor": "L12302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "試點"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12302-0007",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "進入「擴大部署」階段時，下列哪一項準備最重要？",
+    "options": [
+      {
+        "id": "A",
+        "text": "停止蒐集使用者回饋"
+      },
+      {
+        "id": "B",
+        "text": "正式系統、操作手冊、教育訓練與支援機制"
+      },
+      {
+        "id": "C",
+        "text": "把試點時的問題全部忽略"
+      },
+      {
+        "id": "D",
+        "text": "取消所有監控以提高效率"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "擴大部署需要讓更多使用者順利、安全地使用。",
+      "correctRationale": "手冊、訓練與支援管道能降低推廣阻力與誤用。",
+      "optionRationales": {
+        "A": "回饋是持續優化的來源。",
+        "B": "正確。完整的推廣配套。",
+        "C": "試點問題應在推廣前處理。",
+        "D": "擴大部署後更需要監控。"
+      },
+      "commonTrap": "只關注系統，忽略推廣配套。",
+      "lessonAnchor": "L12302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "擴大部署"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12302-0008",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "生成式 AI 系統正式上線後，「持續優化」階段主要做什麼？",
+    "options": [
+      {
+        "id": "A",
+        "text": "監控品質、成本與成效，依回饋更新提示、知識庫與流程"
+      },
+      {
+        "id": "B",
+        "text": "刪除所有使用紀錄"
+      },
+      {
+        "id": "C",
+        "text": "只在出現重大事故時才檢視"
+      },
+      {
+        "id": "D",
+        "text": "不再做任何調整"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "上線不是結束，而是持續改善的開始。",
+      "correctRationale": "模型、資料與業務需求都會改變，需要定期檢視與調整。",
+      "optionRationales": {
+        "A": "正確。持續監控與改善。",
+        "B": "紀錄是改善與稽核的依據。",
+        "C": "應定期檢視，而非只在出事時處理。",
+        "D": "不調整會讓系統逐漸不適用。"
+      },
+      "commonTrap": "把上線當成專案終點。",
+      "lessonAnchor": "L12302"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "持續優化"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12302-0009",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "導入專案中，「業務負責人（Owner）」的主要責任是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只負責舉辦慶功宴"
+      },
+      {
+        "id": "B",
+        "text": "撰寫所有程式碼"
+      },
+      {
+        "id": "C",
+        "text": "負責硬體採購與維修"
+      },
+      {
+        "id": "D",
+        "text": "定義需求、確認成效並對導入成果負責"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "業務負責人代表需求方，負責成果。",
+      "correctRationale": "確保專案解決真正的業務問題，並依 KPI 判斷是否成功。",
+      "optionRationales": {
+        "A": "與專案責任無關。",
+        "B": "程式開發主要由技術團隊負責。",
+        "C": "硬體由 IT 負責。",
+        "D": "正確。需求與成果負責。"
+      },
+      "commonTrap": "以為 AI 導入只是 IT 部門的事。",
+      "lessonAnchor": "L12302"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "角色分工"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12302-0010",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "導入專案中，法務／法遵與資安人員主要負責什麼？",
+    "options": [
+      {
+        "id": "A",
+        "text": "決定員工的薪資"
+      },
+      {
+        "id": "B",
+        "text": "撰寫行銷文案"
+      },
+      {
+        "id": "C",
+        "text": "設計使用者介面的顏色"
+      },
+      {
+        "id": "D",
+        "text": "審查個資、著作權、合約條款與使用規範，確保導入合法且安全"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "法務與資安確保導入符合法規並控制資安風險。",
+      "correctRationale": "包括供應商合約的資料條款、個資處理依據與使用規範。",
+      "optionRationales": {
+        "A": "薪資與導入無關。",
+        "B": "行銷文案不屬其職責。",
+        "C": "介面設計不屬其職責。",
+        "D": "正確。合規與資安審查。"
+      },
+      "commonTrap": "導入時遺漏法務與資安角色。",
+      "lessonAnchor": "L12302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "角色分工"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12302-0011",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "導入以內部文件為依據的問答系統時，「資料團隊」最主要的工作是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "負責辦公室清潔"
+      },
+      {
+        "id": "B",
+        "text": "整理、清理與更新知識文件，並評估回答品質"
+      },
+      {
+        "id": "C",
+        "text": "只負責購買電腦"
+      },
+      {
+        "id": "D",
+        "text": "負責與客戶簽約"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "問答品質高度依賴文件品質。",
+      "correctRationale": "資料團隊確保知識庫內容正確、最新、結構適合檢索，並評估輸出品質。",
+      "optionRationales": {
+        "A": "與資料工作無關。",
+        "B": "正確。整理文件、評估品質。",
+        "C": "與資料工作無關。",
+        "D": "與簽約無關。"
+      },
+      "commonTrap": "忽略知識文件品質對 AI 的影響。",
+      "lessonAnchor": "L12302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "角色分工"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12302-0012",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "在導入專案中邀請「使用者代表」參與，主要目的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "參與測試並回饋實際使用問題，讓系統更符合現場需求"
+      },
+      {
+        "id": "B",
+        "text": "代替主管做所有決策"
+      },
+      {
+        "id": "C",
+        "text": "負責撰寫法律條款"
+      },
+      {
+        "id": "D",
+        "text": "負責模型的數學推導"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "使用者代表提供第一線觀點。",
+      "correctRationale": "及早發現操作不便或流程不符，提高上線後的接受度。",
+      "optionRationales": {
+        "A": "正確。測試與回饋。",
+        "B": "決策權屬負責人。",
+        "C": "法律條款屬法務。",
+        "D": "數學推導屬技術團隊。"
+      },
+      "commonTrap": "開發過程沒有讓實際使用者參與。",
+      "lessonAnchor": "L12302"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "角色分工"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12302-0013",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "設計生成式 AI 教育訓練時，針對「部門主管」最適合安排的內容是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "打字速度練習"
+      },
+      {
+        "id": "B",
+        "text": "底層 GPU 硬體維修"
+      },
+      {
+        "id": "C",
+        "text": "AI 的風險、成效衡量與使用規範的管理責任"
+      },
+      {
+        "id": "D",
+        "text": "模型的完整數學推導"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "教育訓練應依角色設計。",
+      "correctRationale": "一般使用者學提示與查核；主管學風險與成效管理；技術人員學整合與維運。",
+      "optionRationales": {
+        "A": "與 AI 導入無關。",
+        "B": "硬體維修屬技術人員。",
+        "C": "正確。主管關注風險與成效管理。",
+        "D": "數學推導對主管非必要。"
+      },
+      "commonTrap": "所有人都上同一套課程。",
+      "lessonAnchor": "L12302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "教育訓練"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12302-0014",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "公司制定生成式 AI「使用規範（Acceptable Use Policy）」，下列哪一項最應納入？",
+    "options": [
+      {
+        "id": "A",
+        "text": "可使用的工具清單、禁止輸入的資料類型、輸出審閱與揭露責任"
+      },
+      {
+        "id": "B",
+        "text": "公司 Logo 的使用尺寸"
+      },
+      {
+        "id": "C",
+        "text": "會議室借用規則"
+      },
+      {
+        "id": "D",
+        "text": "員工午餐時間"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "使用規範定義「可以怎麼用、不能怎麼用、誰負責」。",
+      "correctRationale": "明確的規範能降低資料外洩與誤用風險。",
+      "optionRationales": {
+        "A": "正確。工具、資料、責任。",
+        "B": "與 AI 使用無關。",
+        "C": "與 AI 使用無關。",
+        "D": "與 AI 使用無關。"
+      },
+      "commonTrap": "沒有使用規範就開放使用。",
+      "lessonAnchor": "L12302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "使用規範"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12302-0015",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "在導入初期找出一群願意嘗試的「種子使用者」，主要作用是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "負責採購電腦設備"
+      },
+      {
+        "id": "B",
+        "text": "負責稽核財務報表"
+      },
+      {
+        "id": "C",
+        "text": "取代所有員工的工作"
+      },
+      {
+        "id": "D",
+        "text": "率先使用並分享成功案例與技巧，帶動其他同仁採用"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "種子使用者是推動變革的助力。",
+      "correctRationale": "同儕的實際成功經驗，比單向宣導更容易降低抗拒。",
+      "optionRationales": {
+        "A": "與採購無關。",
+        "B": "與財務稽核無關。",
+        "C": "目的不是取代員工。",
+        "D": "正確。帶動採用。"
+      },
+      "commonTrap": "只靠由上而下的命令推動導入。",
+      "lessonAnchor": "L12302"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "變革管理"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12302-0016",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "生成式 AI 上線後，監控 API 的 Token 用量主要是為了掌握哪一個面向？",
+    "options": [
+      {
+        "id": "A",
+        "text": "模型的參數量"
+      },
+      {
+        "id": "B",
+        "text": "員工的出勤狀況"
+      },
+      {
+        "id": "C",
+        "text": "成本是否在預算內"
+      },
+      {
+        "id": "D",
+        "text": "使用者的密碼強度"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "上線後需監控品質、使用度、成本與成效。",
+      "correctRationale": "Token 用量直接影響費用，異常增加可能代表誤用或流程問題。",
+      "optionRationales": {
+        "A": "參數量不會因使用而改變。",
+        "B": "與出勤無關。",
+        "C": "正確。成本控管。",
+        "D": "與密碼無關。"
+      },
+      "commonTrap": "上線後只看品質，不看成本。",
+      "lessonAnchor": "L12302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "上線監控"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12302-0017",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "為什麼生成式 AI 上線後應提供使用者「回報問題」的管道？",
+    "options": [
+      {
+        "id": "A",
+        "text": "取代所有正式測試"
+      },
+      {
+        "id": "B",
+        "text": "蒐集錯誤與使用困難，作為更新提示、知識庫與流程的依據"
+      },
+      {
+        "id": "C",
+        "text": "用來增加系統的負載"
+      },
+      {
+        "id": "D",
+        "text": "讓使用者無法再使用系統"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "使用者回饋是持續優化的重要來源。",
+      "correctRationale": "第一線回報的錯誤案例，能指出知識庫缺漏或提示設計問題。",
+      "optionRationales": {
+        "A": "回報管道不能取代測試。",
+        "B": "正確。持續改善的依據。",
+        "C": "目的不是增加負載。",
+        "D": "回報不會阻止使用。"
+      },
+      "commonTrap": "上線後沒有回饋管道。",
+      "lessonAnchor": "L12302"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "回饋機制"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12302-0018",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "員工擔心導入 AI 後會被取代，因而抗拒使用。下列哪一種做法最能降低抗拒？",
+    "options": [
+      {
+        "id": "A",
+        "text": "清楚說明導入目的是協助而非取代，並提供訓練與參與設計的機會"
+      },
+      {
+        "id": "B",
+        "text": "只對高層說明"
+      },
+      {
+        "id": "C",
+        "text": "不做任何說明，直接強制使用"
+      },
+      {
+        "id": "D",
+        "text": "禁止員工討論 AI"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "變革管理重視溝通與參與。",
+      "correctRationale": "說明目的、提供能力培養與參與機會，能提升信任與採用意願。",
+      "optionRationales": {
+        "A": "正確。溝通、訓練與參與。",
+        "B": "第一線員工也需要了解。",
+        "C": "強制使用容易引發更大抗拒。",
+        "D": "禁止討論會加深疑慮。"
+      },
+      "commonTrap": "忽略人的因素。",
+      "lessonAnchor": "L12302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "變革管理"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12302-0019",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "PoC 結束時，摘要正確率只有 60%，遠低於事先訂定的 90% 標準，且找不到明確改善方向。依分階段導入原則，最適當的決定是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "已經投入資源，所以必須直接進入全面部署"
+      },
+      {
+        "id": "B",
+        "text": "依 Go / No-Go 標準判定不通過，停止或重新規劃，避免持續投入造成沉沒成本"
+      },
+      {
+        "id": "C",
+        "text": "把成功標準改成 60% 就通過"
+      },
+      {
+        "id": "D",
+        "text": "不做任何決定，繼續無限期測試"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "檢核點的意義在於依標準做出決策，包括喊停。",
+      "correctRationale": "未達標且無改善方向時，及早停止或調整，比勉強推進更能降低損失。",
+      "optionRationales": {
+        "A": "沉沒成本不應成為繼續的理由。",
+        "B": "正確。依標準判定不通過。",
+        "C": "事後修改標準失去檢核意義。",
+        "D": "無限期測試浪費資源。"
+      },
+      "commonTrap": "因為已經投入資源而不願喊停。",
+      "lessonAnchor": "L12302"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Go / No-Go"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12302-0020",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12302",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "比較「一次全面上線」與「分階段導入」，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "一次全面上線一定比較安全"
+      },
+      {
+        "id": "B",
+        "text": "分階段導入不需要任何檢核"
+      },
+      {
+        "id": "C",
+        "text": "分階段導入可在小範圍及早發現問題並修正，風險較分散；一次全面上線的風險較集中"
+      },
+      {
+        "id": "D",
+        "text": "兩者風險完全相同"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "分階段導入的核心價值是降低風險。",
+      "correctRationale": "小範圍試行可以在影響有限時發現問題，再逐步擴大。",
+      "optionRationales": {
+        "A": "全面上線一旦出問題影響範圍大。",
+        "B": "分階段導入需要檢核點。",
+        "C": "正確。分階段風險較分散。",
+        "D": "兩者風險分布不同。"
+      },
+      "commonTrap": "低估全面上線的風險。",
+      "lessonAnchor": "L12302"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "分階段導入"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12303-0005",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "公司持續使用生成式 AI 產生客服回覆，但規定所有回覆送出前須經專員審閱。這屬於哪一種風險應對策略？",
+    "options": [
+      {
+        "id": "A",
+        "text": "規避"
+      },
+      {
+        "id": "B",
+        "text": "轉移"
+      },
+      {
+        "id": "C",
+        "text": "接受"
+      },
+      {
+        "id": "D",
+        "text": "降低"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "降低：繼續活動，但加入控制措施以降低可能性或影響。",
+      "correctRationale": "人工審閱可攔截錯誤內容，降低幻覺造成的損害。",
+      "optionRationales": {
+        "A": "規避是停止該活動。",
+        "B": "轉移是交由第三方承擔。",
+        "C": "接受是不採取額外措施。",
+        "D": "正確。加入控制措施。"
+      },
+      "commonTrap": "把降低與規避混淆。",
+      "lessonAnchor": "L12303"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "風險應對"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12303-0006",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "公司評估後認為，內部腦力激盪用的 AI 點子偶爾不準確，影響很小且在可接受範圍內，因此不另外增加控制措施。這屬於哪一種風險應對策略？",
+    "options": [
+      {
+        "id": "A",
+        "text": "降低"
+      },
+      {
+        "id": "B",
+        "text": "接受"
+      },
+      {
+        "id": "C",
+        "text": "規避"
+      },
+      {
+        "id": "D",
+        "text": "轉移"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "接受：風險低於可接受程度，選擇承擔。",
+      "correctRationale": "並非所有風險都需要處理到零，應依風險胃納與成本效益決定。",
+      "optionRationales": {
+        "A": "並未增加控制措施。",
+        "B": "正確。風險可接受。",
+        "C": "並未停止使用。",
+        "D": "並未轉給第三方。"
+      },
+      "commonTrap": "以為所有風險都必須降到零。",
+      "lessonAnchor": "L12303"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "風險應對"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12303-0007",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "風險管理的基本流程順序為何？",
+    "options": [
+      {
+        "id": "A",
+        "text": "監控 → 處理 → 識別"
+      },
+      {
+        "id": "B",
+        "text": "評估 → 識別 → 處理"
+      },
+      {
+        "id": "C",
+        "text": "識別 → 分析 → 評估 → 處理 → 監控與溝通"
+      },
+      {
+        "id": "D",
+        "text": "處理 → 識別 → 分析 → 評估"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "風險管理是持續循環的流程。",
+      "correctRationale": "先找出風險，再分析可能性與影響，評估優先順序，決定處理方式，並持續監控。",
+      "optionRationales": {
+        "A": "順序錯誤。",
+        "B": "順序錯誤。",
+        "C": "正確順序。",
+        "D": "未識別風險就無法處理。"
+      },
+      "commonTrap": "流程順序混亂。",
+      "lessonAnchor": "L12303"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "風險管理流程"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12303-0008",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "使用者以特殊的角色扮演或迂迴提示，誘使語言模型輸出原本被安全機制禁止的內容。這種行為稱為？",
+    "options": [
+      {
+        "id": "A",
+        "text": "模型微調"
+      },
+      {
+        "id": "B",
+        "text": "資料投毒"
+      },
+      {
+        "id": "C",
+        "text": "資料漂移"
+      },
+      {
+        "id": "D",
+        "text": "越獄（Jailbreak）"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "越獄是試圖繞過模型安全限制的提示攻擊。",
+      "correctRationale": "發生在使用（推論）階段，需以輸入輸出過濾與持續測試防範。",
+      "optionRationales": {
+        "A": "微調是正常的訓練方法。",
+        "B": "資料投毒發生在訓練階段。",
+        "C": "資料漂移是分布改變。",
+        "D": "正確。繞過安全限制。"
+      },
+      "commonTrap": "把越獄與資料投毒混淆。",
+      "lessonAnchor": "L12303"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "越獄"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12303-0009",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「紅隊測試（Red Teaming）」在生成式 AI 風險管理中指的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "以攻擊者角度刻意測試系統，找出可能產生有害輸出或被濫用的弱點"
+      },
+      {
+        "id": "B",
+        "text": "由業務部門負責銷售"
+      },
+      {
+        "id": "C",
+        "text": "只測試系統在正常情況下的表現"
+      },
+      {
+        "id": "D",
+        "text": "把系統介面改成紅色"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "紅隊測試主動尋找弱點。",
+      "correctRationale": "在上線前模擬越獄、提示注入等攻擊，提前修補問題。",
+      "optionRationales": {
+        "A": "正確。攻擊者角度找弱點。",
+        "B": "與銷售無關。",
+        "C": "只測正常情況無法發現弱點。",
+        "D": "與顏色無關。"
+      },
+      "commonTrap": "只做功能測試，不做對抗測試。",
+      "lessonAnchor": "L12303"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "紅隊測試"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12303-0010",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "採取內容過濾、人工審閱等控制措施後，仍可能存在的風險稱為？",
+    "options": [
+      {
+        "id": "A",
+        "text": "零風險"
+      },
+      {
+        "id": "B",
+        "text": "固有收益"
+      },
+      {
+        "id": "C",
+        "text": "資料漂移"
+      },
+      {
+        "id": "D",
+        "text": "殘餘風險（Residual Risk）"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "控制措施無法讓風險完全消失。",
+      "correctRationale": "殘餘風險需要被記錄、接受或進一步處理，並持續監控。",
+      "optionRationales": {
+        "A": "風險通常無法降到零。",
+        "B": "這不是風險管理術語。",
+        "C": "資料漂移是另一個概念。",
+        "D": "正確。控制後仍存在的風險。"
+      },
+      "commonTrap": "以為有了控制措施就沒有風險。",
+      "lessonAnchor": "L12303"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "殘餘風險"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12303-0011",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「風險胃納（Risk Appetite）」在風險管理中的意義是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "組織為達成目標，願意承擔的風險程度，作為決定是否接受風險的依據"
+      },
+      {
+        "id": "B",
+        "text": "組織的年度餐費預算"
+      },
+      {
+        "id": "C",
+        "text": "員工對 AI 的喜好程度"
+      },
+      {
+        "id": "D",
+        "text": "模型能處理的最大 Token 數"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "風險胃納決定哪些風險可以接受、哪些必須處理。",
+      "correctRationale": "不同組織、不同業務的風險胃納不同，例如醫療通常比內部行銷保守。",
+      "optionRationales": {
+        "A": "正確。願意承擔的風險程度。",
+        "B": "與餐費無關。",
+        "C": "與個人喜好無關。",
+        "D": "與 Token 上限無關。"
+      },
+      "commonTrap": "不知道接受風險需要依據。",
+      "lessonAnchor": "L12303"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "風險胃納"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12303-0012",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "公司用生成式 AI 回答產品規格問題，擔心幻覺造成錯誤承諾。下列哪一組控制措施最合適？",
+    "options": [
+      {
+        "id": "A",
+        "text": "讓 AI 自行決定退款金額"
+      },
+      {
+        "id": "B",
+        "text": "以 RAG 依據官方規格文件回答並附來源、限定回答範圍，涉及承諾時轉人工"
+      },
+      {
+        "id": "C",
+        "text": "提高溫度讓回答更有創意"
+      },
+      {
+        "id": "D",
+        "text": "移除所有來源標示"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "幻覺的控制：依據可靠資料、限定範圍、附來源、人工把關。",
+      "correctRationale": "多重措施可降低錯誤資訊造成的損害。",
+      "optionRationales": {
+        "A": "金額承諾屬高風險決策。",
+        "B": "正確。多重控制措施。",
+        "C": "高溫度會增加不確定性。",
+        "D": "移除來源不利查證。"
+      },
+      "commonTrap": "只依賴單一措施。",
+      "lessonAnchor": "L12303"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "幻覺控制"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12303-0013",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "為降低員工使用生成式 AI 造成資料外洩，下列哪一組控制措施最完整？",
+    "options": [
+      {
+        "id": "A",
+        "text": "允許使用任何免費工具"
+      },
+      {
+        "id": "B",
+        "text": "只貼一張海報提醒小心"
+      },
+      {
+        "id": "C",
+        "text": "資料分級、使用核准的企業版或地端環境、敏感資料遮罩，以及與供應商的資料保護合約"
+      },
+      {
+        "id": "D",
+        "text": "禁止員工使用電腦"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "資料外洩的控制需要技術、管理與合約並行。",
+      "correctRationale": "分級決定哪些資料能用，環境與合約保障資料處理，遮罩降低暴露。",
+      "optionRationales": {
+        "A": "免費工具的資料政策不一定適合企業。",
+        "B": "只有提醒，缺乏實際控制。",
+        "C": "正確。技術、管理與合約並行。",
+        "D": "過度限制會影響正常工作。"
+      },
+      "commonTrap": "只靠宣導，沒有制度與技術控制。",
+      "lessonAnchor": "L12303"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料外洩"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12303-0014",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "員工長期直接採用 AI 產出、不再查核，連明顯錯誤都沒發現。這反映哪一種風險？應如何控制？",
+    "options": [
+      {
+        "id": "A",
+        "text": "供應商綁定；更換螢幕"
+      },
+      {
+        "id": "B",
+        "text": "欠擬合；增加模型參數"
+      },
+      {
+        "id": "C",
+        "text": "資料漂移；增加伺服器數量"
+      },
+      {
+        "id": "D",
+        "text": "過度依賴；透過訓練、使用規範與保留關鍵決策的人類判斷來控制"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "過度依賴是生成式 AI 的組織風險之一。",
+      "correctRationale": "使用者可能失去查核習慣與專業判斷，需要以訓練與規範維持人的把關。",
+      "optionRationales": {
+        "A": "與供應商綁定無關。",
+        "B": "與模型欠擬合無關。",
+        "C": "與資料漂移無關。",
+        "D": "正確。過度依賴與對應控制。"
+      },
+      "commonTrap": "只關注技術風險，忽略人的使用行為。",
+      "lessonAnchor": "L12303"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "過度依賴"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12303-0015",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "降低生成式 AI 輸出偏見或不當內容的風險，下列哪一項措施最直接？",
+    "options": [
+      {
+        "id": "A",
+        "text": "進行偏見測試、設置內容過濾，並由多元背景的人員審查"
+      },
+      {
+        "id": "B",
+        "text": "只使用最新的模型就不會有偏見"
+      },
+      {
+        "id": "C",
+        "text": "刪除所有使用紀錄"
+      },
+      {
+        "id": "D",
+        "text": "只讓一位人員負責所有審查"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "偏見需要主動測試與多元審查。",
+      "correctRationale": "測試不同族群的輸出差異，並以過濾與人工審查把關。",
+      "optionRationales": {
+        "A": "正確。測試、過濾與多元審查。",
+        "B": "新模型也可能有偏見。",
+        "C": "刪除紀錄無法降低偏見。",
+        "D": "單一審查者可能有盲點。"
+      },
+      "commonTrap": "以為換新模型就能解決偏見。",
+      "lessonAnchor": "L12303"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "偏見控制"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12303-0016",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "AI 客服突然開始大量輸出不當內容。依事件應變原則，第一步最應該做的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "刪除所有對話紀錄"
+      },
+      {
+        "id": "B",
+        "text": "對外否認發生問題"
+      },
+      {
+        "id": "C",
+        "text": "啟動停用開關或切換為人工，先止損，再進行根因分析"
+      },
+      {
+        "id": "D",
+        "text": "繼續運作並觀察一週"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "事件應變的優先順序：止損 → 調查 → 改善 → 溝通。",
+      "correctRationale": "先停用或切換人工避免擴大損害，再依紀錄找出原因。",
+      "optionRationales": {
+        "A": "刪除紀錄會妨礙調查。",
+        "B": "否認會損害信任，也違反溝通原則。",
+        "C": "正確。先止損再調查。",
+        "D": "持續運作會擴大損害。"
+      },
+      "commonTrap": "沒有事先準備停用機制。",
+      "lessonAnchor": "L12303"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "事件應變"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12303-0017",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "風險 A：可能性高、影響輕微；風險 B：可能性低、但一旦發生會造成重大法律責任。資源有限時，下列判斷何者較合理？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只處理可能性高的 A，B 可以忽略"
+      },
+      {
+        "id": "B",
+        "text": "兩者都需評估；B 雖然可能性低，但影響重大，常需要優先建立控制措施"
+      },
+      {
+        "id": "C",
+        "text": "只要可能性低就一定可以接受"
+      },
+      {
+        "id": "D",
+        "text": "風險排序只看發生次數"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "風險等級同時考量可能性與影響。",
+      "correctRationale": "低可能性、高衝擊的風險（如法律責任）不能因為不常發生就忽略。",
+      "optionRationales": {
+        "A": "忽略高衝擊風險可能造成重大損失。",
+        "B": "正確。同時考量兩個面向。",
+        "C": "是否接受需看影響與風險胃納。",
+        "D": "只看次數會忽略衝擊。"
+      },
+      "commonTrap": "只看可能性，忽略影響程度。",
+      "lessonAnchor": "L12303"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "風險排序"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12303-0018",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "在風險管理流程中，「風險分析」與「風險評估」的差別為何？",
+    "options": [
+      {
+        "id": "A",
+        "text": "兩者完全相同"
+      },
+      {
+        "id": "B",
+        "text": "評估在分析之前"
+      },
+      {
+        "id": "C",
+        "text": "分析是指購買保險"
+      },
+      {
+        "id": "D",
+        "text": "分析是估計可能性與影響程度；評估是依結果排出優先順序，並與可接受程度比較以決定是否處理"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "分析得出風險大小，評估做出判斷。",
+      "correctRationale": "先量化或分級風險，再依風險胃納決定哪些需要處理。",
+      "optionRationales": {
+        "A": "兩者在流程中是不同步驟。",
+        "B": "順序相反。",
+        "C": "購買保險屬於處理（轉移）。",
+        "D": "正確區分。"
+      },
+      "commonTrap": "把流程中的各步驟混為一談。",
+      "lessonAnchor": "L12303"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "風險分析",
+      "風險評估"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12303-0019",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "在法規遵循方面，企業使用生成式 AI 與顧客互動時，下列哪一項做法最基本？",
+    "options": [
+      {
+        "id": "A",
+        "text": "不保存任何紀錄"
+      },
+      {
+        "id": "B",
+        "text": "依法規與組織規範揭露 AI 的使用，並保存必要的紀錄"
+      },
+      {
+        "id": "C",
+        "text": "讓 AI 自行決定法律責任歸屬"
+      },
+      {
+        "id": "D",
+        "text": "隱瞞 AI 的使用以免顧客擔心"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "透明揭露與紀錄保存是法遵的基本要求。",
+      "correctRationale": "揭露讓顧客知情；紀錄讓事後能稽核與釐清責任。",
+      "optionRationales": {
+        "A": "沒有紀錄無法稽核。",
+        "B": "正確。揭露與紀錄。",
+        "C": "法律責任由組織承擔。",
+        "D": "隱瞞違反透明原則。"
+      },
+      "commonTrap": "忽略揭露與紀錄。",
+      "lessonAnchor": "L12303"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "法規遵循"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L12303-0020",
+    "level": "junior",
+    "subject": "L12",
+    "topic": "L123",
+    "competencyCode": "L12303",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "風險管理流程最後的「監控與溝通」階段，主要包含哪些工作？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只在年度結束時看一次"
+      },
+      {
+        "id": "B",
+        "text": "把風險清單刪除"
+      },
+      {
+        "id": "C",
+        "text": "持續追蹤風險與控制措施的有效性，定期檢討，並向利害關係人報告"
+      },
+      {
+        "id": "D",
+        "text": "停止所有 AI 專案"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "風險會隨時間改變，需要持續監控。",
+      "correctRationale": "新的攻擊手法、法規或使用方式出現時，要更新風險評估並溝通。",
+      "optionRationales": {
+        "A": "一年一次頻率可能太低。",
+        "B": "刪除清單會失去管理依據。",
+        "C": "正確。持續追蹤與報告。",
+        "D": "不必停止所有專案。"
+      },
+      "commonTrap": "以為風險評估做一次就好。",
+      "lessonAnchor": "L12303"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "監控與溝通"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  }
+]

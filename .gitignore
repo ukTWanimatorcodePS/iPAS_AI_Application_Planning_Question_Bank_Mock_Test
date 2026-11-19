@@ -1,0 +1,11 @@
+node_modules
+dist
+*.tsbuildinfo
+playwright-report
+test-results
+.DS_Store
+.env
+.env.*
+
+# 本機工具設定
+.claude/settings.local.json

@@ -1,0 +1,1501 @@
+[
+  {
+    "id": "original-L22203-0001",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列程式將串列去除重複後排序，執行後輸出為何？",
+    "code": "nums = [3, 1, 4, 1, 5]\nprint(sorted(set(nums)))",
+    "codeLanguage": "python",
+    "verification": {
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {},
+      "verifiedAt": "2026-11-19",
+      "kind": "python-stdout",
+      "expectedStdout": "[1, 3, 4, 5]"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": "[1, 1, 3, 4, 5]"
+      },
+      {
+        "id": "B",
+        "text": "[1, 3, 4, 5]"
+      },
+      {
+        "id": "C",
+        "text": "{1, 3, 4, 5}"
+      },
+      {
+        "id": "D",
+        "text": "[5, 4, 3, 1]"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "`set` 去除重複元素，`sorted` 回傳由小到大排序的新 list。",
+      "correctRationale": "set(nums) 得到 {1, 3, 4, 5}，sorted 轉為排序後的 list：[1, 3, 4, 5]。",
+      "optionRationales": {
+        "A": "set 會移除重複的 1。",
+        "B": "正確。去重後排序成 list。",
+        "C": "sorted 回傳的是 list，以方括號顯示，不是 set。",
+        "D": "sorted 預設由小到大排序。"
+      },
+      "commonTrap": "忘記 sorted 會回傳 list，或忘記 set 會去重。",
+      "lessonAnchor": "L22203"
+    },
+    "difficulty": 1,
+    "tags": [
+      "Python",
+      "set"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "basic",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "codeWalkthrough": [
+      "`nums` 為 [3, 1, 4, 1, 5]，其中 1 重複。",
+      "`set(nums)` 去除重複，得到 {1, 3, 4, 5}（集合本身無順序）。",
+      "`sorted(...)` 回傳由小到大排序的新 list：[1, 3, 4, 5]。",
+      "`print` 輸出 list 的字串表示 `[1, 3, 4, 5]`。"
+    ]
+  },
+  {
+    "id": "original-L22203-0002",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列程式以字典統計詞出現次數，執行後輸出為何？",
+    "code": "words = [\"ai\", \"data\", \"ai\", \"ml\", \"ai\"]\ncount = {}\nfor w in words:\n    count[w] = count.get(w, 0) + 1\nprint(count[\"ai\"], len(count))",
+    "codeLanguage": "python",
+    "verification": {
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {},
+      "verifiedAt": "2026-11-19",
+      "kind": "python-stdout",
+      "expectedStdout": "3 3"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": "5 3"
+      },
+      {
+        "id": "B",
+        "text": "3 5"
+      },
+      {
+        "id": "C",
+        "text": "1 3"
+      },
+      {
+        "id": "D",
+        "text": "3 3"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "`dict.get(key, 0)` 在鍵不存在時回傳預設值 0，常用來計數。",
+      "correctRationale": "\"ai\" 出現 3 次，所以 count[\"ai\"] 為 3；不同的詞有 ai、data、ml 共 3 個，len(count) 為 3。",
+      "optionRationales": {
+        "A": "5 是 words 的總長度，不是 \"ai\" 的次數。",
+        "B": "len(count) 是不同鍵的數量 3，不是 5。",
+        "C": "\"ai\" 被累加了 3 次，不是 1。",
+        "D": "正確。\"ai\" 出現 3 次、共有 3 個不同的詞。"
+      },
+      "commonTrap": "把字典長度（不同鍵數）與串列長度混淆。",
+      "lessonAnchor": "L22203"
+    },
+    "difficulty": 2,
+    "tags": [
+      "Python",
+      "dict"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "codeWalkthrough": [
+      "`count = {}` 建立空字典。",
+      "迴圈逐一讀取 words；`count.get(w, 0)` 在鍵不存在時回傳 0，再加 1 寫回。",
+      "結束後 count 為 {\"ai\": 3, \"data\": 1, \"ml\": 1}。",
+      "`count[\"ai\"]` 為 3；`len(count)` 是不同鍵的數量 3。",
+      "輸出 `3 3`。"
+    ]
+  },
+  {
+    "id": "original-L22203-0003",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列程式對串列做切片與負索引，執行後輸出為何？",
+    "code": "x = [10, 20, 30, 40, 50]\nprint(x[1:3], x[-1])",
+    "codeLanguage": "python",
+    "verification": {
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {},
+      "verifiedAt": "2026-11-19",
+      "kind": "python-stdout",
+      "expectedStdout": "[20, 30] 50"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": "[20, 30] 50"
+      },
+      {
+        "id": "B",
+        "text": "[20, 30, 40] 50"
+      },
+      {
+        "id": "C",
+        "text": "[10, 20] 40"
+      },
+      {
+        "id": "D",
+        "text": "[20, 30] 10"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "切片 `x[a:b]` 包含索引 a、不包含 b；負索引 -1 代表最後一個元素。",
+      "correctRationale": "x[1:3] 取索引 1、2 → [20, 30]；x[-1] 為最後一個元素 50。",
+      "optionRationales": {
+        "A": "正確。切片含頭不含尾、-1 為最後一個。",
+        "B": "切片不包含索引 3 的 40。",
+        "C": "索引從 0 開始，x[1] 是 20。",
+        "D": "x[-1] 是最後一個元素 50，不是第一個。"
+      },
+      "commonTrap": "以為切片包含結尾索引，或以為索引從 1 開始。",
+      "lessonAnchor": "L22203"
+    },
+    "difficulty": 2,
+    "tags": [
+      "Python",
+      "切片"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "codeWalkthrough": [
+      "`x` 有 5 個元素，索引 0～4。",
+      "`x[1:3]` 取索引 1 與 2（不含 3）→ [20, 30]。",
+      "`x[-1]` 取最後一個元素 → 50。",
+      "輸出 `[20, 30] 50`。"
+    ]
+  },
+  {
+    "id": "original-L22203-0004",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列 pandas 程式依城市分組彙總銷售額，執行後輸出為何？",
+    "code": "import pandas as pd\n\ndf = pd.DataFrame({\"city\": [\"台北\", \"台中\", \"台北\", \"高雄\"], \"sales\": [100, 80, 120, 90]})\nprint(df.groupby(\"city\")[\"sales\"].sum()[\"台北\"])",
+    "codeLanguage": "python",
+    "verification": {
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {
+        "pandas": "3.0.2"
+      },
+      "verifiedAt": "2026-11-19",
+      "kind": "python-stdout",
+      "expectedStdout": "220"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": "220"
+      },
+      {
+        "id": "B",
+        "text": "100"
+      },
+      {
+        "id": "C",
+        "text": "110.0"
+      },
+      {
+        "id": "D",
+        "text": "390"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "`groupby(\"city\")[\"sales\"].sum()` 依城市加總銷售額。",
+      "correctRationale": "台北有兩筆 100 與 120，加總為 220；sales 欄位皆為整數，結果為整數 220。",
+      "optionRationales": {
+        "A": "正確。台北 100 + 120 = 220。",
+        "B": "100 只是台北的第一筆。",
+        "C": "110.0 是台北的平均值（mean），不是加總。",
+        "D": "390 是全部城市的總和。"
+      },
+      "commonTrap": "把 sum 與 mean 混淆，或忘記先分組。",
+      "lessonAnchor": "L22203"
+    },
+    "difficulty": 2,
+    "tags": [
+      "pandas",
+      "groupby"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "codeWalkthrough": [
+      "以字典建立 DataFrame，city 與 sales 兩欄共 4 列。",
+      "`groupby(\"city\")` 依城市分組，`[\"sales\"].sum()` 計算各組銷售額總和：台中 80、台北 220、高雄 90。",
+      "`[\"台北\"]` 以索引取出台北的加總值。",
+      "sales 為整數欄位，加總結果是整數，輸出 `220`。"
+    ]
+  },
+  {
+    "id": "original-L22203-0005",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "銀行希望在刷卡交易發生的當下就判斷是否為盜刷並即時阻擋。較適合的資料處理方式是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "每月一次的批次處理"
+      },
+      {
+        "id": "B",
+        "text": "每年彙整一次報表"
+      },
+      {
+        "id": "C",
+        "text": "串流處理"
+      },
+      {
+        "id": "D",
+        "text": "只用人工對帳"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "批次處理定期執行、延遲高；串流處理資料到達即處理。",
+      "correctRationale": "盜刷阻擋必須在交易當下完成，需要低延遲的串流處理。",
+      "optionRationales": {
+        "A": "每月批次處理太慢，損失早已發生。",
+        "B": "年報表無法即時反應。",
+        "C": "正確。即時、低延遲。",
+        "D": "人工對帳無法在交易當下即時處理大量交易。"
+      },
+      "commonTrap": "只考慮資料量，忽略延遲需求。",
+      "lessonAnchor": "L22203"
+    },
+    "difficulty": 1,
+    "tags": [
+      "批次與串流"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "basic",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L22201-0001",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列 Python 程式檢查重複列與缺失值，執行後輸出為何？",
+    "code": "import pandas as pd\n\ndf = pd.DataFrame({\"id\": [1, 1, 2, 3], \"v\": [10, 10, 20, None]})\nprint(len(df.drop_duplicates()), int(df[\"v\"].isna().sum()))",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "3 1",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {
+        "pandas": "3.0.2"
+      },
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "建立 4 列資料，前兩列 id 與 v 完全相同。",
+      "`drop_duplicates()` 移除重複列，剩 3 列。",
+      "`df[\"v\"].isna()` 標記缺失值，只有最後一列是 None。",
+      "`.sum()` 得 1，以 `int()` 轉為整數。",
+      "輸出 `3 1`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "4 1"
+      },
+      {
+        "id": "B",
+        "text": "3 1"
+      },
+      {
+        "id": "C",
+        "text": "3 0"
+      },
+      {
+        "id": "D",
+        "text": "2 1"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "`drop_duplicates()` 移除完全相同的列；`isna().sum()` 計算缺失值數量。",
+      "correctRationale": "前兩列 (1, 10) 完全相同，去重後剩 3 列；v 欄有 1 個 None。",
+      "optionRationales": {
+        "A": "沒有去除重複的那一列。",
+        "B": "正確。去重後 3 列、缺失 1 個。",
+        "C": "None 在 pandas 中會被視為缺失值 NaN。",
+        "D": "只有一組重複，應剩 3 列。"
+      },
+      "commonTrap": "不清楚 drop_duplicates 與 isna 的行為。",
+      "lessonAnchor": "L22201"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "pandas",
+      "去重"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22201-0002",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列 Python 程式統一文字格式後計算不重複值數量，執行後輸出為何？",
+    "code": "import pandas as pd\n\ns = pd.Series([\" Taipei\", \"taipei\", \"TAIPEI \"])\nprint(s.str.strip().str.lower().nunique())",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "1",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {
+        "pandas": "3.0.2"
+      },
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "三個字串的大小寫與前後空白不同。",
+      "`str.strip()` 去掉前後空白。",
+      "`str.lower()` 全部轉為小寫，三者都成為 \"taipei\"。",
+      "`nunique()` 計算不重複值數量，輸出 `1`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "2"
+      },
+      {
+        "id": "B",
+        "text": "0"
+      },
+      {
+        "id": "C",
+        "text": "3"
+      },
+      {
+        "id": "D",
+        "text": "1"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "`str.strip()` 去除前後空白，`str.lower()` 轉小寫。",
+      "correctRationale": "三個值都變成 \"taipei\"，因此不重複值只有 1 個。",
+      "optionRationales": {
+        "A": "計算錯誤。",
+        "B": "至少有 1 個值。",
+        "C": "標準化前看起來是 3 種寫法。",
+        "D": "正確。標準化後只剩一種值。"
+      },
+      "commonTrap": "忽略前後空白與大小寫造成的不一致。",
+      "lessonAnchor": "L22201"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "pandas",
+      "標準化"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22201-0003",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "大數據 5V 中的「Veracity」指的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "資料型態的多樣性"
+      },
+      {
+        "id": "B",
+        "text": "資料量的大小"
+      },
+      {
+        "id": "C",
+        "text": "資料的真實性與可信度（品質）"
+      },
+      {
+        "id": "D",
+        "text": "資料產生的速度"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "5V：Volume、Velocity、Variety、Veracity、Value。",
+      "correctRationale": "Veracity 關注資料是否正確、可信。",
+      "optionRationales": {
+        "A": "這是 Variety。",
+        "B": "這是 Volume。",
+        "C": "正確。真實性與品質。",
+        "D": "這是 Velocity。"
+      },
+      "commonTrap": "5V 各自的意義記混。",
+      "lessonAnchor": "L22201"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "5V"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22201-0004",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於 ETL 與 ELT，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "ETL 先轉換再載入；ELT 先把原始資料載入倉儲或資料湖再轉換"
+      },
+      {
+        "id": "B",
+        "text": "ETL 一定比 ELT 快"
+      },
+      {
+        "id": "C",
+        "text": "兩者完全相同"
+      },
+      {
+        "id": "D",
+        "text": "ELT 不需要任何轉換"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "兩者差別在轉換的時機與位置。",
+      "correctRationale": "ELT 利用雲端倉儲的運算能力，並保留原始資料。",
+      "optionRationales": {
+        "A": "正確區分。",
+        "B": "速度依情境而定。",
+        "C": "流程順序不同。",
+        "D": "ELT 仍要轉換，只是在載入後。"
+      },
+      "commonTrap": "以為 ELT 不做轉換。",
+      "lessonAnchor": "L22201"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "ETL",
+      "ELT"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22201-0005",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「CDC（Change Data Capture）」在資料蒐集中的主要好處是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "加密所有資料"
+      },
+      {
+        "id": "B",
+        "text": "只擷取資料庫的變動紀錄，減少對來源系統的負擔與傳輸量"
+      },
+      {
+        "id": "C",
+        "text": "讓資料自動產生標籤"
+      },
+      {
+        "id": "D",
+        "text": "把資料全部刪除後重建"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "CDC 只同步新增、修改、刪除的變動。",
+      "correctRationale": "相較每次全量匯出，可降低負擔並接近即時同步。",
+      "optionRationales": {
+        "A": "不是加密技術。",
+        "B": "正確。只擷取變動。",
+        "C": "不產生標籤。",
+        "D": "不是刪除重建。"
+      },
+      "commonTrap": "每次都全量匯出大型資料表。",
+      "lessonAnchor": "L22201"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "CDC"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22201-0006",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "團隊想爬取競爭對手網站的公開商品價格做分析。下列哪一項最應優先確認？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只要網頁公開就可以任意大量爬取"
+      },
+      {
+        "id": "B",
+        "text": "網站使用條款與 robots.txt、著作權與個資規範，並控制請求頻率"
+      },
+      {
+        "id": "C",
+        "text": "使用最多台機器同時大量請求"
+      },
+      {
+        "id": "D",
+        "text": "爬到的資料可直接公開轉售"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "網路爬取需注意法律、條款與對方系統負擔。",
+      "correctRationale": "公開不等於可任意使用；過度請求也可能影響對方服務。",
+      "optionRationales": {
+        "A": "公開不等於可任意使用。",
+        "B": "正確。合法合規並控制頻率。",
+        "C": "可能造成對方系統負擔。",
+        "D": "可能侵權或違約。"
+      },
+      "commonTrap": "以為公開資料可任意爬取使用。",
+      "lessonAnchor": "L22201"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "網路爬取"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22201-0007",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "在資料管線中加入「訂單的會員編號必須存在於會員資料表」的檢查，這屬於哪一種資料驗證規則？",
+    "options": [
+      {
+        "id": "A",
+        "text": "唯一性檢查"
+      },
+      {
+        "id": "B",
+        "text": "範圍檢查"
+      },
+      {
+        "id": "C",
+        "text": "型別檢查"
+      },
+      {
+        "id": "D",
+        "text": "參照完整性"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "參照完整性確保關聯資料能正確對應。",
+      "correctRationale": "若訂單引用不存在的會員，代表資料有缺漏或錯誤。",
+      "optionRationales": {
+        "A": "唯一性檢查如主鍵不重複。",
+        "B": "範圍檢查如年齡 0～120。",
+        "C": "型別檢查如日期能否解析。",
+        "D": "正確。參照完整性。"
+      },
+      "commonTrap": "分不清各種驗證規則。",
+      "lessonAnchor": "L22201"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料驗證"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22201-0008",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "大規模資料清理時，下列哪一項做法最重要？",
+    "options": [
+      {
+        "id": "A",
+        "text": "保留原始資料，並以程式碼記錄每個清理步驟，確保可重現"
+      },
+      {
+        "id": "B",
+        "text": "清理後刪除原始資料以節省空間"
+      },
+      {
+        "id": "C",
+        "text": "每次清理使用不同的規則"
+      },
+      {
+        "id": "D",
+        "text": "直接在原始資料上手動修改"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "清理步驟要可追溯、可重現。",
+      "correctRationale": "保留原始資料可在規則錯誤時重新處理；程式碼化便於審查。",
+      "optionRationales": {
+        "A": "正確。保留原始資料並程式化。",
+        "B": "無法回頭修正。",
+        "C": "結果不一致。",
+        "D": "手動修改難以追溯。"
+      },
+      "commonTrap": "手動、不可追溯的資料清理。",
+      "lessonAnchor": "L22201"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "可重現"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22202-0001",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "分析師要彙總過去三年各地區的銷售額，應主要查詢哪一類系統？",
+    "options": [
+      {
+        "id": "A",
+        "text": "OLTP（交易型）系統"
+      },
+      {
+        "id": "B",
+        "text": "使用者瀏覽器的快取"
+      },
+      {
+        "id": "C",
+        "text": "OLAP（分析型）系統或資料倉儲"
+      },
+      {
+        "id": "D",
+        "text": "印表機佇列"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "OLTP 處理交易，OLAP 處理分析查詢。",
+      "correctRationale": "大範圍彙總查詢放在 OLAP 系統，避免影響線上交易效能。",
+      "optionRationales": {
+        "A": "大量分析查詢會影響交易系統效能。",
+        "B": "瀏覽器快取不是分析資料來源。",
+        "C": "正確。彙總分析屬 OLAP 查詢。",
+        "D": "印表機佇列與資料分析無關。"
+      },
+      "commonTrap": "在交易系統上執行大量分析查詢。",
+      "lessonAnchor": "L22202"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "OLTP",
+      "OLAP"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22202-0002",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於資料倉儲與資料湖，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "資料湖只能存放結構化表格"
+      },
+      {
+        "id": "B",
+        "text": "資料倉儲不需要定義結構"
+      },
+      {
+        "id": "C",
+        "text": "兩者完全相同"
+      },
+      {
+        "id": "D",
+        "text": "資料倉儲存放清理後的結構化資料（Schema-on-Write）；資料湖以原始格式存放各類資料（Schema-on-Read）"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "倉儲重結構與品質，湖重彈性與原始保存。",
+      "correctRationale": "資料湖適合資料科學與機器學習，倉儲適合 BI 報表。",
+      "optionRationales": {
+        "A": "資料湖可存放各種格式。",
+        "B": "倉儲在寫入時定義結構。",
+        "C": "用途不同。",
+        "D": "正確區分。"
+      },
+      "commonTrap": "Schema-on-Write 與 Schema-on-Read 記反。",
+      "lessonAnchor": "L22202"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料湖",
+      "資料倉儲"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22202-0003",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "社群平台想分析帳號之間的轉帳與好友關係，找出可疑的詐騙網路。最適合哪一類資料庫？",
+    "options": [
+      {
+        "id": "A",
+        "text": "純文字檔"
+      },
+      {
+        "id": "B",
+        "text": "鍵值資料庫"
+      },
+      {
+        "id": "C",
+        "text": "圖形資料庫"
+      },
+      {
+        "id": "D",
+        "text": "欄式時間序列資料庫"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "圖形資料庫擅長處理節點與關係。",
+      "correctRationale": "多層關係查詢（朋友的朋友、資金流向）在圖形資料庫中效率高。",
+      "optionRationales": {
+        "A": "不適合複雜關係查詢。",
+        "B": "鍵值適合快取。",
+        "C": "正確。關係網路分析。",
+        "D": "適合大量時間序列寫入。"
+      },
+      "commonTrap": "不清楚各類 NoSQL 的用途。",
+      "lessonAnchor": "L22202"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "NoSQL"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22202-0004",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "分析查詢時，Parquet 等欄式儲存格式通常比 CSV 效率高，主要原因是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "CSV 無法存放數字"
+      },
+      {
+        "id": "B",
+        "text": "只讀取需要的欄位，且同欄資料相似、壓縮率高，可大幅減少 I/O"
+      },
+      {
+        "id": "C",
+        "text": "欄式格式會自動建立機器學習模型"
+      },
+      {
+        "id": "D",
+        "text": "欄式格式不需要任何磁碟空間"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "分析多只讀取少數欄位。",
+      "correctRationale": "欄式儲存讓查詢只掃描需要的欄位並有效壓縮。",
+      "optionRationales": {
+        "A": "CSV 可以存數字。",
+        "B": "正確。減少 I/O 與壓縮。",
+        "C": "不會建立模型。",
+        "D": "仍需要空間。"
+      },
+      "commonTrap": "不了解欄式儲存的優勢。",
+      "lessonAnchor": "L22202"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "欄式儲存"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22202-0005",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "銷售資料表依「交易日期」分割（partition）儲存，主要效益是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "查詢特定期間時只需掃描相關分區，加快查詢速度並降低成本"
+      },
+      {
+        "id": "B",
+        "text": "自動刪除所有舊資料"
+      },
+      {
+        "id": "C",
+        "text": "取代資料備份"
+      },
+      {
+        "id": "D",
+        "text": "讓資料無法被查詢"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "分割縮小每次查詢的掃描範圍。",
+      "correctRationale": "查詢「上個月」只需讀取該月分區。",
+      "optionRationales": {
+        "A": "正確。減少掃描範圍。",
+        "B": "分割不等於刪除。",
+        "C": "不能取代備份。",
+        "D": "資料仍可查詢。"
+      },
+      "commonTrap": "不清楚分割的用途。",
+      "lessonAnchor": "L22202"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "分割"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22202-0006",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關聯式資料庫的 ACID 特性主要保障什麼？",
+    "options": [
+      {
+        "id": "A",
+        "text": "資料的視覺化效果"
+      },
+      {
+        "id": "B",
+        "text": "機器學習模型的準確率"
+      },
+      {
+        "id": "C",
+        "text": "交易的可靠性：原子性、一致性、隔離性、持久性"
+      },
+      {
+        "id": "D",
+        "text": "網頁的載入速度"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "ACID 確保交易可靠。",
+      "correctRationale": "例如轉帳要嘛全部完成、要嘛全部不做，不會只扣款未入帳。",
+      "optionRationales": {
+        "A": "視覺化與資料庫交易特性無關。",
+        "B": "模型準確率與資料庫交易特性無關。",
+        "C": "正確。ACID 保障交易可靠性。",
+        "D": "網頁速度與資料庫交易特性無關。"
+      },
+      "commonTrap": "不清楚 ACID 的意義。",
+      "lessonAnchor": "L22202"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "ACID"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22202-0007",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "主管質疑報表中某數字的正確性，資料團隊能快速追溯該數字從哪些來源、經過哪些轉換而來。這依靠的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "負載平衡"
+      },
+      {
+        "id": "B",
+        "text": "資料加密"
+      },
+      {
+        "id": "C",
+        "text": "資料壓縮"
+      },
+      {
+        "id": "D",
+        "text": "資料血緣（Data Lineage）"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "資料血緣記錄資料的來源與轉換路徑。",
+      "correctRationale": "能協助除錯、影響分析與稽核。",
+      "optionRationales": {
+        "A": "負載平衡分散流量。",
+        "B": "加密保護機密性。",
+        "C": "壓縮節省空間。",
+        "D": "正確。追溯來源與轉換。"
+      },
+      "commonTrap": "缺乏資料治理工具。",
+      "lessonAnchor": "L22202"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料血緣"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22202-0008",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "公司把所有資料都丟進資料湖，但沒有資料目錄、欄位說明與負責人，結果沒人知道哪些資料可用。這種情況常被稱為？",
+    "options": [
+      {
+        "id": "A",
+        "text": "資料湖倉"
+      },
+      {
+        "id": "B",
+        "text": "資料沼澤（Data Swamp）"
+      },
+      {
+        "id": "C",
+        "text": "資料去重"
+      },
+      {
+        "id": "D",
+        "text": "資料倉儲"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "缺乏治理的資料湖會變成資料沼澤。",
+      "correctRationale": "需建立資料目錄、中繼資料、品質規則與負責人。",
+      "optionRationales": {
+        "A": "湖倉結合湖與倉儲的管理能力。",
+        "B": "正確。缺乏治理的資料湖。",
+        "C": "去重是清理步驟。",
+        "D": "倉儲是結構化分析儲存。"
+      },
+      "commonTrap": "以為資料湖不需要治理。",
+      "lessonAnchor": "L22202"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料沼澤"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22203-0006",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列 Python 程式以串列生成式篩選資料，執行後輸出為何？",
+    "code": "prices = {\"A\": 100, \"B\": 250, \"C\": 80}\ncheap = [k for k, v in prices.items() if v < 120]\nprint(cheap)",
+    "codeLanguage": "python",
+    "verification": {
+      "kind": "python-stdout",
+      "expectedStdout": "['A', 'C']",
+      "status": "verified",
+      "runtime": "Pyodide 314.0.8（CPython 3.14.2）",
+      "packages": {},
+      "verifiedAt": "2026-11-19"
+    },
+    "codeWalkthrough": [
+      "`prices.items()` 逐一取出 (鍵, 值)：(\"A\", 100)、(\"B\", 250)、(\"C\", 80)。",
+      "`if v < 120` 只保留值小於 120 的項目：A 與 C。",
+      "生成式取出鍵 `k`，得到 [\"A\", \"C\"]。",
+      "`print` 以 Python 串列格式輸出 `['A', 'C']`。"
+    ],
+    "options": [
+      {
+        "id": "A",
+        "text": "['A', 'C']"
+      },
+      {
+        "id": "B",
+        "text": "['B']"
+      },
+      {
+        "id": "C",
+        "text": "[100, 80]"
+      },
+      {
+        "id": "D",
+        "text": "['A', 'B', 'C']"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "串列生成式 `[k for k, v in d.items() if 條件]` 依條件篩選鍵。",
+      "correctRationale": "A（100）與 C（80）小於 120，B（250）不符合。",
+      "optionRationales": {
+        "A": "正確。篩選出價格小於 120 的鍵。",
+        "B": "B 的價格 250 不小於 120。",
+        "C": "生成式輸出的是鍵 k，不是值 v。",
+        "D": "有條件篩選，不會保留全部。"
+      },
+      "commonTrap": "把鍵與值弄混，或忽略 if 條件。",
+      "lessonAnchor": "L22203"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Python",
+      "串列生成式"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22203-0007",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "SQL 語句 `SELECT city, AVG(sales) FROM t GROUP BY city` 在 pandas 中最接近哪一種寫法？",
+    "options": [
+      {
+        "id": "A",
+        "text": "df.drop_duplicates(\"city\")"
+      },
+      {
+        "id": "B",
+        "text": "df[\"sales\"].sum()"
+      },
+      {
+        "id": "C",
+        "text": "df.sort_values(\"city\")"
+      },
+      {
+        "id": "D",
+        "text": "df.groupby(\"city\")[\"sales\"].mean()"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "GROUP BY 對應 pandas 的 groupby，AVG 對應 mean。",
+      "correctRationale": "先依城市分組，再計算各組銷售平均。",
+      "optionRationales": {
+        "A": "這是去除重複城市。",
+        "B": "這是全部加總，沒有分組。",
+        "C": "這只是排序。",
+        "D": "正確。先依城市分組，再計算各組銷售平均。"
+      },
+      "commonTrap": "SQL 與 pandas 的對應不熟悉。",
+      "lessonAnchor": "L22203"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "SQL",
+      "pandas"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L22203-0008",
+    "level": "middle",
+    "subject": "L22",
+    "topic": "L222",
+    "competencyCode": "L22203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "機器學習訓練需要對同一份大型資料反覆迭代運算。相較傳統以磁碟為主的 MapReduce，Spark 較適合的主要原因是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "Spark 不需要任何叢集"
+      },
+      {
+        "id": "B",
+        "text": "Spark 只能處理小型資料"
+      },
+      {
+        "id": "C",
+        "text": "Spark 以記憶體運算為主，可減少反覆讀寫磁碟的成本"
+      },
+      {
+        "id": "D",
+        "text": "MapReduce 可以即時串流"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "Spark 在記憶體中保留中間結果。",
+      "correctRationale": "反覆迭代時避免每次都寫回磁碟，大幅加快速度。",
+      "optionRationales": {
+        "A": "Spark 常在叢集上執行。",
+        "B": "Spark 為大規模資料設計。",
+        "C": "正確。記憶體運算適合迭代。",
+        "D": "傳統 MapReduce 以批次為主。"
+      },
+      "commonTrap": "不了解 Spark 與 MapReduce 的差異。",
+      "lessonAnchor": "L22203"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "Spark"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  }
+]

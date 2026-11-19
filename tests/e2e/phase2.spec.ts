@@ -1,0 +1,208 @@
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { expect, test } from '@playwright/test';
+import { choose, currentQuestion, expectNoHorizontalOverflow, isMobile, loadBank, optionLocator, skipOnboarding } from './helpers';
+
+const bank = loadBank();
+
+test('AI 導師：答錯後重新教學、切換模式、補強題作答並影響錯題本', async ({ page }) => {
+  await skipOnboarding(page);
+  await page.goto('./#/courses/L11201');
+  await page.getByTestId('start-quiz-5').click();
+  const q = await currentQuestion(page, bank);
+  await choose(page, q, false);
+  await page.getByTestId('reveal').filter({ visible: true }).click();
+  await expect(page.getByTestId(`explanation-${q.id}`)).toBeVisible();
+
+  await page.getByTestId(`tutor-open-${q.id}`).click();
+  const panel = page.getByTestId('tutor-panel');
+  await expect(panel.getByText(/示範模式/).first()).toBeVisible();
+  await expect(panel.getByRole('heading', { name: /核心考點/ })).toBeVisible();
+  await expect(panel.getByRole('heading', { name: '為什麼這樣選會錯' })).toBeVisible();
+  // 原本的標準解析仍在，沒有被覆蓋
+  await expect(page.getByTestId(`explanation-${q.id}`).getByText('逐一選項解析')).toBeVisible();
+
+  await panel.getByRole('tab', { name: '簡單解釋' }).click();
+  await expect(panel.getByRole('heading', { name: '換個例子重新理解' })).toHaveCount(0);
+  await panel.getByRole('tab', { name: '比較易混淆觀念' }).click();
+  await expect(panel.getByRole('heading', { name: '正確觀念 vs. 常見誤解' })).toBeVisible();
+
+  const reinforcement = panel.getByTestId('tutor-reinforcement');
+  const stem = (await reinforcement.locator('p.font-semibold').innerText()).trim();
+  const rq = bank.get(stem)!;
+  expect(rq.competencyCode).toBe(q.competencyCode);
+  expect(rq.id).not.toBe(q.id);
+  const wrongOpt = rq.options.find((o) => !rq.correctOptionIds.includes(o.id))!;
+  await optionLocator(reinforcement, wrongOpt).click();
+  await reinforcement.getByTestId('tutor-submit').click();
+  await expect(reinforcement.getByText('補強題答錯。')).toBeVisible();
+
+  // 補強題答錯 → 補強題也進錯題本，且原題今天到期
+  await page.goto('./#/review');
+  await expect(page.getByRole('tab', { name: /尚未訂正（2）/ })).toBeVisible();
+  await expect(page.getByText('今天到期').first()).toBeVisible();
+});
+
+test('學習計畫：設定考試日期後產生倒數、今日任務與學習進度', async ({ page }) => {
+  await skipOnboarding(page);
+  await page.goto('./#/plan');
+  await expect(page.getByText(/尚未設定考試日期/)).toBeVisible();
+  const d = new Date();
+  d.setDate(d.getDate() + 60);
+  await page.goto('./#/settings');
+  await page.getByTestId('exam-date-junior').fill(d.toLocaleDateString('sv-SE'));
+  await page.goto('./#/plan');
+  await expect(page.getByText('60 天')).toBeVisible();
+  await expect(page.getByTestId('today-plan')).toBeVisible();
+  await expect(page.getByTestId('progress-card').getByText('錯題訂正率')).toBeVisible();
+  await expectNoHorizontalOverflow(page);
+  await page.reload();
+  await expect(page.getByText('60 天')).toBeVisible();
+});
+
+test('考前衝刺：樣本不足提示、非官方高頻考點聲明、混合測驗可開始', async ({ page }) => {
+  await skipOnboarding(page);
+  await page.goto('./#/sprint');
+  await expect(page.getByText(/並非官方公布或經統計證實的高頻考點/)).toBeVisible();
+  await expect(page.getByText(/樣本不足/)).toBeVisible();
+  await page.getByTestId('sprint-mixed-start').click();
+  await expect(page.locator('#q-stem')).toBeVisible();
+  await expect(page.getByText('全範圍混合測驗').first()).toBeVisible();
+});
+
+test('備份還原：匯出 → 雙重確認清除 → 匯入後紀錄恢復；也能匯入第一階段備份', async ({ page }, info) => {
+  await skipOnboarding(page);
+  // 先產生一筆作答
+  await page.goto('./#/courses/L11101');
+  await page.getByTestId('start-quiz-5').click();
+  const q = await currentQuestion(page, bank);
+  await choose(page, q, false);
+  await page.getByTestId('reveal').filter({ visible: true }).click();
+
+  await page.goto('./#/settings');
+  const [download] = await Promise.all([page.waitForEvent('download'), page.getByRole('button', { name: '匯出 JSON' }).click()]);
+  const file = info.outputPath('backup.json');
+  await download.saveAs(file);
+  const json = JSON.parse(readFileSync(file, 'utf8'));
+  expect(json.schemaVersion).toBe(2);
+  expect(json.data.attempts.length).toBe(1);
+
+  await page.getByRole('button', { name: /清除這台裝置/ }).click();
+  await page.getByRole('button', { name: '下一步' }).click();
+  await page.getByRole('button', { name: '永久清除' }).click();
+  await expect(page.getByText('已清除這台裝置的所有學習紀錄。')).toBeVisible();
+  await page.goto('./#/review');
+  await expect(page.getByText('目前沒有錯題')).toBeVisible();
+
+  await page.goto('./#/settings');
+  await page.getByTestId('import-input').setInputFiles(file);
+  await page.getByRole('button', { name: '覆蓋並匯入' }).click();
+  await expect(page.getByText(/匯入完成：1 筆作答/)).toBeVisible();
+  await page.goto('./#/review');
+  await expect(page.getByRole('tab', { name: /尚未訂正（1）/ })).toBeVisible();
+
+  // 第一階段（schemaVersion 1）備份
+  await page.goto('./#/settings');
+  await page.getByTestId('import-input').setInputFiles(join(process.cwd(), 'tests/fixtures/backup-v1.json'));
+  await page.getByRole('button', { name: '覆蓋並匯入' }).click();
+  await expect(page.getByText(/匯入完成：2 筆作答/)).toBeVisible();
+
+  // 不合法的檔案不會寫入
+  await page.getByTestId('import-input').setInputFiles({ name: 'bad.json', mimeType: 'application/json', buffer: Buffer.from('{"app":"other"}') });
+  await expect(page.getByText(/匯入失敗/)).toBeVisible();
+});
+
+test('版面：深色、高對比、130% 字級下主要頁面不溢出，固定按鈕不遮住底部導覽', async ({ page }) => {
+  await skipOnboarding(page);
+  await page.goto('./#/settings');
+  await page.getByLabel('主題').selectOption('dark');
+  await page.getByText('高對比模式').click();
+  await page.locator('input[type="range"]').fill('1.3');
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+  await expect(page.locator('html')).toHaveAttribute('data-contrast', 'high');
+  for (const p of ['#/', '#/plan', '#/sprint', '#/courses/L23102', '#/courses/L22203', '#/stats', '#/review', '#/settings']) {
+    await page.goto(`./${p}`);
+    await page.waitForLoadState('networkidle');
+    await expectNoHorizontalOverflow(page);
+  }
+  if (isMobile(page)) {
+    await page.goto('./#/courses/L11101');
+    const cta = await page.getByRole('button', { name: '開始 5 題小測驗' }).boundingBox();
+    const nav = await page.getByRole('navigation', { name: '主要導覽（行動版）' }).boundingBox();
+    expect(cta!.y + cta!.height).toBeLessThanOrEqual(nav!.y + 1);
+  }
+});
+
+test('程式題：長程式碼與輸出選項在畫面內完整換行', async ({ page }) => {
+  await skipOnboarding(page);
+  await page.getByRole('radiogroup', { name: '切換級別' }).getByRole('radio', { name: '中級' }).click();
+  await page.goto('./#/courses/L22302');
+  await page.getByTestId('start-quiz-10').click();
+  // 逐題前進直到遇到程式題
+  for (let i = 0; i < 8; i++) {
+    if (await page.locator('.code-block').count()) break;
+    const q = await currentQuestion(page, bank);
+    await choose(page, q, true);
+    await page.getByTestId('reveal').filter({ visible: true }).click();
+    await page.getByTestId('next').filter({ visible: true }).click();
+  }
+  await expect(page.locator('.code-block').first()).toBeVisible();
+  await expectNoHorizontalOverflow(page);
+});
+
+test('鍵盤操作：第一個 Tab 聚焦「跳到主要內容」並可移至主內容', async ({ page }) => {
+  await skipOnboarding(page);
+  // 重新載入，模擬一般進站（焦點從頁面頂端開始）
+  await page.reload();
+  await expect(page.getByTestId('continue-learning')).toBeVisible();
+  await page.keyboard.press('Tab');
+  await expect(page.getByRole('link', { name: '跳到主要內容' })).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(page.locator('#main')).toBeFocused();
+  // 仍停留在首頁，沒有被當成路由切換
+  await expect(page.getByTestId('continue-learning')).toBeVisible();
+});
+
+for (const width of [360, 768]) {
+  test(`寬度 ${width}px：新增頁面不溢出`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await skipOnboarding(page);
+    for (const p of ['#/', '#/plan', '#/sprint', '#/courses/L21103', '#/courses/L23303', '#/practice', '#/mock', '#/past-exams', '#/me']) {
+      await page.goto(`./${p}`);
+      await page.waitForLoadState('networkidle');
+      await expectNoHorizontalOverflow(page);
+    }
+  });
+}
+
+test('歷屆試題：官方公告試題紀錄可依年度、梯次、科目篩選，且只連到官方下載頁', async ({ page }) => {
+  await skipOnboarding(page);
+  await page.goto('./#/past-exams');
+  const box = page.getByTestId('official-papers');
+  // 初級：114 第四梯次 2 科 + 115 第一～三次各 2 科
+  await expect(box.getByRole('listitem')).toHaveCount(8);
+  await box.getByLabel('年度').selectOption('115');
+  await expect(box.getByRole('listitem')).toHaveCount(6);
+  await box.getByLabel('梯次').selectOption('第二次');
+  await expect(box.getByRole('listitem')).toHaveCount(2);
+  await box.getByLabel('科目').selectOption('L12');
+  await expect(box.getByRole('listitem')).toHaveCount(1);
+  const link = box.getByRole('link', { name: /官方學習資源頁下載 115 年第二次 L12/ });
+  await expect(link).toHaveAttribute('href', 'https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources');
+  await page.getByRole('radiogroup', { name: '切換級別' }).getByRole('radio', { name: '中級' }).click();
+  await box.getByLabel('年度').selectOption('');
+  await expect(box.getByRole('listitem')).toHaveCount(6);
+  await expectNoHorizontalOverflow(page);
+});
+
+test('模擬考：顯示 115 年官方題數與時間並可一鍵套用，仍標示為自編', async ({ page }) => {
+  await skipOnboarding(page);
+  await page.goto('./#/mock');
+  await expect(page.getByTestId('official-format')).toHaveText('L11：單選題 50 題／75 分鐘');
+  await expect(page.getByText('自訂模考・題目為本站自編')).toBeVisible();
+  await page.getByTestId('apply-official-format').click();
+  await expect(page.getByLabel('題數')).toHaveValue('50');
+  await expect(page.getByLabel('時間（分鐘）')).toHaveValue('75');
+  await page.getByRole('radiogroup', { name: '切換級別' }).getByRole('radio', { name: '中級' }).click();
+  await expect(page.getByTestId('official-format')).toHaveText('L21：單選題 50 題／90 分鐘');
+});

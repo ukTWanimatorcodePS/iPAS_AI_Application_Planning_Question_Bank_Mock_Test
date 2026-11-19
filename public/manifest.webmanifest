@@ -1,0 +1,12 @@
+{
+  "name": "AI 備考室｜iPAS 學習平台",
+  "short_name": "AI 備考室",
+  "description": "依課綱學習・練題・補強（獨立學習工具，非 iPAS 官方平台）",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f7fb",
+  "theme_color": "#4355dc",
+  "lang": "zh-Hant-TW",
+  "icons": [{ "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}

@@ -1,0 +1,3434 @@
+[
+  {
+    "id": "original-L11201-0001",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列何者是最典型的結構化資料？",
+    "options": [
+      {
+        "id": "A",
+        "text": "依固定欄位整理的銷售訂單表"
+      },
+      {
+        "id": "B",
+        "text": "一段客服通話錄音"
+      },
+      {
+        "id": "C",
+        "text": "未經標註的產品照片"
+      },
+      {
+        "id": "D",
+        "text": "一篇自由格式的部落格文章"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "結構化資料具有固定欄位，可直接放入表格或關聯式資料庫。",
+      "correctRationale": "訂單表的欄位（日期、品項、數量、金額）固定，方便查詢與統計，是典型結構化資料。",
+      "optionRationales": {
+        "A": "正確。欄位固定、可直接以表格處理。",
+        "B": "錄音沒有預先定義的欄位，屬非結構化資料。",
+        "C": "照片屬非結構化資料。",
+        "D": "自由文字屬非結構化資料。"
+      },
+      "commonTrap": "以「存放在電腦裡」判斷為結構化，而忽略資料本身是否有固定欄位。",
+      "lessonAnchor": "L11201"
+    },
+    "difficulty": 1,
+    "tags": [
+      "資料型態"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11201-0002",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "系統之間常以 JSON 或 XML 格式交換資料，這類資料通常被歸類為？",
+    "options": [
+      {
+        "id": "A",
+        "text": "結構化資料"
+      },
+      {
+        "id": "B",
+        "text": "半結構化資料"
+      },
+      {
+        "id": "C",
+        "text": "非結構化資料"
+      },
+      {
+        "id": "D",
+        "text": "詮釋資料以外的無效資料"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "JSON／XML 以標籤或鍵值描述結構，但欄位可彈性變化，屬半結構化資料。",
+      "correctRationale": "JSON 有鍵值結構但不要求每筆欄位一致，介於表格與自由文字之間，因此是半結構化。",
+      "optionRationales": {
+        "A": "結構化資料需固定欄位 schema，JSON 欄位可彈性增減。",
+        "B": "正確。有標籤但格式彈性。",
+        "C": "JSON 有明確的鍵值結構，不是完全無結構。",
+        "D": "這不是資料分類用語，JSON 是有效且常見的資料格式。"
+      },
+      "commonTrap": "把 JSON 誤認為非結構化資料。",
+      "lessonAnchor": "L11201"
+    },
+    "difficulty": 1,
+    "tags": [
+      "資料型態"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11201-0003",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列哪一項資料屬於「比例尺度」，可以合理地說「A 是 B 的兩倍」？",
+    "options": [
+      {
+        "id": "A",
+        "text": "攝氏溫度"
+      },
+      {
+        "id": "B",
+        "text": "顧客滿意度（1～5 分）"
+      },
+      {
+        "id": "C",
+        "text": "血型"
+      },
+      {
+        "id": "D",
+        "text": "門市月營收"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "比例尺度有絕對零點，可做倍數比較；區間尺度則沒有。",
+      "correctRationale": "營收為 0 代表「沒有營收」，具絕對零點，因此 200 萬可說是 100 萬的兩倍。",
+      "optionRationales": {
+        "A": "攝氏 0 度不代表「沒有溫度」，屬區間尺度，不能說 20 度是 10 度的兩倍熱。",
+        "B": "滿意度屬順序尺度，等級間距不一定相等。",
+        "C": "血型屬名目尺度，只有類別沒有大小。",
+        "D": "正確。有絕對零點，可做倍數比較。"
+      },
+      "commonTrap": "把攝氏溫度當成比例尺度。",
+      "lessonAnchor": "L11201"
+    },
+    "difficulty": 2,
+    "tags": [
+      "資料尺度"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11201-0004",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "同一筆訂單因系統錯誤被重複匯入資料庫兩次，主要違反了資料品質的哪一個面向？",
+    "options": [
+      {
+        "id": "A",
+        "text": "即時性"
+      },
+      {
+        "id": "B",
+        "text": "有效性"
+      },
+      {
+        "id": "C",
+        "text": "唯一性"
+      },
+      {
+        "id": "D",
+        "text": "可用性"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "資料品質面向包含正確、完整、一致、即時、有效、唯一。",
+      "correctRationale": "同一實體出現多筆重複紀錄，違反唯一性，會造成營收等統計被高估。",
+      "optionRationales": {
+        "A": "即時性指資料是否夠新，與重複無關。",
+        "B": "有效性指值是否符合規則或格式，例如性別欄出現數字。",
+        "C": "正確。重複紀錄違反唯一性。",
+        "D": "可用性是資訊安全 CIA 的概念，不是此處的資料品質面向。"
+      },
+      "commonTrap": "混淆資料品質面向與資訊安全 CIA。",
+      "lessonAnchor": "L11201"
+    },
+    "difficulty": 1,
+    "tags": [
+      "資料品質"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11202-0001",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "資料分析過程中發現同一筆訂單重複匯入，通常最應該在哪個步驟處理？",
+    "options": [
+      {
+        "id": "A",
+        "text": "資料視覺化配色階段"
+      },
+      {
+        "id": "B",
+        "text": "模型正式上線後"
+      },
+      {
+        "id": "C",
+        "text": "資料清理與前處理階段"
+      },
+      {
+        "id": "D",
+        "text": "報告列印前"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "資料品質問題應在建模前的清理階段處理。",
+      "correctRationale": "去除重複是典型的資料清理工作，越早處理越能避免後續分析與模型被錯誤資料影響。",
+      "optionRationales": {
+        "A": "調整圖表顏色無法修正資料錯誤。",
+        "B": "上線後才處理會讓錯誤已經影響模型與決策。",
+        "C": "正確。去重屬於資料清理。",
+        "D": "列印前才處理太晚，分析結果早已受影響。"
+      },
+      "commonTrap": "以為資料清理只是處理缺失值。",
+      "lessonAnchor": "L11202"
+    },
+    "difficulty": 1,
+    "tags": [
+      "資料清理"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11202-0002",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "系統根據銷售預測與庫存，建議「下週每家門市應補貨多少」，這屬於哪一種分析層次？",
+    "options": [
+      {
+        "id": "A",
+        "text": "處方性分析"
+      },
+      {
+        "id": "B",
+        "text": "描述性分析"
+      },
+      {
+        "id": "C",
+        "text": "診斷性分析"
+      },
+      {
+        "id": "D",
+        "text": "探索性分析"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "分析層次：描述（發生什麼）→ 診斷（為什麼）→ 預測（會怎樣）→ 處方（該怎麼做）。",
+      "correctRationale": "給出具體行動建議（補貨量）屬於處方性分析。",
+      "optionRationales": {
+        "A": "正確。回答「應該怎麼做」。",
+        "B": "描述性分析只呈現已發生的事，例如上週銷售報表。",
+        "C": "診斷性分析在找原因，例如銷量為何下滑。",
+        "D": "探索性資料分析是了解資料的步驟，不是給行動建議。"
+      },
+      "commonTrap": "把「預測」與「處方」混為一談：預測說會發生什麼，處方說該做什麼。",
+      "lessonAnchor": "L11202"
+    },
+    "difficulty": 2,
+    "tags": [
+      "分析層次"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11202-0003",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "將某欄位的數值以 $(x-\\min)/(\\max-\\min)$ 轉換，這種處理稱為什麼？主要結果為何？",
+    "options": [
+      {
+        "id": "A",
+        "text": "標準化，使平均數為 0、標準差為 1"
+      },
+      {
+        "id": "B",
+        "text": "One-Hot 編碼，將類別轉為多個 0/1 欄位"
+      },
+      {
+        "id": "C",
+        "text": "資料去重，移除重複紀錄"
+      },
+      {
+        "id": "D",
+        "text": "Min-Max 正規化，將數值縮放到 0～1 之間"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "Min-Max 正規化縮放到 0～1；Z-score 標準化轉成平均 0、標準差 1。",
+      "correctRationale": "公式以最小值與全距縮放，最小值變 0、最大值變 1。",
+      "optionRationales": {
+        "A": "標準化的公式是 (x−μ)/σ。",
+        "B": "One-Hot 用於類別變數，與此數值公式無關。",
+        "C": "去重與數值縮放無關。",
+        "D": "正確。依公式即為 Min-Max 正規化。"
+      },
+      "commonTrap": "混淆標準化與正規化的公式與輸出範圍。",
+      "lessonAnchor": "L11202"
+    },
+    "difficulty": 2,
+    "tags": [
+      "特徵處理"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11202-0004",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「年收入」欄位有部分缺失，且資料中有少數極高收入者。若要以單一統計量填補缺失值，哪一個通常較穩健？",
+    "options": [
+      {
+        "id": "A",
+        "text": "平均數"
+      },
+      {
+        "id": "B",
+        "text": "中位數"
+      },
+      {
+        "id": "C",
+        "text": "最大值"
+      },
+      {
+        "id": "D",
+        "text": "固定填 0"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "中位數不易受極端值影響，資料偏態時較適合用來填補。",
+      "correctRationale": "少數極高值會拉高平均數，中位數位於排序中間，較能代表一般水準。",
+      "optionRationales": {
+        "A": "平均數容易被極端高收入拉高。",
+        "B": "正確。較不受極端值影響。",
+        "C": "用最大值填補會嚴重高估。",
+        "D": "填 0 會造成大量不合理的低收入值。"
+      },
+      "commonTrap": "習慣性用平均數填補而忽略資料分布偏態。",
+      "lessonAnchor": "L11202"
+    },
+    "difficulty": 2,
+    "tags": [
+      "資料清理",
+      "缺失值"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11202-0005",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "進行資料分析專案時，最應該優先完成的步驟是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "明確定義要解決的問題與成功指標"
+      },
+      {
+        "id": "B",
+        "text": "立即挑選最先進的深度學習模型"
+      },
+      {
+        "id": "C",
+        "text": "先把所有能取得的資料都買下來"
+      },
+      {
+        "id": "D",
+        "text": "先設計報告的視覺化樣式"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "分析流程從定義問題開始，才能決定要蒐集哪些資料、用什麼方法。",
+      "correctRationale": "問題與成功指標決定後續的資料、方法與評估方式，是整個流程的起點。",
+      "optionRationales": {
+        "A": "正確。先定義問題與成功指標。",
+        "B": "模型選擇應依問題與資料而定，不是第一步。",
+        "C": "未定義問題就蒐集資料容易浪費成本，也可能違反資料最小化。",
+        "D": "報告呈現在流程末端。"
+      },
+      "commonTrap": "從工具或資料出發，而不是從問題出發。",
+      "lessonAnchor": "L11202"
+    },
+    "difficulty": 1,
+    "tags": [
+      "分析流程"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11203-0001",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "研究單位以隨機代號取代病患姓名與身分證字號，對照表由專人另行保管。這種處理方式稱為？",
+    "options": [
+      {
+        "id": "A",
+        "text": "匿名化，資料已完全無法識別個人"
+      },
+      {
+        "id": "B",
+        "text": "假名化，透過對照表仍可還原，資料仍可能屬於個資"
+      },
+      {
+        "id": "C",
+        "text": "加密，必須有金鑰才能讀取所有欄位"
+      },
+      {
+        "id": "D",
+        "text": "資料投毒"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "假名化以代號取代識別資訊，但有對照表即可還原。",
+      "correctRationale": "因為對照表存在，資料可被重新連結到特定個人，所以仍應視為個人資料加以保護。",
+      "optionRationales": {
+        "A": "匿名化必須無法還原；此例有對照表，所以不是匿名化。",
+        "B": "正確。有對照表可還原，屬假名化。",
+        "C": "加密是用金鑰把資料轉為密文，與以代號取代欄位不同。",
+        "D": "資料投毒是對訓練資料的攻擊，與去識別化無關。"
+      },
+      "commonTrap": "以為只要換掉姓名就等於匿名化。",
+      "lessonAnchor": "L11203"
+    },
+    "difficulty": 2,
+    "tags": [
+      "去識別化"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11203-0002",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "公司每天備份資料並建置備援主機，使系統故障時仍能持續提供服務，主要是在保障資訊安全 CIA 中的哪一項？",
+    "options": [
+      {
+        "id": "A",
+        "text": "機密性"
+      },
+      {
+        "id": "B",
+        "text": "完整性"
+      },
+      {
+        "id": "C",
+        "text": "可靠性"
+      },
+      {
+        "id": "D",
+        "text": "可用性"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "CIA：機密性（不被看到）、完整性（不被竄改）、可用性（需要時能用）。",
+      "correctRationale": "備份與備援確保資料與服務在故障時仍可取得，對應可用性。",
+      "optionRationales": {
+        "A": "機密性重點是防止未授權存取，例如加密與權限控管。",
+        "B": "完整性重點是防止竄改，例如雜湊檢查。",
+        "C": "可靠性不是 CIA 三要素之一。",
+        "D": "正確。備份與備援確保可用性。"
+      },
+      "commonTrap": "把備份誤認為保障機密性。",
+      "lessonAnchor": "L11203"
+    },
+    "difficulty": 1,
+    "tags": [
+      "資訊安全"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "basic",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11203-0003",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "電商舉辦抽獎活動時，只要求填寫聯絡用的 Email，而不蒐集身分證字號與住址。這最符合哪一項原則？",
+    "options": [
+      {
+        "id": "A",
+        "text": "資料最小化"
+      },
+      {
+        "id": "B",
+        "text": "資料越多越好"
+      },
+      {
+        "id": "C",
+        "text": "資料永久保存"
+      },
+      {
+        "id": "D",
+        "text": "資料可任意轉售"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "資料最小化：只蒐集達成目的所需的最少資料。",
+      "correctRationale": "抽獎聯絡只需 Email，不蒐集不必要的敏感資料，可降低外洩風險與合規負擔。",
+      "optionRationales": {
+        "A": "正確。只蒐集必要資料。",
+        "B": "過度蒐集會增加外洩風險，也可能違反目的限制。",
+        "C": "資料應在目的完成後依規定刪除或停止利用。",
+        "D": "超出告知目的轉售個資違反個資保護原則。"
+      },
+      "commonTrap": "認為多蒐集一些資料「以後可能用得到」。",
+      "lessonAnchor": "L11203"
+    },
+    "difficulty": 1,
+    "tags": [
+      "個資原則"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "basic",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11203-0004",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "某資料集刪除了姓名與電話，但保留「郵遞區號、出生日期、性別」三個欄位。關於此資料，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "已刪除姓名，因此一定不屬於個人資料"
+      },
+      {
+        "id": "B",
+        "text": "只要資料用於研究，就不需要任何保護"
+      },
+      {
+        "id": "C",
+        "text": "多個欄位組合後仍可能縮小範圍並再識別特定個人"
+      },
+      {
+        "id": "D",
+        "text": "應該再加入身分證字號以提高資料品質"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "準識別欄位（如郵遞區號＋生日＋性別）組合後可能唯一對應到特定人。",
+      "correctRationale": "即使沒有直接識別欄位，間接識別的組合仍可能還原身分，因此仍需評估再識別風險。",
+      "optionRationales": {
+        "A": "刪除直接識別欄位不代表無法間接識別。",
+        "B": "研究用途仍須依法保護個資。",
+        "C": "正確。準識別欄位組合可能導致再識別。",
+        "D": "加入身分證字號會大幅增加識別性，與去識別目標相反。"
+      },
+      "commonTrap": "只看直接識別欄位，忽略間接識別的組合風險。",
+      "lessonAnchor": "L11203"
+    },
+    "difficulty": 3,
+    "tags": [
+      "去識別化",
+      "再識別"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19",
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted"
+  },
+  {
+    "id": "original-L11201-0005",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列哪一項資料屬於「名目尺度」？",
+    "options": [
+      {
+        "id": "A",
+        "text": "攝氏溫度"
+      },
+      {
+        "id": "B",
+        "text": "月營收金額"
+      },
+      {
+        "id": "C",
+        "text": "居住縣市"
+      },
+      {
+        "id": "D",
+        "text": "顧客滿意度（非常不滿意～非常滿意）"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "名目尺度只代表類別，沒有大小或順序。",
+      "correctRationale": "縣市只是不同類別，不能比較大小，也不能做加減。",
+      "optionRationales": {
+        "A": "攝氏溫度間距相等但沒有絕對零點，屬區間尺度。",
+        "B": "營收有絕對零點，屬比例尺度。",
+        "C": "正確。只有類別、沒有順序。",
+        "D": "滿意度有高低順序，屬順序尺度。"
+      },
+      "commonTrap": "把「用數字編碼的類別」誤當成數值（例如縣市代碼 01、02）。",
+      "lessonAnchor": "L11201"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料尺度"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11201-0006",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "問卷題目「服務滿意度：1 非常不滿意、2 不滿意、3 普通、4 滿意、5 非常滿意」所得的資料屬於？",
+    "options": [
+      {
+        "id": "A",
+        "text": "比例尺度"
+      },
+      {
+        "id": "B",
+        "text": "順序尺度"
+      },
+      {
+        "id": "C",
+        "text": "連續型比例資料"
+      },
+      {
+        "id": "D",
+        "text": "名目尺度"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "順序尺度有高低順序，但等級之間的距離不一定相等。",
+      "correctRationale": "5 分比 4 分滿意，但「4→5」與「1→2」的差距不一定相同，也不能說 4 分是 2 分的兩倍滿意。",
+      "optionRationales": {
+        "A": "比例尺度需有絕對零點並可做倍數比較。",
+        "B": "正確。有順序、間距不保證相等。",
+        "C": "等級是離散的類別，不是連續比例資料。",
+        "D": "名目尺度沒有順序，滿意度有。"
+      },
+      "commonTrap": "因為用數字 1～5 表示，就當成可以任意計算倍數的數值。",
+      "lessonAnchor": "L11201"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料尺度"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11201-0007",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於攝氏溫度屬於「區間尺度」而非「比例尺度」，下列解釋何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "攝氏溫度無法比較高低"
+      },
+      {
+        "id": "B",
+        "text": "攝氏溫度只有整數"
+      },
+      {
+        "id": "C",
+        "text": "攝氏溫度是類別資料"
+      },
+      {
+        "id": "D",
+        "text": "攝氏 0 度不代表「沒有溫度」，因此不能說 20 度是 10 度的兩倍熱"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "區間尺度間距相等，但零點是人為設定，不能做倍數比較。",
+      "correctRationale": "攝氏 0 度是水的冰點，不是熱量為零，因此倍數比較沒有物理意義。",
+      "optionRationales": {
+        "A": "溫度可以比較高低，也能算差距。",
+        "B": "溫度可以是小數，屬連續資料。",
+        "C": "溫度是數值資料，不是類別。",
+        "D": "正確。零點不代表「沒有」。"
+      },
+      "commonTrap": "以為所有數值資料都可以做倍數比較。",
+      "lessonAnchor": "L11201"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料尺度"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11201-0008",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「每小時進店人數」屬於哪一種數值資料？",
+    "options": [
+      {
+        "id": "A",
+        "text": "連續型資料"
+      },
+      {
+        "id": "B",
+        "text": "名目尺度資料"
+      },
+      {
+        "id": "C",
+        "text": "非結構化資料"
+      },
+      {
+        "id": "D",
+        "text": "離散型資料"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "離散型資料是可數的值；連續型資料可在區間內取任意值。",
+      "correctRationale": "人數只能是 0、1、2…等整數，不會出現 2.5 人，屬離散型。",
+      "optionRationales": {
+        "A": "連續型如重量、時間、溫度。",
+        "B": "人數是可計算的數值，不是類別。",
+        "C": "人數可以整齊放入表格欄位，是結構化資料。",
+        "D": "正確。可數的整數值。"
+      },
+      "commonTrap": "把「數值」都當成連續型。",
+      "lessonAnchor": "L11201"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "comparison",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "離散與連續"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11201-0009",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "數位照片中記錄的拍攝時間、拍攝地點與相機型號，屬於什麼？",
+    "options": [
+      {
+        "id": "A",
+        "text": "詮釋資料（Metadata）"
+      },
+      {
+        "id": "B",
+        "text": "異常值"
+      },
+      {
+        "id": "C",
+        "text": "標籤（Label）"
+      },
+      {
+        "id": "D",
+        "text": "雜湊值"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "詮釋資料是「描述資料的資料」。",
+      "correctRationale": "拍攝時間與地點描述了照片本身的屬性，而不是照片的影像內容。",
+      "optionRationales": {
+        "A": "正確。描述資料的資料。",
+        "B": "異常值是偏離多數資料的觀測值。",
+        "C": "標籤是監督式學習要預測的答案。",
+        "D": "雜湊值是用於驗證完整性的固定長度摘要。"
+      },
+      "commonTrap": "把 Metadata 與訓練標籤混淆。",
+      "example": "照片的 GPS 詮釋資料可能洩漏住家位置，分享前需注意隱私。",
+      "lessonAnchor": "L11201"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "詮釋資料"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11201-0010",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列哪一組資料「全部」屬於非結構化資料？",
+    "options": [
+      {
+        "id": "A",
+        "text": "員工薪資表、出勤表、部門代碼表"
+      },
+      {
+        "id": "B",
+        "text": "會員資料表、庫存表、訂單明細表"
+      },
+      {
+        "id": "C",
+        "text": "客服通話錄音、產品照片、社群貼文內容"
+      },
+      {
+        "id": "D",
+        "text": "JSON 設定檔、XML 交換格式、網頁 HTML"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "非結構化資料沒有預先定義的欄位結構。",
+      "correctRationale": "錄音、影像、自由文字都沒有固定欄位，需要語音、影像、語言技術處理。",
+      "optionRationales": {
+        "A": "這組都是結構化表格資料。",
+        "B": "這組都是結構化表格資料。",
+        "C": "正確。皆無固定欄位。",
+        "D": "這組通常歸類為半結構化資料。"
+      },
+      "commonTrap": "把半結構化資料誤認為非結構化。",
+      "lessonAnchor": "L11201"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料型態"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11201-0011",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "會員資料中有人的生日被填成「2099 年 1 月 1 日」，這主要違反資料品質的哪一個面向？",
+    "options": [
+      {
+        "id": "A",
+        "text": "即時性"
+      },
+      {
+        "id": "B",
+        "text": "正確性"
+      },
+      {
+        "id": "C",
+        "text": "一致性"
+      },
+      {
+        "id": "D",
+        "text": "唯一性"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "正確性指資料是否反映真實情況。",
+      "correctRationale": "不可能出現未來的出生日期，代表資料內容錯誤。",
+      "optionRationales": {
+        "A": "即時性是指資料是否夠新。",
+        "B": "正確。資料內容與事實不符。",
+        "C": "一致性是指不同來源或欄位之間是否互相矛盾。",
+        "D": "唯一性是指沒有重複紀錄。"
+      },
+      "commonTrap": "把所有錯誤都歸類為同一種品質問題，未區分面向。",
+      "lessonAnchor": "L11201"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料品質"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11201-0012",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "問卷資料中有四成受訪者的「年收入」欄位空白，這主要是哪一種資料品質問題？",
+    "options": [
+      {
+        "id": "A",
+        "text": "完整性不足（缺失值）"
+      },
+      {
+        "id": "B",
+        "text": "唯一性不足"
+      },
+      {
+        "id": "C",
+        "text": "有效性不足"
+      },
+      {
+        "id": "D",
+        "text": "即時性不足"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "完整性指應有的資料是否都有記錄。",
+      "correctRationale": "大量欄位空白代表資料不完整，分析時需處理缺失值，並留意是否有系統性偏差。",
+      "optionRationales": {
+        "A": "正確。大量缺失值。",
+        "B": "唯一性與重複紀錄有關。",
+        "C": "有效性指值是否符合規則，例如格式或範圍。",
+        "D": "即時性指資料是否過時。"
+      },
+      "commonTrap": "忽略缺失值可能不是隨機發生（例如高收入者較不願填寫）。",
+      "lessonAnchor": "L11201"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料品質"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11201-0013",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "同一位客戶在 CRM 系統登記的地址是台北，在出貨系統卻是台中。這主要違反資料品質的哪一個面向？",
+    "options": [
+      {
+        "id": "A",
+        "text": "唯一性"
+      },
+      {
+        "id": "B",
+        "text": "完整性"
+      },
+      {
+        "id": "C",
+        "text": "有效性"
+      },
+      {
+        "id": "D",
+        "text": "一致性"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "一致性指不同系統或欄位之間的資料不互相矛盾。",
+      "correctRationale": "同一實體在兩個系統的資料不同，屬於一致性問題，需要整合時決定以哪個來源為準。",
+      "optionRationales": {
+        "A": "這不是同一系統內的重複紀錄問題。",
+        "B": "兩邊都有填寫，不是缺失問題。",
+        "C": "兩個地址格式都有效，問題在彼此矛盾。",
+        "D": "正確。跨系統資料矛盾。"
+      },
+      "commonTrap": "把一致性與唯一性混淆。",
+      "lessonAnchor": "L11201"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料品質"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11201-0014",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "分析師使用三年前的商品價格，預測下個月的銷售額。這主要違反資料品質的哪一個面向？",
+    "options": [
+      {
+        "id": "A",
+        "text": "正確性"
+      },
+      {
+        "id": "B",
+        "text": "唯一性"
+      },
+      {
+        "id": "C",
+        "text": "即時性"
+      },
+      {
+        "id": "D",
+        "text": "有效性"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "即時性指資料是否足夠新、能反映目前狀況。",
+      "correctRationale": "價格會隨時間變動，過時資料可能使預測失準。",
+      "optionRationales": {
+        "A": "價格在當時可能是正確的，問題在於已過時。",
+        "B": "沒有重複紀錄的問題。",
+        "C": "正確。資料過時。",
+        "D": "價格格式本身有效。"
+      },
+      "commonTrap": "以為「當時正確」的資料就適合任何時間的分析。",
+      "lessonAnchor": "L11201"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料品質"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11201-0015",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「性別」欄位中出現「123」「@@」等值，這主要違反資料品質的哪一個面向？",
+    "options": [
+      {
+        "id": "A",
+        "text": "唯一性"
+      },
+      {
+        "id": "B",
+        "text": "有效性"
+      },
+      {
+        "id": "C",
+        "text": "即時性"
+      },
+      {
+        "id": "D",
+        "text": "一致性"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "有效性指資料值是否符合預先定義的格式、範圍或規則。",
+      "correctRationale": "性別欄位應只出現規定的選項，出現無意義值即為無效資料。",
+      "optionRationales": {
+        "A": "與重複紀錄無關。",
+        "B": "正確。不符合欄位規則。",
+        "C": "與資料新舊無關。",
+        "D": "一致性是跨來源的矛盾，此處是單一欄位值不合規則。"
+      },
+      "commonTrap": "把有效性（格式規則）與正確性（是否符合事實）混淆。",
+      "lessonAnchor": "L11201"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料品質"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11201-0016",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "公司打算向資料供應商購買消費者行為資料來訓練模型。除了價格之外，最應優先確認的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "資料的取得來源是否合法、授權範圍是否涵蓋本次用途，以及個資保護措施"
+      },
+      {
+        "id": "B",
+        "text": "資料是否使用最新的檔案格式"
+      },
+      {
+        "id": "C",
+        "text": "資料檔案的顏色主題"
+      },
+      {
+        "id": "D",
+        "text": "供應商辦公室的位置"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "第三方資料需確認合法性、授權範圍與隱私。",
+      "correctRationale": "若資料蒐集不合法或授權不涵蓋 AI 訓練用途，公司可能違反個資法與合約。",
+      "optionRationales": {
+        "A": "正確。合法性、授權範圍與隱私保護。",
+        "B": "格式可轉換，合法性與授權才是關鍵。",
+        "C": "與資料可用性無關。",
+        "D": "辦公室位置不是關鍵。"
+      },
+      "commonTrap": "只在意價格與數量，忽略授權與合規。",
+      "lessonAnchor": "L11201"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料來源",
+      "第三方資料"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11201-0017",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "工廠在設備上安裝溫度與震動感測器，持續回傳數據。這類資料來源屬於？",
+    "options": [
+      {
+        "id": "A",
+        "text": "第三方購買資料"
+      },
+      {
+        "id": "B",
+        "text": "使用者產生內容"
+      },
+      {
+        "id": "C",
+        "text": "政府公開資料"
+      },
+      {
+        "id": "D",
+        "text": "感測器／物聯網（IoT）資料"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "資料來源常見分類：內部系統、感測器／IoT、公開資料、第三方資料、使用者產生內容。",
+      "correctRationale": "設備感測器自動持續產生的資料屬於 IoT 資料，常用於預測性維護。",
+      "optionRationales": {
+        "A": "此資料由工廠自行蒐集，不是購買而來。",
+        "B": "使用者產生內容如評論、貼文。",
+        "C": "政府公開資料由政府平台發布。",
+        "D": "正確。感測器自動產生。"
+      },
+      "commonTrap": "把資料型態與資料來源兩種分類混用。",
+      "lessonAnchor": "L11201"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料來源",
+      "物聯網"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11201-0018",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "電商網站上消費者撰寫的商品評論，屬於哪一類資料來源？",
+    "options": [
+      {
+        "id": "A",
+        "text": "感測器資料"
+      },
+      {
+        "id": "B",
+        "text": "使用者產生內容（User-Generated Content）"
+      },
+      {
+        "id": "C",
+        "text": "交易系統的結構化帳務資料"
+      },
+      {
+        "id": "D",
+        "text": "政府統計資料"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "使用者產生內容是由使用者主動撰寫或上傳的資料。",
+      "correctRationale": "評論文字由消費者產生，常用於情感分析與產品改善。",
+      "optionRationales": {
+        "A": "感測器資料由設備自動量測。",
+        "B": "正確。使用者主動產生。",
+        "C": "評論是自由文字，不是帳務表格。",
+        "D": "不是政府發布的統計資料。"
+      },
+      "commonTrap": "忽略 UGC 可能含個資或不實內容，使用前需清理與檢查。",
+      "lessonAnchor": "L11201"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料來源"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11201-0019",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "要建立「門市每日客流量預測」模型，評估候選資料來源時，下列哪一組考量最完整？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只看資料量是否越大越好"
+      },
+      {
+        "id": "B",
+        "text": "只看資料是否免費"
+      },
+      {
+        "id": "C",
+        "text": "與問題的相關性、資料品質、取得成本、授權與隱私限制"
+      },
+      {
+        "id": "D",
+        "text": "只看資料檔案是否容易開啟"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "選擇資料來源要同時考慮相關性、品質、成本與合法合規。",
+      "correctRationale": "資料再多若與問題無關或品質不佳，反而干擾模型；授權與隱私更是使用前提。",
+      "optionRationales": {
+        "A": "資料量大不代表有用。",
+        "B": "免費資料可能品質不佳或授權不明。",
+        "C": "正確。涵蓋主要評估面向。",
+        "D": "開啟難易度是次要問題。"
+      },
+      "commonTrap": "以單一面向（量或價格）決定資料來源。",
+      "lessonAnchor": "L11201"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料來源",
+      "資料選擇"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11201-0020",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11201",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「Garbage in, garbage out（垃圾進、垃圾出）」這句話在資料分析中的意思是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "資料越多，模型一定越準確"
+      },
+      {
+        "id": "B",
+        "text": "只要模型夠先進，資料品質不重要"
+      },
+      {
+        "id": "C",
+        "text": "分析完成後要把資料全部刪除"
+      },
+      {
+        "id": "D",
+        "text": "輸入資料品質不佳，模型或分析結果也難以可靠"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "資料品質直接影響分析與模型的可靠度。",
+      "correctRationale": "錯誤、缺失或偏誤的資料會被模型學進去，產生錯誤結論。",
+      "optionRationales": {
+        "A": "資料多但品質差，結果仍不可靠。",
+        "B": "先進模型無法修正錯誤的資料。",
+        "C": "這句話與刪除資料無關。",
+        "D": "正確。資料品質決定結果品質。"
+      },
+      "commonTrap": "迷信模型能力而忽略資料品質。",
+      "lessonAnchor": "L11201"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料品質"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11202-0006",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "主管要求製作「上個月各門市營收與來客數」報表。這屬於哪一種分析層次？",
+    "options": [
+      {
+        "id": "A",
+        "text": "預測性分析"
+      },
+      {
+        "id": "B",
+        "text": "描述性分析"
+      },
+      {
+        "id": "C",
+        "text": "處方性分析"
+      },
+      {
+        "id": "D",
+        "text": "診斷性分析"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "描述性分析回答「發生了什麼」。",
+      "correctRationale": "彙整過去一段時間的營收與來客數，呈現已發生的事實。",
+      "optionRationales": {
+        "A": "預測性分析是推估未來。",
+        "B": "正確。呈現已發生的事實。",
+        "C": "處方性分析會提出行動建議。",
+        "D": "診斷性分析會進一步找原因。"
+      },
+      "commonTrap": "把報表與預測混為一談。",
+      "lessonAnchor": "L11202"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "分析層次"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11202-0007",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "分析師發現某門市上月營收下滑，進一步比對缺貨紀錄與天氣資料，找出下滑的主要原因。這屬於？",
+    "options": [
+      {
+        "id": "A",
+        "text": "處方性分析"
+      },
+      {
+        "id": "B",
+        "text": "描述性分析"
+      },
+      {
+        "id": "C",
+        "text": "診斷性分析"
+      },
+      {
+        "id": "D",
+        "text": "預測性分析"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "診斷性分析回答「為什麼發生」。",
+      "correctRationale": "比對多種資料尋找營收下滑的原因，是典型的診斷性分析。",
+      "optionRationales": {
+        "A": "處方性是提出應採取的行動。",
+        "B": "描述性只呈現營收下滑的事實。",
+        "C": "正確。在找原因。",
+        "D": "預測性是推估未來營收。"
+      },
+      "commonTrap": "只要有分析就以為是預測。",
+      "lessonAnchor": "L11202"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "分析層次"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11202-0008",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "依過去三年的銷售資料，推估下一季各商品的銷量。這屬於哪一種分析層次？",
+    "options": [
+      {
+        "id": "A",
+        "text": "預測性分析"
+      },
+      {
+        "id": "B",
+        "text": "探索性資料分析"
+      },
+      {
+        "id": "C",
+        "text": "描述性分析"
+      },
+      {
+        "id": "D",
+        "text": "診斷性分析"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "預測性分析回答「將會發生什麼」。",
+      "correctRationale": "用歷史資料推估未來的銷量，屬預測性分析。",
+      "optionRationales": {
+        "A": "正確。推估未來。",
+        "B": "EDA 是了解資料的步驟，不是推估未來。",
+        "C": "描述性只呈現過去。",
+        "D": "診斷性在解釋原因。"
+      },
+      "commonTrap": "把「預測」與「處方」混淆。",
+      "lessonAnchor": "L11202"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "分析層次"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11202-0009",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「探索性資料分析（EDA）」的主要目的為何？",
+    "options": [
+      {
+        "id": "A",
+        "text": "以統計摘要與視覺化了解資料分布、關聯與異常，作為後續分析的基礎"
+      },
+      {
+        "id": "B",
+        "text": "直接把模型部署到正式環境"
+      },
+      {
+        "id": "C",
+        "text": "刪除所有不需要的欄位後結束專案"
+      },
+      {
+        "id": "D",
+        "text": "撰寫最終給客戶的合約"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "EDA 是在建模前認識資料的步驟。",
+      "correctRationale": "透過敘述統計、分布圖、相關性分析，找出資料問題與值得深入的方向。",
+      "optionRationales": {
+        "A": "正確。了解資料、發現問題。",
+        "B": "部署是流程後段。",
+        "C": "EDA 不是結束專案的步驟。",
+        "D": "與合約無關。"
+      },
+      "commonTrap": "跳過 EDA 直接建模。",
+      "lessonAnchor": "L11202"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "EDA"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11202-0010",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "信用卡交易資料中出現一筆金額遠高於平常的交易。處理這筆「異常值」最恰當的做法是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "直接複製多筆讓它不再異常"
+      },
+      {
+        "id": "B",
+        "text": "凡是異常值一律刪除"
+      },
+      {
+        "id": "C",
+        "text": "把它改成平均值"
+      },
+      {
+        "id": "D",
+        "text": "先查證是輸入錯誤還是真實的極端事件，再決定修正、刪除或保留"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "異常值不一定是錯誤，可能是重要訊號（例如詐欺）。",
+      "correctRationale": "先查證原因：錯誤就修正或刪除，真實事件則保留或另外分析。",
+      "optionRationales": {
+        "A": "複製資料會造成重複與偏誤。",
+        "B": "一律刪除可能刪掉重要事件，例如盜刷。",
+        "C": "直接改成平均值會扭曲事實。",
+        "D": "正確。先查證再決定。"
+      },
+      "commonTrap": "把異常值等同於錯誤值。",
+      "lessonAnchor": "L11202"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "異常值"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11202-0011",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "某班考試平均 70 分、標準差 5 分。某生考 80 分，其 Z-score（標準化分數）為多少？",
+    "options": [
+      {
+        "id": "A",
+        "text": "0.5"
+      },
+      {
+        "id": "B",
+        "text": "16"
+      },
+      {
+        "id": "C",
+        "text": "2"
+      },
+      {
+        "id": "D",
+        "text": "10"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "Z-score = (x − μ) / σ。",
+      "correctRationale": "(80 − 70) / 5 = 2，代表高於平均 2 個標準差。",
+      "optionRationales": {
+        "A": "0.5 是把分子分母對調的結果。",
+        "B": "16 是 80 除以 5，忘了先減平均數。",
+        "C": "正確。(80−70)/5 = 2。",
+        "D": "10 是與平均的差距，尚未除以標準差。"
+      },
+      "commonTrap": "忘記先減平均數，或把公式分子分母對調。",
+      "lessonAnchor": "L11202"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "標準化"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11202-0012",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "某欄位最小值為 10、最大值為 60。以 Min-Max 正規化轉換數值 30，結果為多少？",
+    "options": [
+      {
+        "id": "A",
+        "text": "0.5"
+      },
+      {
+        "id": "B",
+        "text": "0.4"
+      },
+      {
+        "id": "C",
+        "text": "0.3"
+      },
+      {
+        "id": "D",
+        "text": "20"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "Min-Max：(x − min) / (max − min)。",
+      "correctRationale": "(30 − 10) / (60 − 10) = 20 / 50 = 0.4。",
+      "optionRationales": {
+        "A": "0.5 是 30/60，未減去最小值。",
+        "B": "正確。20/50 = 0.4。",
+        "C": "0.3 不符合公式計算結果。",
+        "D": "20 只是分子，尚未除以全距。"
+      },
+      "commonTrap": "忘記減去最小值，或忘了除以全距。",
+      "lessonAnchor": "L11202"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "正規化"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11202-0013",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「付款方式」欄位有「現金、信用卡、行動支付」三種類別。使用 One-Hot Encoding 處理的目的為何？",
+    "options": [
+      {
+        "id": "A",
+        "text": "把類別依字母順序編為 1、2、3 並視為數值大小"
+      },
+      {
+        "id": "B",
+        "text": "把類別加密以保護隱私"
+      },
+      {
+        "id": "C",
+        "text": "把類別刪除以減少欄位數"
+      },
+      {
+        "id": "D",
+        "text": "把類別轉為多個 0/1 欄位，讓模型能處理且不會誤以為類別間有大小順序"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "One-Hot 為每個類別建立一個 0/1 欄位。",
+      "correctRationale": "若直接編成 1、2、3，模型可能誤認「行動支付 > 現金」；One-Hot 可避免這種錯誤順序。",
+      "optionRationales": {
+        "A": "這是順序編碼，用在無序類別會引入假順序。",
+        "B": "One-Hot 不是加密。",
+        "C": "One-Hot 會增加欄位而非刪除。",
+        "D": "正確。轉成 0/1 欄位、避免假順序。"
+      },
+      "commonTrap": "用數字編碼無序類別，造成模型誤解。",
+      "lessonAnchor": "L11202"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "類別編碼"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11202-0014",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "使用 K 近鄰（KNN）這類以「距離」計算的模型前，常需要做特徵縮放，原因是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "避免數值範圍大的欄位（如年收入）主導距離計算"
+      },
+      {
+        "id": "B",
+        "text": "讓資料筆數增加"
+      },
+      {
+        "id": "C",
+        "text": "讓模型可以處理影像"
+      },
+      {
+        "id": "D",
+        "text": "縮放後就不需要訓練資料"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "距離計算會受欄位數值範圍影響。",
+      "correctRationale": "年收入以萬元計、年齡以歲計，不縮放時距離幾乎只由年收入決定。",
+      "optionRationales": {
+        "A": "正確。避免大範圍欄位主導距離。",
+        "B": "縮放不會增加資料筆數。",
+        "C": "與是否處理影像無關。",
+        "D": "KNN 仍需要訓練資料作為比較對象。"
+      },
+      "commonTrap": "不知道特徵縮放的目的。",
+      "lessonAnchor": "L11202"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "特徵縮放"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11202-0015",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "在探索性資料分析時發現某欄位有大量格式錯誤。依資料分析流程，通常應該怎麼做？",
+    "options": [
+      {
+        "id": "A",
+        "text": "直接進入報告階段"
+      },
+      {
+        "id": "B",
+        "text": "忽略問題直接建模"
+      },
+      {
+        "id": "C",
+        "text": "回到資料清理階段修正後再繼續，流程本來就會反覆迭代"
+      },
+      {
+        "id": "D",
+        "text": "刪除整個專案重新開始"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "資料分析流程是迭代的，後段發現問題要回頭修正。",
+      "correctRationale": "格式錯誤會影響分析與模型，應回到清理階段處理。",
+      "optionRationales": {
+        "A": "未處理資料問題就報告，結論不可靠。",
+        "B": "忽略會讓錯誤影響結果。",
+        "C": "正確。回頭清理、反覆迭代。",
+        "D": "不需要整個重來。"
+      },
+      "commonTrap": "以為流程是一次走完、不能回頭的直線。",
+      "lessonAnchor": "L11202"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "分析流程"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11202-0016",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "某電信公司的客戶資料中，「解約原因」欄位空白，往往代表客戶仍在使用服務。處理此欄位缺失值較合適的方式是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "一律刪除有缺失的客戶"
+      },
+      {
+        "id": "B",
+        "text": "將缺失本身視為一個有意義的類別（例如「未解約」），而不是隨意填補"
+      },
+      {
+        "id": "C",
+        "text": "用最常見的解約原因填補所有空白"
+      },
+      {
+        "id": "D",
+        "text": "用平均數填補"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "缺失值有時本身帶有資訊。",
+      "correctRationale": "此處空白代表「仍在使用」，填補成某種解約原因會產生錯誤資訊。",
+      "optionRationales": {
+        "A": "刪除會失去大量仍在使用的客戶資料。",
+        "B": "正確。保留缺失的意義。",
+        "C": "用眾數填補會把在網客戶誤標為已解約。",
+        "D": "類別欄位無法計算平均數。"
+      },
+      "commonTrap": "機械式地用平均數或眾數填補所有缺失值。",
+      "lessonAnchor": "L11202"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "缺失值"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11202-0017",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "日期欄位同時出現「2026/3/5」「05-03-2026」「115年3月5日」等寫法，資料清理時最應該做的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "保留原樣，不影響分析"
+      },
+      {
+        "id": "B",
+        "text": "統一轉換為同一種日期格式"
+      },
+      {
+        "id": "C",
+        "text": "只保留第一種寫法的資料"
+      },
+      {
+        "id": "D",
+        "text": "刪除日期欄位"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "格式不一是常見的資料清理問題。",
+      "correctRationale": "統一格式後才能正確排序、計算期間與合併資料。",
+      "optionRationales": {
+        "A": "格式不一會造成排序與計算錯誤。",
+        "B": "正確。統一格式。",
+        "C": "只保留部分資料會造成樣本偏差與資料浪費。",
+        "D": "日期常是重要分析欄位，不應直接刪除。"
+      },
+      "commonTrap": "忽略格式不一對分析的影響。",
+      "lessonAnchor": "L11202"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "格式不一"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11202-0018",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "要把「會員資料表」與「訂單資料表」合併分析，最關鍵的前置工作是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "把兩張表改成圖片"
+      },
+      {
+        "id": "B",
+        "text": "只保留訂單表即可"
+      },
+      {
+        "id": "C",
+        "text": "確認兩表共同的鍵值（例如會員編號）格式一致且正確對應"
+      },
+      {
+        "id": "D",
+        "text": "先刪除所有數值欄位"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "資料整合需要可靠的共同鍵值。",
+      "correctRationale": "鍵值格式不一致（例如前面有 0、大小寫不同）會造成配對失敗或錯配。",
+      "optionRationales": {
+        "A": "圖片無法進行資料合併。",
+        "B": "只用單一表就無法分析會員特徵與訂單的關係。",
+        "C": "正確。確認共同鍵值。",
+        "D": "刪除數值欄位會失去分析內容。"
+      },
+      "commonTrap": "忽略合併時的鍵值不一致問題。",
+      "lessonAnchor": "L11202"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料整合"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11202-0019",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "資料分析流程的最後一個階段「溝通與行動」，主要工作是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "刪除分析程式碼"
+      },
+      {
+        "id": "B",
+        "text": "只把模型準確率寄給主管"
+      },
+      {
+        "id": "C",
+        "text": "重新蒐集所有原始資料"
+      },
+      {
+        "id": "D",
+        "text": "以清楚的視覺化與報告呈現結論，轉化為決策並追蹤成效"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "分析的價值在於支持決策並產生行動。",
+      "correctRationale": "需把結論以受眾能理解的方式呈現，並在行動後追蹤成效。",
+      "optionRationales": {
+        "A": "刪除程式碼會讓分析無法重現。",
+        "B": "只給準確率無法支持決策。",
+        "C": "蒐集資料在流程前段。",
+        "D": "正確。呈現、決策、追蹤。"
+      },
+      "commonTrap": "以為建完模型就是分析的終點。",
+      "lessonAnchor": "L11202"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "分析流程"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11202-0020",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11202",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "某欄位有少數極端大的值。比較 Min-Max 正規化與 Z-score 標準化，下列敘述何者較正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "Min-Max 以最大最小值縮放，極端值會把多數資料擠在很小的範圍內"
+      },
+      {
+        "id": "B",
+        "text": "Min-Max 的結果平均一定為 0"
+      },
+      {
+        "id": "C",
+        "text": "兩種方法完全不受極端值影響"
+      },
+      {
+        "id": "D",
+        "text": "Z-score 會把所有資料限制在 0 到 1 之間"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "Min-Max 依賴最大值與最小值，對極端值敏感。",
+      "correctRationale": "一個極端大值成為最大值後，其他資料縮放後都會集中在接近 0 的區域。",
+      "optionRationales": {
+        "A": "正確。Min-Max 對極端值敏感。",
+        "B": "平均為 0 是 Z-score 的特性。",
+        "C": "兩者都會受極端值影響，只是程度與方式不同。",
+        "D": "Z-score 沒有固定上下界。"
+      },
+      "commonTrap": "把兩種縮放方法的輸出特性對調。",
+      "lessonAnchor": "L11202"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "標準化",
+      "正規化"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11203-0005",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "依我國《個人資料保護法》的概念，「個人資料」最適當的描述是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只限紙本資料，電子資料不算"
+      },
+      {
+        "id": "B",
+        "text": "只有姓名與身分證字號才算"
+      },
+      {
+        "id": "C",
+        "text": "只要經過加密就不算個人資料"
+      },
+      {
+        "id": "D",
+        "text": "可以直接或間接識別特定自然人的資料"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "個資的關鍵是「能否直接或間接識別特定個人」。",
+      "correctRationale": "除了姓名、身分證字號，聯絡方式、病歷、財務狀況，以及能組合識別出個人的資料都可能屬於個資。",
+      "optionRationales": {
+        "A": "電子資料同樣受保護。",
+        "B": "個資範圍遠大於姓名與身分證字號。",
+        "C": "加密後仍可用金鑰還原，仍屬個資。",
+        "D": "正確。直接或間接可識別。"
+      },
+      "commonTrap": "把個資範圍想得太窄。",
+      "lessonAnchor": "L11203"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "個資定義"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11203-0006",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列哪一項屬於《個人資料保護法》中規範更嚴格的特種（敏感）個人資料？",
+    "options": [
+      {
+        "id": "A",
+        "text": "病歷與健康檢查資料"
+      },
+      {
+        "id": "B",
+        "text": "公司公開的產品型錄"
+      },
+      {
+        "id": "C",
+        "text": "天氣預報資料"
+      },
+      {
+        "id": "D",
+        "text": "公開的股票收盤價"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "病歷、醫療、基因、性生活、健康檢查、犯罪前科等屬特種個資。",
+      "correctRationale": "特種個資原則上不得蒐集、處理或利用，例外需符合法定要件。",
+      "optionRationales": {
+        "A": "正確。屬特種個資。",
+        "B": "產品型錄不是個人資料。",
+        "C": "天氣資料不是個人資料。",
+        "D": "公開股價不涉及特定個人。"
+      },
+      "commonTrap": "不知道健康相關資料受到更嚴格保護。",
+      "lessonAnchor": "L11203"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "特種個資"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11203-0007",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "公司以「抽獎聯絡」為目的蒐集了參加者的 Email，之後想用這批名單寄送新產品廣告。依個資保護原則，下列何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "把 Email 轉賣給其他公司就不需要同意"
+      },
+      {
+        "id": "B",
+        "text": "原蒐集目的不包含行銷，需確認是否符合特定目的或另行取得當事人同意"
+      },
+      {
+        "id": "C",
+        "text": "既然已經蒐集，就可以用於任何目的"
+      },
+      {
+        "id": "D",
+        "text": "只要寄信時不寫收件人姓名就沒問題"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "個資應在告知的特定目的範圍內使用，目的外利用需符合法定例外或取得同意。",
+      "correctRationale": "抽獎聯絡與廣告行銷是不同目的，應確認法律依據並提供退訂機制。",
+      "optionRationales": {
+        "A": "轉賣更是超出原始目的，問題更嚴重。",
+        "B": "正確。目的外利用需有依據或同意。",
+        "C": "已蒐集不等於可任意利用。",
+        "D": "不寫姓名不改變目的外利用的問題。"
+      },
+      "commonTrap": "以為「已經拿到的資料」就可以自由使用。",
+      "lessonAnchor": "L11203"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "目的限制"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11203-0008",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "依個資保護的概念，當事人對自己的個人資料通常享有哪些權利？",
+    "options": [
+      {
+        "id": "A",
+        "text": "要求公司給付任意金額的權利金"
+      },
+      {
+        "id": "B",
+        "text": "查看其他使用者的個資"
+      },
+      {
+        "id": "C",
+        "text": "查詢或閱覽、製給複製本、補充或更正、停止蒐集處理利用、刪除"
+      },
+      {
+        "id": "D",
+        "text": "要求公司公開所有內部文件"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "個資法賦予當事人對自己資料的控制權。",
+      "correctRationale": "包括查詢、閱覽、複製、補充更正、停止蒐集處理利用與請求刪除。",
+      "optionRationales": {
+        "A": "個資法沒有賦予任意索取權利金的權利。",
+        "B": "不能查看他人的個資。",
+        "C": "正確。當事人的基本權利。",
+        "D": "當事人權利限於自己的資料，不是公司所有文件。"
+      },
+      "commonTrap": "不清楚當事人權利的範圍。",
+      "lessonAnchor": "L11203"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "當事人權利"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11203-0009",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「匿名化（Anonymization）」的處理目標是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "以代號取代姓名，但保留對照表以便還原"
+      },
+      {
+        "id": "B",
+        "text": "用金鑰把資料轉為密文"
+      },
+      {
+        "id": "C",
+        "text": "把資料存放到另一台電腦"
+      },
+      {
+        "id": "D",
+        "text": "使資料無法再識別特定個人，且無法還原"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "匿名化追求不可還原地移除識別性。",
+      "correctRationale": "真正匿名化後，資料不再能連結到特定個人；但實務上要確認組合欄位不會造成再識別。",
+      "optionRationales": {
+        "A": "這是假名化。",
+        "B": "這是加密。",
+        "C": "換存放位置不影響可識別性。",
+        "D": "正確。不可還原、無法識別。"
+      },
+      "commonTrap": "把假名化或加密當成匿名化。",
+      "lessonAnchor": "L11203"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "匿名化"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11203-0010",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於「加密（Encryption）」與「雜湊（Hash）」的差異，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "雜湊可以用金鑰解密"
+      },
+      {
+        "id": "B",
+        "text": "加密可用金鑰解密還原；雜湊是單向函數，主要用於驗證資料是否被竄改"
+      },
+      {
+        "id": "C",
+        "text": "加密後的資料就一定不是個資"
+      },
+      {
+        "id": "D",
+        "text": "兩者都可以用金鑰還原原始資料"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "加密可逆（有金鑰）；雜湊不可逆。",
+      "correctRationale": "雜湊值會隨資料任何變動而改變，因此常用於完整性驗證與密碼儲存。",
+      "optionRationales": {
+        "A": "雜湊沒有解密的概念。",
+        "B": "正確。加密可逆、雜湊單向。",
+        "C": "加密資料可用金鑰還原，仍可能屬個資。",
+        "D": "雜湊無法用金鑰還原。"
+      },
+      "commonTrap": "把雜湊當成可解密的加密。",
+      "lessonAnchor": "L11203"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "加密",
+      "雜湊"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11203-0011",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "公司規定只有人資部門能查看員工薪資，並對資料庫加密。這主要在保障資訊安全 CIA 中的哪一項？",
+    "options": [
+      {
+        "id": "A",
+        "text": "完整性"
+      },
+      {
+        "id": "B",
+        "text": "可用性"
+      },
+      {
+        "id": "C",
+        "text": "機密性"
+      },
+      {
+        "id": "D",
+        "text": "可擴展性"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "機密性：只有授權者能存取。",
+      "correctRationale": "權限控管與加密都是防止未授權者看到資料的措施。",
+      "optionRationales": {
+        "A": "完整性是防止竄改。",
+        "B": "可用性是需要時能使用。",
+        "C": "正確。防止未授權存取。",
+        "D": "可擴展性不是 CIA 三要素。"
+      },
+      "commonTrap": "CIA 三者的對應措施混淆。",
+      "lessonAnchor": "L11203"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "CIA",
+      "機密性"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11203-0012",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "軟體下載頁面提供檔案的 SHA-256 雜湊值，讓使用者下載後比對。這主要在確保 CIA 中的哪一項？",
+    "options": [
+      {
+        "id": "A",
+        "text": "完整性"
+      },
+      {
+        "id": "B",
+        "text": "可用性"
+      },
+      {
+        "id": "C",
+        "text": "匿名性"
+      },
+      {
+        "id": "D",
+        "text": "機密性"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "完整性：資料未被未授權竄改。",
+      "correctRationale": "下載後計算雜湊值與官方公布值相同，表示檔案在傳輸中沒有被修改。",
+      "optionRationales": {
+        "A": "正確。驗證未被竄改。",
+        "B": "可用性與能否取得服務有關。",
+        "C": "匿名性不是 CIA 三要素。",
+        "D": "雜湊值是公開的，並不保護檔案不被看到。"
+      },
+      "commonTrap": "以為雜湊是用來加密保密。",
+      "lessonAnchor": "L11203"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "CIA",
+      "完整性"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11203-0013",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "客服系統顯示客戶身分證字號為「A12****789」，這種處理方式稱為？",
+    "options": [
+      {
+        "id": "A",
+        "text": "遮罩（Masking）"
+      },
+      {
+        "id": "B",
+        "text": "資料投毒"
+      },
+      {
+        "id": "C",
+        "text": "資料漂移"
+      },
+      {
+        "id": "D",
+        "text": "正規化"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "遮罩是部分隱藏敏感資料，降低不必要的暴露。",
+      "correctRationale": "客服只需確認部分號碼，不需看到完整資料，符合最小必要原則。",
+      "optionRationales": {
+        "A": "正確。部分隱藏敏感資訊。",
+        "B": "資料投毒是對訓練資料的攻擊。",
+        "C": "資料漂移是資料分布隨時間改變。",
+        "D": "正規化是數值縮放。"
+      },
+      "commonTrap": "把遮罩當成可完全保證匿名的方法。",
+      "lessonAnchor": "L11203"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "遮罩"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11203-0014",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "業務人員把含有客戶姓名與電話的報價單貼到未經公司核准的免費線上 AI 工具，請它幫忙改寫。最主要的風險是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "報價單的字數會變多"
+      },
+      {
+        "id": "B",
+        "text": "沒有任何風險，因為是免費工具"
+      },
+      {
+        "id": "C",
+        "text": "個資與營業資訊可能被服務商保存或用於訓練，造成外洩與違規"
+      },
+      {
+        "id": "D",
+        "text": "AI 工具會因此變得更慢"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "輸入外部生成式 AI 的資料可能被保存、審閱或用於訓練。",
+      "correctRationale": "未經核准的工具缺乏合約保障，可能違反個資法、保密義務與公司規範。",
+      "optionRationales": {
+        "A": "字數變化與資料安全無關。",
+        "B": "免費工具反而常以使用者資料改善服務，風險更需注意。",
+        "C": "正確。外洩與違規風險。",
+        "D": "速度不是主要風險。"
+      },
+      "commonTrap": "以為免費線上工具不會保存輸入內容。",
+      "lessonAnchor": "L11203"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "生成式 AI",
+      "資料外洩"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11203-0015",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "「資料投毒（Data Poisoning）」指的是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "資料庫的備份檔損壞"
+      },
+      {
+        "id": "B",
+        "text": "攻擊者在訓練資料中混入惡意資料，使模型學到錯誤或特定的行為"
+      },
+      {
+        "id": "C",
+        "text": "模型推論速度變慢"
+      },
+      {
+        "id": "D",
+        "text": "使用者忘記登出系統"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "資料投毒是針對訓練階段的攻擊。",
+      "correctRationale": "惡意資料讓模型在特定情況下輸出攻擊者想要的結果，或整體效能下降。",
+      "optionRationales": {
+        "A": "備份損壞屬可用性問題。",
+        "B": "正確。訓練資料遭惡意污染。",
+        "C": "速度與投毒無關。",
+        "D": "這是帳號安全習慣問題。"
+      },
+      "commonTrap": "以為 AI 的資安風險只發生在上線後。",
+      "lessonAnchor": "L11203"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "資料投毒"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11203-0016",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "攻擊者反覆查詢某醫療預測模型，試圖判斷「某位特定病人是否曾被用於訓練」。這種攻擊稱為？",
+    "options": [
+      {
+        "id": "A",
+        "text": "分散式阻斷服務攻擊"
+      },
+      {
+        "id": "B",
+        "text": "網路釣魚"
+      },
+      {
+        "id": "C",
+        "text": "資料去重"
+      },
+      {
+        "id": "D",
+        "text": "成員推論攻擊（Membership Inference Attack）"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "成員推論攻擊從模型輸出推測某筆資料是否在訓練集中。",
+      "correctRationale": "若成功，就能推知某人曾在某醫院就醫等敏感資訊，屬隱私風險。",
+      "optionRationales": {
+        "A": "DDoS 是讓服務癱瘓的攻擊。",
+        "B": "網路釣魚是誘騙使用者提供資訊。",
+        "C": "去重是資料清理步驟。",
+        "D": "正確。推測是否在訓練集中。"
+      },
+      "commonTrap": "以為只要不公開訓練資料，就不會有隱私風險。",
+      "lessonAnchor": "L11203"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "成員推論攻擊"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11203-0017",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "台灣企業的 AI 服務若處理歐盟境內使用者的個人資料，除了國內法規外，通常還需要特別留意哪一項規範？",
+    "options": [
+      {
+        "id": "A",
+        "text": "台灣的道路交通安全規則"
+      },
+      {
+        "id": "B",
+        "text": "歐盟一般資料保護規則（GDPR）"
+      },
+      {
+        "id": "C",
+        "text": "美國的州際貿易法"
+      },
+      {
+        "id": "D",
+        "text": "國際會計準則"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "跨國處理個資時，需考量資料主體所在地的法規。",
+      "correctRationale": "GDPR 對個資處理、跨境傳輸與自動化決策有規範，可能適用於向歐盟使用者提供服務的境外企業。",
+      "optionRationales": {
+        "A": "與個資處理無關。",
+        "B": "正確。GDPR。",
+        "C": "與歐盟使用者個資無直接關係。",
+        "D": "會計準則與個資保護無關。"
+      },
+      "commonTrap": "以為只需遵守公司所在地的法規。",
+      "lessonAnchor": "L11203"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "GDPR"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11203-0018",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "資料科學家只需要分析匿名化後的銷售統計，公司卻給了他整個客戶資料庫的管理員權限。這違反了哪一項安全原則？",
+    "options": [
+      {
+        "id": "A",
+        "text": "資料漂移原則"
+      },
+      {
+        "id": "B",
+        "text": "開源優先原則"
+      },
+      {
+        "id": "C",
+        "text": "最小權限原則（Least Privilege）"
+      },
+      {
+        "id": "D",
+        "text": "可用性原則"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "最小權限：只給完成工作所需的最少權限。",
+      "correctRationale": "過大的權限擴大了誤用與外洩的可能，也讓問題發生時難以界定責任。",
+      "optionRationales": {
+        "A": "資料漂移不是安全原則。",
+        "B": "這不是資安原則。",
+        "C": "正確。權限超過工作所需。",
+        "D": "可用性與權限過大無關。"
+      },
+      "commonTrap": "為了方便而給予過大權限。",
+      "lessonAnchor": "L11203"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "最小權限"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11203-0019",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於「隱私保護」與「資訊安全」的關係，下列敘述何者最正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "兩者完全相同"
+      },
+      {
+        "id": "B",
+        "text": "只要做好資訊安全，就一定符合隱私規範"
+      },
+      {
+        "id": "C",
+        "text": "隱私保護只和紙本資料有關"
+      },
+      {
+        "id": "D",
+        "text": "隱私關注個人資料如何被蒐集與使用；安全關注資料與系統如何被保護，安全是實現隱私的重要手段"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "隱私與安全相關但不同。",
+      "correctRationale": "即使系統很安全，若超出目的使用個資，仍違反隱私原則；反之，沒有安全措施也無法保護隱私。",
+      "optionRationales": {
+        "A": "兩者關注點不同。",
+        "B": "安全做好不代表使用目的合法。",
+        "C": "隱私也涵蓋電子資料。",
+        "D": "正確。兩者相關但不同。"
+      },
+      "commonTrap": "以為資安做好就等於隱私合規。",
+      "lessonAnchor": "L11203"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "隱私與安全"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11203-0020",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L112",
+    "competencyCode": "L11203",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "某團隊表示：「我們已把客戶資料加密後交給外部廠商分析，所以資料已經匿名化，不屬於個資了。」這個說法的主要問題是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "加密資料只要有金鑰就能還原，並非匿名化，仍需依個資規範處理與約束廠商"
+      },
+      {
+        "id": "B",
+        "text": "交給外部廠商分析完全不需任何約束"
+      },
+      {
+        "id": "C",
+        "text": "只要資料量夠大，就不屬於個資"
+      },
+      {
+        "id": "D",
+        "text": "加密資料一定無法被任何人還原"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "加密 ≠ 匿名化。",
+      "correctRationale": "廠商若需要解密才能分析，表示能看到原始個資；應簽訂委外合約、限制用途並監督。",
+      "optionRationales": {
+        "A": "正確。加密可逆，不等於匿名化。",
+        "B": "委外處理個資需要合約與監督。",
+        "C": "資料量與是否屬於個資無關。",
+        "D": "有金鑰即可解密。"
+      },
+      "commonTrap": "把加密、假名化與匿名化混為一談。",
+      "lessonAnchor": "L11203"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "practical",
+    "lessonSection": "常見考試陷阱",
+    "authoring": "ai-drafted",
+    "tags": [
+      "加密",
+      "去識別化"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  }
+]
