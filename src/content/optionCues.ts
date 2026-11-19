@@ -44,6 +44,20 @@ export function longestStrategyScore(q: CueQuestion): number {
   return tied.some((o) => q.correctOptionIds.includes(o.id)) ? 1 / tied.length : 0;
 }
 
+/**
+ * 「每題選第 k 長」策略的期望得分（k = 1 最長 … 4 最短）。
+ * 依長度由長到短排序，並列的選項共享它們涵蓋的名次：若某組並列者佔第 a～b 名且 a ≤ k ≤ b，
+ * 視為在該組中隨機選一個。k = 1 時與 longestStrategyScore 相同。
+ */
+export function rankStrategyScore(q: CueQuestion, k: number): number {
+  const L = q.options.map((o) => len(o.text));
+  const sorted = [...L].sort((a, b) => b - a);
+  const target = sorted[k - 1];
+  if (target === undefined) return 0;
+  const tied = q.options.filter((_, i) => L[i] === target);
+  return tied.some((o) => q.correctOptionIds.includes(o.id)) ? 1 / tied.length : 0;
+}
+
 export interface CueSummary {
   total: number;
   strictlyLongestPct: number;
@@ -56,7 +70,9 @@ export interface CueSummary {
   absoluteInCorrect: number;
   /** 正確選項的長度名次分布（1 = 最長；並列時算較前的名次）。理想是四個名次大致平均 */
   lengthRank: Record<1 | 2 | 3 | 4, number>;
-  bySubject: Record<string, { total: number; longestStrategyPct: number }>;
+  /** 每題選第 k 長的期望得分（%）；四者都應接近 25%，避免「選第二長」等新線索 */
+  rankStrategyPct: Record<1 | 2 | 3 | 4, number>;
+  bySubject: Record<string, { total: number; longestStrategyPct: number; secondStrategyPct: number }>;
 }
 
 export function summarizeCues(questions: CueQuestion[]): CueSummary {
@@ -70,15 +86,18 @@ export function summarizeCues(questions: CueQuestion[]): CueSummary {
     absD = 0,
     absC = 0;
   const lengthRank: CueSummary['lengthRank'] = { 1: 0, 2: 0, 3: 0, 4: 0 };
+  const rankSum: CueSummary['rankStrategyPct'] = { 1: 0, 2: 0, 3: 0, 4: 0 };
   for (const q of qs) {
+    for (const k of [1, 2, 3, 4] as const) rankSum[k] += rankStrategyScore(q, k);
     if (isStrictlyLongest(q)) strict++;
     const r = lengthRatio(q);
     ratio += r;
     if (r >= 2) r2++;
     const s = longestStrategyScore(q);
     longest += s;
-    (bySubject[q.subject] ??= { total: 0, longestStrategyPct: 0 }).total++;
+    (bySubject[q.subject] ??= { total: 0, longestStrategyPct: 0, secondStrategyPct: 0 }).total++;
     bySubject[q.subject].longestStrategyPct += s;
+    bySubject[q.subject].secondStrategyPct += rankStrategyScore(q, 2);
     if (q.options.some((o) => !q.correctOptionIds.includes(o.id) && ABSOLUTE_WORDS.test(o.text))) absD++;
     if (q.options.some((o) => q.correctOptionIds.includes(o.id) && ABSOLUTE_WORDS.test(o.text))) absC++;
     const L = q.options.map((o) => len(o.text));
@@ -86,7 +105,16 @@ export function summarizeCues(questions: CueQuestion[]): CueSummary {
     const rank = Math.min(4, 1 + L.filter((v) => v > L[ci]).length) as 1 | 2 | 3 | 4;
     lengthRank[rank]++;
   }
-  for (const v of Object.values(bySubject)) v.longestStrategyPct = pct(v.longestStrategyPct, v.total);
+  for (const v of Object.values(bySubject)) {
+    v.longestStrategyPct = pct(v.longestStrategyPct, v.total);
+    v.secondStrategyPct = pct(v.secondStrategyPct, v.total);
+  }
+  const rankStrategyPct: CueSummary['rankStrategyPct'] = {
+    1: pct(rankSum[1], qs.length),
+    2: pct(rankSum[2], qs.length),
+    3: pct(rankSum[3], qs.length),
+    4: pct(rankSum[4], qs.length),
+  };
   return {
     total: qs.length,
     strictlyLongestPct: pct(strict, qs.length),
@@ -96,6 +124,7 @@ export function summarizeCues(questions: CueQuestion[]): CueSummary {
     absoluteInDistractors: absD,
     absoluteInCorrect: absC,
     lengthRank,
+    rankStrategyPct,
     bySubject,
   };
 }
