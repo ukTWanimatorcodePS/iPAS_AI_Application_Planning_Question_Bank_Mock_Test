@@ -138,13 +138,15 @@ test('程式題：長程式碼與輸出選項在畫面內完整換行', async ({
   await page.getByRole('radiogroup', { name: '切換級別' }).getByRole('radio', { name: '中級' }).click();
   await page.goto('./#/courses/L22302');
   await page.getByTestId('start-quiz-10').click();
-  // 逐題前進直到遇到程式題
+  // 逐題前進直到遇到程式題（L22302 共 8 題、其中 1 題程式題；10 題練習會全部抽到）
+  // 依題庫資料判斷，並等待題幹換題後再讀下一題，避免讀到尚未換頁的舊題
   for (let i = 0; i < 8; i++) {
-    if (await page.locator('.code-block').count()) break;
     const q = await currentQuestion(page, bank);
+    if (q.code) break;
     await choose(page, q, true);
     await page.getByTestId('reveal').filter({ visible: true }).click();
     await page.getByTestId('next').filter({ visible: true }).click();
+    await expect(page.locator('#q-stem')).not.toHaveText(q.stem);
   }
   await expect(page.locator('.code-block').first()).toBeVisible();
   await expectNoHorizontalOverflow(page);

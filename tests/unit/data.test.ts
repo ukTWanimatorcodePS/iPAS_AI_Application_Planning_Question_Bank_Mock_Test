@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import { allQuestions } from '../../src/content';
 import { csvCell, exportBackup, parseBackup, restoreBackup, toCsv } from '../../src/data/backup';
 import { PrepDB, __setDb, db, ensureInitialized } from '../../src/data/db';
-import { createSession, revealQuestion, setAnswer, submitSession } from '../../src/data/repo';
+import { createSession, getSettings, revealQuestion, setAnswer, submitSession, updateSettings } from '../../src/data/repo';
 
 let n = 0;
 beforeEach(async () => {
@@ -125,5 +125,15 @@ describe('CSV 匯出', () => {
     expect(csvCell('say "hi"')).toBe('"say ""hi"""');
     expect(csvCell('=SUM(A1)')).toBe("'=SUM(A1)");
     expect(toCsv([{ a: 1, b: null }], ['a', 'b'])).toBe('﻿a,b\r\n1,');
+  });
+});
+
+describe('設定寫入', () => {
+  it('同時送出多筆設定變更不會互相覆寫（深色＋高對比＋字級）', async () => {
+    await Promise.all([updateSettings({ theme: 'dark' }), updateSettings({ highContrast: true }), updateSettings({ fontScale: 1.3 })]);
+    const s = await getSettings();
+    expect(s.theme).toBe('dark');
+    expect(s.highContrast).toBe(true);
+    expect(s.fontScale).toBe(1.3);
   });
 });

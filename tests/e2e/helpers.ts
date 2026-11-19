@@ -8,6 +8,7 @@ interface Q {
   competencyCode: string;
   options: { id: string; text: string }[];
   correctOptionIds: string[];
+  code?: string;
 }
 
 /** 從題庫 JSON 讀出答案（只在測試端使用） */

@@ -97,6 +97,8 @@ test('未完成測驗可在重新整理後恢復', async ({ page }) => {
   await page.getByRole('button', { name: '開始練習' }).click();
   const q = await currentQuestion(page, bank);
   await choose(page, q, true);
+  // 勾選狀態來自 IndexedDB（live query），出現代表已寫入；未等待就重新整理會在寫入前中斷
+  await expect(page.locator('label.opt input:checked')).toHaveCount(1);
   await page.reload();
   await expect(page.locator('#q-stem')).toHaveText(q.stem);
   await expect(page.locator('label.opt input:checked')).toHaveCount(1);

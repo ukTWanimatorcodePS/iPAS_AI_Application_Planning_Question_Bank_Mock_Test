@@ -20,8 +20,11 @@ export async function getSettings(): Promise<UserSettings> {
   return (await db.settings.get('user')) ?? defaultSettings();
 }
 export async function updateSettings(patch: Partial<UserSettings>): Promise<void> {
-  const cur = await getSettings();
-  await db.settings.put({ ...cur, ...patch, id: 'user', updatedAt: nowIso() });
+  // 讀取與寫入放在同一個交易中：連續快速變更（例如先切深色再切高對比）時，避免後一筆以舊資料覆寫前一筆
+  await db.transaction('rw', db.settings, async () => {
+    const cur = await getSettings();
+    await db.settings.put({ ...cur, ...patch, id: 'user', updatedAt: nowIso() });
+  });
 }
 
 /* ---------- 講義進度 ---------- */
