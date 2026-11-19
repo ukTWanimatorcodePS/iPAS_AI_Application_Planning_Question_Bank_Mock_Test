@@ -83,6 +83,24 @@ export const MISCONCEPTIONS: Misconception[] = [
     source: 'Codex 複查 2026-11-19（docs/AUDIT_c464dd5.md）',
   },
   {
+    id: 'clt-unconditional',
+    pattern: /不論母體(分佈)?(形狀)?[，,]\s*只要樣本數夠大|樣本數夠大時，不論母體形狀/,
+    message: '中央極限定理需樣本獨立、母體變異數有限；n ≥ 30 只是經驗法則，母體越偏斜需要越多樣本，柯西分佈等變異數不存在者不適用。',
+    source: 'Codex 全範圍稽核 2026-11-19（docs/CODEX_FULL_AUDIT_2026-11-19.md）；NIST/SEMATECH e-Handbook, Cauchy Distribution',
+  },
+  {
+    id: 'auc-without-ties',
+    pattern: /給正例較高分數的機率(?![^。；\n]{0,3}（[^）]{0,10}同分)/,
+    message: 'ROC-AUC 的機率解釋需處理同分：P(正例分數 > 負例分數) + 0.5 × P(同分)。',
+    source: 'Codex 全範圍稽核 2026-11-19；scikit-learn roc_auc_score',
+  },
+  {
+    id: 'ml-supervised-only-definition',
+    pattern: /機器學習(是|：)\s*「?資料\s*[＋+]\s*答案/,
+    message: '「資料＋答案 → 規則」只描述監督式學習；機器學習的總定義是從資料學出規律，非監督式學習沒有答案。',
+    source: 'Codex 全範圍稽核 2026-11-19；scikit-learn Unsupervised learning',
+  },
+  {
     id: 'p-value-without-extreme',
     pattern: /p\s*值[^。\n]{0,20}觀察到(目前)?結果的機率/,
     message: 'p 值定義需包含「至少與觀察到的檢定統計量同樣極端」。',

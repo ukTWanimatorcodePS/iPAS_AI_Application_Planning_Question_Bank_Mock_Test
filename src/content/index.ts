@@ -100,8 +100,15 @@ export const allQuestions: Question[] = buildQuestionBank();
 export const releasedQuestions: Question[] = allQuestions.filter((q) => q.reviewStatus !== 'draft' && q.reviewStatus !== 'retired');
 const questionById = new Map(allQuestions.map((q) => [q.id, q]));
 
+/** 取得題目（含已停用者），用於顯示歷史紀錄與解析 */
 export function getQuestion(id: string): Question | undefined {
   return questionById.get(id);
+}
+
+/** 取得可以出題的題目：已釋出（非 draft／retired）才回傳。組新測驗時一律用這個，不可用 getQuestion */
+export function getReleasedQuestion(id: string): Question | undefined {
+  const q = questionById.get(id);
+  return q && q.reviewStatus !== 'draft' && q.reviewStatus !== 'retired' ? q : undefined;
 }
 export function questionsFor(filter: {
   level?: Level;

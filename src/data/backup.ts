@@ -6,8 +6,8 @@ import { z } from 'zod';
 import { db, defaultSettings } from './db';
 
 export const BACKUP_APP_ID = 'ipas-ai-prep';
-/** v1：第一階段；v2：新增 tutorLogs、settings.examDate。匯入時兩版皆接受，缺少的欄位補預設值。 */
-export const BACKUP_SCHEMA_VERSION = 2;
+/** v1：第一階段；v2：新增 tutorLogs、settings.examDate；v3：新增 studyTime（講義閱讀時間每日紀錄）。匯入時各版皆接受，缺少的欄位補預設值。 */
+export const BACKUP_SCHEMA_VERSION = 3;
 export const MAX_BACKUP_BYTES = 10 * 1024 * 1024;
 
 const iso = z.string().max(40).refine((s) => !Number.isNaN(Date.parse(s)), '日期格式錯誤');
@@ -109,6 +109,15 @@ const tutorLogSchema = z.object({
   at: iso,
 });
 
+const studyTimeSchema = z
+  .object({
+    date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    code,
+    level,
+    seconds: z.number().int().min(0).max(86_400),
+  })
+  .transform((t) => ({ ...t, key: `${t.date}|${t.code}` }));
+
 export const backupSchema = z.object({
   app: z.literal(BACKUP_APP_ID),
   schemaVersion: z.number().int().min(1).max(BACKUP_SCHEMA_VERSION),
@@ -120,18 +129,20 @@ export const backupSchema = z.object({
     attempts: z.array(attemptSchema).max(200_000),
     reviewItems: z.array(reviewSchema).max(20_000),
     tutorLogs: z.array(tutorLogSchema).max(50_000).default([]),
+    studyTime: z.array(studyTimeSchema).max(100_000).default([]),
   }),
 });
 export type Backup = z.infer<typeof backupSchema>;
 
 export async function exportBackup(): Promise<Backup> {
-  const [settings, lessonProgress, quizSessions, attempts, reviewItems, tutorLogs] = await Promise.all([
+  const [settings, lessonProgress, quizSessions, attempts, reviewItems, tutorLogs, studyTime] = await Promise.all([
     db.settings.get('user'),
     db.lessonProgress.toArray(),
     db.quizSessions.toArray(),
     db.attempts.toArray(),
     db.reviewItems.toArray(),
     db.tutorLogs.toArray(),
+    db.studyTime.toArray(),
   ]);
   return {
     app: BACKUP_APP_ID,
@@ -144,6 +155,7 @@ export async function exportBackup(): Promise<Backup> {
       attempts: attempts.map(({ id: _id, ...rest }) => rest),
       reviewItems,
       tutorLogs: tutorLogs.map(({ id: _id, ...rest }) => rest),
+      studyTime: studyTime.map(({ key: _key, ...rest }) => ({ ...rest, key: `${rest.date}|${rest.code}` })),
     },
   };
 }
@@ -169,14 +181,15 @@ export function parseBackup(text: string): ParseResult {
 
 /** 以備份覆蓋本機資料（單一交易，失敗時不會留下半套資料） */
 export async function restoreBackup(backup: Backup): Promise<void> {
-  await db.transaction('rw', [db.settings, db.lessonProgress, db.quizSessions, db.attempts, db.reviewItems, db.tutorLogs], async () => {
-    await Promise.all([db.settings.clear(), db.lessonProgress.clear(), db.quizSessions.clear(), db.attempts.clear(), db.reviewItems.clear(), db.tutorLogs.clear()]);
+  await db.transaction('rw', [db.settings, db.lessonProgress, db.quizSessions, db.attempts, db.reviewItems, db.tutorLogs, db.studyTime], async () => {
+    await Promise.all([db.settings.clear(), db.lessonProgress.clear(), db.quizSessions.clear(), db.attempts.clear(), db.reviewItems.clear(), db.tutorLogs.clear(), db.studyTime.clear()]);
     await db.settings.put({ ...defaultSettings(), ...(backup.data.settings ?? {}), id: 'user', onboarded: true });
     await db.lessonProgress.bulkPut(backup.data.lessonProgress);
     await db.quizSessions.bulkPut(backup.data.quizSessions);
     await db.attempts.bulkAdd(backup.data.attempts);
     await db.reviewItems.bulkPut(backup.data.reviewItems);
     await db.tutorLogs.bulkAdd(backup.data.tutorLogs);
+    await db.studyTime.bulkPut(backup.data.studyTime);
   });
 }
 

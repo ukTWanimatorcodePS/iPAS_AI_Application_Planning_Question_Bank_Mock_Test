@@ -93,6 +93,9 @@ export function MockPage() {
           <button type="button" className="btn" onClick={start} disabled={busy || available === 0}>
             <Timer size={16} /> 開始模考
           </button>
+          <p className="mt-2 text-xs text-muted" data-testid="mock-timing-note">
+            計時依實際經過時間：開始後切換分頁、離開或重新整理頁面，時間都會繼續計算，時間到自動交卷。
+          </p>
         </section>
         <aside className="card text-sm" aria-labelledby="rule-title">
           <CardHead title={<span id="rule-title">官方考試規格</span>} right={<span className="pill">{rules.year - 1911} 年（{rules.year}）</span>} />

@@ -3,7 +3,9 @@ import type { LessonProgress, ReviewItem, UserSettings } from '../data/types';
 import { isDue } from './review';
 
 /** 規劃用的時間估計（分鐘）；只是預設值，實際依個人速度調整 */
-export const MINUTES = { lesson: 30, practicePerUnit: 15, reviewPerItem: 2, mixed: 40, mock: 60 } as const;
+export const MINUTES = { lesson: 30, practicePerUnit: 15, reviewPerItem: 2, weakPerItem: 2, mixedPerItem: 1.5, mock: 60 } as const;
+/** 選做任務（弱點、混合測驗）至少要能做幾題才排入；時間不夠就不排 */
+const MIN_OPTIONAL_ITEMS = 5;
 export const UNIT_MINUTES = MINUTES.lesson + MINUTES.practicePerUnit;
 /** 考前衝刺期：考前 14 天 */
 export const SPRINT_DAYS = 14;
@@ -103,8 +105,8 @@ export function buildStudyPlan(input: PlanInput): StudyPlan {
 
   const lessonsPerStudyDay = remaining.length === 0 ? 0 : Math.max(1, Math.ceil(remaining.length / Math.max(1, learnDays)));
   const requiredMinutesPerDay = lessonsPerStudyDay * UNIT_MINUTES;
-  const feasible = requiredMinutesPerDay <= dailyMinutes.max || remaining.length === 0;
-  if (!feasible)
+  const lessonPaceOk = requiredMinutesPerDay <= dailyMinutes.max || remaining.length === 0;
+  if (!lessonPaceOk)
     messages.push(`依目前進度，每個學習日需讀 ${lessonsPerStudyDay} 個細項（約 ${requiredMinutesPerDay} 分鐘），超過你設定的每日上限 ${dailyMinutes.max} 分鐘。建議增加學習時間、減少休息日，或優先讀較弱的細項。`);
   if (remaining.length === 0) messages.push('本級別講義已全部讀完，計畫以錯題複習、弱點補強與模擬考為主。');
 
@@ -132,29 +134,52 @@ export function buildStudyPlan(input: PlanInput): StudyPlan {
     // 距考試不足三週時沒有獨立衝刺期，整段都以「壓縮衝刺」安排：講義與衝刺任務並行
     const compressed = !!exam && !sprintStart;
     const inSprint = sprintStart ? d.getTime() >= sprintStart.getTime() : compressed;
+    // 必要任務：到期錯題與依進度必須讀的講義
     if (due) tasks.push({ kind: 'review', count: due, minutes: due * MINUTES.reviewPerItem });
+    for (let k = 0; k < lessonsPerStudyDay && cursor < remaining.length; k++, cursor++) {
+      const c = remaining[cursor];
+      tasks.push({ kind: 'lesson', code: c.code, name: c.name, minutes: MINUTES.lesson });
+      tasks.push({ kind: 'practice', code: c.code, count: 5, minutes: MINUTES.practicePerUnit });
+    }
+    // 選做任務：只在每日上限剩餘的時間內安排，題數依剩餘時間縮減，絕不讓當天總時間超過上限
+    let budget = dailyMinutes.max - sum(tasks);
+    const addWeak = (count: number) => {
+      const n = Math.min(count, Math.floor(budget / MINUTES.weakPerItem));
+      if (n >= MIN_OPTIONAL_ITEMS) {
+        const minutes = n * MINUTES.weakPerItem;
+        tasks.push({ kind: 'weak', count: n, minutes });
+        budget -= minutes;
+      }
+    };
+    const addMixed = (count: number) => {
+      const n = Math.min(count, Math.floor(budget / MINUTES.mixedPerItem));
+      if (n >= MIN_OPTIONAL_ITEMS) {
+        const minutes = Math.ceil(n * MINUTES.mixedPerItem);
+        tasks.push({ kind: 'mixed', count: n, minutes });
+        budget -= minutes;
+      }
+    };
     if (inSprint) {
-      for (let k = 0; k < lessonsPerStudyDay && cursor < remaining.length; k++, cursor++) {
-        const c = remaining[cursor];
-        tasks.push({ kind: 'lesson', code: c.code, name: c.name, minutes: MINUTES.lesson });
-        tasks.push({ kind: 'practice', code: c.code, count: 5, minutes: MINUTES.practicePerUnit });
-      }
-      tasks.push({ kind: 'weak', count: 10, minutes: 20 });
-      if (studyIndex % (compressed ? 2 : 3) === (compressed ? 1 : 2)) tasks.push({ kind: 'mock', minutes: MINUTES.mock });
-      else tasks.push({ kind: 'mixed', count: compressed ? 20 : 30, minutes: compressed ? 30 : MINUTES.mixed });
+      addWeak(10);
+      const mockDay = studyIndex % (compressed ? 2 : 3) === (compressed ? 1 : 2);
+      if (mockDay && budget >= MINUTES.mock) {
+        tasks.push({ kind: 'mock', minutes: MINUTES.mock });
+        budget -= MINUTES.mock;
+      } else addMixed(compressed ? 20 : 30);
     } else {
-      for (let k = 0; k < lessonsPerStudyDay && cursor < remaining.length; k++, cursor++) {
-        const c = remaining[cursor];
-        tasks.push({ kind: 'lesson', code: c.code, name: c.name, minutes: MINUTES.lesson });
-        tasks.push({ kind: 'practice', code: c.code, count: 5, minutes: MINUTES.practicePerUnit });
-      }
-      if (cursor >= remaining.length && !tasks.some((t) => t.kind === 'lesson')) tasks.push({ kind: 'mixed', count: 20, minutes: 30 });
+      if (cursor >= remaining.length && !tasks.some((t) => t.kind === 'lesson')) addMixed(20);
       // 每 6 個學習日安排一次階段混合測驗，避免只練單一細項
-      if (studyIndex % 6 === 5) tasks.push({ kind: 'mixed', count: 20, minutes: 30 });
+      else if (studyIndex % 6 === 5) addMixed(20);
     }
     studyIndex++;
     days.push({ date, weekday: d.getDay(), phase: inSprint ? 'sprint' : 'learn', tasks, minutes: sum(tasks) });
   }
+
+  // 必要任務（到期錯題＋依進度的講義）超過每日上限的學習日；選做任務已依上限縮減，不會造成超額
+  const over = days.filter((d) => (d.phase === 'learn' || d.phase === 'sprint' || d.phase === 'rest') && d.minutes > dailyMinutes.max);
+  if (over.length && lessonPaceOk)
+    messages.push(`接下來 ${days.length} 天中有 ${over.length} 天的必要任務（講義與到期錯題）超過每日上限 ${dailyMinutes.max} 分鐘，最多約 ${Math.max(...over.map((d) => d.minutes))} 分鐘。建議先處理到期錯題，或提高每日上限。`);
+  const feasible = lessonPaceOk && over.length === 0;
 
   return {
     examDate: exam ? localDate(exam) : null,

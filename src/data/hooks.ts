@@ -1,13 +1,18 @@
 import { useLiveQuery } from 'dexie-react-hooks';
 import type { Level } from '../content/schema';
 import { db } from './db';
-import type { AnswerAttempt, LessonProgress, QuizSession, ReviewItem } from './types';
+import type { AnswerAttempt, LessonProgress, QuizSession, ReviewItem, StudyTimeLog } from './types';
 
 export function useLessonProgress(level: Level): Map<string, LessonProgress> | undefined {
   return useLiveQuery(async () => {
     const list = await db.lessonProgress.where('level').equals(level).toArray();
     return new Map(list.map((p) => [p.code, p]));
   }, [level]);
+}
+
+/** 講義閱讀時間的每日紀錄（v3 起） */
+export function useStudyTime(level: Level): StudyTimeLog[] | undefined {
+  return useLiveQuery(() => db.studyTime.where('level').equals(level).toArray(), [level]);
 }
 
 export function useAttempts(level: Level): AnswerAttempt[] | undefined {

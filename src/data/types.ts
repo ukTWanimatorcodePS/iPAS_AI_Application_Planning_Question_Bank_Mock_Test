@@ -127,6 +127,16 @@ export const MODE_LABEL: Record<QuizMode, string> = {
 
 export type TutorMode = 'simple' | 'detailed' | 'example' | 'compare' | 'another';
 
+/** 講義閱讀時間的每日紀錄（v3 起）：用來計算本週／本月實際學習時間。key = 「本地日期|細項代碼」 */
+export interface StudyTimeLog {
+  key: string;
+  /** 本地日期 YYYY-MM-DD */
+  date: string;
+  code: string;
+  level: Level;
+  seconds: number;
+}
+
 /** AI 導師互動紀錄（補強題結果用於判斷是否需要再複習） */
 export interface TutorLog {
   id?: number;

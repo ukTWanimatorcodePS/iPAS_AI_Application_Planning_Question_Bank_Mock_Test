@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { getQuestion } from '../content';
+import { getReleasedQuestion } from '../content';
 import type { TutorProvider, TutorResponse } from './types';
 
 /**
@@ -44,7 +44,8 @@ export const remoteProvider: TutorProvider = {
     if (!parsed.success) throw new Error('AI 導師回應格式不正確');
     const rid = parsed.data.reinforcementQuestionId;
     // 補強題必須是題庫中真實存在且同細項的題目，避免顯示未審核的題目
-    const valid = rid && getQuestion(rid)?.competencyCode === req.question.competencyCode ? rid : null;
+    // 補強題必須是仍釋出的題目（不出 draft／retired）
+    const valid = rid && getReleasedQuestion(rid)?.competencyCode === req.question.competencyCode ? rid : null;
     return { provider: 'remote', label: REMOTE_LABEL, sections: parsed.data.sections, reinforcementQuestionId: valid };
   },
 };

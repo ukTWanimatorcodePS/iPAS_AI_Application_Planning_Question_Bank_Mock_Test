@@ -32,6 +32,12 @@ const ORIGINAL_ERRORS: [string, string][] = [
   ['Bootstrap 每次固定有 63.2% 的原始樣本出現。', 'bootstrap-632-unconditional'],
   ['輸入分布改變就是概念漂移。', 'distribution-shift-as-concept-drift'],
   ['生成式 AI 只能處理文字。', 'genai-text-only'],
+  // Codex 全範圍稽核（docs/CODEX_FULL_AUDIT_2026-11-19.md）發現、已修正的原始說法
+  ['不論母體分佈形狀，只要樣本數夠大（經驗上 n ≥ 30），樣本平均近似常態。', 'clt-unconditional'],
+  ['樣本數夠大時，不論母體形狀，樣本平均數近似常態分佈。', 'clt-unconditional'],
+  ['AUC 是隨機抽一個正例與一個負例時，模型給正例較高分數的機率；0.5 代表沒有區分能力。', 'auc-without-ties'],
+  ['- 機器學習是「資料＋答案 → 學出規則」，目標是泛化到沒看過的新資料。', 'ml-supervised-only-definition'],
+  ['傳統程式：規則＋資料 → 答案；機器學習：資料＋答案 → 規則（模型）。', 'ml-supervised-only-definition'],
   // 官方勘誤表中被更正的原文
   ['公式：Recall= TP/(TP+FP)', 'recall-formula'],
   ['拒絕 H0 Type II 錯誤（α）', 'type-two-alpha'],
@@ -67,6 +73,10 @@ const CORRECT: string[] = [
   '也就是一次重抽樣中，預期約 63.2% 的原始樣本會出現（實際比例每次不同）。',
   '資料漂移是輸入分布改變；概念漂移是輸入與目標的關係改變。',
   '生成式 AI 可產生文字、影像、音訊與程式碼。',
+  '在此前提下，不論母體分佈形狀，樣本數夠大時，樣本平均的分佈近似常態。',
+  '- ❌ 「只要 n ≥ 30，樣本平均數就一定近似常態」→ 30 只是經驗法則。',
+  'AUC 等於隨機抽一個正例與一個負例時，模型給正例較高分數的機率（兩者同分時算半次）。',
+  '以監督式學習為例，是「資料＋答案（標籤）→ 學出規則」；非監督式學習則沒有答案。',
 ];
 
 describe('已知錯誤說法檢查', () => {

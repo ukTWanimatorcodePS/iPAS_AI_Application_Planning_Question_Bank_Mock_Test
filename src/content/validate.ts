@@ -118,6 +118,13 @@ export function validateContent(input: ValidateInput): Issue[] {
       else if (same && s >= SIMILARITY_WARN) warn(a.q.id, `與 ${b.q.id} 相似度 ${s.toFixed(2)}，請人工確認是否只換了情境或數字`);
     }
 
+  // 題目畫面以純文字顯示（不渲染 Markdown／KaTeX），題幹、選項、解析不可使用 LaTeX 公式，請改用一般文字或 Unicode 符號
+  const LATEX = /\$[^$\n]*\\[a-zA-Z]+[^$\n]*\$|\$\$|\\(frac|dfrac|sqrt|approx|times|cdot|min|max|mu|sigma|sum|log|leq|geq)\b/;
+  for (const q of input.questions) {
+    const texts = [q.stem, ...q.options.map((o) => o.text), ...Object.values(q.explanation ?? {}).flatMap((v) => (typeof v === 'string' ? [v] : typeof v === 'object' && v ? Object.values(v) : []))];
+    if (texts.some((t) => typeof t === 'string' && LATEX.test(t))) err(q.id, '題目內容含 LaTeX 公式，但題目畫面不渲染公式；請改用一般文字或 Unicode 符號（如 ÷、×、≈、μ、σ）');
+  }
+
   // 已知錯誤說法（回歸檢查）；錯誤選項（誘答）本來就是錯誤說法，不檢查
   for (const q of input.questions) {
     const scanned = { ...q, options: q.options.filter((o) => q.correctOptionIds.includes(o.id)) };

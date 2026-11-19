@@ -7,6 +7,7 @@ import { applyAttempt, reschedule } from '../lib/review';
 import { isCorrect, scoreSession } from '../lib/scoring';
 import { db, defaultSettings } from './db';
 import type { AnswerAttempt, MistakeReason, QuizMode, QuizSession, TutorLog, UserSettings } from './types';
+import { recordedDuration } from '../lib/timer';
 
 const nowIso = () => new Date().toISOString();
 
@@ -42,10 +43,24 @@ export async function touchLesson(code: string, level: Level): Promise<void> {
 export async function saveLessonPosition(code: string, anchor: string | null): Promise<void> {
   await db.lessonProgress.update(code, { lastPosition: anchor, visitedAt: nowIso() });
 }
-export async function addLessonTime(code: string, seconds: number): Promise<void> {
-  if (seconds <= 0) return;
-  const cur = await db.lessonProgress.get(code);
-  if (cur) await db.lessonProgress.update(code, { timeSpentSec: cur.timeSpentSec + Math.round(seconds) });
+/** 累加講義閱讀時間，並記到當天（本地日期）的每日紀錄，供本週／本月統計使用 */
+export async function addLessonTime(code: string, seconds: number, now = new Date()): Promise<void> {
+  const sec = Math.round(seconds);
+  if (sec <= 0) return;
+  await db.transaction('rw', [db.lessonProgress, db.studyTime], async () => {
+    const cur = await db.lessonProgress.get(code);
+    if (!cur) return;
+    await db.lessonProgress.update(code, { timeSpentSec: cur.timeSpentSec + sec });
+    const date = localDateKey(now);
+    const key = `${date}|${code}`;
+    const log = await db.studyTime.get(key);
+    await db.studyTime.put({ key, date, code, level: cur.level, seconds: (log?.seconds ?? 0) + sec });
+  });
+}
+
+/** 本地日期 YYYY-MM-DD */
+export function localDateKey(d: Date): string {
+  return d.toLocaleDateString('sv-SE');
 }
 export async function setLessonCompleted(code: string, level: Level, completed: boolean): Promise<void> {
   const cur = await db.lessonProgress.get(code);
@@ -161,7 +176,8 @@ export async function submitSession(sessionId: string, elapsedSec: number): Prom
     const summary = scoreSession(s.questionIds, s.answers, getQuestion);
     const patch: Partial<QuizSession> = {
       submittedAt: nowIso(),
-      durationSec: Math.max(s.durationSec, Math.round(elapsedSec)),
+      // 限時模考的作答時間不超過時間上限（逾時後才回到頁面，離開的時間不算作答時間）
+      durationSec: recordedDuration(Math.max(s.durationSec, Math.round(elapsedSec)), s.timeLimitSec),
       rawScore: summary.correct,
       validCount: summary.total,
     };
@@ -213,8 +229,8 @@ export async function addToReview(questionId: string): Promise<void> {
 
 /* ---------- 清除 ---------- */
 export async function clearAllData(): Promise<void> {
-  await db.transaction('rw', [db.settings, db.lessonProgress, db.quizSessions, db.attempts, db.reviewItems, db.tutorLogs], async () => {
-    await Promise.all([db.settings.clear(), db.lessonProgress.clear(), db.quizSessions.clear(), db.attempts.clear(), db.reviewItems.clear(), db.tutorLogs.clear()]);
+  await db.transaction('rw', [db.settings, db.lessonProgress, db.quizSessions, db.attempts, db.reviewItems, db.tutorLogs, db.studyTime], async () => {
+    await Promise.all([db.settings.clear(), db.lessonProgress.clear(), db.quizSessions.clear(), db.attempts.clear(), db.reviewItems.clear(), db.tutorLogs.clear(), db.studyTime.clear()]);
   });
 }
 

@@ -1,4 +1,4 @@
-import type { AnswerAttempt, LessonProgress, QuizSession, UserSettings } from '../data/types';
+import type { AnswerAttempt, LessonProgress, QuizSession, StudyTimeLog, UserSettings } from '../data/types';
 import { accuracy } from './scoring';
 
 export const MIN_SAMPLE = 5;
@@ -53,7 +53,7 @@ export function planCompletion(
   period: 'week' | 'month',
   settings: UserSettings,
   sessions: QuizSession[],
-  lessons: LessonProgress[],
+  studyTime: Pick<StudyTimeLog, 'date' | 'seconds'>[],
   now = new Date(),
 ) {
   const start = period === 'week' ? startOfWeek(now) : new Date(now.getFullYear(), now.getMonth(), 1);
@@ -61,8 +61,9 @@ export function planCompletion(
   for (const d = new Date(start); d <= now; d.setDate(d.getDate() + 1)) if (!settings.restDays.includes(d.getDay())) plannedDays++;
   const plannedMin = plannedDays * settings.dailyMinutes.min;
   const quizSec = sessions.filter((s) => s.submittedAt && new Date(s.submittedAt) >= start).reduce((a, s) => a + s.durationSec, 0);
-  // 講義閱讀時間只能取得累計值，以「本期內曾造訪」的講義近似
-  const lessonSec = lessons.filter((l) => new Date(l.visitedAt) >= start).reduce((a, l) => a + l.timeSpentSec, 0);
+  // 講義閱讀時間依每日紀錄加總（只計入本期內的日期）；升級前的累計閱讀時間無法拆分到日期，不計入
+  const startKey = start.toLocaleDateString('sv-SE');
+  const lessonSec = studyTime.filter((t) => t.date >= startKey).reduce((a, t) => a + t.seconds, 0);
   const actualMin = Math.round((quizSec + lessonSec) / 60);
   return { plannedMin, actualMin, pct: plannedMin ? Math.min(100, Math.round((actualMin / plannedMin) * 100)) : null };
 }

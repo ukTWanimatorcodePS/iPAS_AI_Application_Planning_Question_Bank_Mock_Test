@@ -1,4 +1,7 @@
 /** 專案公開資訊（不含任何個人資料或金鑰） */
+/** 網站版本（與 package.json 的 version 一致；單元測試會檢查）。正式版 v1.0.0：2026-11-19 */
+export const APP_VERSION = '1.0.0';
+
 export const REPO_URL = 'https://github.com/ukTWanimatorcodePS/iPAS_AI_Application_Planning_Question_Bank_Mock_Test';
 
 /**

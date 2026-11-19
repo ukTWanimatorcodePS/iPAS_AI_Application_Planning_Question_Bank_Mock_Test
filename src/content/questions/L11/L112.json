@@ -353,7 +353,7 @@
     "session": null,
     "sourceUrl": null,
     "copyrightStatus": "original",
-    "stem": "將某欄位的數值以 $(x-\\min)/(\\max-\\min)$ 轉換，這種處理稱為什麼？主要結果為何？",
+    "stem": "將某欄位的數值以「(x − 最小值) ÷ (最大值 − 最小值)」轉換，這種處理稱為什麼？主要結果為何？",
     "options": [
       {
         "id": "A",

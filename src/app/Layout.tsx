@@ -22,6 +22,7 @@ import { useEffect, useState, type ReactNode } from 'react';
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router';
 import { allCompetencies } from '../content';
 import type { Level } from '../content/schema';
+import { APP_VERSION } from '../config/project';
 import { db } from '../data/db';
 import { useApp } from './AppContext';
 
@@ -199,6 +200,9 @@ export function Layout() {
           <strong className="mb-1 block text-xs text-ink">獨立學習工具</strong>
           非 iPAS 官方平台。學習紀錄只存在這台裝置的瀏覽器，不會自動跨裝置同步。
         </div>
+        <p className="mt-3 px-2 text-[0.72rem] text-muted" data-testid="app-version">
+          版本 v{APP_VERSION}
+        </p>
       </aside>
 
       <div className="flex min-w-0 flex-1 flex-col">
@@ -279,6 +283,9 @@ export function Layout() {
             <span>深色模式</span>
             <ThemeToggle />
           </div>
+          <p className="mt-4 text-xs text-muted" data-testid="app-version-mobile">
+            版本 v{APP_VERSION}
+          </p>
         </Drawer>
       )}
     </div>

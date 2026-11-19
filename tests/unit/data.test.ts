@@ -215,3 +215,63 @@ describe('回報錯誤連結', () => {
     expect(url.searchParams.get('body')).toContain(q.id);
   });
 });
+
+describe('停用題目（Codex 稽核 M1）', () => {
+  it('錯題轉為 retired 後，歷史仍可查，但錯題重測不再出這題', async () => {
+    const { startReviewQuiz } = await import('../../src/data/quizFactory');
+    const { getQuestion, getReleasedQuestion } = await import('../../src/content');
+    const [a, b] = allQuestions.filter((x) => x.level === 'junior').slice(0, 2);
+    const id = await makeSession('test', [a.id, b.id]);
+    for (const x of [a, b]) await setAnswer(id, x.id, [x.options.find((o) => !x.correctOptionIds.includes(o.id))!.id]);
+    await submitSession(id, 10);
+    expect(await db.reviewItems.count()).toBe(2);
+
+    const original = a.reviewStatus;
+    (a as { reviewStatus: string }).reviewStatus = 'retired';
+    try {
+      expect(getQuestion(a.id)).toBeDefined(); // 歷史紀錄仍可顯示
+      expect(getReleasedQuestion(a.id)).toBeUndefined();
+      const r = await startReviewQuiz('junior');
+      expect(r.ok).toBe(true);
+      if (!r.ok) return;
+      const ids = (await db.quizSessions.get(r.sessionId))!.questionIds;
+      expect(ids).toEqual([b.id]);
+      // 指定題目 ID 重測（錯題本勾選）也一樣排除
+      const r2 = await startReviewQuiz('junior', [a.id]);
+      expect(r2.ok).toBe(false);
+    } finally {
+      (a as { reviewStatus: string }).reviewStatus = original;
+    }
+  });
+
+  it('錯題重測只出本級別的題目', async () => {
+    const { startReviewQuiz } = await import('../../src/data/quizFactory');
+    const mid = allQuestions.find((x) => x.level === 'middle')!;
+    const r = await startReviewQuiz('junior', [mid.id]);
+    expect(r.ok).toBe(false);
+  });
+});
+
+describe('限時模考計時（Codex 稽核 F1）', () => {
+  it('依牆鐘時間計算，與分頁是否可見無關；交卷時作答時間不超過時間上限', async () => {
+    const { wallElapsedSec, recordedDuration } = await import('../../src/lib/timer');
+    const start = Date.parse('2026-11-19T10:00:00Z');
+    expect(wallElapsedSec(start, start + 90_500)).toBe(90);
+    expect(wallElapsedSec(Number.NaN)).toBe(0);
+    expect(recordedDuration(7200, 3600)).toBe(3600);
+    expect(recordedDuration(100, null)).toBe(100);
+
+    const id = await createSession({ level: 'junior', mode: 'mock', subject: 'L11', scopeLabel: 't', competencyCodes: [], questionIds: [q.id], timeLimitSec: 60 });
+    const s = await submitSession(id, 7200);
+    expect(s?.durationSec).toBe(60);
+  });
+});
+
+describe('版本號', () => {
+  it('介面顯示的版本與 package.json 一致', async () => {
+    const { APP_VERSION } = await import('../../src/config/project');
+    const pkg = JSON.parse((await import('node:fs')).readFileSync('package.json', 'utf8')) as { version: string };
+    expect(APP_VERSION).toBe(pkg.version);
+    expect(APP_VERSION).toMatch(/^\d+\.\d+\.\d+$/);
+  });
+});

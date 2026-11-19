@@ -84,7 +84,8 @@ test('備份還原：匯出 → 雙重確認清除 → 匯入後紀錄恢復；�
   const file = info.outputPath('backup.json');
   await download.saveAs(file);
   const json = JSON.parse(readFileSync(file, 'utf8'));
-  expect(json.schemaVersion).toBe(2);
+  expect(json.schemaVersion).toBe(3);
+  expect(Array.isArray(json.data.studyTime)).toBe(true);
   expect(json.data.attempts.length).toBe(1);
 
   await page.getByRole('button', { name: /清除這台裝置/ }).click();
@@ -242,5 +243,43 @@ test('講義：顯示官方評鑑內容原文、回報錯誤連結；驗證測�
       await page.getByTestId('next').filter({ visible: true }).click();
       await expect(page.locator('#q-stem')).not.toHaveText(q.stem);
     }
+  }
+});
+
+test('限時模考：切到背景分頁時間照走，回到頁面已逾時就自動交卷', async ({ page }) => {
+  await page.clock.install();
+  await skipOnboarding(page);
+  await page.goto('./#/mock');
+  await expect(page.getByTestId('mock-timing-note')).toBeVisible();
+  await page.getByLabel('題數').fill('3');
+  await page.getByLabel('時間（分鐘）').fill('1');
+  await page.getByRole('button', { name: '開始模考' }).click();
+  await expect(page).toHaveURL(/#\/quiz\//);
+  // 模擬切到背景分頁：分頁不可見期間經過 90 秒
+  await page.evaluate(() => {
+    Object.defineProperty(document, 'visibilityState', { configurable: true, get: () => 'hidden' });
+    document.dispatchEvent(new Event('visibilitychange'));
+  });
+  await page.clock.fastForward(90_000);
+  await page.evaluate(() => {
+    Object.defineProperty(document, 'visibilityState', { configurable: true, get: () => 'visible' });
+    document.dispatchEvent(new Event('visibilitychange'));
+  });
+  await expect(page).toHaveURL(/#\/results\//);
+});
+
+test('介面顯示版本號 v1.0.0（桌面左下角；手機在功能選單）', async ({ page }) => {
+  await skipOnboarding(page);
+  await page.goto('./#/');
+  if (isMobile(page)) {
+    await page.getByRole('button', { name: '開啟功能選單' }).click();
+    await expect(page.getByTestId('app-version-mobile')).toHaveText('版本 v1.0.0');
+  } else {
+    const v = page.getByTestId('app-version');
+    await expect(v).toHaveText('版本 v1.0.0');
+    const box = (await v.boundingBox())!;
+    const vp = page.viewportSize()!;
+    expect(box.x).toBeLessThan(vp.width / 4);
+    expect(box.y).toBeGreaterThan(vp.height / 2);
   }
 });

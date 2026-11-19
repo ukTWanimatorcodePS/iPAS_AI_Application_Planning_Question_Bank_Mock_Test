@@ -1854,7 +1854,7 @@
     "session": null,
     "sourceUrl": null,
     "copyrightStatus": "original",
-    "stem": "中央極限定理指出，在樣本量足夠大時，下列何者的分佈會近似常態？",
+    "stem": "中央極限定理指出，在獨立抽樣、母體變異數有限且樣本量足夠大時，下列何者的分佈會近似常態？",
     "options": [
       {
         "id": "A",

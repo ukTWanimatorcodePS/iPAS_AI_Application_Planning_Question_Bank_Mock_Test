@@ -135,6 +135,18 @@ describe('題庫驗證器（validate:content）', () => {
     expect(run(code)).toEqual([]);
     expect(run(mismatch)[0]).toContain('與正確選項不一致');
   });
+
+  it('題目內容使用 LaTeX 公式時報錯（題目畫面不渲染公式；Codex 稽核 F3）', () => {
+    const q = allQuestions[0];
+    const run = (patch: Partial<typeof q>) =>
+      validateContent({ questions: [{ ...q, ...patch }], competencyCodes: new Set([q.competencyCode]), lessonHeadings: new Map(), registry: [] })
+        .map((i) => i.message)
+        .filter((m) => m.includes('LaTeX'));
+    expect(run({ stem: '將某欄位的數值以 $(x-\\min)/(\\max-\\min)$ 轉換' })).toHaveLength(1);
+    expect(run({ explanation: { ...q.explanation, summary: '約為 $1 - 1/e \\approx 63.2\\%$' } })).toHaveLength(1);
+    expect(run({ stem: '將某欄位的數值以「(x − 最小值) ÷ (最大值 − 最小值)」轉換' })).toEqual([]);
+    expect(run({ stem: '商品售價 $5 與 $6 的差' })).toEqual([]);
+  });
 });
 
 describe('講義', () => {

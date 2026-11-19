@@ -6,6 +6,7 @@ import type {
   CurriculumSource,
   TutorLog,
   LessonProgress,
+  StudyTimeLog,
   QuizSession,
   ReviewItem,
   UserSettings,
@@ -26,6 +27,7 @@ export class PrepDB extends Dexie {
   reviewItems!: Table<ReviewItem, string>;
   sources!: Table<CurriculumSource, string>;
   tutorLogs!: Table<TutorLog, number>;
+  studyTime!: Table<StudyTimeLog, string>;
 
   constructor(name = DB_NAME) {
     super(name);
@@ -48,6 +50,9 @@ export class PrepDB extends Dexie {
             s.examDate ??= { junior: null, middle: null };
           });
       });
+    // v3：新增講義閱讀時間的每日紀錄。舊版只有累計閱讀時間、無法還原每天讀了多久，因此不回填，
+    // 本週／本月統計只計入升級後的閱讀時間；累計值仍保留在 lessonProgress.timeSpentSec。
+    this.version(3).stores({ studyTime: 'key, date, level' });
   }
 }
 

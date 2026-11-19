@@ -2,12 +2,16 @@ import { describe, expect, it } from 'vitest';
 import { allQuestions, getQuestion } from '../../src/content';
 import type { AnswerAttempt, LessonProgress, ReviewItem } from '../../src/data/types';
 import { orderedCompetencies } from '../../src/lib/learningPath';
-import { dimensionStats, progressMetrics, weakestCompetencies } from '../../src/lib/stats';
+import { dimensionStats, planCompletion, progressMetrics, weakestCompetencies } from '../../src/lib/stats';
 import { buildStudyPlan, localDate, SPRINT_DAYS, UNIT_MINUTES } from '../../src/lib/studyPlan';
 
 const ordered = orderedCompetencies('junior', 'both');
 const settings = { restDays: [0, 6], dailyMinutes: { min: 60, max: 90 } };
 const monday = new Date(2026, 10, 23); // 2026-11-23（週一）
+
+const allDone = new Map<string, LessonProgress>(
+  ordered.map((c) => [c.code, { code: c.code, level: 'junior', visitedAt: '', completedAt: '2026-11-20T00:00:00Z', lastPosition: null, timeSpentSec: 0 }]),
+);
 
 describe('學習計畫', () => {
   it('有考試日期：計算倒數、學習日、衝刺期，並平均分配剩餘講義', () => {
@@ -33,7 +37,7 @@ describe('學習計畫', () => {
   });
 
   it('考前 14 天內進入衝刺：錯題、弱點、混合測驗或模考', () => {
-    const plan = buildStudyPlan({ settings, examDate: '2027-02-01', ordered, progress: new Map(), reviews: [], today: new Date(2027, 0, 19) });
+    const plan = buildStudyPlan({ settings, examDate: '2027-02-01', ordered, progress: allDone, reviews: [], today: new Date(2027, 0, 19) });
     const day = plan.days.find((d) => d.phase === 'sprint')!;
     expect(day.tasks.some((t) => t.kind === 'weak')).toBe(true);
     expect(day.tasks.some((t) => t.kind === 'mixed' || t.kind === 'mock')).toBe(true);
@@ -50,6 +54,34 @@ describe('學習計畫', () => {
     expect(plan.messages.join()).toContain('尚未設定考試日期');
     const first = plan.days[0].tasks.find((t) => t.kind === 'lesson');
     expect(first && 'code' in first ? first.code : null).toBe(ordered[1].code);
+  });
+
+  it('每日上限 30 分鐘時，選做任務不會讓當天超過上限，也不會把超額判為可行（Codex 稽核 F2）', () => {
+    const tight = { restDays: [], dailyMinutes: { min: 30, max: 30 } };
+    const plan = buildStudyPlan({ settings: tight, examDate: '2026-12-01', ordered, progress: allDone, reviews: [], today: monday });
+    for (const d of plan.days) expect(d.minutes, d.date).toBeLessThanOrEqual(30);
+    expect(plan.feasible).toBe(true);
+    // 衝刺任務依剩餘時間縮減題數，仍有安排
+    expect(plan.days[0].tasks.length).toBeGreaterThan(0);
+  });
+
+  it('必要任務（講義＋到期錯題）超過上限時標示不可行並說明', () => {
+    const r = (i: number): ReviewItem => {
+      const due = new Date(2026, 10, 20).toISOString();
+      return { questionId: `r-${i}`, level: 'junior', subject: 'L11', competencyCode: 'L11101', mistakeCount: 1, correctStreak: 0, intervalDays: 1, nextDueAt: due, masteryStatus: 'unresolved', reason: 'unknown', firstWrongAt: due, lastWrongAt: due, lastAnsweredAt: due };
+    };
+    const reviews = Array.from({ length: 40 }, (_, i) => r(i)); // 40 題 × 2 分 = 80 分
+    const plan = buildStudyPlan({ settings: { restDays: [], dailyMinutes: { min: 30, max: 60 } }, examDate: '2026-12-01', ordered, progress: allDone, reviews, today: monday });
+    expect(plan.days[0].minutes).toBe(80);
+    expect(plan.feasible).toBe(false);
+    expect(plan.messages.join()).toContain('必要任務');
+  });
+
+  it('一般設定下，每個學習日的總時間都不超過上限', () => {
+    for (const examDate of ['2027-02-01', '2026-12-20', null]) {
+      const plan = buildStudyPlan({ settings, examDate, ordered, progress: new Map(), reviews: [], today: monday, horizon: 21 });
+      for (const d of plan.days) expect(d.minutes, `${examDate} ${d.date}`).toBeLessThanOrEqual(settings.dailyMinutes.max);
+    }
   });
 
   it('今天的計畫包含所有已到期（含逾期）的錯題', () => {
@@ -110,5 +142,28 @@ describe('弱點分析與學習進度', () => {
     expect(m.trend).toHaveLength(14);
     expect(m.trend[13]).toMatchObject({ total: 2, correct: 1 });
     expect(m.trend[10]).toMatchObject({ total: 1, correct: 1 });
+  });
+});
+
+describe('本週／本月學習時間（Codex 稽核 F4）', () => {
+  const s = { restDays: [0, 6], dailyMinutes: { min: 60, max: 90 } } as never;
+  const now = new Date(2026, 10, 25, 20); // 週三
+
+  it('只計入本期內每日紀錄的閱讀時間，不把往期累計時間算進本週', () => {
+    // 往期在 10 月讀了 600 分鐘、本週只讀 5 分鐘
+    const studyTime = [
+      { date: '2026-10-05', seconds: 600 * 60 },
+      { date: '2026-11-25', seconds: 5 * 60 },
+    ];
+    const week = planCompletion('week', s, [], studyTime, now);
+    expect(week.actualMin).toBe(5);
+    expect(week.plannedMin).toBe(180); // 週一到週三 3 個學習日 × 60 分
+    const month = planCompletion('month', s, [], studyTime, now);
+    expect(month.actualMin).toBe(5);
+  });
+
+  it('本週一的紀錄計入本週，上週日的不計入', () => {
+    const week = planCompletion('week', s, [], [{ date: '2026-11-22', seconds: 3600 }, { date: '2026-11-23', seconds: 1800 }], now);
+    expect(week.actualMin).toBe(30);
   });
 });

@@ -7,7 +7,7 @@ import { getCompetency, getQuestion, getSubject } from '../content';
 import { judgeJunior, judgeMiddle, RULES_DISCLAIMER } from '../config/examRules';
 import { DIFFICULTY_LABEL, ORIGIN_LABEL, QTYPE_LABEL } from '../content/schema';
 import { downloadText, exportBackup, toCsv } from '../data/backup';
-import { useAttempts, useLessonProgress, useSessions } from '../data/hooks';
+import { useAttempts, useLessonProgress, useSessions, useStudyTime } from '../data/hooks';
 import { MODE_LABEL } from '../data/types';
 import { subjectsForTrack } from '../lib/learningPath';
 import { MIN_SAMPLE, competencyStats, dimensionStats, mostMissed, planCompletion, sessionPct, subjectStats } from '../lib/stats';
@@ -24,8 +24,9 @@ export default function StatsPage() {
   const missed = mostMissed(attempts);
   const quizTime = submitted.reduce((a, s) => a + s.durationSec, 0);
   const readTime = lessons.reduce((a, l) => a + l.timeSpentSec, 0);
-  const week = planCompletion('week', settings, sessions, lessons);
-  const month = planCompletion('month', settings, sessions, lessons);
+  const studyTime = useStudyTime(level) ?? [];
+  const week = planCompletion('week', settings, sessions, studyTime);
+  const month = planCompletion('month', settings, sessions, studyTime);
 
   const trend = submitted.slice(-20).map((s, i) => ({ name: `#${i + 1}`, score: sessionPct(s) ?? 0, label: s.scopeLabel }));
   const subjChart = subj.map((s) => ({ name: s.code, accuracy: s.accuracy ?? 0, insufficient: s.accuracy === null, total: s.total }));
@@ -212,7 +213,7 @@ export default function StatsPage() {
               </div>
             );
           })}
-          <p className="text-xs text-muted">計畫 = 可讀日 × 每日最少 {settings.dailyMinutes.min} 分；實際 = 講義閱讀 + 測驗作答時間（頁面可見時才計時）。</p>
+          <p className="text-xs text-muted">計畫 = 可讀日 × 每日最少 {settings.dailyMinutes.min} 分；實際 = 本期內的講義閱讀時間 + 本期交卷的測驗作答時間（講義頁面可見時才計時）。2026-11-19 版本前累積的講義閱讀時間沒有每日紀錄，只計入總閱讀時間，不計入本週／本月。</p>
         </section>
 
         <section className="card" aria-labelledby="st-missed">

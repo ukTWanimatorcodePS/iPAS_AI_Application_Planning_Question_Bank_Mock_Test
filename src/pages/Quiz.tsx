@@ -9,6 +9,7 @@ import { getQuestion } from '../content';
 import { useSession } from '../data/hooks';
 import { patchSession, revealQuestion, setAnswer, submitSession } from '../data/repo';
 import { MODE_LABEL, type QuizSession } from '../data/types';
+import { recordedDuration, wallElapsedSec } from '../lib/timer';
 
 function fmt(sec: number) {
   const s = Math.max(0, Math.round(sec));
@@ -39,8 +40,13 @@ function Runner({ session }: { session: QuizSession }) {
   const [confirmLeave, setConfirmLeave] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
   const [busy, setBusy] = useState(false);
-  const [elapsed, setElapsed] = useState(session.durationSec);
-  const elapsedRef = useRef(session.durationSec);
+  // 限時模考依實際經過時間（從開始時刻算起）計時：切到其他分頁、離開頁面或重新整理，時間都照走，不能暫停延長。
+  // 不限時的練習與測驗則只累計頁面可見的時間，作為學習時間統計。
+  const timed = session.timeLimitSec != null;
+  const startMs = Date.parse(session.startAt);
+  const initialElapsed = timed ? Math.max(session.durationSec, wallElapsedSec(startMs)) : session.durationSec;
+  const [elapsed, setElapsed] = useState(initialElapsed);
+  const elapsedRef = useRef(initialElapsed);
   const qStart = useRef(Date.now());
   const submitting = useRef(false);
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -58,23 +64,34 @@ function Runner({ session }: { session: QuizSession }) {
     if (submitting.current) return; // 防止重複交卷
     submitting.current = true;
     setBusy(true);
-    await submitSession(session.sessionId, elapsedRef.current);
+    await submitSession(session.sessionId, recordedDuration(elapsedRef.current, session.timeLimitSec));
     nav(`/results/${session.sessionId}`, { replace: true });
-  }, [nav, session.sessionId]);
+  }, [nav, session.sessionId, session.timeLimitSec]);
 
-  // 計時：只在頁面可見時累計，每 10 秒寫回
+  // 計時：限時模考依實際時間；其他模式只在頁面可見時累計。每 10 秒寫回
   useEffect(() => {
-    const t = setInterval(() => {
-      if (document.visibilityState !== 'visible') return;
-      elapsedRef.current += 1;
+    const tick = () => {
+      if (timed) {
+        elapsedRef.current = Math.max(elapsedRef.current, wallElapsedSec(startMs));
+      } else {
+        if (document.visibilityState !== 'visible') return;
+        elapsedRef.current += 1;
+      }
       setElapsed(elapsedRef.current);
       if (elapsedRef.current % 10 === 0) patchSession(session.sessionId, { durationSec: elapsedRef.current });
-    }, 1000);
+    };
+    const t = setInterval(tick, 1000);
+    // 回到分頁時立即重算，到期就馬上交卷（背景分頁的計時器可能被瀏覽器延後）
+    const onVisible = () => {
+      if (timed && document.visibilityState === 'visible') tick();
+    };
+    document.addEventListener('visibilitychange', onVisible);
     return () => {
       clearInterval(t);
+      document.removeEventListener('visibilitychange', onVisible);
       patchSession(session.sessionId, { durationSec: elapsedRef.current });
     };
-  }, [session.sessionId]);
+  }, [session.sessionId, timed, startMs]);
 
   // 模考時間到自動交卷
   useEffect(() => {

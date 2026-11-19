@@ -1,4 +1,4 @@
-import { questionsFor, getQuestion } from '../content';
+import { questionsFor, getReleasedQuestion } from '../content';
 import type { Level, Question, SubjectCode } from '../content/schema';
 import { buildQuiz } from '../lib/quizBuilder';
 import { isDue } from '../lib/review';
@@ -85,7 +85,8 @@ export async function startReviewQuiz(level: Level, questionIds?: string[]): Pro
     const items = await db.reviewItems.where('level').equals(level).toArray();
     ids = items.filter((r) => r.masteryStatus === 'unresolved' || isDue(r)).map((r) => r.questionId);
   }
-  ids = ids.filter((id) => getQuestion(id));
+  // 只出仍釋出且屬於本級別的題目；停用（retired）的題目保留歷史紀錄，但不再出題
+  ids = ids.filter((id) => getReleasedQuestion(id)?.level === level);
   if (!ids.length) return { ok: false, message: '目前沒有到期或待訂正的錯題。' };
   const sessionId = await createSession({
     level,
