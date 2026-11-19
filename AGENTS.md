@@ -17,7 +17,8 @@
 - 不可修改 IndexedDB 既有版本定義；資料結構變更請新增 Dexie version 與 migration，並維持備份檔向下相容。
 - 前端不可放任何 API 金鑰（AI 導師說明見 `docs/AI_TUTOR.md`）。
 - 報告中的數字與覆蓋範圍，請以實際指令輸出為準，並分開列出結構檢查、程式執行驗證與內容審閱。
-- 官方評鑑範圍改版時，更新 `curriculum.json` 的 `officialScope`（逐字）與 `scopeTerms`；測試會檢查官方點名的文件、工具與方法都出現在對應講義。
+- 官方評鑑範圍改版時，更新 `curriculum.json` 的 `officialScope`（逐字）與 `scopeTerms`，並更新 `docs/SCOPE_COVERAGE.md`；測試要求每個有官方內容的細項都設定 `scopeTerms`，且關鍵字都出現在對應講義。
+- 階段性完成或複查後，更新 `docs/PROGRESS.md`；使用者看得到的變更寫進 `CHANGELOG.md`。
 - 參考外部（非官方）網站時只參考做法，內容一律回到官方或原始文件查證後自行撰寫，不複製文字。
 
 ## 提交前檢查

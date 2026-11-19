@@ -138,7 +138,7 @@ describe('設定寫入', () => {
   });
 });
 
-describe('驗證測驗（只出未作答題目）', () => {
+describe('驗證測驗（只出未看過的題目）', () => {
   it('排除已作答的題目；全部作答過時不建立測驗', async () => {
     const { startQuiz } = await import('../../src/data/quizFactory');
     const comp = q.competencyCode;
@@ -160,6 +160,49 @@ describe('驗證測驗（只出未作答題目）', () => {
     await submitSession(s2, 10);
     const none = await startQuiz({ level: 'junior', mode: 'test', count: 5, competencyCodes: [comp], unseenOnly: true });
     expect(none.ok).toBe(false);
+  });
+
+  it('交白卷後看過解析的題目也排除；未交卷的測驗題目不算看過', async () => {
+    const { startQuiz, exposedQuestionIds } = await import('../../src/data/quizFactory');
+    const comp = q.competencyCode;
+    const pool = allQuestions.filter((x) => x.competencyCode === comp && x.reviewStatus !== 'retired');
+    // 交白卷：不寫入作答紀錄，但結果頁會顯示解析
+    const blank = await makeSession('test', [pool[0].id, pool[1].id]);
+    await submitSession(blank, 5);
+    expect(await db.attempts.count()).toBe(0);
+    // 練習模式已顯示解析
+    const prac = await makeSession('practice', [pool[2].id]);
+    await setAnswer(prac, pool[2].id, [pool[2].correctOptionIds[0]]);
+    await revealQuestion(prac, pool[2].id, 1000);
+    // 未交卷的測驗：已選答案但尚未看到答案
+    const open = await makeSession('test', [pool[3].id]);
+    await setAnswer(open, pool[3].id, [pool[3].correctOptionIds[0]]);
+
+    const seen = await exposedQuestionIds('junior');
+    expect([...seen].sort()).toEqual([pool[0].id, pool[1].id, pool[2].id].sort());
+
+    const r = await startQuiz({ level: 'junior', mode: 'test', count: 50, competencyCodes: [comp], unseenOnly: true });
+    expect(r.ok).toBe(true);
+    if (!r.ok) return;
+    const ids = (await db.quizSessions.get(r.sessionId))!.questionIds;
+    for (const x of pool.slice(0, 3)) expect(ids).not.toContain(x.id);
+    expect(ids).toContain(pool[3].id);
+  });
+
+  it('AI 導師已提交的補強題也算看過', async () => {
+    const { exposedQuestionIds } = await import('../../src/data/quizFactory');
+    const other = allQuestions.find((x) => x.level === 'junior' && x.id !== q.id)!;
+    await db.tutorLogs.add({
+      questionId: q.id,
+      competencyCode: q.competencyCode,
+      level: 'junior',
+      provider: 'mock',
+      modes: [],
+      reinforcementQuestionId: other.id,
+      reinforcementCorrect: true,
+      at: new Date().toISOString(),
+    });
+    expect((await exposedQuestionIds('junior')).has(other.id)).toBe(true);
   });
 });
 

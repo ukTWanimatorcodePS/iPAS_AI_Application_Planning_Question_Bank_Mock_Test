@@ -16,6 +16,29 @@ async function history(level: Level) {
   return { attempted, wrong };
 }
 
+/**
+ * 已看過答案或解析的題目（驗證測驗要排除）：
+ * - 有作答紀錄的題目
+ * - 練習模式中已顯示解析的題目（revealed）
+ * - 已交卷測驗中的所有題目：結果頁會顯示每題解析，包含交白卷、未作答的題目
+ * - AI 導師中已提交的補強題
+ * 未交卷的測驗模式題目尚未顯示答案，不算看過。
+ */
+export async function exposedQuestionIds(level: Level): Promise<Set<string>> {
+  const [attempts, sessions, tutorLogs] = await Promise.all([
+    db.attempts.where('level').equals(level).toArray(),
+    db.quizSessions.where('level').equals(level).toArray(),
+    db.tutorLogs.where('level').equals(level).toArray(),
+  ]);
+  const seen = new Set(attempts.map((a) => a.questionId));
+  for (const s of sessions) {
+    s.revealed.forEach((id) => seen.add(id));
+    if (s.submittedAt) s.questionIds.forEach((id) => seen.add(id));
+  }
+  for (const t of tutorLogs) if (t.reinforcementQuestionId && t.reinforcementCorrect !== null) seen.add(t.reinforcementQuestionId);
+  return seen;
+}
+
 export async function startQuiz(opts: {
   level: Level;
   mode: QuizMode;
@@ -25,7 +48,7 @@ export async function startQuiz(opts: {
   origins?: Question['origin'][];
   scopeLabel?: string;
   timeLimitSec?: number | null;
-  /** 只出從未作答過的題目（驗證測驗：確認真的懂，而不是記住答案） */
+  /** 只出從未看過答案或解析的題目（驗證測驗：確認真的懂，而不是記住答案） */
   unseenOnly?: boolean;
 }): Promise<StartResult> {
   let pool = questionsFor({ level: opts.level });
@@ -36,9 +59,10 @@ export async function startQuiz(opts: {
 
   const { attempted, wrong } = await history(opts.level);
   if (opts.unseenOnly) {
-    pool = pool.filter((q) => !attempted.has(q.id));
+    const exposed = await exposedQuestionIds(opts.level);
+    pool = pool.filter((q) => !exposed.has(q.id));
     if (pool.length === 0)
-      return { ok: false, message: '本範圍的題目你都已經作答過，沒有可用於驗證的新題目。可改用錯題重測，或到其他單元練習。' };
+      return { ok: false, message: '本範圍的題目你都已經作答過或看過解析，沒有可用於驗證的新題目。可改用錯題重測，或到其他單元練習。' };
   }
   const built = buildQuiz(pool, opts.count, { attemptedIds: attempted, wrongIds: wrong });
   const subject = opts.subjects?.length === 1 ? opts.subjects[0] : opts.competencyCodes?.length ? (pool[0].subject as SubjectCode) : null;

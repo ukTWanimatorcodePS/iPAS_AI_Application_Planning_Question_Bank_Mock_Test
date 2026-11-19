@@ -173,6 +173,12 @@ describe('官方評鑑內容（115.06）', () => {
     expect(blank).toEqual(['L11101', 'L11203', 'L21101', 'L21102', 'L21103', 'L22103', 'L22203', 'L23301']);
   });
 
+  it('每個有官方評鑑內容的細項都設定覆蓋關鍵字；官方留白者不設定', () => {
+    const noTerms = allCompetencies().filter((c) => c.officialScope !== null && c.scopeTerms.length === 0).map((c) => c.code);
+    expect(noTerms, `有官方評鑑內容但未設定 scopeTerms：${noTerms.join('、')}`).toEqual([]);
+    for (const c of allCompetencies()) if (c.officialScope === null) expect(c.scopeTerms, c.code).toEqual([]);
+  });
+
   it('官方點名的文件、工具與方法都出現在對應講義中', async () => {
     const missing: string[] = [];
     for (const c of allCompetencies()) {

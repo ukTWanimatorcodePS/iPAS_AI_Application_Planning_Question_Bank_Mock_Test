@@ -209,7 +209,7 @@ test('模擬考：顯示 115 年官方題數與時間並可一鍵套用，仍標
   await expect(page.getByTestId('official-format')).toHaveText('L21：單選題 50 題／90 分鐘');
 });
 
-test('講義：顯示官方評鑑內容原文、回報錯誤連結；驗證測驗只出沒做過的題目', async ({ page }) => {
+test('講義：顯示官方評鑑內容原文、回報錯誤連結；驗證測驗只出沒看過的題目', async ({ page }) => {
   await skipOnboarding(page);
   await page.goto('./#/courses/L11102');
   const scope = page.getByTestId('official-scope');

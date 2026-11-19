@@ -79,7 +79,11 @@
                   "code": "L11301",
                   "name": "機器學習基本原理",
                   "officialScope": "如機器學習基本原理與目的、模型訓練與泛化機制概念等",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "目的",
+                    "模型訓練",
+                    "泛化"
+                  ]
                 },
                 {
                   "code": "L11302",
@@ -104,7 +108,12 @@
                   "code": "L11401",
                   "name": "鑑別式 AI 與生成式 AI 的基本原理",
                   "officialScope": "基本原理、運用技術測試與驗證、目的與特性、模型部署與效能管理等",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "測試",
+                    "驗證",
+                    "部署",
+                    "效能管理"
+                  ]
                 },
                 {
                   "code": "L11402",
@@ -132,13 +141,19 @@
                   "code": "L12101",
                   "name": "No Code / Low Code 的基本概念",
                   "officialScope": "No code / Low code 工具本身的基本認知與基礎概念",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "No Code|無程式碼",
+                    "Low Code|低程式碼"
+                  ]
                 },
                 {
                   "code": "L12102",
                   "name": "No Code / Low Code 的優勢與限制",
                   "officialScope": "No code / Low code 一般基本的理論知識與實際在各場域應用的情況",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "優勢",
+                    "限制"
+                  ]
                 }
               ]
             },
@@ -191,13 +206,25 @@
                   "code": "L12302",
                   "name": "生成式 AI 導入規劃",
                   "officialScope": "如目標設置、資源分配、導入策略、因應措施、測試等",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "目標",
+                    "資源分配",
+                    "導入策略",
+                    "因應措施",
+                    "測試"
+                  ]
                 },
                 {
                   "code": "L12303",
                   "name": "生成式 AI 風險管理",
                   "officialScope": "如生成式 AI 倫理風險、資料安全隱私與合規性、風險影響等",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "倫理",
+                    "資料安全",
+                    "隱私",
+                    "合規",
+                    "風險影響|影響程度"
+                  ]
                 }
               ]
             }
@@ -240,7 +267,11 @@
                   "code": "L21104",
                   "name": "多模態人工智慧應用",
                   "officialScope": "如文字、圖像、聲音等",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "文字",
+                    "圖像|影像",
+                    "聲音|語音"
+                  ]
                 }
               ]
             },
@@ -252,13 +283,22 @@
                   "code": "L21201",
                   "name": "AI 導入評估",
                   "officialScope": "如技術或工具效能評估、適用解決方案選擇、成本效益分析等",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "效能評估",
+                    "解決方案",
+                    "成本效益"
+                  ]
                 },
                 {
                   "code": "L21202",
                   "name": "AI 導入規劃",
                   "officialScope": "如需求分析、技術應用方案設計、目標設置、資源分配等",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "需求分析",
+                    "方案設計",
+                    "目標設置",
+                    "資源分配"
+                  ]
                 },
                 {
                   "code": "L21203",
@@ -278,7 +318,12 @@
                   "code": "L21301",
                   "name": "數據準備與模型選擇",
                   "officialScope": "如數據收集、數據清洗與預處理、特徵工程、不同模型的優缺點等",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "數據收集",
+                    "預處理",
+                    "特徵工程",
+                    "優缺點"
+                  ]
                 },
                 {
                   "code": "L21302",
@@ -306,13 +351,22 @@
                   "code": "L22101",
                   "name": "敘述性統計與資料摘要技術",
                   "officialScope": "如數據的集中趨勢、離散程度與分佈型態、數據清理與剖析等",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "集中趨勢",
+                    "離散程度",
+                    "偏態|分佈型態",
+                    "數據清理",
+                    "剖析|profiling"
+                  ]
                 },
                 {
                   "code": "L22102",
                   "name": "機率分佈與資料分佈模型",
                   "officialScope": "如機率理論模型與分佈特性等",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "機率",
+                    "分佈"
+                  ]
                 },
                 {
                   "code": "L22103",
@@ -330,13 +384,20 @@
                   "code": "L22201",
                   "name": "數據收集與清理",
                   "officialScope": "如數據預處理、特徵提取等",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "預處理",
+                    "特徵提取"
+                  ]
                 },
                 {
                   "code": "L22202",
                   "name": "數據儲存與管理",
                   "officialScope": "如資料庫架構、儲存機制、模型訓練等",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "資料庫",
+                    "儲存機制",
+                    "模型訓練"
+                  ]
                 },
                 {
                   "code": "L22203",
@@ -354,7 +415,12 @@
                   "code": "L22301",
                   "name": "統計學在大數據中的應用",
                   "officialScope": "如數據轉換、縮放與分佈調整、特徵工程等",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "數據轉換",
+                    "縮放",
+                    "分佈調整",
+                    "特徵工程"
+                  ]
                 },
                 {
                   "code": "L22302",
@@ -368,7 +434,11 @@
                   "code": "L22303",
                   "name": "數據可視化工具",
                   "officialScope": "如資訊呈現的原則、圖表類型的選擇以及視覺化效能等",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "原則",
+                    "圖表",
+                    "視覺化效能"
+                  ]
                 }
               ]
             },
@@ -380,25 +450,40 @@
                   "code": "L22401",
                   "name": "大數據與機器學習",
                   "officialScope": "如大數據特性對機器學習演算法產生的底層影響與挑戰等",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "Volume",
+                    "Velocity",
+                    "Variety",
+                    "挑戰"
+                  ]
                 },
                 {
                   "code": "L22402",
                   "name": "大數據在鑑別式 AI 中的應用",
                   "officialScope": "如大數據應用於預測、分類等鑑別式任務等",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "預測",
+                    "分類"
+                  ]
                 },
                 {
                   "code": "L22403",
                   "name": "大數據在生成式 AI 中的應用",
                   "officialScope": "如生成式模型在處理大規模語料時的技術需求等",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "語料",
+                    "技術需求",
+                    "GPU"
+                  ]
                 },
                 {
                   "code": "L22404",
                   "name": "大數據隱私保護、安全與合規",
                   "officialScope": "如數據的安全性與法律合規技術等",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "安全",
+                    "合規"
+                  ]
                 }
               ]
             }
@@ -417,21 +502,29 @@
                   "code": "L23101",
                   "name": "機率／統計之機器學習基礎應用",
                   "officialScope": "如數據的數學分佈特性、變異解釋等",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "分佈|分布",
+                    "變異解釋|解釋變異"
+                  ]
                 },
                 {
                   "code": "L23102",
                   "name": "線性代數之機器學習基礎應用",
                   "officialScope": "如特徵提取、資料降維與壓縮等",
                   "scopeTerms": [
-                    "降維"
+                    "特徵提取",
+                    "降維",
+                    "壓縮"
                   ]
                 },
                 {
                   "code": "L23103",
                   "name": "數值優化技術與方法",
                   "officialScope": "如演算法效率與可擴展性評估等",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "效率",
+                    "可擴展性"
+                  ]
                 }
               ]
             },
@@ -443,19 +536,29 @@
                   "code": "L23201",
                   "name": "機器學習原理與技術",
                   "officialScope": "如機器學習的基礎理論、機率推論與模擬驗證技術等",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "基礎理論",
+                    "機率推論",
+                    "模擬"
+                  ]
                 },
                 {
                   "code": "L23202",
                   "name": "常見機器學習演算法",
                   "officialScope": "如演算法技術原理、應用與優化等",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "超參數",
+                    "優化"
+                  ]
                 },
                 {
                   "code": "L23203",
                   "name": "深度學習原理與框架",
                   "officialScope": "如類神經網路架構、層級運算機制與模型效能分析等",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "神經網路|類神經",
+                    "效能分析"
+                  ]
                 }
               ]
             },
@@ -473,19 +576,29 @@
                   "code": "L23302",
                   "name": "模型選擇與架構設計",
                   "officialScope": "如模型架構的定義、層級設定以及訓練前的核心配置",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "架構",
+                    "核心配置"
+                  ]
                 },
                 {
                   "code": "L23303",
                   "name": "模型訓練、評估與驗證",
                   "officialScope": "如模型訓練、模型的泛化能力與穩定性評估等",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "泛化",
+                    "穩定性"
+                  ]
                 },
                 {
                   "code": "L23304",
                   "name": "模型調整與優化",
                   "officialScope": "如模型訓練過程參數調整策略、優化控制與效能提升策略等",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "超參數",
+                    "優化",
+                    "效能提升"
+                  ]
                 }
               ]
             },
@@ -497,13 +610,21 @@
                   "code": "L23401",
                   "name": "數據隱私、安全與合規",
                   "officialScope": "如資料安全性、隱私保護以及符合法規要求等",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "資料安全|安全",
+                    "隱私",
+                    "法規"
+                  ]
                 },
                 {
                   "code": "L23402",
                   "name": "演算法偏見與公平性",
                   "officialScope": "如識別資料或模型中潛在的偏誤來源與調整策略等",
-                  "scopeTerms": []
+                  "scopeTerms": [
+                    "偏誤|偏見",
+                    "來源",
+                    "緩解|調整"
+                  ]
                 }
               ]
             }

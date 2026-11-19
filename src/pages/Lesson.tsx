@@ -147,7 +147,7 @@ function Lesson({ code }: { code: string }) {
     nav(`/quiz/${r.sessionId}`);
   };
 
-  /** 驗證測驗：只出沒作答過的題目、測驗模式（交卷前不顯示答案） */
+  /** 驗證測驗：只出沒看過答案或解析的題目、測驗模式（交卷前不顯示答案） */
   const verify = async () => {
     if (busy) return;
     setBusy(true);
@@ -157,7 +157,7 @@ function Lesson({ code }: { code: string }) {
       count: VERIFY_COUNT,
       competencyCodes: [code],
       unseenOnly: true,
-      scopeLabel: `${code} 驗證測驗（未作答題目）`,
+      scopeLabel: `${code} 驗證測驗（未看過的題目）`,
     });
     setBusy(false);
     if (!r.ok) return setMsg(r.message);
@@ -348,12 +348,12 @@ function Lesson({ code }: { code: string }) {
               </button>
             ))}
             <button type="button" className="btn btn-secondary" disabled={!qCount || busy} onClick={verify} data-testid="start-verify">
-              <CheckCircle2 size={16} /> 驗證 {VERIFY_COUNT} 題（只出沒做過的題目）
+              <CheckCircle2 size={16} /> 驗證 {VERIFY_COUNT} 題（只出沒看過的題目）
             </button>
           </div>
           {qCount > 0 && (
             <p className="mt-2 text-xs text-muted">
-              驗證測驗採測驗模式、交卷前不顯示答案，題目全部是你還沒作答過的，用來確認真的理解，而不是記住答案；沒做過的題目不足 {VERIFY_COUNT} 題時，只出剩下的題目。
+              驗證測驗採測驗模式、交卷前不顯示答案，題目全部是你還沒作答、也沒看過解析的（交白卷後看過解析的題目也會排除），用來確認真的理解，而不是記住答案；沒看過的題目不足 {VERIFY_COUNT} 題時，只出剩下的題目。
             </p>
           )}
         </section>
