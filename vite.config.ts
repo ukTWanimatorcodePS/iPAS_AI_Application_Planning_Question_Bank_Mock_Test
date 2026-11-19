@@ -19,7 +19,8 @@ export default defineConfig({
   base: resolveBase(),
   plugins: [react(), tailwindcss()],
   build: {
-    chunkSizeWarningLimit: 700,
+    // 最大的是中級題庫資料 chunk（約 710 kB、gzip 約 155 kB，依級別延遲載入）；A1 改寫讓誘答變長後超過原本的 700
+    chunkSizeWarningLimit: 900,
     rolldownOptions: {
       output: {
         // 題庫依級別獨立成 chunk：題庫更新時，App 主程式的快取不受影響

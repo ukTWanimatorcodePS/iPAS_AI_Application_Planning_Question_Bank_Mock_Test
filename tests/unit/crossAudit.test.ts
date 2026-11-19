@@ -209,3 +209,13 @@ describe('B2 舊版驗證測驗紀錄（Codex 複查 8892cb5）', () => {
     expect(r.ok && r.backup.data.quizSessions[0].unseenOnly).toBeFalsy();
   });
 });
+
+describe('B3 每日分鐘快速連續修改（E2E 發現的競態）', () => {
+  it('同時修改最少與最多，兩欄都保留；normalize 會對調顛倒的值', async () => {
+    const { updateDailyMinutes, getSettings } = await import('../../src/data/repo');
+    await Promise.all([updateDailyMinutes({ max: 30 }), updateDailyMinutes({ min: 120 })]);
+    expect((await getSettings()).dailyMinutes).toEqual({ min: 120, max: 30 });
+    await updateDailyMinutes('normalize');
+    expect((await getSettings()).dailyMinutes).toEqual({ min: 30, max: 120 });
+  });
+});

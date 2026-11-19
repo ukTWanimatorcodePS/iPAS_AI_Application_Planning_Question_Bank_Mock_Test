@@ -5,7 +5,7 @@ import { CardHead, ConfirmDialog, PageHead } from '../components/ui';
 import { curriculum } from '../content';
 import { activeRules, RULES_DISCLAIMER } from '../config/examRules';
 import { downloadText, exportBackup, parseBackup, restoreBackup, type Backup } from '../data/backup';
-import { clearAllData } from '../data/repo';
+import { clearAllData, updateDailyMinutes } from '../data/repo';
 import { ensureInitialized } from '../data/db';
 import type { ThemePref, Track } from '../data/types';
 import { sanitizeIntervals } from '../lib/review';
@@ -16,10 +16,7 @@ const WEEK = ['日', '一', '二', '三', '四', '五', '六'];
 export function SettingsPage() {
   const { settings, update } = useApp();
   // 每日最少大於最多時自動對調（與首次設定的處理一致），避免學習計畫的預算自相矛盾
-  const normalizeMinutes = () => {
-    const { min, max } = settings.dailyMinutes;
-    if (min > max) update({ dailyMinutes: { min: max, max: min } });
-  };
+  const normalizeMinutes = () => updateDailyMinutes('normalize');
   const fileRef = useRef<HTMLInputElement>(null);
   const [pending, setPending] = useState<Backup | null>(null);
   const [clearStep, setClearStep] = useState(0);
@@ -108,11 +105,11 @@ export function SettingsPage() {
             <div className="grid grid-cols-2 gap-3">
               <label className="text-sm">
                 <span className="mb-1 block font-bold">每日最少（分）</span>
-                <input className="field" type="number" min={0} max={600} value={settings.dailyMinutes.min} onChange={(e) => update({ dailyMinutes: { ...settings.dailyMinutes, min: Math.max(0, Number(e.target.value)) } })} onBlur={normalizeMinutes} aria-describedby="minutes-hint" />
+                <input className="field" type="number" min={0} max={600} value={settings.dailyMinutes.min} onChange={(e) => updateDailyMinutes({ min: Math.max(0, Number(e.target.value)) })} onBlur={normalizeMinutes} aria-describedby="minutes-hint" />
               </label>
               <label className="text-sm">
                 <span className="mb-1 block font-bold">每日最多（分）</span>
-                <input className="field" type="number" min={0} max={600} value={settings.dailyMinutes.max} onChange={(e) => update({ dailyMinutes: { ...settings.dailyMinutes, max: Math.max(0, Number(e.target.value)) } })} onBlur={normalizeMinutes} aria-describedby="minutes-hint" />
+                <input className="field" type="number" min={0} max={600} value={settings.dailyMinutes.max} onChange={(e) => updateDailyMinutes({ max: Math.max(0, Number(e.target.value)) })} onBlur={normalizeMinutes} aria-describedby="minutes-hint" />
               </label>
             </div>
             {settings.dailyMinutes.min > settings.dailyMinutes.max && (

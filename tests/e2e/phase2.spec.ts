@@ -320,11 +320,22 @@ test('設定：每日最少大於最多時提示，離開欄位後自動對調�
   await page.goto('./#/settings');
   const min = page.getByLabel('每日最少（分）');
   const max = page.getByLabel('每日最多（分）');
+  // 預設 60／90。最多改成 30 並離開欄位 → 60 > 30，自動對調為 30／60
   await max.fill('30');
+  await expect(page.getByTestId('minutes-invalid')).toBeVisible();
+  await max.blur();
+  await expect(min).toHaveValue('30');
+  await expect(max).toHaveValue('60');
+  await expect(page.getByTestId('minutes-invalid')).toBeHidden();
+  // 最少改成 120（大於最多 60）→ 提示；離開欄位後對調為 60／120
   await min.fill('120');
   await expect(page.getByTestId('minutes-invalid')).toBeVisible();
   await min.blur();
-  await expect(min).toHaveValue('30');
+  await expect(min).toHaveValue('60');
   await expect(max).toHaveValue('120');
   await expect(page.getByTestId('minutes-invalid')).toBeHidden();
+  // 重新整理後仍保留
+  await page.reload();
+  await expect(min).toHaveValue('60');
+  await expect(max).toHaveValue('120');
 });

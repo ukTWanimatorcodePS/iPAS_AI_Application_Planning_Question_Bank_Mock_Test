@@ -28,6 +28,19 @@ export async function updateSettings(patch: Partial<UserSettings>): Promise<void
   });
 }
 
+/**
+ * 只更新每日分鐘的其中一欄（或對調）：在同一個交易中讀取目前值再合併。
+ * 畫面上的設定值可能還是舊的，若以畫面值展開整個 dailyMinutes，快速連續修改兩欄時，後一筆會把前一筆蓋回去。
+ */
+export async function updateDailyMinutes(patch: Partial<UserSettings['dailyMinutes']> | 'normalize'): Promise<void> {
+  await db.transaction('rw', db.settings, async () => {
+    const cur = await getSettings();
+    let next = { ...cur.dailyMinutes, ...(patch === 'normalize' ? {} : patch) };
+    if (patch === 'normalize' && next.min > next.max) next = { min: next.max, max: next.min };
+    await db.settings.put({ ...cur, dailyMinutes: next, id: 'user', updatedAt: nowIso() });
+  });
+}
+
 /* ---------- 講義進度 ---------- */
 export async function touchLesson(code: string, level: Level): Promise<void> {
   const cur = await db.lessonProgress.get(code);
