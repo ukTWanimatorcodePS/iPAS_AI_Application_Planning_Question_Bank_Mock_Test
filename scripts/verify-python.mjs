@@ -135,7 +135,10 @@ for (const q of questions) {
   const r = await runner.run(q.code);
   const out = r.out.replace(/\r\n/g, '\n').trim();
   const expected = q.verification.expectedStdout.trim();
-  if (r.ok && out === expected) {
+  // 也比對正確選項：輸出正確但正解選項寫錯時，單獨執行本腳本同樣要失敗
+  const correctText = q.options.find((o) => q.correctOptionIds.includes(o.id))?.text.trim();
+  if (r.ok && out === expected && correctText !== expected) r.error = `正確選項「${correctText}」與預期輸出不一致`;
+  if (r.ok && out === expected && correctText === expected) {
     pass++;
     console.log(`✔ ${q.id} → ${out}`);
     if (stamp) Object.assign(q.verification, { status: 'verified', runtime: runner.runtime, packages: r.versions, verifiedAt: today });

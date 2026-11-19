@@ -2007,7 +2007,7 @@
       "correctRationale": "最小 10、最大 30：(10−10)/20 = 0、(20−10)/20 = 0.5、(30−10)/20 = 1.0。",
       "optionRationales": {
         "A": "這是原始資料。",
-        "B": "這是標準化（Z 分數）常見的結果形態，不是 Min-Max 預設範圍。",
+        "B": "這是以樣本標準差 10 標準化的結果（(x − 20) ÷ 10）；StandardScaler 以母體標準差計算會得到約 ±1.22，兩者都不是 Min-Max 縮放。",
         "C": "這是除以最大值的結果。",
         "D": "正確。最小 10、最大 30：(10−10)/20 = 0、(20−10)/20 = 0.5、(30−10)/20 = 1.0。"
       },
@@ -3135,7 +3135,7 @@
     "session": null,
     "sourceUrl": null,
     "copyrightStatus": "original",
-    "stem": "下列程式以 GridSearchCV 搜尋超參數，執行後輸出為何？",
+    "stem": "下列程式計算 GridSearchCV 在交叉驗證階段的擬合次數，執行後輸出為何？",
     "code": "from sklearn.datasets import load_iris\nfrom sklearn.model_selection import GridSearchCV\nfrom sklearn.svm import SVC\n\nX, y = load_iris(return_X_y=True)\ngrid = {'C': [0.1, 1], 'kernel': ['linear', 'rbf']}\ngs = GridSearchCV(SVC(), grid, cv=3).fit(X, y)\nn_fits = len(gs.cv_results_['params']) * 3\nprint(n_fits)",
     "codeLanguage": "python",
     "verification": {
@@ -3151,13 +3151,13 @@
     "codeWalkthrough": [
       "C 有 2 個值、kernel 有 2 個值，共 4 組。",
       "`cv_results_['params']` 長度為 4。",
-      "每組做 3 折交叉驗證。",
-      "4 × 3 = 12，輸出 `12`。"
+      "每組做 3 折交叉驗證，交叉驗證階段共 4 × 3 = 12 次擬合。",
+      "程式印出 `12`。另外，預設 refit=True 會再以最佳參數訓練 1 次，因此實際總擬合次數為 13。"
     ],
     "options": [
       {
         "id": "A",
-        "text": "7"
+        "text": "13"
       },
       {
         "id": "B",
@@ -3176,15 +3176,15 @@
       "D"
     ],
     "explanation": {
-      "summary": "網格搜尋的總擬合次數 = 參數組合數 × 折數。",
-      "correctRationale": "2 個 C 值 × 2 個 kernel = 4 種組合，3 折交叉驗證，共 12 次擬合。",
+      "summary": "交叉驗證階段的擬合次數 = 參數組合數 × 折數；預設 refit=True 時，最後還會以最佳參數在全部資料上重新訓練 1 次。",
+      "correctRationale": "2 個 C 值 × 2 個 kernel = 4 種組合，3 折交叉驗證，交叉驗證階段共 12 次擬合（不含最後的 refit）。",
       "optionRationales": {
-        "A": "7 是組合數與折數相加。",
+        "A": "13 是再加上預設 refit=True 時，以最佳參數在全部資料重訓的 1 次；但程式只計算交叉驗證階段的擬合次數。",
         "B": "4 只是參數組合數。",
         "C": "3 只是折數。",
-        "D": "正確。2 個 C 值 × 2 個 kernel = 4 種組合，3 折交叉驗證，共 12 次擬合。"
+        "D": "正確。2 個 C 值 × 2 個 kernel = 4 種組合，3 折交叉驗證，交叉驗證階段共 12 次擬合（不含最後的 refit）。"
       },
-      "commonTrap": "忘記交叉驗證的折數會乘上組合數。",
+      "commonTrap": "忘記交叉驗證的折數要乘上組合數，或忽略 refit 會另外再訓練 1 次。",
       "lessonAnchor": "L23304"
     },
     "difficulty": 2,
