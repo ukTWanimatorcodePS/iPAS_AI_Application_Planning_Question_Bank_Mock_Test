@@ -1,0 +1,62 @@
+{
+  "range": {
+    "questions": 201,
+    "removedOptions": 227,
+    "removedQuestions": 138
+  },
+  "A2": {
+    "questions": 120,
+    "removedOptions": 204,
+    "removedQuestions": 120
+  },
+  "A2Baseline": {
+    "total": 835,
+    "strictlyLongestPct": 17.8,
+    "avgLengthRatio": 1.05,
+    "longestStrategyPct": 28.9,
+    "ratioAtLeast2": 2,
+    "absoluteInDistractors": 250,
+    "absoluteInCorrect": 10,
+    "absoluteEliminationPct": 29.2,
+    "absoluteThenLongestPct": 34.3,
+    "lengthRank": {
+      "1": 378,
+      "2": 246,
+      "3": 158,
+      "4": 53
+    },
+    "rankStrategyPct": {
+      "1": 28.9,
+      "2": 33.6,
+      "3": 24.7,
+      "4": 12.8
+    },
+    "bySubject": {
+      "L11": {
+        "total": 187,
+        "longestStrategyPct": 32.2,
+        "secondStrategyPct": 34.6
+      },
+      "L12": {
+        "total": 137,
+        "longestStrategyPct": 31.9,
+        "secondStrategyPct": 34.3
+      },
+      "L21": {
+        "total": 135,
+        "longestStrategyPct": 29.8,
+        "secondStrategyPct": 28.8
+      },
+      "L22": {
+        "total": 195,
+        "longestStrategyPct": 26.5,
+        "secondStrategyPct": 31.5
+      },
+      "L23": {
+        "total": 181,
+        "longestStrategyPct": 25,
+        "secondStrategyPct": 37.8
+      }
+    }
+  }
+}

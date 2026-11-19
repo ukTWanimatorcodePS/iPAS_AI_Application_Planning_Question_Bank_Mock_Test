@@ -1,0 +1,141 @@
+{
+  "rankChecks": 4096,
+  "elimChecks": 32768,
+  "failures": [],
+  "old": {
+    "total": 835,
+    "strictlyLongestPct": 24.9,
+    "avgLengthRatio": 1.09,
+    "longestStrategyPct": 35.9,
+    "ratioAtLeast2": 2,
+    "absoluteInDistractors": 264,
+    "absoluteInCorrect": 10,
+    "absoluteEliminationPct": 29.6,
+    "absoluteThenLongestPct": 41.9,
+    "lengthRank": {
+      "1": 437,
+      "2": 267,
+      "3": 87,
+      "4": 44
+    },
+    "rankStrategyPct": {
+      "1": 35.9,
+      "2": 36.1,
+      "3": 16.3,
+      "4": 11.7
+    },
+    "bySubject": {
+      "L11": {
+        "total": 187,
+        "longestStrategyPct": 38.6,
+        "secondStrategyPct": 34.1
+      },
+      "L12": {
+        "total": 137,
+        "longestStrategyPct": 37.7,
+        "secondStrategyPct": 34.3
+      },
+      "L21": {
+        "total": 135,
+        "longestStrategyPct": 38,
+        "secondStrategyPct": 36.2
+      },
+      "L22": {
+        "total": 195,
+        "longestStrategyPct": 30.6,
+        "secondStrategyPct": 36.1
+      },
+      "L23": {
+        "total": 181,
+        "longestStrategyPct": 36,
+        "secondStrategyPct": 39.5
+      }
+    }
+  },
+  "current": {
+    "total": 835,
+    "strictlyLongestPct": 17.8,
+    "avgLengthRatio": 1.05,
+    "longestStrategyPct": 28.6,
+    "ratioAtLeast2": 2,
+    "absoluteInDistractors": 130,
+    "absoluteInCorrect": 10,
+    "absoluteEliminationPct": 26,
+    "absoluteThenLongestPct": 30.2,
+    "lengthRank": {
+      "1": 374,
+      "2": 245,
+      "3": 163,
+      "4": 53
+    },
+    "rankStrategyPct": {
+      "1": 28.6,
+      "2": 33.5,
+      "3": 25,
+      "4": 12.9
+    },
+    "bySubject": {
+      "L11": {
+        "total": 187,
+        "longestStrategyPct": 32,
+        "secondStrategyPct": 34.7
+      },
+      "L12": {
+        "total": 137,
+        "longestStrategyPct": 31.5,
+        "secondStrategyPct": 34.3
+      },
+      "L21": {
+        "total": 135,
+        "longestStrategyPct": 29.8,
+        "secondStrategyPct": 28.5
+      },
+      "L22": {
+        "total": 195,
+        "longestStrategyPct": 26.5,
+        "secondStrategyPct": 31.7
+      },
+      "L23": {
+        "total": 181,
+        "longestStrategyPct": 24.4,
+        "secondStrategyPct": 37.2
+      }
+    }
+  },
+  "sensitivity": {
+    "old": {
+      "literal": {
+        "random": 29.590818363273524,
+        "longest": 41.93612774451096
+      },
+      "expanded": {
+        "random": 32.92415169660682,
+        "longest": 45.16966067864271
+      }
+    },
+    "current": {
+      "literal": {
+        "random": 25.968063872255538,
+        "longest": 30.20958083832338
+      },
+      "expanded": {
+        "random": 30.239520958083936,
+        "longest": 36.78642714570859
+      }
+    }
+  },
+  "cautious": {
+    "old": {
+      "triggers": 68,
+      "hits": 45,
+      "conditional": 66.17647058823529,
+      "withRandomFallback": 28.353293413173652
+    },
+    "current": {
+      "triggers": 73,
+      "hits": 44,
+      "conditional": 60.273972602739725,
+      "withRandomFallback": 28.08383233532934
+    }
+  }
+}
