@@ -8,6 +8,8 @@
 
 手機與電腦皆可直接開啟，不需登入；學習紀錄只保存在你目前使用的瀏覽器（可在「設定」匯出／匯入備份）。
 
+更新內容見 [CHANGELOG.md](CHANGELOG.md)；目前進度與待修事項見 [docs/PROGRESS.md](docs/PROGRESS.md)。
+
 > **獨立學習工具，非 iPAS 官方平台**，與主辦單位無關。講義與題目為本站自編；考試規則以[官方考試資訊](https://ipd.nat.gov.tw/ipas/certification/AIAP/exam-info)為準。
 
 ## 目前內容收錄狀態（2026-11-19）
@@ -83,7 +85,7 @@ tests/
   e2e/               學習閉環、AI 導師、學習計畫、考前衝刺、備份還原、RWD（360／390／768／1440）、深色高對比、鍵盤
   fixtures/          第一階段（v1）備份檔
 scripts/             validate-content.ts、verify-python.mjs
-docs/                CONTENT_GUIDE.md、AI_TUTOR.md、PHASE2_REPORT.md、screenshots/
+docs/                PROGRESS.md（進度總覽）、CONTENT_GUIDE.md、AI_TUTOR.md、PHASE2_REPORT.md、screenshots/
 design/              原始視覺原型與規格參考（不參與建置）
 ```
 
