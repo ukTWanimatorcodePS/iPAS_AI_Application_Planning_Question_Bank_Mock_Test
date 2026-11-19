@@ -76,6 +76,60 @@ describe('程式碼字面值與 LaTeX 檢查（Codex 複查 a7568db）', () => {
     expect(stripCodeLiterals('x ``a ` b`` y')).toBe('x   y');
   });
 
+  // Codex 複查 2cfd9e4（docs/AUDIT_2cfd9e4.md）的邊界案例：block = 字串外有公式，必須攔下；allow = 合法程式碼，不可誤報
+  const M = '$x^2=4$';
+  const EDGE: [string, 'allow' | 'block', string][] = [
+    ['adjacent', 'allow', String.raw`r"\(a\)" "\\[b\\]"`],
+    ['adjacent-outside', 'block', String.raw`r"a" "b"；` + M],
+    ['backslash-end', 'block', String.raw`"a\\"；` + M],
+    ['raw-backslash-end', 'block', String.raw`r"a\\"；` + M],
+    ['odd-backslash-unclosed', 'block', String.raw`r"a\"；` + M],
+    ['f-nested-other-quotes', 'allow', String.raw`f"{data['key']} \(ok\)"`],
+    ['f-nested-same-quotes', 'allow', String.raw`rf"{data["key"]} \(ok\)"`],
+    ['f-nested-outside', 'block', String.raw`f"{data["key"]}"；` + M],
+    ['f-nested-outside-following-string', 'block', String.raw`f"{data["key"]}"；` + M + '；"end"'],
+    ['f-dict', 'allow', String.raw`f"{{literal}} { {'key': 1} } \(ok\)"`],
+    ['f-string-in-expression', 'allow', String.raw`f"{ "a " + "b" } \(ok\)"`],
+    ['f-string-in-expression-outside', 'block', String.raw`f"{ "a " + "b" }"；` + M],
+    ['triple-unclosed', 'block', 'r"""first line\n' + M],
+    ['triple-unclosed-inner-pair', 'block', 'r"""first line\n"' + M + '"'],
+    ['triple-unclosed-single-end', 'block', 'r"""first line\n' + M + '"'],
+    ['triple-closed-outside', 'block', 'r"""first\nline"""；' + M],
+    ['cjk-before-quote', 'block', '中文"abc "；' + M + '；"end"'],
+    ['cjk-before-prefix', 'block', '中文r"abc "；' + M + '；"end"'],
+    ['cjk-normal-math', 'block', '中文"' + M + '"'],
+    ['cjk-spaced-code', 'allow', String.raw`中文 r"\(abc\)"`],
+    ...['bar', 'b', 'if', 'foobar', 'foo_f'].map((p): [string, 'block', string] => [`${p}-identifier`, 'block', p + '"x " + ' + M + ' + "y"']),
+    ['unclosed-backtick', 'block', '`code；' + M],
+    ['unequal-backtick', 'block', '``code`；' + M],
+    ['unequal-backtick-tail', 'block', '`code``；' + M],
+    ['matched-backtick-outside', 'block', '``code``；' + M],
+    ['double-with-single-inside', 'allow', '``' + String.raw`r"\(a\)"` + '`inner``'],
+    ['single-with-double-inside', 'allow', '`' + String.raw`r"\(a\)"` + '``inner`'],
+    ['single-with-double-inside-literal', 'allow', '`' + String.raw`\(a\)` + '``inner`'],
+    // Claude 補充
+    ['f-format-spec', 'allow', String.raw`f"{x:>{width}.2f} \(ok\)"`],
+    ['f-nested-f', 'allow', String.raw`f"{f'{y}'} \(ok\)"`],
+    ['f-unclosed-field', 'block', 'f"{x；' + M],
+    ['apostrophe-then-code-next-line', 'allow', "it's fine\n" + String.raw`pattern = r"\(a\)"`],
+    ['apostrophe-unpaired-then-math', 'block', "it's：" + M],
+    ['rejected-then-valid-same-line', 'block', '中文"a" ' + M + ' "b"'],
+  ];
+
+  it.each(EDGE)('邊界案例 %s（%s）', (_id, expected, text) => {
+    expect(inAllFields(text).map((r) => r.length)).toEqual(expected === 'block' ? [1, 1, 1] : [0, 0, 0]);
+  });
+
+  it('保守失敗：在任何片段後面接字串外的公式，公式都必須保留在掃描結果中', () => {
+    const fragments = ['"', "'", '"""', "'''", 'r"', 'f"{', 'f"{"', '`', '``', '中文"', "it's", 'bar"x', 'r"a\\"', '"a" "b', '`a``', 'rf"{d["k', 'u"""x\n"y"'];
+    const leaks: string[] = [];
+    for (const a of fragments) for (const b of fragments) {
+      const text = `${a} ${b}；${M}`;
+      if (!stripCodeLiterals(text).includes(M)) leaks.push(text);
+    }
+    expect(leaks).toEqual([]);
+  });
+
   it('已知限制：刻意把公式包進字串或反引號會被豁免（屬內容審閱範圍）', () => {
     expect(inAllFields('若 r"$x^2=4$"，求 x。')).toEqual([[], [], []]);
   });
