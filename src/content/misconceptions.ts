@@ -47,6 +47,36 @@ export const MISCONCEPTIONS: Misconception[] = [
     source: 'GDPR Art. 35(1), 35(3)',
   },
   {
+    id: 'convex-unique-minimum',
+    pattern: /凸函數(只有|僅有)一個全域最小值|\|\s*唯一全域最小值\s*\|/,
+    message: '凸函數的局部最小值都是全域最小值，但最小點可以不只一個；嚴格凸且最小值存在時，最小點才唯一。',
+    source: 'Codex 複查 2026-11-19（docs/AUDIT_c464dd5.md）；Boyd & Vandenberghe, Convex Optimization §4.2',
+  },
+  {
+    id: 'gap-always-overfitting',
+    pattern: /差距大(就)?(代表|是|即|就是)過擬合/,
+    message: '訓練與驗證差距大最常見是過擬合，但也可能是資料分佈不同、標籤品質或評估流程問題，不可一律斷定。',
+    source: 'Codex 複查 2026-11-19（docs/AUDIT_c464dd5.md）',
+  },
+  {
+    id: 'bootstrap-632-unconditional',
+    pattern: /63\.2\s*%[^。\n]{0,10}(會被抽到|被抽中)/,
+    message: 'Bootstrap 的 63.2% 是「從 n 筆有放回抽 n 次、n 很大時」每筆至少被抽到的機率，即預期不同樣本比例，不是每次固定的比例。',
+    source: 'Codex 複查 2026-11-19（docs/AUDIT_c464dd5.md）；Efron & Tibshirani, An Introduction to the Bootstrap',
+  },
+  {
+    id: 'distribution-shift-as-concept-drift',
+    pattern: /分[佈布]會?隨時間改變（概念漂移）/,
+    message: '輸入分佈改變是資料漂移；輸入與目標的關係改變才是概念漂移。',
+    source: 'Codex 複查 2026-11-19（docs/AUDIT_c464dd5.md）',
+  },
+  {
+    id: 'genai-text-only',
+    pattern: /文字生成與理解才考慮生成式/,
+    message: '生成式 AI 也用於影像、音訊、程式碼等；文字理解任務也不一定需要生成式模型。',
+    source: 'Codex 複查 2026-11-19（docs/AUDIT_c464dd5.md）',
+  },
+  {
     id: 'p-value-without-extreme',
     pattern: /p\s*值[^。\n]{0,20}觀察到(目前)?結果的機率/,
     message: 'p 值定義需包含「至少與觀察到的檢定統計量同樣極端」。',

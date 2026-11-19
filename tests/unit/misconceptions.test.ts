@@ -13,6 +13,14 @@ const ORIGINAL_ERRORS: [string, string][] = [
   ['高風險處理（大規模敏感資料、自動化評分）前進行 DPIA。', 'dpia-any-automated-scoring'],
   ['在進行大規模敏感個資處理或自動化評分前，GDPR 等規範要求進行的評估是？', 'dpia-any-automated-scoring'],
   ['→ p 值是在 H₀ 為真下觀察到結果的機率。', 'p-value-without-extreme'],
+  // Codex 複查 c464dd5（docs/AUDIT_c464dd5.md）發現、已修正的原始說法
+  ['- 凸函數只有一個全域最小值；神經網路的損失是非凸的，可能停在局部最小值或鞍點。', 'convex-unique-minimum'],
+  ['| 凸 vs. 非凸 | 唯一全域最小值 | 可能有多個局部最小值 | 神經網路多為非凸 |', 'convex-unique-minimum'],
+  ['比較訓練與驗證（或測試）表現的差距；差距大代表過擬合。', 'gap-always-overfitting'],
+  ['訓練與驗證差距大是過擬合。', 'gap-always-overfitting'],
+  ['自助法（Bootstrap）：有放回重抽樣，每次約有 63.2% 的原始樣本會被抽到，用來估計指標的信賴區間。', 'bootstrap-632-unconditional'],
+  ['| 速度快（Velocity） | 資料持續流入，分佈會隨時間改變（概念漂移） |', 'distribution-shift-as-concept-drift'],
+  ['結構化資料預測常用傳統機器學習；文字生成與理解才考慮生成式 AI；', 'genai-text-only'],
   // 官方勘誤表中被更正的原文
   ['公式：Recall= TP/(TP+FP)', 'recall-formula'],
   ['拒絕 H0 Type II 錯誤（α）', 'type-two-alpha'],
@@ -28,6 +36,11 @@ const CORRECT: string[] = [
   'Precision = TP/(TP+FP)，Recall = TP/(TP+FN)。',
   'p 值是在 H₀ 為真的前提下，得到「至少與觀察到的檢定統計量同樣極端」結果的機率。',
   '並非任何自動化評分都必然需要 DPIA。',
+  '一定是凸函數，只有一個最小值',
+  '凸函數的任何局部最小值都是全域最小值（嚴格凸且最小值存在時，最小點才唯一）。',
+  '差距大最常見的原因是過擬合，但也要排除資料分佈不同。',
+  'n 很大時趨近 1 − 1/e ≈ 63.2%，也就是預期約 63.2% 的原始樣本會出現。',
+  '輸入分佈可能隨時間改變（資料漂移），輸入與目標之間的關係也可能改變（概念漂移）',
 ];
 
 describe('已知錯誤說法檢查', () => {
