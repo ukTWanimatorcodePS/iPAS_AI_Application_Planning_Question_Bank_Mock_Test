@@ -852,7 +852,7 @@
     "options": [
       {
         "id": "A",
-        "text": "open、read、close"
+        "text": "train 訓練、run 預測、evaluate 評估"
       },
       {
         "id": "B",
@@ -860,11 +860,11 @@
       },
       {
         "id": "C",
-        "text": "start、pause、resume"
+        "text": "compile 編譯、fit 訓練、evaluate 評估"
       },
       {
         "id": "D",
-        "text": "train、run、stop"
+        "text": "load 載入、transform 轉換、save 儲存"
       }
     ],
     "correctOptionIds": [
@@ -874,10 +874,10 @@
       "summary": "scikit-learn 提供一致的 API。",
       "correctRationale": "不同模型可用相同流程替換與比較。",
       "optionRationales": {
-        "A": "這是檔案操作。",
+        "A": "不是 scikit-learn 的方法名稱。",
         "B": "正確。不同模型可用相同流程替換與比較。",
-        "C": "這是播放控制。",
-        "D": "不是 scikit-learn 的方法名稱。"
+        "C": "這是 Keras 模型的典型流程。",
+        "D": "部分轉換器有 transform，但多數模型共用的是 fit／predict／score。"
       },
       "commonTrap": "不熟悉常用工具的介面。",
       "lessonAnchor": "L23202"
@@ -2702,11 +2702,11 @@
     "options": [
       {
         "id": "A",
-        "text": "類別數太多，softmax 無法輸出超過兩個類別的機率"
+        "text": "類別數太多時 softmax 無法輸出超過兩個類別的機率，應改成多個二元分類模型分別訓練"
       },
       {
         "id": "B",
-        "text": "類別交叉熵只能用於迴歸問題，應改用均方誤差"
+        "text": "類別交叉熵只能用於迴歸問題，輸出層應保留 softmax 但損失改用均方誤差"
       },
       {
         "id": "C",
@@ -2714,7 +2714,7 @@
       },
       {
         "id": "D",
-        "text": "應改用 ReLU 作為輸出層，讓每個類別的輸出可以大於 1"
+        "text": "應改用 ReLU 作為輸出層，讓每個類別的輸出都可以大於 1，再以最大值決定所有標籤"
       }
     ],
     "correctOptionIds": [
@@ -2725,7 +2725,7 @@
       "correctRationale": "每個類別獨立判斷是否存在，機率不需加總為 1。",
       "optionRationales": {
         "A": "softmax 可以輸出多個類別的機率，問題在於它假設類別互斥。",
-        "B": "類別交叉熵是分類損失；均方誤差不適合此分類問題。",
+        "B": "類別交叉熵是分類損失；保留 softmax 仍會讓類別互相競爭。",
         "C": "正確。每個類別獨立判斷是否存在，機率不需加總為 1。",
         "D": "ReLU 輸出沒有上限，不能解讀為機率；應對每個類別使用 sigmoid。"
       },
