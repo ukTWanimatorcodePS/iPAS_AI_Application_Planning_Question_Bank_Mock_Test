@@ -524,11 +524,11 @@
     "options": [
       {
         "id": "A",
-        "text": "資料型態的多樣性"
+        "text": "資料型態與來源的多樣性"
       },
       {
         "id": "B",
-        "text": "資料量的大小"
+        "text": "資料量的大小與成長幅度"
       },
       {
         "id": "C",
@@ -536,7 +536,7 @@
       },
       {
         "id": "D",
-        "text": "資料產生的速度"
+        "text": "資料產生與處理的速度（即時性）"
       }
     ],
     "correctOptionIds": [
@@ -1457,11 +1457,11 @@
     "options": [
       {
         "id": "A",
-        "text": "Spark 不需要任何叢集"
+        "text": "Spark 以磁碟批次處理為主，因此能處理比記憶體更大的資料"
       },
       {
         "id": "B",
-        "text": "Spark 只能處理小型資料"
+        "text": "Spark 不需要叢集，單台電腦即可處理所有規模的資料"
       },
       {
         "id": "C",
@@ -1469,7 +1469,7 @@
       },
       {
         "id": "D",
-        "text": "MapReduce 可以即時串流"
+        "text": "MapReduce 不支援分散式運算，只能在單一節點執行"
       }
     ],
     "correctOptionIds": [
@@ -1479,10 +1479,10 @@
       "summary": "Spark 在記憶體中保留中間結果。",
       "correctRationale": "反覆迭代時避免每次都寫回磁碟，大幅加快速度。",
       "optionRationales": {
-        "A": "Spark 常在叢集上執行。",
-        "B": "Spark 為大規模資料設計。",
+        "A": "Spark 以記憶體運算為主，這正是它適合迭代運算的原因。",
+        "B": "Spark 常在叢集上執行。",
         "C": "正確。記憶體運算適合迭代。",
-        "D": "傳統 MapReduce 以批次為主。"
+        "D": "MapReduce 本身就是分散式運算框架。"
       },
       "commonTrap": "不了解 Spark 與 MapReduce 的差異。",
       "lessonAnchor": "L22203"
@@ -1916,11 +1916,11 @@
     "options": [
       {
         "id": "A",
-        "text": "資料的種類多樣"
+        "text": "資料的種類與格式多樣"
       },
       {
         "id": "B",
-        "text": "資料的商業價值"
+        "text": "資料可帶來的商業價值"
       },
       {
         "id": "C",
@@ -1928,7 +1928,7 @@
       },
       {
         "id": "D",
-        "text": "資料的正確性"
+        "text": "資料的正確性與來源可信度"
       }
     ],
     "correctOptionIds": [
