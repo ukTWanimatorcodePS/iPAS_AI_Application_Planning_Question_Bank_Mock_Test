@@ -114,6 +114,23 @@ describe('程式碼字面值與 LaTeX 檢查（Codex 複查 a7568db）', () => {
     ['apostrophe-then-code-next-line', 'allow', "it's fine\n" + String.raw`pattern = r"\(a\)"`],
     ['apostrophe-unpaired-then-math', 'block', "it's：" + M],
     ['rejected-then-valid-same-line', 'block', '中文"a" ' + M + ' "b"'],
+    // Codex 複查 712ea19（docs/AUDIT_712ea19.md）：f-string 註解、引號填充、\{、跨行欄位
+    ['line-end-unclosed', 'block', "it's fine\n\"not closed\n" + M + '\n"later"'],
+    ['line-end-unclosed-triple', 'block', "it's fine\nr\"\"\"not closed\n\"" + M + '"'],
+    ['line-end-rejected', 'block', "it's fine\nbar\"x \"；" + M + '；"end"'],
+    ['conversion', 'allow', String.raw`rf"{x!r} \(ok\)"`],
+    ['debug-conversion-spec', 'allow', String.raw`rf"{x = !r:>{width}} \(ok\)"`],
+    ['lambda-parenthesized', 'allow', String.raw`rf"{(lambda x: x + 1)(2)} \(ok\)"`],
+    ['colon-slice', 'allow', String.raw`rf"{data[1:3]} \(ok\)"`],
+    ['quote-fill', 'allow', String.raw`rf"{x:'>10} \(ok\)"`],
+    ['backslash-before-field', 'allow', String.raw`rf"\{data["key"]} \(ok\)"`],
+    ['f-field-multiline', 'allow', 'rf"{(\n x\n)} ' + String.raw`\(ok\)"`],
+    ['triple-multiple-singles', 'allow', String.raw`r"""a"b""c \(ok\)"""`],
+    ['f-comment', 'allow', 'rf"""{x # quote " and brace }\n} ' + String.raw`\(ok\)"""`],
+    ['f-comment-triple', 'block', 'f"""{x # }"""\n}"""；' + M + '；"end"'],
+    ['f-comment-triple-following-triple', 'block', 'f"""{x # }"""\n}"""；' + M + '；"""end"""'],
+    ['f-comment-no-newline', 'block', 'f"{x # 註解沒換行；' + M],
+    ['unclosed-field-next-line', 'block', 'f"{x\n"' + M + '"'],
   ];
 
   it.each(EDGE)('邊界案例 %s（%s）', (_id, expected, text) => {
@@ -128,6 +145,28 @@ describe('程式碼字面值與 LaTeX 檢查（Codex 複查 a7568db）', () => {
       if (!stripCodeLiterals(text).includes(M)) leaks.push(text);
     }
     expect(leaks).toEqual([]);
+  });
+
+  it('保守失敗：公式夾在兩段程式片段中間時也必須保留（Codex 複查 712ea19）', () => {
+    // 前段是「本身完整的程式片段」或「不是字串開頭的引號」。單獨一個 " 接公式再接 "end" 不在此列：
+    // 依 Python 語法那是一個把公式包在裡面的完整字串，屬已知的豁免限制
+    const fragments = ['"a"', "'a'", '"""a"""', String.raw`r"\(a\)"`, 'f"{d["k"]}"', 'f"""{x # }"""\n}"""', '`a`', '``a`b``', '中文"x "', "it's", 'bar"x ', 'b"x"', 'r"a\\\\"'];
+    const tails = ['"end"', '"""end"""', "'end'", '`end`', 'r"x"'];
+    const leaks: string[] = [];
+    for (const a of fragments) for (const t of tails) {
+      const text = `${a}；${M}；${t}`;
+      if (!stripCodeLiterals(text).includes(M)) leaks.push(JSON.stringify(text));
+    }
+    expect(leaks).toEqual([]);
+  });
+
+  it('極端輸入：深層巢狀不會堆疊溢位，大量反引號也在合理時間內完成，公式都保留', () => {
+    const deep = 'f"' + '{x:'.repeat(10_000) + '}'.repeat(10_000) + '"；' + M;
+    expect(stripCodeLiterals(deep)).toContain(M);
+    const ticks = Array.from({ length: 1500 }, (_, k) => '`'.repeat(k + 1)).join(' ') + '；' + M;
+    const t0 = performance.now();
+    expect(stripCodeLiterals(ticks)).toContain(M);
+    expect(performance.now() - t0).toBeLessThan(500);
   });
 
   it('已知限制：刻意把公式包進字串或反引號會被豁免（屬內容審閱範圍）', () => {
