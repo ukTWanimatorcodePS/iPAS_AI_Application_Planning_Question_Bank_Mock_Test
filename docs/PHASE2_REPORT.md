@@ -73,16 +73,16 @@ E2E 涵蓋：學習閉環、級別切換、未完成測驗恢復、深連結重�
 - **全部 589 題與 50 份講義皆為 AI 草擬、通過自動檢查，尚未經人工專家審核**（`reviewStatus: ai-checked`）。自動檢查只能確認結構與一致性，無法保證每一個觀念敘述都完全正確。
 - 中級每細項目前 8 題，低於初級的 20 題；題型分布以概念與情境為主，「應用」難度題比例偏低（見 `npm run validate:content -- --report`）。
 - 未收錄官方原題；2027 年考期與規則待官方公告後更新。
-- CPython 交叉驗證只在 CI 執行（本機沒有 Python），尚未在實際 CI 上跑過。
+- CPython 交叉驗證只在 CI 執行（本機沒有 Python）；2026-11-19 首次 CI 執行（Python 3.12）已通過。
 - AI 導師只有示範模式可用；遠端模式需另建後端代理，尚未部署。
 - 跨裝置同步、PWA 離線快取尚未實作。
-- 尚未建立 GitHub repository，未實際部署上線。
+- 已建立 GitHub repository（ukTWanimatorcodePS/iPAS_AI_Application_Planning_Question_Bank_Mock_Test），以 GitHub Actions 部署到 GitHub Pages。
 - 部分講義外部參考連結（英文文件、論文）未逐一實際開啟確認。
 
 ## 下一階段建議
 
 1. 由具專業背景者分批人工審核題目與講義（建議從初級開始），通過者改為 `human-reviewed`。
 2. 中級題庫擴充至每細項 15～20 題，增加應用難度與 Python 程式判讀題。
-3. 建立 GitHub repository 並部署，確認 CI（含 CPython 交叉驗證）全綠。
+3. ~~建立 GitHub repository 並部署，確認 CI（含 CPython 交叉驗證）全綠~~（2026-11-19 完成）。
 4. 官方公布 116 年簡章後更新 `examRules` 與 `official-sources.json`。
 5. 視需要評估 AI 導師後端代理與跨裝置同步。
