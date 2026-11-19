@@ -70,6 +70,7 @@
 | `docs/AUDIT_EXPANSION_2026-11-19.md` | Codex 複查中級擴充：5 題錯誤與 1 處報告不實 | 已修正（`f8471f9`），另修 4 題 |
 | `docs/REFERENCE_REVIEW_aiterms_2026-11-19.md` | 參考 aiterms.tw 的評估：採做法、不採內容 | 已完成 |
 | `docs/AUDIT_REFERENCE_2026-11-19.md` | Codex 複查上一項，找出 3 個問題 | 已全部修正（見下） |
+| `docs/AUDIT_fd1c088.md` | Codex 複查 fd1c088：F1、C3 通過；F3 漏過 `(…)`、`[…]` 與長公式 | 已修正：LaTeX 規則不限長度並攔截這兩種分隔符 |
 | `docs/AUDIT_v1.0.0.md` | Codex 驗收 v1.0.0（b9a2e86）：F2、F4、C1、C2、M1、版本號通過；F1 交卷後卸載寫回覆寫作答時間、C3 正確選項漏改、F3 偵測漏掉無反斜線的 LaTeX | 已修正（見下方「Codex v1.0.0 驗收的處理結果」） |
 | `docs/CODEX_FULL_AUDIT_2026-11-19.md` | Codex 獨立全範圍稽核（948f22d）：4 項功能問題、3 項教學敘述、1 項停用題防線缺口 | 已全部修正（見下），發布為 v1.0.0 |
 | `docs/SELF_AUDIT_2026-11-19.md` | Claude 全範圍自查：全套檢查重跑（含 CPython）、絕對化用語掃描、數字與連結檢查、重讀新增講義段落 | 修正 1 題、4 處講義、README 1 個數字 |
@@ -147,6 +148,8 @@ Claude 逐處核對屬實並修正，另在題庫找到 3 題相同問題一併�
 
 - Codex 補充的相容性測試 `tests/unit/audit-v1-compat.test.ts`（IndexedDB v1／v2 → v3、v1／v2／v3 備份往返）一併納入測試套件。
 - 驗證表中「CPython 33/33、新增 47 題只經 Pyodide」的舊列已移除；目前 80 題已由兩種引擎驗證。
+
+- **Codex 複查 fd1c088**（`docs/AUDIT_fd1c088.md`）：F1、C3 通過，未交卷流程沒有倒退；相容性測試 6/6、PROGRESS 無重複。F3 仍漏過 `(…)`、`[…]` 分隔符與超過 120 字元的 `$…$` 公式 → 已修正：規則改為不限長度，並攔截這兩種分隔符；新增 4 個案例。現有 835 題沒有誤報。
 
 ## 其他未完成
 

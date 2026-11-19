@@ -152,6 +152,11 @@ describe('題庫驗證器（validate:content）', () => {
     expect(run({ options: [{ id: 'A', text: '$y=2x$' }, ...q.options.slice(1)] })).toHaveLength(1);
     expect(run({ stem: '$$x$$' })).toHaveLength(1);
     expect(run({ stem: '若 x² = 4，x 的可能值為何？' })).toEqual([]);
+    // Codex 複查 fd1c088：其他分隔符與長公式
+    expect(run({ stem: '若 \\(x^2=4\\)，x 為何？' })).toHaveLength(1);
+    expect(run({ stem: '已知 \\[x=1\\]，求 y' })).toHaveLength(1);
+    expect(run({ stem: '$' + 'x+'.repeat(65) + 'y=1$' })).toHaveLength(1);
+    expect(run({ explanation: { ...q.explanation, correctRationale: '若 \\(x^2=4\\)' } })).toHaveLength(1);
   });
 });
 

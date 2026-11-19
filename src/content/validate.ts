@@ -119,8 +119,9 @@ export function validateContent(input: ValidateInput): Issue[] {
     }
 
   // 題目畫面以純文字顯示（不渲染 Markdown／KaTeX），題幹、選項、解析不可使用 LaTeX 公式，請改用一般文字或 Unicode 符號
-  // 兩個 $ 之間出現數學符號（^ _ = \ { }），或 $$ 區塊，或常見 LaTeX 指令，都視為 LaTeX；「售價 $5 與 $6」這類金額不算
-  const LATEX = /\$(?=[^$\n]*[\\^_{}=])[^$\n]{1,120}\$|\$\$|\\(frac|dfrac|sqrt|approx|times|cdot|min|max|mu|sigma|sum|log|leq|geq|bar|hat|left|right)\b/;
+  // 視為 LaTeX：兩個 $ 之間（同一行、不限長度）出現數學符號（^ _ = \ { }）；$$ 區塊；\( \) 與 \[ \] 分隔符；常見 LaTeX 指令。
+  // 「售價 $5 與 $6」這類金額不算
+  const LATEX = /\$(?=[^$\n]*[\\^_{}=])[^$\n]+\$|\$\$|\\[([]|\\[)\]]|\\(frac|dfrac|sqrt|approx|times|cdot|min|max|mu|sigma|alpha|beta|sum|log|leq|geq|bar|hat|left|right)\b/;
   for (const q of input.questions) {
     const texts = [q.stem, ...q.options.map((o) => o.text), ...Object.values(q.explanation ?? {}).flatMap((v) => (typeof v === 'string' ? [v] : typeof v === 'object' && v ? Object.values(v) : []))];
     if (texts.some((t) => typeof t === 'string' && LATEX.test(t))) err(q.id, '題目內容含 LaTeX 公式，但題目畫面不渲染公式；請改用一般文字或 Unicode 符號（如 ÷、×、≈、μ、σ）');
