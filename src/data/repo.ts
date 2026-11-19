@@ -108,8 +108,19 @@ export async function createSession(input: {
   return sessionId;
 }
 
+/**
+ * 更新未交卷測驗的進度（作答位置、標記、計時）。
+ * 已交卷的測驗不再接受更新：頁面卸載時的計時寫回可能晚於交卷，不可覆寫交卷時記錄的作答時間。
+ * 限時測驗的作答時間一律不超過時間上限。
+ */
 export async function patchSession(sessionId: string, patch: Partial<QuizSession>): Promise<void> {
-  await db.quizSessions.update(sessionId, patch);
+  await db.transaction('rw', db.quizSessions, async () => {
+    const s = await db.quizSessions.get(sessionId);
+    if (!s || s.submittedAt) return;
+    const next = { ...patch };
+    if (next.durationSec !== undefined) next.durationSec = recordedDuration(next.durationSec, s.timeLimitSec);
+    await db.quizSessions.update(sessionId, next);
+  });
 }
 
 export async function setAnswer(sessionId: string, questionId: string, selected: string[]): Promise<void> {

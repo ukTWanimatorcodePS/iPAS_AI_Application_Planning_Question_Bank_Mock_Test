@@ -266,6 +266,24 @@ test('限時模考：切到背景分頁時間照走，回到頁面已逾時就�
     document.dispatchEvent(new Event('visibilitychange'));
   });
   await expect(page).toHaveURL(/#\/results\//);
+  // 等待測驗頁卸載時的計時寫回完成，再讀資料庫：作答時間不可超過 60 秒上限（Codex v1.0.0 複查）
+  await page.clock.runFor(2000);
+  const readMock = () =>
+    page.evaluate(
+      () =>
+        new Promise<{ durationSec: number; timeLimitSec: number }[]>((resolve, reject) => {
+          const req = indexedDB.open('ipas-ai-prep');
+          req.onerror = () => reject(req.error);
+          req.onsuccess = () => {
+            const all = req.result.transaction('quizSessions').objectStore('quizSessions').getAll();
+            all.onsuccess = () => resolve(all.result.filter((x: { mode: string }) => x.mode === 'mock'));
+          };
+        }),
+    );
+  await expect.poll(async () => (await readMock()).length).toBe(1);
+  const [saved] = await readMock();
+  expect(saved.timeLimitSec).toBe(60);
+  expect(saved.durationSec).toBeLessThanOrEqual(60);
 });
 
 test('介面顯示版本號 v1.0.0（桌面左下角；手機在功能選單）', async ({ page }) => {

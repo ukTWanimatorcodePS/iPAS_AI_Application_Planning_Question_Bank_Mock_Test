@@ -265,6 +265,18 @@ describe('限時模考計時（Codex 稽核 F1）', () => {
     const s = await submitSession(id, 7200);
     expect(s?.durationSec).toBe(60);
   });
+
+  it('交卷後頁面卸載的計時寫回不會覆寫作答時間；未交卷時寫回也不超過上限（Codex v1.0.0 複查）', async () => {
+    const { patchSession } = await import('../../src/data/repo');
+    const id = await createSession({ level: 'junior', mode: 'mock', subject: 'L11', scopeLabel: 't', competencyCodes: [], questionIds: [q.id], timeLimitSec: 2 });
+    await patchSession(id, { durationSec: 9 });
+    expect((await db.quizSessions.get(id))?.durationSec).toBe(2);
+    await submitSession(id, 13);
+    await patchSession(id, { durationSec: 13, currentIndex: 0 });
+    const s = await db.quizSessions.get(id);
+    expect(s?.durationSec).toBe(2);
+    expect(s?.submittedAt).toBeTruthy();
+  });
 });
 
 describe('版本號', () => {

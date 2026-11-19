@@ -146,6 +146,12 @@ describe('題庫驗證器（validate:content）', () => {
     expect(run({ explanation: { ...q.explanation, summary: '約為 $1 - 1/e \\approx 63.2\\%$' } })).toHaveLength(1);
     expect(run({ stem: '將某欄位的數值以「(x − 最小值) ÷ (最大值 − 最小值)」轉換' })).toEqual([]);
     expect(run({ stem: '商品售價 $5 與 $6 的差' })).toEqual([]);
+    // Codex v1.0.0 複查：沒有反斜線指令的 LaTeX 也要攔下
+    expect(run({ stem: '若 $x^2=4$，x 的可能值為何？' })).toHaveLength(1);
+    expect(run({ stem: '若 $x_1 + x_2 = 3$，求平均' })).toHaveLength(1);
+    expect(run({ options: [{ id: 'A', text: '$y=2x$' }, ...q.options.slice(1)] })).toHaveLength(1);
+    expect(run({ stem: '$$x$$' })).toHaveLength(1);
+    expect(run({ stem: '若 x² = 4，x 的可能值為何？' })).toEqual([]);
   });
 });
 

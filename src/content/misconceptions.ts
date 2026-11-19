@@ -96,7 +96,7 @@ export const MISCONCEPTIONS: Misconception[] = [
   },
   {
     id: 'ml-supervised-only-definition',
-    pattern: /機器學習(是|：)\s*「?資料\s*[＋+]\s*答案/,
+    pattern: /機器學習(是|：|由|從)?\s*「?資料\s*[＋+與和及]\s*答案/,
     message: '「資料＋答案 → 規則」只描述監督式學習；機器學習的總定義是從資料學出規律，非監督式學習沒有答案。',
     source: 'Codex 全範圍稽核 2026-11-19；scikit-learn Unsupervised learning',
   },

@@ -38,6 +38,7 @@ const ORIGINAL_ERRORS: [string, string][] = [
   ['AUC 是隨機抽一個正例與一個負例時，模型給正例較高分數的機率；0.5 代表沒有區分能力。', 'auc-without-ties'],
   ['- 機器學習是「資料＋答案 → 學出規則」，目標是泛化到沒看過的新資料。', 'ml-supervised-only-definition'],
   ['傳統程式：規則＋資料 → 答案；機器學習：資料＋答案 → 規則（模型）。', 'ml-supervised-only-definition'],
+  ['傳統程式由人寫規則產生答案；機器學習由資料與答案學出規則', 'ml-supervised-only-definition'],
   // 官方勘誤表中被更正的原文
   ['公式：Recall= TP/(TP+FP)', 'recall-formula'],
   ['拒絕 H0 Type II 錯誤（α）', 'type-two-alpha'],
@@ -77,6 +78,7 @@ const CORRECT: string[] = [
   '- ❌ 「只要 n ≥ 30，樣本平均數就一定近似常態」→ 30 只是經驗法則。',
   'AUC 等於隨機抽一個正例與一個負例時，模型給正例較高分數的機率（兩者同分時算半次）。',
   '以監督式學習為例，是「資料＋答案（標籤）→ 學出規則」；非監督式學習則沒有答案。',
+  '機器學習從資料中學出規則（監督式學習是由資料與答案學出規則）',
 ];
 
 describe('已知錯誤說法檢查', () => {
