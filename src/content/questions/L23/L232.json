@@ -2268,7 +2268,7 @@
       },
       {
         "id": "B",
-        "text": "inertia 會隨 K 增加而必然下降，不能單獨用來選 K；應看手肘點、輪廓係數與業務可解釋性"
+        "text": "inertia 通常隨 K 增加而下降（K 等於樣本數時為 0），不能單獨用來選 K；應看手肘點、輪廓係數與業務可解釋性"
       },
       {
         "id": "C",
@@ -2283,7 +2283,7 @@
       "B"
     ],
     "explanation": {
-      "summary": "inertia 隨 K 增加單調下降。",
+      "summary": "最佳分群的 inertia 不會隨 K 增加而上升（實際 K-means 結果通常也隨之下降），K 等於樣本數時為 0，因此不能單獨用來選 K。",
       "correctRationale": "每個點自成一群時 inertia 為 0，但毫無意義；需要權衡群數與分群品質。",
       "optionRationales": {
         "A": "K 過大會失去分群意義。",
