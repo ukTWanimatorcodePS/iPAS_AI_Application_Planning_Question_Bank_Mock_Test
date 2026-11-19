@@ -300,7 +300,7 @@
     "options": [
       {
         "id": "A",
-        "text": "NPV 不需要成本資料"
+        "text": "NPV 只計算第一年的效益與成本，適合短期專案"
       },
       {
         "id": "B",
@@ -308,11 +308,11 @@
       },
       {
         "id": "C",
-        "text": "NPV 用來評估模型準確率"
+        "text": "NPV 把每年的效益直接相加，不考慮發生的時間點"
       },
       {
         "id": "D",
-        "text": "NPV 只看第一年的效益"
+        "text": "NPV 衡量投資回收所需的年數，越短代表越值得投資"
       }
     ],
     "correctOptionIds": [
@@ -322,10 +322,10 @@
       "summary": "NPV 把未來現金流折現。",
       "correctRationale": "未來的錢價值低於今天的錢，多年期專案以 NPV 比較較合理。",
       "optionRationales": {
-        "A": "需要成本與效益。",
+        "A": "NPV 涵蓋多年。",
         "B": "正確。考慮時間價值。",
-        "C": "NPV 是財務指標。",
-        "D": "NPV 涵蓋多年。"
+        "C": "直接相加忽略了時間價值；NPV 會把未來效益折現。",
+        "D": "回收所需年數是回收期（Payback Period），不是 NPV。"
       },
       "commonTrap": "把財務指標與模型指標混淆。",
       "lessonAnchor": "L21201"

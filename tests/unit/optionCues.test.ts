@@ -6,7 +6,7 @@ import { isStrictlyLongest, lengthRatio, longestStrategyScore, summarizeCues } f
  * A1 題庫改寫的進度鎖：每改完一批就把上限調低到當時的實測值，之後新增或修改題目都不能讓猜題線索回升。
  * 起點（17e9cdc）：選最長 80.9%、唯一最長 76.8%。
  */
-const CEILING = { longestStrategyPct: 52.2, strictlyLongestPct: 43.5 };
+const CEILING = { longestStrategyPct: 48.8, strictlyLongestPct: 39.9 };
 
 describe('選項猜題線索（A1）', () => {
   it('計算方式：唯一最長、並列時的期望得分、長度比', () => {
