@@ -21,6 +21,15 @@ const ORIGINAL_ERRORS: [string, string][] = [
   ['自助法（Bootstrap）：有放回重抽樣，每次約有 63.2% 的原始樣本會被抽到，用來估計指標的信賴區間。', 'bootstrap-632-unconditional'],
   ['| 速度快（Velocity） | 資料持續流入，分佈會隨時間改變（概念漂移） |', 'distribution-shift-as-concept-drift'],
   ['結構化資料預測常用傳統機器學習；文字生成與理解才考慮生成式 AI；', 'genai-text-only'],
+  // Codex 複查 fda6baa（docs/AUDIT_fda6baa.md）：同類錯誤的常見改寫，以及當時仍留在內容中的寫法
+  ['差距大＝過擬合。', 'gap-always-overfitting'],
+  ['訓練好、驗證差是過擬合。', 'gap-always-overfitting'],
+  ['訓練表現好但新資料表現差，代表泛化不佳（過擬合）。', 'gap-always-overfitting'],
+  ['- 學習曲線：訓練與驗證都差 → 欠擬合；差距大 → 過擬合。', 'gap-always-overfitting'],
+  ['凸函數一定只有一個最小點。', 'convex-unique-minimum'],
+  ['Bootstrap 每次固定有 63.2% 的原始樣本出現。', 'bootstrap-632-unconditional'],
+  ['輸入分布改變就是概念漂移。', 'distribution-shift-as-concept-drift'],
+  ['生成式 AI 只能處理文字。', 'genai-text-only'],
   // 官方勘誤表中被更正的原文
   ['公式：Recall= TP/(TP+FP)', 'recall-formula'],
   ['拒絕 H0 Type II 錯誤（α）', 'type-two-alpha'],
@@ -36,11 +45,17 @@ const CORRECT: string[] = [
   'Precision = TP/(TP+FP)，Recall = TP/(TP+FN)。',
   'p 值是在 H₀ 為真的前提下，得到「至少與觀察到的檢定統計量同樣極端」結果的機率。',
   '並非任何自動化評分都必然需要 DPIA。',
-  '一定是凸函數，只有一個最小值',
   '凸函數的任何局部最小值都是全域最小值（嚴格凸且最小值存在時，最小點才唯一）。',
   '差距大最常見的原因是過擬合，但也要排除資料分佈不同。',
   'n 很大時趨近 1 − 1/e ≈ 63.2%，也就是預期約 63.2% 的原始樣本會出現。',
   '輸入分佈可能隨時間改變（資料漂移），輸入與目標之間的關係也可能改變（概念漂移）',
+  '凸函數的局部最小值不一定只有一個點，但函數值都相同。',
+  '訓練好、測試差是過擬合的典型徵兆；也要先排除分佈不同。',
+  '差距大 → 多半是過擬合。',
+  '訓練表現好但新資料表現差，代表泛化不佳；最常見的原因是過擬合。',
+  '也就是一次重抽樣中，預期約 63.2% 的原始樣本會出現（實際比例每次不同）。',
+  '資料漂移是輸入分布改變；概念漂移是輸入與目標的關係改變。',
+  '生成式 AI 可產生文字、影像、音訊與程式碼。',
 ];
 
 describe('已知錯誤說法檢查', () => {
@@ -52,9 +67,12 @@ describe('已知錯誤說法檢查', () => {
     expect(findMisconceptions(text)).toEqual([]);
   });
 
-  it('目前全部題目與講義都沒有已知錯誤說法', async () => {
+  it('目前全部題目與講義都沒有已知錯誤說法（題目的錯誤選項本來就是錯誤說法，不檢查）', async () => {
     const hits: string[] = [];
-    for (const q of allQuestions) for (const m of findMisconceptions(JSON.stringify(q))) hits.push(`${q.id}: ${m.id}`);
+    for (const q of allQuestions) {
+      const scanned = { ...q, options: q.options.filter((o) => q.correctOptionIds.includes(o.id)) };
+      for (const m of findMisconceptions(JSON.stringify(scanned))) hits.push(`${q.id}: ${m.id}`);
+    }
     for (const code of lessonCodes()) for (const m of findMisconceptions((await loadLesson(code))!)) hits.push(`講義 ${code}: ${m.id}`);
     expect(hits).toEqual([]);
   });

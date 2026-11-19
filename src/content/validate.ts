@@ -118,9 +118,11 @@ export function validateContent(input: ValidateInput): Issue[] {
       else if (same && s >= SIMILARITY_WARN) warn(a.q.id, `與 ${b.q.id} 相似度 ${s.toFixed(2)}，請人工確認是否只換了情境或數字`);
     }
 
-  // 已知錯誤說法（回歸檢查）
-  for (const q of input.questions)
-    for (const m of findMisconceptions(JSON.stringify(q))) err(q.id, `已知錯誤說法［${m.id}］：${m.message}`);
+  // 已知錯誤說法（回歸檢查）；錯誤選項（誘答）本來就是錯誤說法，不檢查
+  for (const q of input.questions) {
+    const scanned = { ...q, options: q.options.filter((o) => q.correctOptionIds.includes(o.id)) };
+    for (const m of findMisconceptions(JSON.stringify(scanned))) err(q.id, `已知錯誤說法［${m.id}］：${m.message}`);
+  }
   for (const [code, text] of input.lessonTexts ?? [])
     for (const m of findMisconceptions(text)) err(`講義 ${code}`, `已知錯誤說法［${m.id}］：${m.message}`);
 
