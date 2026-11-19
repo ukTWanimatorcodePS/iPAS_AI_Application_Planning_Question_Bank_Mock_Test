@@ -54,6 +54,8 @@ export function ResultsPage() {
             subjects: session.competencyCodes.length ? undefined : session.subject ? [session.subject] : undefined,
             scopeLabel: session.scopeLabel,
             timeLimitSec: session.timeLimitSec,
+            // 驗證測驗重做時仍只出沒看過的題目；沒有新題目時會顯示提示，不會出現已看過的題目
+            unseenOnly: session.unseenOnly,
           });
     setBusy(false);
     if (r.ok) nav(`/quiz/${r.sessionId}`);

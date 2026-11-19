@@ -45,7 +45,10 @@ export const remoteProvider: TutorProvider = {
     const rid = parsed.data.reinforcementQuestionId;
     // 補強題必須是題庫中真實存在且同細項的題目，避免顯示未審核的題目
     // 補強題必須是仍釋出的題目（不出 draft／retired）
-    const valid = rid && getReleasedQuestion(rid)?.competencyCode === req.question.competencyCode ? rid : null;
+    // 也不可是原題或本次已出過的補強題（不完全依賴後端遵守 exclude），否則「再出一題」可能原地重複
+    const excluded = new Set([req.question.id, ...(opts?.excludeIds ?? [])]);
+    const cand = rid && !excluded.has(rid) ? getReleasedQuestion(rid) : undefined;
+    const valid = cand && cand.competencyCode === req.question.competencyCode && cand.level === req.question.level ? cand.id : null;
     return { provider: 'remote', label: REMOTE_LABEL, sections: parsed.data.sections, reinforcementQuestionId: valid };
   },
 };

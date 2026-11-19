@@ -60,10 +60,14 @@ export function planCompletion(
   let plannedDays = 0;
   for (const d = new Date(start); d <= now; d.setDate(d.getDate() + 1)) if (!settings.restDays.includes(d.getDay())) plannedDays++;
   const plannedMin = plannedDays * settings.dailyMinutes.min;
-  const quizSec = sessions.filter((s) => s.submittedAt && new Date(s.submittedAt) >= start).reduce((a, s) => a + s.durationSec, 0);
+  // 只計入本期起日到現在：未來日期的紀錄（備份匯入、電腦時鐘曾設到未來）保留原值，但不算入目前期間
+  const quizSec = sessions
+    .filter((s) => s.submittedAt && new Date(s.submittedAt) >= start && new Date(s.submittedAt) <= now)
+    .reduce((a, s) => a + s.durationSec, 0);
   // 講義閱讀時間依每日紀錄加總（只計入本期內的日期）；升級前的累計閱讀時間無法拆分到日期，不計入
   const startKey = start.toLocaleDateString('sv-SE');
-  const lessonSec = studyTime.filter((t) => t.date >= startKey).reduce((a, t) => a + t.seconds, 0);
+  const todayKey = now.toLocaleDateString('sv-SE');
+  const lessonSec = studyTime.filter((t) => t.date >= startKey && t.date <= todayKey).reduce((a, t) => a + t.seconds, 0);
   const actualMin = Math.round((quizSec + lessonSec) / 60);
   return { plannedMin, actualMin, pct: plannedMin ? Math.min(100, Math.round((actualMin / plannedMin) * 100)) : null };
 }

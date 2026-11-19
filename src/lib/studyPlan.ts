@@ -49,9 +49,13 @@ function startOfDay(d: Date) {
   x.setHours(0, 0, 0, 0);
   return x;
 }
-function parseLocal(date: string) {
-  const [y, m, d] = date.split('-').map(Number);
-  return new Date(y, m - 1, d);
+/** 解析 YYYY-MM-DD 本地日期；格式錯誤或日期不存在（如 2026-02-30）時回傳 null */
+export function parseLocalDate(date: string): Date | null {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(date);
+  if (!m) return null;
+  const [y, mo, d] = [Number(m[1]), Number(m[2]), Number(m[3])];
+  const x = new Date(y, mo - 1, d);
+  return x.getFullYear() === y && x.getMonth() === mo - 1 && x.getDate() === d ? x : null;
 }
 
 export interface PlanInput {
@@ -73,11 +77,17 @@ export interface PlanInput {
 export function buildStudyPlan(input: PlanInput): StudyPlan {
   const today = startOfDay(input.today ?? new Date());
   const horizon = input.horizon ?? 7;
-  const { restDays, dailyMinutes } = input.settings;
+  const { restDays } = input.settings;
+  // 防禦：每日最少大於最多時對調（設定頁也會自動對調）
+  const dailyMinutes = {
+    min: Math.min(input.settings.dailyMinutes.min, input.settings.dailyMinutes.max),
+    max: Math.max(input.settings.dailyMinutes.min, input.settings.dailyMinutes.max),
+  };
   const remaining = input.ordered.filter((c) => !input.progress?.get(c.code)?.completedAt);
   const messages: string[] = [];
 
-  let exam: Date | null = input.examDate ? parseLocal(input.examDate) : null;
+  let exam: Date | null = input.examDate ? parseLocalDate(input.examDate) : null;
+  if (input.examDate && !exam) messages.push('設定的考試日期格式不正確，請到設定重新選擇考試日期。');
   if (exam && exam.getTime() <= today.getTime()) {
     messages.push('設定的考試日期已過或為今天，請到設定更新考試日期。');
     exam = null;
@@ -179,7 +189,11 @@ export function buildStudyPlan(input: PlanInput): StudyPlan {
   const over = days.filter((d) => (d.phase === 'learn' || d.phase === 'sprint' || d.phase === 'rest') && d.minutes > dailyMinutes.max);
   if (over.length && lessonPaceOk)
     messages.push(`接下來 ${days.length} 天中有 ${over.length} 天的必要任務（講義與到期錯題）超過每日上限 ${dailyMinutes.max} 分鐘，最多約 ${Math.max(...over.map((d) => d.minutes))} 分鐘。建議先處理到期錯題，或提高每日上限。`);
-  const feasible = lessonPaceOk && over.length === 0;
+  // 一週全部設為休息日（或考前沒有任何學習日）卻還有講義沒讀：無法完成
+  const noStudyDays = remaining.length > 0 && (new Set(restDays).size >= 7 || (exam !== null && studyDaysLeft === 0));
+  if (noStudyDays)
+    messages.push(exam ? '考試前沒有任何學習日，剩餘講義無法排入。請減少休息日或調整考試日期。' : '目前每天都設為休息日，剩餘講義無法排入。請到設定至少保留一天學習日。');
+  const feasible = lessonPaceOk && over.length === 0 && !noStudyDays;
 
   return {
     examDate: exam ? localDate(exam) : null,

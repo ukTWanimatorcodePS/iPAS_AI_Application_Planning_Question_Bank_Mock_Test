@@ -34,8 +34,21 @@ test('AI 導師：答錯後重新教學、切換模式、補強題作答並影�
   expect(rq.id).not.toBe(q.id);
   const wrongOpt = rq.options.find((o) => !rq.correctOptionIds.includes(o.id))!;
   await optionLocator(reinforcement, wrongOpt).click();
-  await reinforcement.getByTestId('tutor-submit').click();
+  // 快速連點兩次：只能記錄一次作答（交叉稽核 B1）
+  await reinforcement.getByTestId('tutor-submit').dblclick();
   await expect(reinforcement.getByText('補強題答錯。')).toBeVisible();
+  const tutorAttempts = await page.evaluate(
+    () =>
+      new Promise<number>((resolve, reject) => {
+        const req = indexedDB.open('ipas-ai-prep');
+        req.onerror = () => reject(req.error);
+        req.onsuccess = () => {
+          const all = req.result.transaction('attempts').objectStore('attempts').getAll();
+          all.onsuccess = () => resolve(all.result.filter((a: { mode: string }) => a.mode === 'tutor').length);
+        };
+      }),
+  );
+  expect(tutorAttempts).toBe(1);
 
   // 補強題答錯 → 補強題也進錯題本，且原題今天到期
   await page.goto('./#/review');
@@ -300,4 +313,18 @@ test('介面顯示版本號 v1.0.0（桌面左下角；手機在功能選單）'
     expect(box.x).toBeLessThan(vp.width / 4);
     expect(box.y).toBeGreaterThan(vp.height / 2);
   }
+});
+
+test('設定：每日最少大於最多時提示，離開欄位後自動對調（交叉稽核 B3）', async ({ page }) => {
+  await skipOnboarding(page);
+  await page.goto('./#/settings');
+  const min = page.getByLabel('每日最少（分）');
+  const max = page.getByLabel('每日最多（分）');
+  await max.fill('30');
+  await min.fill('120');
+  await expect(page.getByTestId('minutes-invalid')).toBeVisible();
+  await min.blur();
+  await expect(min).toHaveValue('30');
+  await expect(max).toHaveValue('120');
+  await expect(page.getByTestId('minutes-invalid')).toBeHidden();
 });

@@ -55,6 +55,9 @@ export function TutorPanel({ q, selected }: { q: Question; selected: string[] })
   const [pick, setPick] = useState<string[]>([]);
   const [result, setResult] = useState<boolean | null>(null);
   const started = useRef(Date.now());
+  // 每次顯示的補強題一個識別碼：資料層以它防止重複記錄；submitting 防止送出中再次點擊
+  const attemptKey = useRef(crypto.randomUUID());
+  const submitting = useRef(false);
   const provider = forceMock ? mockProvider : getProvider(settings.tutorProvider);
 
   useEffect(() => {
@@ -69,6 +72,8 @@ export function TutorPanel({ q, selected }: { q: Question; selected: string[] })
         setPick([]);
         setResult(null);
         started.current = Date.now();
+        attemptKey.current = crypto.randomUUID();
+        submitting.current = false;
         setModesUsed((m) => (m.includes(mode) ? m : [...m, mode]));
       })
       .catch((e: Error) => {
@@ -83,8 +88,9 @@ export function TutorPanel({ q, selected }: { q: Question; selected: string[] })
   const rq = resp?.reinforcementQuestionId ? getQuestion(resp.reinforcementQuestionId) : undefined;
 
   const submit = async () => {
-    if (!rq || !pick.length || result !== null) return;
-    const r = await recordTutorAttempt({ originalQuestionId: q.id, questionId: rq.id, selected: pick, timeMs: Date.now() - started.current });
+    if (!rq || !pick.length || result !== null || submitting.current) return;
+    submitting.current = true; // await 之前就鎖定，快速連點只會送出一次
+    const r = await recordTutorAttempt({ originalQuestionId: q.id, questionId: rq.id, selected: pick, timeMs: Date.now() - started.current, attemptKey: attemptKey.current });
     const ok = r?.correct ?? isCorrect(rq, pick);
     setResult(ok);
     await logTutor({

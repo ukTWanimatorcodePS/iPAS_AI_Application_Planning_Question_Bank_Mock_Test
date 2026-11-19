@@ -3,6 +3,7 @@
  * 匯入資料一律視為不可信：限制大小、以 Zod 嚴格驗證、未知欄位會被丟棄，驗證失敗不寫入任何資料。
  */
 import { z } from 'zod';
+import { parseLocalDate } from '../lib/studyPlan';
 import { db, defaultSettings } from './db';
 
 export const BACKUP_APP_ID = 'ipas-ai-prep';
@@ -20,6 +21,13 @@ const qid = z.string().max(80).regex(/^[A-Za-z0-9-]+$/);
 const optId = z.string().regex(/^[A-E]$/);
 const mode = z.enum(['practice', 'test', 'mock', 'review', 'tutor']);
 
+/** 考試日期：null 或真實存在的 YYYY-MM-DD 日期 */
+const examDateValue = z
+  .string()
+  .max(10)
+  .nullable()
+  .refine((v) => v === null || parseLocalDate(v) !== null, '考試日期需為有效的 YYYY-MM-DD 日期');
+
 const settingsSchema = z.object({
   id: z.literal('user'),
   level,
@@ -34,7 +42,7 @@ const settingsSchema = z.object({
   reviewIntervals: z.array(z.number().int().min(1).max(365)).min(1).max(10),
   onboarded: z.boolean(),
   examDate: z
-    .object({ junior: z.string().max(10).nullable(), middle: z.string().max(10).nullable() })
+    .object({ junior: examDateValue, middle: examDateValue })
     .default({ junior: null, middle: null }),
   tutorProvider: z.enum(['mock', 'remote']).default('mock'),
   updatedAt: iso,
@@ -67,6 +75,7 @@ const sessionSchema = z.object({
   timeLimitSec: z.number().min(0).max(100_000).nullable(),
   rawScore: z.number().int().min(0).nullable(),
   validCount: z.number().int().min(0).nullable(),
+  unseenOnly: z.boolean().optional(),
 });
 
 const attemptSchema = z.object({
@@ -130,6 +139,20 @@ export const backupSchema = z.object({
     reviewItems: z.array(reviewSchema).max(20_000),
     tutorLogs: z.array(tutorLogSchema).max(50_000).default([]),
     studyTime: z.array(studyTimeSchema).max(100_000).default([]),
+  }).superRefine((d, ctx) => {
+    // 主鍵不可重複：還原時後一筆會靜默覆寫前一筆，使用者無從得知資料被丟棄，因此在清除本機資料前就拒絕。
+    // attempts 是同一題的多次作答，本來就可以重複，不檢查
+    const unique = (name: keyof typeof d, keys: string[]) => {
+      const seen = new Set<string>();
+      keys.forEach((k, i) => {
+        if (seen.has(k)) ctx.addIssue({ code: 'custom', path: [name, i], message: `重複的紀錄（${k}）` });
+        seen.add(k);
+      });
+    };
+    unique('lessonProgress', d.lessonProgress.map((x) => x.code));
+    unique('quizSessions', d.quizSessions.map((x) => x.sessionId));
+    unique('reviewItems', d.reviewItems.map((x) => x.questionId));
+    unique('studyTime', d.studyTime.map((x) => x.key));
   }),
 });
 export type Backup = z.infer<typeof backupSchema>;

@@ -74,6 +74,7 @@ export async function startQuiz(opts: {
     competencyCodes: opts.competencyCodes ?? [],
     questionIds: built.questionIds,
     timeLimitSec: opts.timeLimitSec ?? null,
+    unseenOnly: opts.unseenOnly,
   });
   return { ok: true, sessionId, shortfall: built.shortfall, count: built.questionIds.length };
 }

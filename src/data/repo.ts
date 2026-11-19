@@ -83,6 +83,7 @@ export async function createSession(input: {
   competencyCodes: string[];
   questionIds: string[];
   timeLimitSec?: number | null;
+  unseenOnly?: boolean;
 }): Promise<string> {
   if (input.questionIds.length === 0) throw new Error('沒有可用題目，無法建立測驗');
   const sessionId = newId();
@@ -102,6 +103,7 @@ export async function createSession(input: {
     submittedAt: null,
     durationSec: 0,
     timeLimitSec: input.timeLimitSec ?? null,
+    ...(input.unseenOnly ? { unseenOnly: true } : {}),
     rawScore: null,
     validCount: null,
   });
@@ -265,13 +267,20 @@ export async function recordTutorAttempt(input: {
   questionId: string;
   selected: string[];
   timeMs: number;
+  /** 這一次顯示的補強題識別碼；同一個識別碼只記錄一次（防止連點重複記錄） */
+  attemptKey?: string;
 }): Promise<{ correct: boolean } | null> {
   const q = getQuestion(input.questionId);
   if (!q || !input.selected.length) return null;
+  const sessionId = input.attemptKey ? `tutor:${input.originalQuestionId}:${input.attemptKey}` : `tutor:${input.originalQuestionId}`;
   return db.transaction('rw', [db.attempts, db.reviewItems, db.settings], async () => {
+    if (input.attemptKey) {
+      const prev = await db.attempts.where('sessionId').equals(sessionId).filter((a) => a.questionId === q.id).first();
+      if (prev) return { correct: prev.correct };
+    }
     const attempt: AnswerAttempt = {
       questionId: q.id,
-      sessionId: `tutor:${input.originalQuestionId}`,
+      sessionId,
       level: q.level,
       subject: q.subject,
       competencyCode: q.competencyCode,

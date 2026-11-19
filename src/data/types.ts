@@ -61,6 +61,8 @@ export interface QuizSession {
   rawScore: number | null;
   /** 交卷時題庫中仍存在的有效題數 */
   validCount: number | null;
+  /** 驗證測驗：只出沒看過答案或解析的題目；「再做一次」時沿用（選填，舊資料沒有此欄位） */
+  unseenOnly?: boolean;
 }
 
 export interface AnswerAttempt {

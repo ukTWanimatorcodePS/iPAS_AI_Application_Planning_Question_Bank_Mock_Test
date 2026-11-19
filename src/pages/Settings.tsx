@@ -15,6 +15,11 @@ const WEEK = ['日', '一', '二', '三', '四', '五', '六'];
 
 export function SettingsPage() {
   const { settings, update } = useApp();
+  // 每日最少大於最多時自動對調（與首次設定的處理一致），避免學習計畫的預算自相矛盾
+  const normalizeMinutes = () => {
+    const { min, max } = settings.dailyMinutes;
+    if (min > max) update({ dailyMinutes: { min: max, max: min } });
+  };
   const fileRef = useRef<HTMLInputElement>(null);
   const [pending, setPending] = useState<Backup | null>(null);
   const [clearStep, setClearStep] = useState(0);
@@ -103,13 +108,18 @@ export function SettingsPage() {
             <div className="grid grid-cols-2 gap-3">
               <label className="text-sm">
                 <span className="mb-1 block font-bold">每日最少（分）</span>
-                <input className="field" type="number" min={0} max={600} value={settings.dailyMinutes.min} onChange={(e) => update({ dailyMinutes: { ...settings.dailyMinutes, min: Math.max(0, Number(e.target.value)) } })} />
+                <input className="field" type="number" min={0} max={600} value={settings.dailyMinutes.min} onChange={(e) => update({ dailyMinutes: { ...settings.dailyMinutes, min: Math.max(0, Number(e.target.value)) } })} onBlur={normalizeMinutes} aria-describedby="minutes-hint" />
               </label>
               <label className="text-sm">
                 <span className="mb-1 block font-bold">每日最多（分）</span>
-                <input className="field" type="number" min={0} max={600} value={settings.dailyMinutes.max} onChange={(e) => update({ dailyMinutes: { ...settings.dailyMinutes, max: Math.max(0, Number(e.target.value)) } })} />
+                <input className="field" type="number" min={0} max={600} value={settings.dailyMinutes.max} onChange={(e) => update({ dailyMinutes: { ...settings.dailyMinutes, max: Math.max(0, Number(e.target.value)) } })} onBlur={normalizeMinutes} aria-describedby="minutes-hint" />
               </label>
             </div>
+            {settings.dailyMinutes.min > settings.dailyMinutes.max && (
+              <p id="minutes-hint" className="text-sm text-bad" role="alert" data-testid="minutes-invalid">
+                每日最少不能大於每日最多；離開欄位時會自動對調。
+              </p>
+            )}
             <label className="text-sm">
               <span className="mb-1 block font-bold">單元測驗建議門檻（%）</span>
               <input className="field" type="number" min={0} max={100} value={settings.passThreshold} onChange={(e) => update({ passThreshold: Math.max(0, Math.min(100, Number(e.target.value))) })} />
