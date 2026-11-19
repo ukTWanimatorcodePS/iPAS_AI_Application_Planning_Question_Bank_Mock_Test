@@ -60,10 +60,14 @@ test('學習計畫：設定考試日期後產生倒數、今日任務與學習�
   await skipOnboarding(page);
   await page.goto('./#/plan');
   await expect(page.getByText(/尚未設定考試日期/)).toBeVisible();
-  const d = new Date();
-  d.setDate(d.getDate() + 60);
+  // 日期以受測瀏覽器的時區為準；CI 的 Node 主機可能是 UTC，瀏覽器則是 Asia/Taipei。
+  const examDate = await page.evaluate(() => {
+    const d = new Date();
+    d.setDate(d.getDate() + 60);
+    return d.toLocaleDateString('sv-SE');
+  });
   await page.goto('./#/settings');
-  await page.getByTestId('exam-date-junior').fill(d.toLocaleDateString('sv-SE'));
+  await page.getByTestId('exam-date-junior').fill(examDate);
   await page.goto('./#/plan');
   await expect(page.getByText('60 天')).toBeVisible();
   await expect(page.getByTestId('today-plan')).toBeVisible();

@@ -40,10 +40,13 @@ test('文件截圖', async ({ page }, info) => {
   await page.waitForTimeout(300);
   await shot('review');
 
-  const d = new Date();
-  d.setDate(d.getDate() + 75);
+  const examDate = await page.evaluate(() => {
+    const d = new Date();
+    d.setDate(d.getDate() + 75);
+    return d.toLocaleDateString('sv-SE');
+  });
   await page.goto('./#/settings');
-  await page.getByTestId('exam-date-junior').fill(d.toLocaleDateString('sv-SE'));
+  await page.getByTestId('exam-date-junior').fill(examDate);
   await page.goto('./#/plan');
   await page.waitForTimeout(300);
   await shot('plan');
