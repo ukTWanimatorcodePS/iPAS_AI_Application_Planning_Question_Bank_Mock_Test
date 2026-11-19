@@ -9,7 +9,7 @@ import { formatDateTime, formatDuration } from '../lib/format';
 import { getCompetency, getQuestion } from '../content';
 import { useSession } from '../data/hooks';
 import { startQuiz, startReviewQuiz } from '../data/quizFactory';
-import { MODE_LABEL } from '../data/types';
+import { MODE_LABEL, isVerifySession } from '../data/types';
 import { isCorrect, scoreSession } from '../lib/scoring';
 
 export function ResultsPage() {
@@ -55,7 +55,7 @@ export function ResultsPage() {
             scopeLabel: session.scopeLabel,
             timeLimitSec: session.timeLimitSec,
             // 驗證測驗重做時仍只出沒看過的題目；沒有新題目時會顯示提示，不會出現已看過的題目
-            unseenOnly: session.unseenOnly,
+            unseenOnly: isVerifySession(session),
           });
     setBusy(false);
     if (r.ok) nav(`/quiz/${r.sessionId}`);

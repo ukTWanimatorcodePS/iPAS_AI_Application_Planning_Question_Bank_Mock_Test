@@ -176,3 +176,36 @@ describe('X5 遠端導師補強題', () => {
     }
   });
 });
+
+describe('B2 舊版驗證測驗紀錄（Codex 複查 8892cb5）', () => {
+  const legacy = (label: string) => {
+    const raw = fixture();
+    const code = 'L11101';
+    const pool = allQuestions.filter((q) => q.competencyCode === code && q.reviewStatus !== 'retired');
+    const s = raw.data.quizSessions[0];
+    Object.assign(s, { mode: 'test', scopeLabel: label, competencyCodes: [code], questionIds: pool.map((q) => q.id), answers: {}, revealed: [] });
+    delete s.unseenOnly;
+    return raw;
+  };
+
+  it.each(['L11101 驗證測驗（未看過的題目）', 'L11101 驗證測驗（未作答題目）'])('沒有 unseenOnly 的舊備份「%s」還原後仍是驗證測驗，全部看過時重做被拒絕', async (label) => {
+    const { startQuiz } = await import('../../src/data/quizFactory');
+    const r = parseBackup(JSON.stringify(legacy(label)));
+    expect(r.ok).toBe(true);
+    if (!r.ok) return;
+    expect(r.backup.data.quizSessions[0].unseenOnly).toBe(true);
+    await restoreBackup(r.backup);
+    const old = (await exportBackup()).data.quizSessions[0];
+    const again = await startQuiz({ level: old.level, mode: old.mode, count: 5, competencyCodes: old.competencyCodes, scopeLabel: old.scopeLabel, unseenOnly: old.unseenOnly });
+    expect(again.ok).toBe(false);
+  });
+
+  it('一般測驗的舊紀錄不會被誤判為驗證測驗', async () => {
+    const { isVerifySession } = await import('../../src/data/types');
+    expect(isVerifySession({ scopeLabel: 'L11101 AI 的定義與分類', unseenOnly: undefined })).toBe(false);
+    expect(isVerifySession({ scopeLabel: 'L11101 驗證測驗（未看過的題目）', unseenOnly: undefined })).toBe(true);
+    expect(isVerifySession({ scopeLabel: 'L11101 驗證測驗（未看過的題目）', unseenOnly: false })).toBe(false);
+    const r = parseBackup(JSON.stringify(legacy('L11101 單元練習')));
+    expect(r.ok && r.backup.data.quizSessions[0].unseenOnly).toBeFalsy();
+  });
+});

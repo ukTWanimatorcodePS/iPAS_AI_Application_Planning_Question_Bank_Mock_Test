@@ -90,16 +90,22 @@ export function TutorPanel({ q, selected }: { q: Question; selected: string[] })
   const submit = async () => {
     if (!rq || !pick.length || result !== null || submitting.current) return;
     submitting.current = true; // await 之前就鎖定，快速連點只會送出一次
-    const r = await recordTutorAttempt({ originalQuestionId: q.id, questionId: rq.id, selected: pick, timeMs: Date.now() - started.current, attemptKey: attemptKey.current });
-    const ok = r?.correct ?? isCorrect(rq, pick);
-    setResult(ok);
+    // 先固定這次提交所屬的補強題：等待期間若切換模式或「再出一題」，畫面已換成另一題
+    const key = attemptKey.current;
+    const target = rq;
+    const provider0 = resp!.provider;
+    const modes0 = modesUsed;
+    const r = await recordTutorAttempt({ originalQuestionId: q.id, questionId: target.id, selected: pick, timeMs: Date.now() - started.current, attemptKey: key });
+    const ok = r?.correct ?? isCorrect(target, pick);
+    // 晚到的結果只屬於原本那一題：畫面已換題時不更新目前畫面（作答紀錄已正確寫入原題）
+    if (attemptKey.current === key) setResult(ok);
     await logTutor({
       questionId: q.id,
       competencyCode: q.competencyCode,
       level,
-      provider: resp!.provider,
-      modes: modesUsed,
-      reinforcementQuestionId: rq.id,
+      provider: provider0,
+      modes: modes0,
+      reinforcementQuestionId: target.id,
       reinforcementCorrect: ok,
     });
   };

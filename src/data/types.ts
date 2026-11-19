@@ -119,6 +119,16 @@ export const REASON_LABEL: Record<MistakeReason, string> = {
   unknown: '未分類',
 };
 
+/**
+ * 是否為驗證測驗（只出沒看過的題目）。
+ * 新紀錄有 unseenOnly 欄位；舊紀錄（v1.0.0 前建立）沒有，改以講義頁建立驗證測驗時使用的標題辨識：
+ * 「Lxxxxx 驗證測驗（未看過的題目）」與更早的「Lxxxxx 驗證測驗（未作答題目）」。
+ */
+export const LEGACY_VERIFY_LABEL = /驗證測驗（未(看過的|作答)題目）/;
+export function isVerifySession(s: Pick<QuizSession, 'unseenOnly' | 'scopeLabel'>): boolean {
+  return s.unseenOnly ?? LEGACY_VERIFY_LABEL.test(s.scopeLabel);
+}
+
 export const MODE_LABEL: Record<QuizMode, string> = {
   practice: '練習模式',
   test: '測驗模式',

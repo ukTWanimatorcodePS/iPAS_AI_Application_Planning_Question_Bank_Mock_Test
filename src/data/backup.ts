@@ -5,6 +5,7 @@
 import { z } from 'zod';
 import { parseLocalDate } from '../lib/studyPlan';
 import { db, defaultSettings } from './db';
+import { isVerifySession } from './types';
 
 export const BACKUP_APP_ID = 'ipas-ai-prep';
 /** v1：第一階段；v2：新增 tutorLogs、settings.examDate；v3：新增 studyTime（講義閱讀時間每日紀錄）。匯入時各版皆接受，缺少的欄位補預設值。 */
@@ -76,7 +77,9 @@ const sessionSchema = z.object({
   rawScore: z.number().int().min(0).nullable(),
   validCount: z.number().int().min(0).nullable(),
   unseenOnly: z.boolean().optional(),
-});
+})
+  // 舊備份的驗證測驗沒有 unseenOnly：依標題補上，避免還原後「再做一次」出現已看過的題目
+  .transform((s) => (s.unseenOnly === undefined && isVerifySession(s) ? { ...s, unseenOnly: true } : s));
 
 const attemptSchema = z.object({
   questionId: qid,
