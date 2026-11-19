@@ -157,6 +157,12 @@ describe('題庫驗證器（validate:content）', () => {
     expect(run({ stem: '已知 \\[x=1\\]，求 y' })).toHaveLength(1);
     expect(run({ stem: '$' + 'x+'.repeat(65) + 'y=1$' })).toHaveLength(1);
     expect(run({ explanation: { ...q.explanation, correctRationale: '若 \\(x^2=4\\)' } })).toHaveLength(1);
+    // Codex 複查 1134022：Python 字串或程式碼片段中的正規表示式不是 LaTeX
+    expect(run({ stem: '執行 re.findall(r"\\(abc\\)", s) 的結果為何？' })).toEqual([]);
+    expect(run({ options: [{ id: 'A', text: "pattern = r'\\[x\\]'" }, ...q.options.slice(1)] })).toEqual([]);
+    expect(run({ explanation: { ...q.explanation, summary: '`re.escape("(a)")` 會得到 `\\(a\\)`' } })).toEqual([]);
+    // 字串外的 LaTeX 仍要攔下
+    expect(run({ stem: '執行 r"abc" 後，若 \\(x^2=4\\) 則 x 為何？' })).toHaveLength(1);
   });
 });
 

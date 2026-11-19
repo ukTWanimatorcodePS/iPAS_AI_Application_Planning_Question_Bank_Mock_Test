@@ -122,9 +122,11 @@ export function validateContent(input: ValidateInput): Issue[] {
   // 視為 LaTeX：兩個 $ 之間（同一行、不限長度）出現數學符號（^ _ = \ { }）；$$ 區塊；\( \) 與 \[ \] 分隔符；常見 LaTeX 指令。
   // 「售價 $5 與 $6」這類金額不算
   const LATEX = /\$(?=[^$\n]*[\\^_{}=])[^$\n]+\$|\$\$|\\[([]|\\[)\]]|\\(frac|dfrac|sqrt|approx|times|cdot|min|max|mu|sigma|alpha|beta|sum|log|leq|geq|bar|hat|left|right)\b/;
+  // 程式碼片段不算：反引號 `…` 內的文字，以及 Python 字串（含 r"…"、b'…' 等前綴）先移除再檢查，避免把正規表示式 r"\(abc\)" 誤判為 LaTeX
+  const stripCode = (t: string) => t.replace(/`[^`\n]*`/g, ' ').replace(/\b[rRbBuUfF]{0,2}("[^"\n]*"|'[^'\n]*')/g, ' ');
   for (const q of input.questions) {
     const texts = [q.stem, ...q.options.map((o) => o.text), ...Object.values(q.explanation ?? {}).flatMap((v) => (typeof v === 'string' ? [v] : typeof v === 'object' && v ? Object.values(v) : []))];
-    if (texts.some((t) => typeof t === 'string' && LATEX.test(t))) err(q.id, '題目內容含 LaTeX 公式，但題目畫面不渲染公式；請改用一般文字或 Unicode 符號（如 ÷、×、≈、μ、σ）');
+    if (texts.some((t) => typeof t === 'string' && LATEX.test(stripCode(t)))) err(q.id, '題目內容含 LaTeX 公式，但題目畫面不渲染公式；請改用一般文字或 Unicode 符號（如 ÷、×、≈、μ、σ）');
   }
 
   // 已知錯誤說法（回歸檢查）；錯誤選項（誘答）本來就是錯誤說法，不檢查
