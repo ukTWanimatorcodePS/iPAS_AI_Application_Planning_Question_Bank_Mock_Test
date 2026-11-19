@@ -9,6 +9,7 @@ import { startQuiz } from '../data/quizFactory';
 import { addToReview } from '../data/repo';
 import { isCorrect } from '../lib/scoring';
 import { TutorPanel } from './TutorPanel';
+import { reportIssueUrl } from '../config/project';
 
 export function OriginBadge({ q }: { q: Question }) {
   const official = q.origin === 'official-released' || q.origin === 'official-sample';
@@ -118,6 +119,15 @@ export function Explanation({
           </a>
         )}
         <span>學習來源：本站 {q.explanation.lessonAnchor} 講義「{q.lessonSection}」</span>
+        <a
+          href={reportIssueUrl({ kind: 'question', id: q.id })}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1"
+          data-testid="report-question"
+        >
+          回報此題錯誤 <ExternalLink size={12} />
+        </a>
       </div>
 
       {showActions && (

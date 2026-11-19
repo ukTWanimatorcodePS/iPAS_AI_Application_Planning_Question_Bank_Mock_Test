@@ -162,3 +162,24 @@ describe('講義', () => {
     for (const subject of readdirSync(root)) for (const f of readdirSync(join(root, subject))) expect(f.startsWith(subject)).toBe(true);
   });
 });
+
+describe('官方評鑑內容（115.06）', () => {
+  it('每個細項都記錄官方「評鑑內容」欄（官方留白者為 null）', () => {
+    const comps = allCompetencies();
+    expect(comps.length).toBe(50);
+    for (const c of comps) expect(c.officialScope === null || c.officialScope.length > 2, c.code).toBe(true);
+    // 官方留白的細項（依 115.06 PDF）
+    const blank = comps.filter((c) => c.officialScope === null).map((c) => c.code);
+    expect(blank).toEqual(['L11101', 'L11203', 'L21101', 'L21102', 'L21103', 'L22103', 'L22203', 'L23301']);
+  });
+
+  it('官方點名的文件、工具與方法都出現在對應講義中', async () => {
+    const missing: string[] = [];
+    for (const c of allCompetencies()) {
+      if (!c.scopeTerms.length) continue;
+      const md = (await loadLesson(c.code))!;
+      for (const t of c.scopeTerms) if (!new RegExp(t, 'i').test(md)) missing.push(`${c.code}：${t}`);
+    }
+    expect(missing, `講義缺少官方點名項目：\n${missing.join('\n')}`).toEqual([]);
+  });
+});

@@ -137,3 +137,38 @@ describe('設定寫入', () => {
     expect(s.fontScale).toBe(1.3);
   });
 });
+
+describe('驗證測驗（只出未作答題目）', () => {
+  it('排除已作答的題目；全部作答過時不建立測驗', async () => {
+    const { startQuiz } = await import('../../src/data/quizFactory');
+    const comp = q.competencyCode;
+    const pool = allQuestions.filter((x) => x.competencyCode === comp && x.reviewStatus !== 'retired');
+    // 先作答其中一題
+    const s1 = await makeSession('test', [pool[0].id]);
+    await setAnswer(s1, pool[0].id, [pool[0].correctOptionIds[0]]);
+    await submitSession(s1, 10);
+    const r = await startQuiz({ level: 'junior', mode: 'test', count: 50, competencyCodes: [comp], unseenOnly: true });
+    expect(r.ok).toBe(true);
+    if (!r.ok) return;
+    const s = await db.quizSessions.get(r.sessionId);
+    expect(s!.questionIds).not.toContain(pool[0].id);
+    expect(s!.questionIds.length).toBe(pool.length - 1);
+
+    // 全部作答後：沒有可驗證的新題目
+    const s2 = await makeSession('test', pool.map((x) => x.id));
+    for (const x of pool) await setAnswer(s2, x.id, [x.correctOptionIds[0]]);
+    await submitSession(s2, 10);
+    const none = await startQuiz({ level: 'junior', mode: 'test', count: 5, competencyCodes: [comp], unseenOnly: true });
+    expect(none.ok).toBe(false);
+  });
+});
+
+describe('回報錯誤連結', () => {
+  it('只帶題目 ID，連到本專案的 GitHub Issues', async () => {
+    const { reportIssueUrl, REPO_URL } = await import('../../src/config/project');
+    const url = new URL(reportIssueUrl({ kind: 'question', id: q.id }));
+    expect(url.href.startsWith(`${REPO_URL}/issues/new?`)).toBe(true);
+    expect(url.searchParams.get('title')).toContain(q.id);
+    expect(url.searchParams.get('body')).toContain(q.id);
+  });
+});

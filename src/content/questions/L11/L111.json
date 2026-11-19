@@ -2306,5 +2306,410 @@
     ],
     "reviewStatus": "ai-checked",
     "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11102-0021",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於金融監督管理委員會 113 年 6 月發布的《金融業運用人工智慧（AI）指引》，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "屬行政指導性質、不具拘束力，以六項核心原則為架構，鼓勵金融業以風險基礎方式導入 AI"
+      },
+      {
+        "id": "B",
+        "text": "要求所有 AI 系統一律採用相同強度的控管措施"
+      },
+      {
+        "id": "C",
+        "text": "屬法律，金融機構違反任何一項建議都會直接受罰"
+      },
+      {
+        "id": "D",
+        "text": "只適用於銀行，不適用於證券與保險業"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "金管會指引是行政指導，以風險為基礎落實六項核心原則。",
+      "correctRationale": "指引前言明載屬行政指導、不具拘束力；適用範圍涵蓋銀行、證券、期貨、保險等金融機構，並依 AI 系統的風險高低選擇控管措施。",
+      "optionRationales": {
+        "A": "正確描述指引的性質與架構。",
+        "B": "指引採風險基礎做法，高風險系統才需要較多控管。",
+        "C": "指引不具拘束力，不是法律；但金融業仍須遵守其他法令。",
+        "D": "適用對象包含證券、期貨、保險等多種金融機構。"
+      },
+      "commonTrap": "把行政指導誤當成具處罰效力的法律。",
+      "lessonAnchor": "L11102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "金管會",
+      "AI 指引"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11102-0022",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "依金管會《金融業運用人工智慧（AI）指引》的風險評估考量因素，下列哪一個 AI 系統通常風險較高？",
+    "options": [
+      {
+        "id": "A",
+        "text": "提升內部行政作業效率、不涉及監理規範的排程系統"
+      },
+      {
+        "id": "B",
+        "text": "協助行員整理內部會議紀錄的系統"
+      },
+      {
+        "id": "C",
+        "text": "只回答營業時間等一般問題的智能客服"
+      },
+      {
+        "id": "D",
+        "text": "直接決定客戶信用評分、使用大量未去識別化個資，且幾乎沒有人工介入的系統"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "直接影響客戶權益、使用個資多、自主決策程度高的系統風險較高。",
+      "correctRationale": "指引的考量因素包括：是否直接提供客戶服務或影響營運、使用個資的程度、AI 自主決策程度、系統複雜性、對利害關係人的影響、救濟選項完整程度。",
+      "optionRationales": {
+        "A": "不涉及監理規範的內部作業系統，風險可能較低。",
+        "B": "內部效率工具、不涉及監理規範，風險通常較低。",
+        "C": "指引舉智能客服為僅提升服務品質、風險可能較低的例子。",
+        "D": "正確。同時符合多項高風險因素。"
+      },
+      "commonTrap": "只看是否使用 AI，不看使用情境與影響程度。",
+      "lessonAnchor": "L11102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "scenario",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "金管會",
+      "風險評估"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11102-0023",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "我國《人工智慧基本法》（115 年 1 月 14 日公布施行）的中央主管機關為？",
+    "options": [
+      {
+        "id": "A",
+        "text": "金融監督管理委員會"
+      },
+      {
+        "id": "B",
+        "text": "國家科學及技術委員會"
+      },
+      {
+        "id": "C",
+        "text": "經濟部產業發展署"
+      },
+      {
+        "id": "D",
+        "text": "數位發展部"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "《人工智慧基本法》中央主管機關為國科會。",
+      "correctRationale": "第 2 條規定中央主管機關為國家科學及技術委員會；涉及各目的事業主管機關職掌者，由各該機關辦理。",
+      "optionRationales": {
+        "A": "金管會負責金融業的 AI 指引。",
+        "B": "正確。第 2 條規定中央主管機關為國家科學及技術委員會；涉及各目的事業主管機關職掌者，由各該機關辦理。",
+        "C": "產發署負責產業輔導，不是本法主管機關。",
+        "D": "數位發展部是《公部門人工智慧應用參考手冊》的發布機關，不是本法的中央主管機關。"
+      },
+      "commonTrap": "把發布 AI 相關指引的機關都當成基本法的主管機關。",
+      "lessonAnchor": "L11102"
+    },
+    "difficulty": 1,
+    "difficultyTier": "basic",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "人工智慧基本法"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11102-0024",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "下列哪一項「不在」《人工智慧基本法》第 4 條所列政府推動 AI 應遵循的七項原則之中？",
+    "options": [
+      {
+        "id": "A",
+        "text": "公平與不歧視"
+      },
+      {
+        "id": "B",
+        "text": "人類自主"
+      },
+      {
+        "id": "C",
+        "text": "市場占有率最大化"
+      },
+      {
+        "id": "D",
+        "text": "透明與可解釋"
+      }
+    ],
+    "correctOptionIds": [
+      "C"
+    ],
+    "explanation": {
+      "summary": "第 4 條七項原則：永續發展與福祉、人類自主、隱私保護與資料治理、資安與安全、透明與可解釋、公平與不歧視、問責。",
+      "correctRationale": "這些原則與國際上負責任 AI 的原則相近；追求市占率是商業目標，不是基本法列出的原則。",
+      "optionRationales": {
+        "A": "公平與不歧視是七項原則之一。",
+        "B": "人類自主是七項原則之一。",
+        "C": "正確：這不是基本法列出的原則。",
+        "D": "透明與可解釋是七項原則之一。"
+      },
+      "commonTrap": "把商業目標與治理原則混淆。",
+      "lessonAnchor": "L11102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "原理及運作流程",
+    "authoring": "ai-drafted",
+    "tags": [
+      "人工智慧基本法",
+      "原則"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11102-0025",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "關於數位發展部數位產業署 113 年 3 月發布的《人工智慧（AI）產品與系統評測參考指引（草案）》，下列敘述何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "只評測 AI 系統的運算速度"
+      },
+      {
+        "id": "B",
+        "text": "屬自願性質，參照歐盟法案分為 4 個風險等級，並列出安全性、可解釋性、公平性、隱私等 10 項評測項目"
+      },
+      {
+        "id": "C",
+        "text": "把所有 AI 系統都歸為同一個風險等級"
+      },
+      {
+        "id": "D",
+        "text": "是強制所有企業送測的法律"
+      }
+    ],
+    "correctOptionIds": [
+      "B"
+    ],
+    "explanation": {
+      "summary": "評測參考指引是自願性草案，以風險分級與 10 項評測項目為核心。",
+      "correctRationale": "適用於數位發展部轄下資訊、電信、傳播、資安、網際網路 5 大產業；10 項為安全性、可解釋性、彈性、公平性、準確性、透明性、當責性、可靠性、隱私、資安。",
+      "optionRationales": {
+        "A": "評測項目涵蓋安全、公平、隱私等多面向，不只速度。",
+        "B": "正確。適用於數位發展部轄下資訊、電信、傳播、資安、網際網路 5 大產業；10 項為安全性、可解釋性、彈性、公平性、準確性、透明性、當責性、可靠性、隱私、資安。",
+        "C": "指引參照歐盟法案分為 4 個風險等級。",
+        "D": "指引明載屬自願性質，不強制送測。"
+      },
+      "commonTrap": "把自願性的評測指引當成強制法規。",
+      "lessonAnchor": "L11102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "comparison",
+    "lessonSection": "容易混淆的觀念比較",
+    "authoring": "ai-drafted",
+    "tags": [
+      "數位發展部",
+      "評測指引"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11102-0026",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "依歐盟《人工智慧法》（EU AI Act），下列 AI 應用與風險等級的對應，何者正確？",
+    "options": [
+      {
+        "id": "A",
+        "text": "客服聊天機器人 → 禁止；職場情緒辨識 → 最小風險"
+      },
+      {
+        "id": "B",
+        "text": "以 AI 篩選求職履歷 → 禁止；客服聊天機器人 → 高風險"
+      },
+      {
+        "id": "C",
+        "text": "社會評分 → 有限風險；垃圾郵件過濾 → 高風險"
+      },
+      {
+        "id": "D",
+        "text": "在職場以 AI 辨識員工情緒（非醫療或安全目的）→ 禁止；以 AI 篩選求職履歷 → 高風險"
+      }
+    ],
+    "correctOptionIds": [
+      "D"
+    ],
+    "explanation": {
+      "summary": "EU AI Act 四級：不可接受（禁止）、高風險、有限風險（透明義務）、最小風險。",
+      "correctRationale": "職場與教育機構的情緒辨識（醫療或安全理由除外）屬禁止事項；招募篩選屬高風險；聊天機器人主要負透明義務。",
+      "optionRationales": {
+        "A": "聊天機器人屬有限風險；職場情緒辨識屬禁止。",
+        "B": "履歷篩選屬高風險而非禁止；聊天機器人屬有限風險。",
+        "C": "社會評分屬禁止；垃圾郵件過濾屬最小風險。",
+        "D": "正確。職場與教育機構的情緒辨識（醫療或安全理由除外）屬禁止事項；招募篩選屬高風險；聊天機器人主要負透明義務。"
+      },
+      "commonTrap": "把「禁止」與「高風險」混淆。",
+      "lessonAnchor": "L11102"
+    },
+    "difficulty": 3,
+    "difficultyTier": "applied",
+    "questionType": "scenario",
+    "lessonSection": "不同領域的實際案例",
+    "authoring": "ai-drafted",
+    "tags": [
+      "EU AI Act",
+      "風險等級"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
+  },
+  {
+    "id": "original-L11102-0027",
+    "level": "junior",
+    "subject": "L11",
+    "topic": "L111",
+    "competencyCode": "L11102",
+    "type": "single-choice",
+    "origin": "original",
+    "year": null,
+    "session": null,
+    "sourceUrl": null,
+    "copyrightStatus": "original",
+    "stem": "數位發展部《公部門人工智慧應用參考手冊》的主要定位是？",
+    "options": [
+      {
+        "id": "A",
+        "text": "提供政府機關導入 AI 的實作參考，涵蓋服務評估、導入流程與營運管理，並附檢核清單"
+      },
+      {
+        "id": "B",
+        "text": "規定民間企業違法使用 AI 的罰則"
+      },
+      {
+        "id": "C",
+        "text": "只介紹 AI 的歷史發展"
+      },
+      {
+        "id": "D",
+        "text": "取代《個人資料保護法》的規定"
+      }
+    ],
+    "correctOptionIds": [
+      "A"
+    ],
+    "explanation": {
+      "summary": "手冊是給政府機關的 AI 導入實作參考。",
+      "correctRationale": "手冊分為 AI 概念介紹、AI 服務評估、AI 服務導入、AI 營運管理四章，協助機關判斷 AI 是否適合並規劃專案。",
+      "optionRationales": {
+        "A": "正確。手冊分為 AI 概念介紹、AI 服務評估、AI 服務導入、AI 營運管理四章，協助機關判斷 AI 是否適合並規劃專案。",
+        "B": "手冊是參考文件，不是規定罰則的法律。",
+        "C": "手冊重點在評估、導入與營運，不只是歷史。",
+        "D": "參考手冊不能取代法律；AI 應用仍受個資法等規範。"
+      },
+      "commonTrap": "把參考手冊誤當成具強制力的法規。",
+      "lessonAnchor": "L11102"
+    },
+    "difficulty": 2,
+    "difficultyTier": "advanced",
+    "questionType": "concept",
+    "lessonSection": "名詞與定義",
+    "authoring": "ai-drafted",
+    "tags": [
+      "數位發展部",
+      "公部門手冊"
+    ],
+    "reviewStatus": "ai-checked",
+    "verifiedAt": "2026-11-19"
   }
 ]

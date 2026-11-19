@@ -25,6 +25,8 @@ export async function startQuiz(opts: {
   origins?: Question['origin'][];
   scopeLabel?: string;
   timeLimitSec?: number | null;
+  /** 只出從未作答過的題目（驗證測驗：確認真的懂，而不是記住答案） */
+  unseenOnly?: boolean;
 }): Promise<StartResult> {
   let pool = questionsFor({ level: opts.level });
   if (opts.competencyCodes?.length) pool = pool.filter((q) => opts.competencyCodes!.includes(q.competencyCode));
@@ -33,6 +35,11 @@ export async function startQuiz(opts: {
   if (pool.length === 0) return { ok: false, message: '本範圍尚無可用題目。請先回講義閱讀，或選擇其他單元。' };
 
   const { attempted, wrong } = await history(opts.level);
+  if (opts.unseenOnly) {
+    pool = pool.filter((q) => !attempted.has(q.id));
+    if (pool.length === 0)
+      return { ok: false, message: '本範圍的題目你都已經作答過，沒有可用於驗證的新題目。可改用錯題重測，或到其他單元練習。' };
+  }
   const built = buildQuiz(pool, opts.count, { attemptedIds: attempted, wrongIds: wrong });
   const subject = opts.subjects?.length === 1 ? opts.subjects[0] : opts.competencyCodes?.length ? (pool[0].subject as SubjectCode) : null;
   const sessionId = await createSession({

@@ -16,8 +16,10 @@ import { orderedCompetencies } from '../lib/learningPath';
 import { PRACTICE_SECTION, headingId, outline, type OutlineItem } from '../lib/lessonOutline';
 import { DIFFICULTY_LABEL, DIFFICULTY_TIERS } from '../content/schema';
 import { NotFound } from './NotFound';
+import { reportIssueUrl } from '../config/project';
 
 const SCALE_KEY = 'ipas-lesson-scale';
+const VERIFY_COUNT = 5;
 const readScale = () => {
   try {
     const v = Number(localStorage.getItem(SCALE_KEY));
@@ -145,6 +147,23 @@ function Lesson({ code }: { code: string }) {
     nav(`/quiz/${r.sessionId}`);
   };
 
+  /** 驗證測驗：只出沒作答過的題目、測驗模式（交卷前不顯示答案） */
+  const verify = async () => {
+    if (busy) return;
+    setBusy(true);
+    const r = await startQuiz({
+      level: comp.level,
+      mode: 'test',
+      count: VERIFY_COUNT,
+      competencyCodes: [code],
+      unseenOnly: true,
+      scopeLabel: `${code} 驗證測驗（未作答題目）`,
+    });
+    setBusy(false);
+    if (!r.ok) return setMsg(r.message);
+    nav(`/quiz/${r.sessionId}`);
+  };
+
   const completed = !!progress?.completedAt;
   const toggleComplete = async () => {
     await setLessonCompleted(code, comp.level, !completed);
@@ -237,7 +256,19 @@ function Lesson({ code }: { code: string }) {
         </h1>
         <p className="mt-1 text-xs text-muted">
           對應官方評鑑內容範圍 {curriculum.curriculumVersion} 版。本講義為本站自編，非官方教材。
+          <a className="link ml-1" href={reportIssueUrl({ kind: 'lesson', id: comp.code, title: comp.name })} target="_blank" rel="noopener noreferrer">
+            回報講義錯誤
+          </a>
         </p>
+        <div className="mt-3 rounded-xl border border-line p-3 text-sm" data-testid="official-scope">
+          <p className="mb-1 text-xs font-bold text-muted">官方評鑑內容（{curriculum.curriculumVersion} 版原文）</p>
+          {comp.officialScope ? (
+            <p>{comp.officialScope}</p>
+          ) : (
+            <p className="text-muted">官方評鑑範圍此細項的「評鑑內容」欄未列舉，請依細項名稱準備。</p>
+          )}
+          <p className="mt-1 text-xs text-muted">官方說明：評鑑範圍僅供參考，實際考題不以所列內容為限。</p>
+        </div>
 
         {comp.level !== level && (
           <div className="notice mt-3">
@@ -316,7 +347,15 @@ function Lesson({ code }: { code: string }) {
                 <NotebookPen size={16} /> {n} 題練習{qCount && qCount < n ? `（目前僅 ${qCount} 題）` : ''}
               </button>
             ))}
+            <button type="button" className="btn btn-secondary" disabled={!qCount || busy} onClick={verify} data-testid="start-verify">
+              <CheckCircle2 size={16} /> 驗證 {VERIFY_COUNT} 題（只出沒做過的題目）
+            </button>
           </div>
+          {qCount > 0 && (
+            <p className="mt-2 text-xs text-muted">
+              驗證測驗採測驗模式、交卷前不顯示答案，題目全部是你還沒作答過的，用來確認真的理解，而不是記住答案；沒做過的題目不足 {VERIFY_COUNT} 題時，只出剩下的題目。
+            </p>
+          )}
         </section>
 
         <div className="mt-6 flex flex-wrap justify-between gap-2">

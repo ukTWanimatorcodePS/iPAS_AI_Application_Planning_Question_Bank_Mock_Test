@@ -208,3 +208,39 @@ test('模擬考：顯示 115 年官方題數與時間並可一鍵套用，仍標
   await page.getByRole('radiogroup', { name: '切換級別' }).getByRole('radio', { name: '中級' }).click();
   await expect(page.getByTestId('official-format')).toHaveText('L21：單選題 50 題／90 分鐘');
 });
+
+test('講義：顯示官方評鑑內容原文、回報錯誤連結；驗證測驗只出沒做過的題目', async ({ page }) => {
+  await skipOnboarding(page);
+  await page.goto('./#/courses/L11102');
+  const scope = page.getByTestId('official-scope');
+  await expect(scope).toContainText('公部門人工智慧應用參考手冊');
+  await expect(scope).toContainText('金融業運用人工智慧');
+  await expect(page.getByRole('link', { name: '回報講義錯誤' })).toHaveAttribute('href', /github\.com\/.+\/issues\/new\?.*L11102/);
+
+  // 先練 5 題並全部提交
+  await page.getByTestId('start-quiz-5').click();
+  const seen = new Set<string>();
+  for (let i = 0; i < 5; i++) {
+    const q = await currentQuestion(page, bank);
+    seen.add(q.id);
+    await choose(page, q, true);
+    await page.getByTestId('reveal').filter({ visible: true }).click();
+    await expect(page.getByTestId('report-question').first()).toHaveAttribute('href', new RegExp(q.id));
+    if (i < 4) {
+      await page.getByTestId('next').filter({ visible: true }).click();
+      await expect(page.locator('#q-stem')).not.toHaveText(q.stem);
+    }
+  }
+
+  // 驗證測驗：題目都不在剛才做過的 5 題中
+  await page.goto('./#/courses/L11102');
+  await page.getByTestId('start-verify').click();
+  for (let i = 0; i < 5; i++) {
+    const q = await currentQuestion(page, bank);
+    expect(seen.has(q.id), `驗證測驗出現已作答題目 ${q.id}`).toBe(false);
+    if (i < 4) {
+      await page.getByTestId('next').filter({ visible: true }).click();
+      await expect(page.locator('#q-stem')).not.toHaveText(q.stem);
+    }
+  }
+});

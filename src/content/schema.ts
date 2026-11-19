@@ -11,7 +11,14 @@ export type SubjectCode = z.infer<typeof subjectCodeSchema>;
 const competencyCode = z.string().regex(/^L[12]\d{4}$/, '細項代碼需為 L + 5 碼，例如 L11101');
 
 /* ---------- 課綱 ---------- */
-export const competencySchema = z.object({ code: competencyCode, name: z.string().min(1) });
+export const competencySchema = z.object({
+  code: competencyCode,
+  name: z.string().min(1),
+  /** 官方評鑑範圍「評鑑內容」欄原文（115.06 版；官方留白者為 null） */
+  officialScope: z.string().min(2).nullable(),
+  /** 官方評鑑內容點名、講義必須涵蓋的項目（每項為正規表示式，任一寫法出現即可） */
+  scopeTerms: z.array(z.string().min(1)).default([]),
+});
 export const topicSchema = z.object({
   code: z.string().regex(/^L[12]\d{2}$/),
   name: z.string().min(1),

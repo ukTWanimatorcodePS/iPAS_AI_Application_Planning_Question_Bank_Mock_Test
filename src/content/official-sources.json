@@ -11,7 +11,9 @@
     "115 年獲證條件：初級同時報考全科平均 70 分且每科不低於 60 分，非同時報考則每科 70 分；中級科目 1＋科目 2 各 70 分取得數據分析證書，科目 1＋科目 3 各 70 分取得機器學習證書。",
     "115 年度簡章（115.04 版）§2.3：每科目為單選題 50 題、電腦化測驗；初級每科 75 分鐘、中級每科 90 分鐘；中級科目 2、3 同一時段擇一應考，且包含程式相關題型。",
     "官方公告試題可公開下載，但查核頁面未見明示允許轉載、重製或改作的授權條款，因此本站只提供連結，不收錄題目內容。",
-    "初級（11404）與中級（1150410）學習指引勘誤表已逐項對照本站講義與題庫（2026-11-19），未發現本站採用勘誤前的錯誤說法。"
+    "初級（11404）與中級（1150410）學習指引勘誤表已逐項對照本站講義與題庫（2026-11-19），未發現本站採用勘誤前的錯誤說法。",
+    "評鑑內容範圍 115.06 各細項的「評鑑內容」欄已逐字收錄於 curriculum.json（officialScope），並以測試檢查官方點名的文件、工具與方法出現在對應講義（scopeTerms）。",
+    "L12301 點名經濟部產業發展署《AI 導入指引》相關資料：2026-11-19 查核時產發署 AI 人培專區「AI 導入指引」頁面（aimfg.org.tw/ai_guide → eii.nat.gov.tw/aimfg/ai_guide）回應 404，尚未取得原文，講義未整理其內容。"
   ],
   "reuseStatus": "link-only",
   "documents": [
@@ -114,6 +116,46 @@
       "version": "1150410",
       "publishedAt": "2026-04-10",
       "url": "https://www.ipas.org.tw/api/proxy/uploads/certification_resource/bf93f438f7be48d295c1b40a34d79f3d/AI%E6%87%89%E7%94%A8%E8%A6%8F%E5%8A%83%E5%B8%AB(%E4%B8%AD%E7%B4%9A)_%E5%AD%B8%E7%BF%92%E6%8C%87%E5%BC%95%E5%8B%98%E8%AA%A4%E8%A1%A8_1150410_20260410150331.pdf"
+    },
+    {
+      "id": "fsc-ai-guideline-11306",
+      "type": "policy",
+      "level": "junior",
+      "subject": "L11",
+      "title": "金融監督管理委員會《金融業運用人工智慧（AI）指引》",
+      "version": "113.06",
+      "publishedAt": "2024-06-20",
+      "url": "https://law.fsc.gov.tw/LawContent.aspx?id=GL003920"
+    },
+    {
+      "id": "moda-public-sector-ai-playbook",
+      "type": "policy",
+      "level": "junior",
+      "subject": "L11",
+      "title": "數位發展部《公部門人工智慧應用參考手冊》",
+      "version": "V1.0（115.01.28）",
+      "publishedAt": "2026-01-28",
+      "url": "https://moda.gov.tw/digital-affairs/digital-service/ai-resource/18248"
+    },
+    {
+      "id": "adi-ai-evaluation-guideline-draft",
+      "type": "policy",
+      "level": "junior",
+      "subject": "L11",
+      "title": "數位發展部數位產業署《人工智慧（AI）產品與系統評測參考指引（草案）》",
+      "version": "113.03 草案",
+      "publishedAt": "2024-03",
+      "url": "https://www-api.moda.gov.tw/File/Get/adi/zh-tw/0u5igOQcVXiBO9b"
+    },
+    {
+      "id": "ai-basic-act",
+      "type": "law",
+      "level": "both",
+      "subject": null,
+      "title": "《人工智慧基本法》",
+      "version": "115.01.14 公布施行",
+      "publishedAt": "2026-01-14",
+      "url": "https://law.moj.gov.tw/"
     }
   ],
   "examPapers": [
