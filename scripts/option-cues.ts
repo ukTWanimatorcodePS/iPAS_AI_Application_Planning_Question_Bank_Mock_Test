@@ -21,6 +21,8 @@ console.log(`每題選最長的期望得分：${s.longestStrategyPct}%（隨機�
 console.log(`各科：${Object.entries(s.bySubject).map(([k, v]) => `${k} ${v.longestStrategyPct}%`).join('、')}`);
 console.log(`正確選項是唯一最長：${s.strictlyLongestPct}%`);
 console.log(`正確選項長度 ÷ 錯誤選項平均：${s.avgLengthRatio} 倍；長度比 ≥ 2 的題目 ${s.ratioAtLeast2} 題`);
+const r = s.lengthRank;
+console.log(`正確選項的長度名次（1 = 最長，理想各約 25%）：第 1 名 ${r[1]}、第 2 名 ${r[2]}、第 3 名 ${r[3]}、第 4 名 ${r[4]}`);
 console.log(`絕對字眼：錯誤選項 ${s.absoluteInDistractors} 題、正確選項 ${s.absoluteInCorrect} 題`);
 const worst = questions
   .filter((q) => q.reviewStatus !== 'retired' && isStrictlyLongest(q))

@@ -54,6 +54,8 @@ export interface CueSummary {
   ratioAtLeast2: number;
   absoluteInDistractors: number;
   absoluteInCorrect: number;
+  /** 正確選項的長度名次分布（1 = 最長；並列時算較前的名次）。理想是四個名次大致平均 */
+  lengthRank: Record<1 | 2 | 3 | 4, number>;
   bySubject: Record<string, { total: number; longestStrategyPct: number }>;
 }
 
@@ -67,6 +69,7 @@ export function summarizeCues(questions: CueQuestion[]): CueSummary {
     r2 = 0,
     absD = 0,
     absC = 0;
+  const lengthRank: CueSummary['lengthRank'] = { 1: 0, 2: 0, 3: 0, 4: 0 };
   for (const q of qs) {
     if (isStrictlyLongest(q)) strict++;
     const r = lengthRatio(q);
@@ -78,6 +81,10 @@ export function summarizeCues(questions: CueQuestion[]): CueSummary {
     bySubject[q.subject].longestStrategyPct += s;
     if (q.options.some((o) => !q.correctOptionIds.includes(o.id) && ABSOLUTE_WORDS.test(o.text))) absD++;
     if (q.options.some((o) => q.correctOptionIds.includes(o.id) && ABSOLUTE_WORDS.test(o.text))) absC++;
+    const L = q.options.map((o) => len(o.text));
+    const ci = q.options.findIndex((o) => q.correctOptionIds.includes(o.id));
+    const rank = Math.min(4, 1 + L.filter((v) => v > L[ci]).length) as 1 | 2 | 3 | 4;
+    lengthRank[rank]++;
   }
   for (const v of Object.values(bySubject)) v.longestStrategyPct = pct(v.longestStrategyPct, v.total);
   return {
@@ -88,6 +95,7 @@ export function summarizeCues(questions: CueQuestion[]): CueSummary {
     ratioAtLeast2: r2,
     absoluteInDistractors: absD,
     absoluteInCorrect: absC,
+    lengthRank,
     bySubject,
   };
 }

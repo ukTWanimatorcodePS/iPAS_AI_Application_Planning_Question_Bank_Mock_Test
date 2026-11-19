@@ -203,7 +203,7 @@
     "options": [
       {
         "id": "A",
-        "text": "平均絕對誤差（MAE）"
+        "text": "均方誤差（Mean Squared Error）"
       },
       {
         "id": "B",
@@ -211,11 +211,11 @@
       },
       {
         "id": "C",
-        "text": "IoU"
+        "text": "絞鏈損失（Hinge Loss）"
       },
       {
         "id": "D",
-        "text": "均方誤差（MSE）"
+        "text": "平均絕對誤差（Mean Absolute Error）"
       }
     ],
     "correctOptionIds": [
@@ -225,10 +225,10 @@
       "summary": "交叉熵衡量預測機率與真實標籤的差異。",
       "correctRationale": "最小化交叉熵等同於最大化概似。",
       "optionRationales": {
-        "A": "MAE 常用於迴歸。",
+        "A": "MSE 常用於迴歸；用於機率輸出時梯度性質較差。",
         "B": "正確。分類常用交叉熵。",
-        "C": "IoU 用於物件偵測評估。",
-        "D": "MSE 常用於迴歸。"
+        "C": "Hinge Loss 用於 SVM 等以間隔分類的模型，不輸出機率。",
+        "D": "MAE 常用於迴歸。"
       },
       "commonTrap": "分類問題使用迴歸損失。",
       "lessonAnchor": "L23101"
