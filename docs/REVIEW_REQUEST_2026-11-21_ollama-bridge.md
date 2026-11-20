@@ -107,3 +107,64 @@ Codex 第二輪：F1–F5 原反例均已修好；新必修 **R2-1（P2）**：�
 2. 確認 `$done` 標記沒有讓任何未完成的路徑跳過取消。
 
 結果請寫成 `docs/AUDIT_2026-11-21_ollama-bridge_r3.md`，明確寫出是否同意。不要修改正式程式或題庫，不要提交、推送，不要啟動、延長或變更使用者的 Ollama 許可。
+
+---
+
+# 第四輪：v1.2.1 之後，使用者要求的簡化（未提交）
+
+v1.2.1 已於 2026-11-21 發布（`de55b5d`、紀錄 `460c86c`）。之後使用者要求：
+1. 「本機暫時許可」右上角只留「啟動」，停止改為在轉接程式視窗按 Ctrl+C，並在啟動畫面最後一行寫明；不要「停止」「重新啟動」。
+2. 自動偵測直接帶入需要轉接程式的版本；本地模型需要轉接程式的都帶入轉接器。
+3. 模型名稱自動填入；「取得模型清單」能偵測並自動填入，並有下拉選單可選其他模型。
+
+## 變更
+| 檔案 | 內容 |
+| --- | --- |
+| `src/ai/byok/bridge.ts` | 移除 `bridgeStopCommand`；腳本開頭註解與啟動畫面最後一行說明「按 Ctrl+C 停止（或關閉視窗）」。再次啟動時仍以紀錄（PID＋啟動時間＋停止代碼）請舊轉接程式自行結束（F4 的做法不變）。新增 `prefersBridge(ua)`：Windows 桌面（排除 Android／iOS／Windows Phone） |
+| `src/components/LocalBridgePanel.tsx` | 只剩「啟動」；步驟加「要停止：在那個 PowerShell 視窗按 Ctrl+C」；移除「停止」相關說明 |
+| `src/components/ByokSettings.tsx` | Windows：服務選單只列「Ollama（本機，透過轉接程式）」（目前已選的仍保留），選 Ollama 時帶入轉接版本；非 Windows 只列直接連線。自動偵測：先找轉接程式（11435）；找到 Ollama 或 Ollama 被 403 擋下時，在 Windows 直接把表單換成轉接版本（不儲存、不動已儲存設定）、展開說明區塊、可讀到清單時自動選模型。模型自動填入：本機服務模型留空時，「儲存並連線」「只測試，不儲存」先 `listModels`（不耗 token）再填入；已有模型時維持同步儲存（舊測試的同步行為不變）。「取得模型清單」空白或本機清單外時自動填入，並顯示 `byok-model-select` 下拉選單；雲端已填的不覆蓋，雲端仍須填模型 |
+| `src/ai/byok/diagnose.ts` | `detectLocal` 順序：轉接程式 → Ollama → LM Studio |
+| `src/ai/byok/client.ts`、`TutorChat.tsx`、`connection.ts` | 文案「重新啟動」改為「啟動」再執行一次 |
+| 測試 | `ollamaBridge.test.tsx` 新增 9 項（Windows／macOS 選單、偵測帶入轉接版本、轉接執行中優先、模型自動填入、空清單、雲端不自動猜、取得清單＋下拉、雲端不覆蓋）；`ollamaBridge.runtime.test.ts` 改用停止代碼清理，F4 改測「再次啟動」對無關 PowerShell 的處理（啟動時間不符→照常啟動；相符但不回應→放棄啟動），新增「錯誤停止代碼沒有作用」；`connection.test.tsx`、`auditV110r2.test.tsx` 配合平台差異 |
+
+LM Studio 不需要轉接程式（在它的設定開啟 CORS 即可），所以不帶入轉接器；轉接程式也只轉送到 Ollama。
+
+## 驗證
+- typecheck、lint、validate:content（835 題）、test **451 通過**（Windows；另以 Linux 使用者代理字串的 jsdom 設定重跑 451 通過，模擬 CI）、`BRIDGE_SHELL=pwsh` 執行測試 11 通過、build、E2E 54 通過 2 略過。
+- 預覽（localhost:4174、Windows Chromium）：服務選單只有轉接版 Ollama；自動偵測找到本機 Ollama 3 個模型 → 表單換成 `http://localhost:11435/v1`、自動填入模型、出現下拉選單、「本機暫時許可」展開且只剩「啟動」。未啟動轉接程式、未變更 Ollama 設定。
+
+## 請複查
+1. 移除停止指令後，「再次啟動」的舊轉接處理與 F4 保證是否仍成立（runtime 測試已改測此路徑）。
+2. `prefersBridge` 以使用者代理字串判斷是否妥當（例如 Windows 上的其他瀏覽器、ARM 裝置）。
+3. 模型自動填入的時機：本機清單外的已填名稱會被「取得模型清單」覆蓋；「儲存並連線」只在空白時讀清單——是否有覆蓋使用者意圖的情況。
+4. 自動偵測把表單換成轉接版本但不儲存：使用者若未啟動轉接就按「儲存並連線」，訊息是否清楚。
+
+結果請寫成 `docs/AUDIT_2026-11-21_ollama-bridge_r4.md`，明確寫出是否同意。不要修改正式程式或題庫，不要提交、推送，不要啟動、延長或變更使用者的 Ollama 許可。
+
+---
+
+# 第五輪：Codex 第四輪（docs/AUDIT_2026-11-21_ollama-bridge_r4.md）R4-1 的修正（未提交）
+
+Codex 第四輪：只留「啟動」、Ctrl+C、Windows／ARM 判斷、模型下拉與 360px 通過；必修 **R4-1（P2）**：自動讀取模型等待中，另一個表單或分頁清除金鑰／改存服務後，舊操作仍寫回（恢復已清除的金鑰、覆蓋較新的設定）並再發出連線。
+
+## 修正（`src/components/ByokSettings.tsx`）
+- 「儲存並連線」與「只測試，不儲存」走自動讀模型的非同步路徑時，在送出當下記錄全域 AI 設定版本（`byokVersion()`），建立 `stale()`。
+- `withModel` 在模型清單回來（成功或失敗）後先檢查 `stale()`；`save` 在 `commit`（`saveByok`＋連線）前、`test` 在 `connect` 前再檢查一次。版本已變（另一表單儲存／清除、其他分頁 storage 事件）就不填入、不寫回、不連線，顯示「等待期間 AI 設定已在其他地方變更…已取消這次操作」。
+- 自己的 `saveByok` 只發生在檢查通過之後，所以正常自動填入不會被自己中止；已有模型名稱時仍是同步儲存（不經過這段）。
+
+## 新增回歸（`tests/unit/ollamaBridge.test.tsx`，第一次模型清單請求由測試控制何時回傳）
+- 重現 A：等待中 `clearByok()` → 設定仍為 null、金鑰空白、請求只有 1 次、連線為 idle、顯示已取消。
+- 重現 B：等待中另存 OpenAI＋`newer-user-choice` → 回傳後設定與金鑰仍是較新的那份，請求只有 1 次。
+- 「只測試，不儲存」等待中被清除 → 不啟動舊連線。
+- 對照：沒有外部變更 → 自動填入 `model-auto`、儲存、連線成功（共 2 次請求）。
+- **變異測試**：把版本檢查改成永遠不過期，A、B、只測試三項都失敗，對照仍通過；還原後全部通過。
+
+## 驗證
+- typecheck、lint、validate:content（835 題）、test **455 通過**（Windows；Linux 使用者代理字串設定重跑 455 通過）、build、E2E 54 通過 2 略過。
+- 第四輪的文案建議（只有疑似向量模型時不保證是「對話模型」）：自動填入的訊息只寫「已自動選用模型」，沒有宣稱是對話模型；空清單訊息仍建議下載對話模型。
+
+## 請複查
+1. 重跑 `docs/audit-bridge-r4.extra.test.tsx` 的兩個重現，確認不再寫回。
+2. 是否還有其他「等待後寫入全域設定」的路徑（例如自動偵測的「套用並連線」是同步，`fetchModels` 只改本表單）。
+
+結果請寫成 `docs/AUDIT_2026-11-21_ollama-bridge_r5.md`，明確寫出是否同意。不要修改正式程式或題庫，不要提交、推送，不要啟動、延長或變更使用者的 Ollama 許可。

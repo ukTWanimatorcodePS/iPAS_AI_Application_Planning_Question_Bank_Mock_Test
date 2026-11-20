@@ -637,7 +637,7 @@ export async function streamChat(o: StreamOptions): Promise<ChatResult> {
   if (isExpired(o.config, o.apiKey))
     throw new ByokError(
       isBridgeUrl(o.config.baseUrl)
-        ? '本機轉接程式的許可時間已到，已自動中斷。請在設定頁「本機暫時許可」按「重新啟動」，再按「重新連線」。'
+        ? '本機轉接程式的許可時間已到，已自動中斷。請在設定頁「本機暫時許可」按「啟動」再執行一次，再按「重新連線」。'
         : '本次連線已滿 30 分鐘，已自動中斷。請按「重新連線」開始新的 30 分鐘。',
       'expired',
     );

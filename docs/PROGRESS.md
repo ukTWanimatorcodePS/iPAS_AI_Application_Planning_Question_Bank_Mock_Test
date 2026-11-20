@@ -383,3 +383,11 @@ Claude 逐處核對屬實並修正，另在題庫找到 3 題相同問題一併�
 - 正式網址已確認顯示「版本 v1.2.1」（桌面左下角與頁尾），設定頁有「Ollama（本機，透過轉接程式）」選項與「重新連線」按鈕。GitHub Pages 約有 10 分鐘快取，使用者看到舊版時請重新整理。
 - 內容：本機 Ollama 403 說明、Windows 本機轉接程式（Codex 轉接第 1～3 輪同意）、網站倒數對齊轉接期限、設定頁「重新連線」、移除永久設定步驟。
 - 待決定：GitHub Actions 為 ubuntu，會略過 Windows 實際執行測試；Codex 建議另加 windows-latest 檢查。在此之前，發布前須在 Windows 本機執行 `npm run test`。
+
+## Codex Ollama轉接簡化第四輪複查（2026-11-21，未提交）
+
+詳見本機 `docs/AUDIT_2026-11-21_ollama-bridge_r4.md`（不stage）。暫不同意：R4-1 P2本機空白模型非同步儲存只檢查本表單formSeq，另一表單清除金鑰或儲存新服務後，舊模型清單結果仍commit，恢復已清除設定／金鑰或覆蓋新選擇。需全域byokVersion／操作世代保護並保留正常儲存。只留啟動、Ctrl+C說明、Windows／ARM UA、F4再次啟動不誤殺、模型下拉及未啟動轉接的指引均通過目前檢查。typecheck、lint、835題、451單元含11項runtime、build通過；E2E54通過2略過；競態／UA額外套件454通過（含缺陷重現斷言）。Windows360px補充1通過；初跑錯用Android UA的測試失敗保留，不算產品失敗。未改正式程式／題庫、未提交推送、未啟動延長或變更Ollama許可；未重跑題庫Python或未變動取消流程的真實PTY探測。
+
+## Codex Ollama轉接簡化第五輪複查（2026-11-21，未提交）
+
+詳見本機 `docs/AUDIT_2026-11-21_ollama-bridge_r5.md`（不stage）。同意本次R4-1修正發布，不構成提交推送授權。兩個原反例已修復：外部清除後config/key仍空、改存新服務後保留新設定；各只有原清單1次請求。只測試、storage事件、失敗分支與正常自動填入對照通過；無其他未保護的自動等待後全域設定寫入點。applyDetected是使用者明確點選後同步保存，fetchModels／detect只改草稿。失敗清單可能另做不帶金鑰的根路徑診斷，未建立舊連線或恢復資料；已分清並保留探測初稿錯誤預期日誌。typecheck、lint、835題、455單元含11runtime、build通過；E2E54通過2略過；原r4套件456通過2舊缺陷斷言預期失敗；r5正向套件461通過；Windows360px補充1通過。未改正式程式／題庫、未提交推送、未啟動延長或變更Ollama許可，未重跑題庫Python或未變動Ctrl+C真實PTY。

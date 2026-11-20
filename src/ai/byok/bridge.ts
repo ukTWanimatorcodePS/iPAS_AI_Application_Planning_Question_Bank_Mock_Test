@@ -12,8 +12,10 @@
  * - 請求本文實際讀取最多 2 MiB（分塊上傳也一樣），超過就拒絕，不轉送
  * - 到期（5～120 分鐘）是絕對截止：上傳、等待回應、串流中都會檢查，到期立即中斷目前的請求並關閉
  * - 每個回應附上到期時間（X-IPAS-Bridge-Expires，毫秒），網站據此對齊倒數（網站只信任本轉接位址的這個標頭）
- * - 「停止」不結束任何程式：寫入只有這次轉接程式知道的停止代碼，由轉接程式自己結束；
- *   舊紀錄對不上（程式已不在、PID 被其他程式重用）時只清除紀錄
+ * - 停止：在轉接程式的 PowerShell 視窗按 Ctrl+C（或關閉視窗）。網站只提供「啟動」一個按鈕（使用者決定：
+ *   網頁無法直接控制本機程式，就不提供另外的停止／重新啟動指令）。
+ * - 再次「啟動」時，若舊的轉接程式還在，會寫入只有它知道的停止代碼請它自己結束（不強制結束任何程式；
+ *   紀錄對不上——程式已不在、PID 被其他程式重用——時只當作過期紀錄）
  *
  * 網頁無法執行電腦上的程式；網站上的按鈕只負責複製指令。
  */
@@ -26,6 +28,15 @@ export const BRIDGE_MAX_MINUTES = 120;
 export const BRIDGE_DEFAULT_MINUTES = 30;
 /** 請求本文上限（位元組） */
 export const BRIDGE_MAX_BODY = 2 * 1024 * 1024;
+
+/**
+ * 這台電腦是否該用轉接程式連 Ollama：轉接程式目前只有 Windows 版。
+ * Windows 上選 Ollama 或自動偵測到 Ollama，一律直接帶入「透過轉接程式」的設定（使用者要求）；
+ * macOS／Linux 維持直接連線（用只對該終端機視窗有效的 OLLAMA_ORIGINS 啟動）。
+ */
+export function prefersBridge(ua: string = typeof navigator !== 'undefined' ? navigator.userAgent : ''): boolean {
+  return /Windows NT|Win64|Win32|\bwin32\b/i.test(ua) && !/Android|iPhone|iPad|Windows Phone/i.test(ua);
+}
 
 /** 把分鐘數限制在 5～120 的整數 */
 export function clampMinutes(n: number): number {
@@ -79,13 +90,14 @@ export interface BridgeTestOptions {
 
 const stateDirExpr = (o?: BridgeTestOptions) => (o?.stateDir ? psQuote(o.stateDir) : '$env:TEMP');
 
-/** 啟動（也用於重新啟動：會先請舊的轉接程式自己結束）。貼到 PowerShell 視窗執行；視窗保持開啟直到到期 */
+/** 啟動：貼到 PowerShell 視窗執行；視窗保持開啟直到到期或按 Ctrl+C。舊的轉接程式若還在，會先請它自己結束 */
 export function bridgeScript(origin: string, minutes: number, test?: BridgeTestOptions): string {
   const m = clampMinutes(minutes);
   const port = test?.port ?? BRIDGE_PORT;
   const lifetime = test?.lifetimeMs !== undefined ? `$expires = [DateTimeOffset]::UtcNow.AddMilliseconds(${Math.max(1, Math.round(test.lifetimeMs))})` : '$expires = [DateTimeOffset]::UtcNow.AddMinutes($Minutes)';
   return `# iPAS AI 備考室：Ollama 本機轉接程式（暫時許可 ${m} 分鐘）
 # 只允許這台電腦上的 ${origin} 網頁連線；到期自動關閉；不修改 Ollama 設定，也不重新啟動 Ollama。
+# 要停止：在這個視窗按 Ctrl+C（或直接關閉視窗）。
 & {
 $Minutes = ${m}
 $Origin = ${psQuote(origin)}
@@ -138,7 +150,8 @@ function Complete-Task($t) {
   if (Test-Stop) { throw 'ipas-bridge-deadline' } # 完成的同時剛好到期：仍以截止為準
 }
 Write-Host "轉接程式已啟動：http://localhost:$Port/v1（只允許這台電腦上的 $Origin）" -ForegroundColor Green
-Write-Host "將於 $($expires.ToLocalTime().ToString('HH:mm')) 自動關閉。要提早停止，請在網站按「停止」，或關閉這個視窗。"
+Write-Host "將於 $($expires.ToLocalTime().ToString('HH:mm')) 自動關閉。"
+Write-Host '要停止轉接程式，請在這個視窗按 Ctrl+C（或直接關閉視窗）。' -ForegroundColor Cyan
 # 預設為中性說明：按 Ctrl+C 或發生錯誤提早離開時，不會跑到下面設定原因的程式
 $reason = '已中止'
 try {
@@ -253,10 +266,3 @@ try {
 `;
 }
 
-/**
- * 停止：不結束任何程式。讀取紀錄，確認紀錄中的程式仍是當初啟動轉接的那一個（PID 與啟動時間都相符），
- * 才寫入停止代碼，由轉接程式自己結束並清除紀錄。對不上時只清除過期紀錄。
- */
-export function bridgeStopCommand(test?: Pick<BridgeTestOptions, 'stateDir'>): string {
-  return `& { $Dir = ${stateDirExpr(test)}; $f = Join-Path $Dir 'ipas-ollama-bridge.json'; $s = $null; try { $s = Get-Content $f -Raw -ErrorAction Stop | ConvertFrom-Json } catch {}; if (-not $s -or -not $s.token) { Write-Host '目前沒有執行中的轉接程式。'; return }; $p = Get-Process -Id ([int]$s.pid) -ErrorAction SilentlyContinue; if (-not $p -or $p.StartTime.ToUniversalTime().Ticks -ne [long]$s.start) { Remove-Item $f -ErrorAction SilentlyContinue; Write-Host '目前沒有執行中的轉接程式（已清除過期的紀錄）。'; return }; Set-Content -Path (Join-Path $Dir 'ipas-ollama-bridge.stop') -Value $s.token -NoNewline; $w = 0; while ((Test-Path $f) -and $w -lt 6000) { Start-Sleep -Milliseconds 250; $w += 250 }; if (Test-Path $f) { Write-Host '轉接程式沒有回應，請直接關閉它的 PowerShell 視窗。' } else { Write-Host '已停止轉接程式。' } }`;
-}

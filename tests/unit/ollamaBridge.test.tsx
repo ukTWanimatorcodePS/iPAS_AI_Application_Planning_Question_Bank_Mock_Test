@@ -1,12 +1,12 @@
 /**
  * Ollama 403 與本機轉接程式（docs/CLAUDE_REQUEST_OLLAMA_403_2026-11-21.md；使用者選擇方案 C）。
  */
-import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { BRIDGE_BASE_URL, BRIDGE_EXPIRES_HEADER, bridgeExpiresOf, bridgeScript, bridgeStopCommand, clampMinutes, isBridgeUrl } from '../../src/ai/byok/bridge';
+import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { afterEach, beforeEach, describe, expect, it, onTestFinished, vi } from 'vitest';
+import { BRIDGE_BASE_URL, BRIDGE_EXPIRES_HEADER, bridgeExpiresOf, bridgeScript, clampMinutes, isBridgeUrl, prefersBridge } from '../../src/ai/byok/bridge';
 import { ByokError, streamChat, verifyConnection } from '../../src/ai/byok/client';
 import { __resetConnectionForTests, getConnection } from '../../src/ai/byok/connection';
-import { clearByok, saveByok, type ByokConfig } from '../../src/ai/byok/config';
+import { clearByok, loadByok, saveByok, type ByokConfig } from '../../src/ai/byok/config';
 import { ByokSettings } from '../../src/components/ByokSettings';
 import { LocalBridgePanel } from '../../src/components/LocalBridgePanel';
 
@@ -48,12 +48,14 @@ describe('轉接程式腳本', () => {
     expect(s).not.toMatch(/OLLAMA_ORIGINS|setx|Stop-Process[^\n]*ollama/i);
   });
 
-  it('停止與重新啟動不強制結束任何程式：以 PID＋啟動時間確認身分，再用停止代碼請轉接程式自己結束', () => {
-    for (const s of [bridgeStopCommand(), bridgeScript(ORIGIN, 30)]) {
-      expect(s).not.toMatch(/Stop-Process|taskkill|\.Kill\(/i);
-      expect(s).toContain('StartTime.ToUniversalTime().Ticks');
-      expect(s).toContain('ipas-ollama-bridge.stop');
-    }
+  it('停止方式是在視窗按 Ctrl+C（啟動畫面最後一行就說明）；再次啟動不強制結束任何程式', () => {
+    const s = bridgeScript(ORIGIN, 30);
+    const hostLines = s.split('\n').filter((l) => /^Write-Host /.test(l));
+    expect(hostLines.at(-1)).toContain('Ctrl+C'); // 啟動後畫面最後顯示的一行
+    expect(s).toContain('# 要停止：在這個視窗按 Ctrl+C');
+    expect(s).not.toMatch(/Stop-Process|taskkill|\.Kill\(/i);
+    expect(s).toContain('StartTime.ToUniversalTime().Ticks');
+    expect(s).toContain('ipas-ollama-bridge.stop');
   });
 
   it('許可時間限制在 5～120 分鐘；單引號正確跳脫', () => {
@@ -155,7 +157,7 @@ describe('網站倒數對齊轉接程式的到期時間', () => {
 });
 
 describe('設定頁：轉接程式區塊與重新連線', () => {
-  it('三個按鈕只複製指令、不發出網路請求；預設收合；可改用轉接程式位址', async () => {
+  it('只有「啟動」一個按鈕：只複製指令、不發出網路請求；預設收合；說明用 Ctrl+C 停止；可改用轉接程式位址', async () => {
     const fetchSpy = vi.fn();
     vi.stubGlobal('fetch', fetchSpy);
     const writes: string[] = [];
@@ -163,13 +165,13 @@ describe('設定頁：轉接程式區塊與重新連線', () => {
     const onUse = vi.fn();
     render(<LocalBridgePanel baseUrl="http://localhost:11434/v1" onUseBridge={onUse} />);
     expect(screen.getByTestId('local-bridge-panel')).not.toHaveAttribute('open');
+    expect(screen.getByRole('group', { name: /轉接程式指令/ }).querySelectorAll('button')).toHaveLength(1);
+    expect(screen.queryByTestId('bridge-stop')).toBeNull();
+    expect(screen.queryByTestId('bridge-restart')).toBeNull();
+    expect(screen.getByTestId('local-bridge-panel')).toHaveTextContent('Ctrl+C');
     fireEvent.click(screen.getByTestId('bridge-start'));
-    fireEvent.click(screen.getByTestId('bridge-stop'));
-    fireEvent.click(screen.getByTestId('bridge-restart'));
-    await waitFor(() => expect(writes).toHaveLength(3));
+    await waitFor(() => expect(writes).toHaveLength(1));
     expect(writes[0]).toContain('$Minutes = 30');
-    expect(writes[1]).toContain('ipas-ollama-bridge.stop');
-    expect(writes[1]).not.toContain('Stop-Process');
     expect(fetchSpy).not.toHaveBeenCalled();
     fireEvent.click(screen.getByTestId('bridge-use'));
     expect(onUse).toHaveBeenCalled();
@@ -191,5 +193,212 @@ describe('設定頁：轉接程式區塊與重新連線', () => {
     await waitFor(() => expect(getConnection().phase).toBe('online'));
     expect(seen.every((u) => u.endsWith('/models'))).toBe(true);
     expect(seen.some((u) => u.includes('/chat/completions'))).toBe(false);
+  });
+});
+
+const WIN = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0 Safari/537.36';
+const MAC = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0 Safari/537.36';
+const asOs = (ua: string) => {
+  const spy = vi.spyOn(navigator, 'userAgent', 'get').mockReturnValue(ua);
+  onTestFinished(() => spy.mockRestore());
+};
+const ollamaModels = (...ids: string[]) => json({ data: ids.map((id) => ({ id })) });
+
+describe('Windows：本機 Ollama 一律帶入轉接程式版本（使用者要求）', () => {
+  it('判斷是否為 Windows 桌面', () => {
+    expect(prefersBridge(WIN)).toBe(true);
+    expect(prefersBridge(MAC)).toBe(false);
+    expect(prefersBridge('Mozilla/5.0 (Linux; Android 14) Chrome/140.0 Mobile')).toBe(false);
+    expect(prefersBridge('Mozilla/5.0 (X11; Linux x86_64)')).toBe(false);
+  });
+
+  it('Windows 的服務選單只列「透過轉接程式」的 Ollama；選它就帶入轉接位址與說明區塊。macOS 只列直接連線', () => {
+    asOs(WIN);
+    const { unmount } = render(<ByokSettings />);
+    const select = screen.getByRole('combobox', { name: /^AI 服務/ }) as HTMLSelectElement;
+    const ids = [...select.options].map((o) => o.value);
+    expect(ids).toContain('ollama-bridge');
+    expect(ids).not.toContain('ollama');
+    fireEvent.change(select, { target: { value: 'ollama-bridge' } });
+    expect((screen.getByRole('textbox', { name: 'API 位址' }) as HTMLInputElement).value).toBe(BRIDGE_BASE_URL);
+    expect(screen.getByTestId('local-bridge-panel')).toHaveAttribute('open');
+    unmount();
+    cleanup();
+    vi.restoreAllMocks();
+    asOs(MAC);
+    render(<ByokSettings />);
+    const ids2 = [...(screen.getByRole('combobox', { name: /^AI 服務/ }) as HTMLSelectElement).options].map((o) => o.value);
+    expect(ids2).toContain('ollama');
+    expect(ids2).not.toContain('ollama-bridge');
+  });
+
+  it('自動偵測：Ollama 被本站擋下（403）時，直接帶入轉接程式版本並打開「本機暫時許可」，不儲存、不動原本的設定', async () => {
+    asOs(WIN);
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (url: string, init?: RequestInit) => {
+        if (init?.mode === 'no-cors' && String(url).startsWith('http://localhost:11434')) return new Response(null);
+        throw new TypeError('Failed to fetch');
+      }),
+    );
+    saveByok(cloud, 'FAKE-CLOUD-KEY');
+    render(<ByokSettings />);
+    fireEvent.click(screen.getByTestId('byok-detect'));
+    await waitFor(() => expect(screen.getByRole('status')).toHaveTextContent('已帶入「透過轉接程式」的設定'));
+    expect((screen.getByRole('combobox', { name: /^AI 服務/ }) as HTMLSelectElement).value).toBe('ollama-bridge');
+    expect((screen.getByRole('textbox', { name: 'API 位址' }) as HTMLInputElement).value).toBe(BRIDGE_BASE_URL);
+    expect(screen.getByTestId('local-bridge-panel')).toHaveAttribute('open');
+    expect(loadByokConfig()).toBe('openai');
+  });
+
+  it('自動偵測：轉接程式已在執行時優先找到它，列出模型，確認後一鍵套用並連線', async () => {
+    asOs(WIN);
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (url: string) => (String(url).startsWith('http://localhost:11435/v1/models') ? ollamaModels('qwen3:14b', 'llama3.2:3b') : Promise.reject(new TypeError('x')))),
+    );
+    render(<ByokSettings />);
+    fireEvent.click(screen.getByTestId('byok-detect'));
+    const panel = await screen.findByTestId('byok-detected');
+    expect(panel).toHaveTextContent('qwen3:14b');
+    fireEvent.click(screen.getByTestId('byok-detect-apply'));
+    await waitFor(() => expect(getConnection().phase).toBe('online'));
+    expect(loadByokConfig()).toBe('ollama-bridge');
+  });
+});
+
+describe('模型名稱自動填入與下拉選單', () => {
+  it('本機服務模型留空按「儲存並連線」：自動讀取已下載的模型、填入第一個對話模型並連線', async () => {
+    vi.stubGlobal('fetch', vi.fn(async () => ollamaModels('nomic-embed-text', 'qwen3:14b')));
+    saveByok({ ...bridge, model: '' }, '');
+    render(<ByokSettings />);
+    fireEvent.click(screen.getByTestId('byok-save'));
+    await waitFor(() => expect(getConnection().phase).toBe('online'));
+    expect((screen.getByRole('combobox', { name: '模型' }) as HTMLInputElement).value).toBe('qwen3:14b');
+    expect(screen.getByRole('status')).toHaveTextContent('已自動選用模型「qwen3:14b」');
+    expect(loadByokModel()).toBe('qwen3:14b');
+  });
+
+  it('本機服務還沒有模型、或讀不到清單：說明原因，不儲存空模型', async () => {
+    vi.stubGlobal('fetch', vi.fn(async () => ollamaModels()));
+    render(<ByokSettings />);
+    fireEvent.change(screen.getByRole('combobox', { name: /^AI 服務/ }), { target: { value: 'lmstudio' } });
+    fireEvent.click(screen.getByTestId('byok-save'));
+    await waitFor(() => expect(screen.getByRole('status')).toHaveTextContent('還沒有任何模型'));
+    expect(loadByokConfig()).not.toBe('lmstudio');
+  });
+
+  it('雲端服務仍須填模型名稱（不自動猜）', () => {
+    const f = vi.fn();
+    vi.stubGlobal('fetch', f);
+    saveByok({ ...cloud, model: '' }, 'FAKE');
+    render(<ByokSettings />);
+    fireEvent.click(screen.getByTestId('byok-save'));
+    expect(screen.getByRole('status')).toHaveTextContent('請填寫模型名稱');
+    expect(f).not.toHaveBeenCalled();
+  });
+
+  it('「取得模型清單」自動填入模型，並出現下拉選單可改選其他模型', async () => {
+    vi.stubGlobal('fetch', vi.fn(async () => ollamaModels('llama3.2:3b', 'qwen3:14b')));
+    saveByok({ ...bridge, model: '' }, '');
+    render(<ByokSettings />);
+    expect(screen.queryByTestId('byok-model-select')).toBeNull();
+    fireEvent.click(screen.getByRole('button', { name: '取得模型清單' }));
+    const select = (await screen.findByTestId('byok-model-select')) as HTMLSelectElement;
+    const input = screen.getByRole('combobox', { name: '模型' }) as HTMLInputElement;
+    expect(input.value).toBe('llama3.2:3b');
+    expect([...select.options].map((o) => o.value)).toEqual(['llama3.2:3b', 'qwen3:14b']);
+    expect(screen.getByRole('status')).toHaveTextContent('已自動填入「llama3.2:3b」');
+    fireEvent.change(select, { target: { value: 'qwen3:14b' } });
+    expect(input.value).toBe('qwen3:14b');
+  });
+
+  it('雲端服務已填的模型不被清單覆蓋（只在空白時填入）', async () => {
+    vi.stubGlobal('fetch', vi.fn(async () => ollamaModels('gpt-a', 'gpt-b')));
+    saveByok({ ...cloud, model: 'my-custom-alias' }, 'FAKE');
+    render(<ByokSettings />);
+    fireEvent.click(screen.getByRole('button', { name: '取得模型清單' }));
+    await screen.findByTestId('byok-model-select');
+    expect((screen.getByRole('combobox', { name: '模型' }) as HTMLInputElement).value).toBe('my-custom-alias');
+  });
+});
+
+function loadByokConfig(): string | undefined {
+  return JSON.parse(localStorage.getItem('ipas-ai-byok-config') ?? 'null')?.presetId;
+}
+function loadByokModel(): string | undefined {
+  return JSON.parse(localStorage.getItem('ipas-ai-byok-config') ?? 'null')?.model;
+}
+
+describe('Codex 第四輪 R4-1：自動讀取模型等待中，設定在別處被清除或改存時，舊操作不寫回、不連線', () => {
+  const localCustom: ByokConfig = { presetId: 'custom', kind: 'openai-compatible', baseUrl: 'http://localhost:18888/v1', model: '', rememberKey: true };
+  const FAKE = 'FAKE-LOCAL-KEY-R4';
+  /** 第一次模型清單請求等待中，由測試決定何時回傳 */
+  const pendingFetch = () => {
+    const calls: string[] = [];
+    let release!: () => void;
+    const fetchMock = vi.fn((url: string) => {
+      calls.push(String(url));
+      if (calls.length === 1) return new Promise<Response>((r) => (release = () => r(ollamaModels('model-auto'))));
+      return Promise.resolve(ollamaModels('model-auto'));
+    });
+    vi.stubGlobal('fetch', fetchMock);
+    return { calls, release: () => release() };
+  };
+
+  it('重現 A：等待中另一個表單清除金鑰 → 不恢復設定與金鑰、不再連線', async () => {
+    const f = pendingFetch();
+    saveByok(localCustom, FAKE);
+    render(<ByokSettings />);
+    fireEvent.click(screen.getByTestId('byok-save'));
+    await waitFor(() => expect(f.calls).toHaveLength(1));
+    clearByok(); // 另一個表單／分頁按「清除金鑰」
+    await act(async () => f.release());
+    await new Promise((r) => setTimeout(r, 30));
+    expect(loadByok().config).toBeNull();
+    expect(loadByok().key).toBe('');
+    expect(f.calls).toHaveLength(1); // 沒有再發出連線請求
+    expect(getConnection().phase).toBe('idle');
+    expect(screen.getByRole('status')).toHaveTextContent('已取消這次操作');
+  });
+
+  it('重現 B：等待中另一個表單改存其他服務 → 保留較新的設定，不被覆蓋', async () => {
+    const f = pendingFetch();
+    saveByok(localCustom, FAKE);
+    render(<ByokSettings />);
+    fireEvent.click(screen.getByTestId('byok-save'));
+    await waitFor(() => expect(f.calls).toHaveLength(1));
+    saveByok({ ...cloud, model: 'newer-user-choice' }, 'FAKE-NEWER-KEY');
+    await act(async () => f.release());
+    await new Promise((r) => setTimeout(r, 30));
+    expect(loadByok().config).toMatchObject({ presetId: 'openai', model: 'newer-user-choice' });
+    expect(loadByok().key).toBe('FAKE-NEWER-KEY');
+    expect(f.calls).toHaveLength(1);
+  });
+
+  it('「只測試，不儲存」等待中設定被清除 → 不啟動舊連線', async () => {
+    const f = pendingFetch();
+    saveByok(localCustom, FAKE);
+    render(<ByokSettings />);
+    fireEvent.click(screen.getByTestId('byok-test'));
+    await waitFor(() => expect(f.calls).toHaveLength(1));
+    clearByok();
+    await act(async () => f.release());
+    await new Promise((r) => setTimeout(r, 30));
+    expect(f.calls).toHaveLength(1);
+    expect(getConnection().phase).toBe('idle');
+  });
+
+  it('對照：等待中沒有其他變更 → 照常自動填入、儲存並連線（自己儲存不算外部變更）', async () => {
+    const f = pendingFetch();
+    saveByok(localCustom, FAKE);
+    render(<ByokSettings />);
+    fireEvent.click(screen.getByTestId('byok-save'));
+    await waitFor(() => expect(f.calls).toHaveLength(1));
+    await act(async () => f.release());
+    await waitFor(() => expect(getConnection().phase).toBe('online'));
+    expect(loadByok().config).toMatchObject({ presetId: 'custom', model: 'model-auto' });
+    expect(loadByok().key).toBe(FAKE);
+    expect(f.calls).toHaveLength(2);
   });
 });

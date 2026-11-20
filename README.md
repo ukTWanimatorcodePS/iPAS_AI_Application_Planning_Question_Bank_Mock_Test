@@ -8,7 +8,7 @@
 
 手機與電腦皆可直接開啟，不需登入；學習紀錄只保存在你目前使用的瀏覽器（可在「設定」匯出／匯入備份）。
 
-目前版本：**v1.2.1**。更新內容見 [CHANGELOG.md](CHANGELOG.md)；目前進度與待修事項見 [docs/PROGRESS.md](docs/PROGRESS.md)。
+目前版本：**v1.2.2**。更新內容見 [CHANGELOG.md](CHANGELOG.md)；目前進度與待修事項見 [docs/PROGRESS.md](docs/PROGRESS.md)。
 
 > **獨立學習工具，非 iPAS 官方平台**，與主辦單位無關。講義與題目為本站自編；考試規則以[官方考試資訊](https://ipd.nat.gov.tw/ipas/certification/AIAP/exam-info)為準。
 

@@ -13,7 +13,7 @@ import net from 'node:net';
 import os from 'node:os';
 import path from 'node:path';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { BRIDGE_EXPIRES_HEADER, BRIDGE_MAX_BODY, bridgeScript, bridgeStopCommand } from '../../src/ai/byok/bridge';
+import { BRIDGE_EXPIRES_HEADER, BRIDGE_MAX_BODY, bridgeScript } from '../../src/ai/byok/bridge';
 
 // BRIDGE_SHELL 可指定 pwsh（PowerShell 7）重跑同一組測試
 const SHELL = process.env.BRIDGE_SHELL || (process.platform === 'win32' ? 'powershell.exe' : process.env.BRIDGE_RUNTIME ? 'pwsh' : '');
@@ -192,6 +192,21 @@ function alive(pid: number): boolean {
   }
 }
 
+/**
+ * 測試清理用：寫入紀錄中的停止代碼（與「再次啟動」請舊轉接程式結束的方式相同），由轉接程式自己結束。
+ * 網站不再提供停止指令；使用者是在視窗按 Ctrl+C（見 R2-1 的 Ctrl+C 測試）。
+ */
+async function requestStop(b: Bridge): Promise<void> {
+  const state = path.join(b.dir, 'ipas-ollama-bridge.json');
+  try {
+    const st = JSON.parse(readFileSync(state, 'utf8').replace(/^\uFEFF/, '')) as { token: string };
+    writeFileSync(path.join(b.dir, 'ipas-ollama-bridge.stop'), st.token);
+  } catch {
+    // 已經結束
+  }
+  for (let i = 0; i < 24 && b.proc.exitCode === null; i++) await sleep(250);
+}
+
 afterAll(() => {
   for (const p of procs) if (p.exitCode === null) p.kill();
   for (const d of dirs) rmSync(d, { recursive: true, force: true });
@@ -208,7 +223,7 @@ describe.skipIf(!available)('轉接程式實際執行（假上游、隨機連接
     b = await startBridge(`http://127.0.0.1:${upPort}`);
   }, 30_000);
   afterAll(async () => {
-    await runPsToEnd(path.join(b.dir, 'stop.ps1'), bridgeStopCommand({ stateDir: b.dir }));
+    await requestStop(b);
     await up.stop();
   }, 30_000);
 
@@ -351,15 +366,16 @@ describe.skipIf(!available)('轉接程式到期與停止（實際執行）', () 
     }
   }, 30_000);
 
-  it('停止：寫入停止代碼，由轉接程式自己結束並清除紀錄', async () => {
+  it('停止代碼：只有紀錄中的代碼能讓轉接程式自己結束並清除紀錄；其他內容沒有作用', async () => {
     const up = fakeUpstream({ events: 1, gapMs: 10 });
     const upPort = await up.start();
     try {
       const b = await startBridge(`http://127.0.0.1:${upPort}`);
+      writeFileSync(path.join(b.dir, 'ipas-ollama-bridge.stop'), 'not-the-token');
+      await sleep(1500);
+      expect(b.proc.exitCode).toBeNull();
       expect((await request({ port: b.port })).status).toBe(200);
-      const stop = await runPsToEnd(path.join(b.dir, 'stop.ps1'), bridgeStopCommand({ stateDir: b.dir }));
-      expect(stop.code).toBe(0);
-      for (let i = 0; i < 20 && b.proc.exitCode === null; i++) await sleep(250);
+      await requestStop(b);
       expect(b.proc.exitCode).not.toBeNull();
       expect(existsSync(path.join(b.dir, 'ipas-ollama-bridge.json'))).toBe(false);
       expect((await request({ port: b.port })).error).toBeDefined();
@@ -368,28 +384,39 @@ describe.skipIf(!available)('轉接程式到期與停止（實際執行）', () 
     }
   }, 30_000);
 
-  it('F4：紀錄指向無關的 PowerShell（PID 相符、啟動時間相符或不符）時，停止指令都不會結束它', async () => {
+  it('F4：再次啟動時，紀錄指向無關的 PowerShell（啟動時間不符或相符）都不會結束它', async () => {
+    const up = fakeUpstream({ events: 1, gapMs: 10 });
+    const upPort = await up.start();
     const dir = mkdtempSync(path.join(os.tmpdir(), 'ipas-bridge-test-'));
     dirs.push(dir);
     const victim = runPs(path.join(dir, 'victim.ps1'), 'Start-Sleep -Seconds 60');
-    await sleep(1500);
-    const state = path.join(dir, 'ipas-ollama-bridge.json');
-    // 1) 啟動時間不符（例如 PID 被重用）：只清除紀錄
-    writeFileSync(state, JSON.stringify({ pid: victim.pid, start: 1, token: 'stale', port: 1 }));
-    await runPsToEnd(path.join(dir, 'stop1.ps1'), bridgeStopCommand({ stateDir: dir }));
-    expect(alive(victim.pid!)).toBe(true);
-    expect(existsSync(state)).toBe(false);
-    // 2) PID 與啟動時間都相符，但它不是轉接程式（不會讀停止代碼）：等待後回報沒有回應，仍不結束它
-    await runPsToEnd(
-      path.join(dir, 'forge.ps1'),
-      `$p = Get-Process -Id ${victim.pid}; @{ pid = $p.Id; start = $p.StartTime.ToUniversalTime().Ticks; token = 'forged'; port = 1 } | ConvertTo-Json -Compress | Set-Content -Path '${state.replace(/'/g, "''")}'`,
-    );
-    await runPsToEnd(path.join(dir, 'stop2.ps1'), bridgeStopCommand({ stateDir: dir }));
-    expect(alive(victim.pid!)).toBe(true);
-    victim.kill();
+    try {
+      await sleep(1500);
+      const state = path.join(dir, 'ipas-ollama-bridge.json');
+      // 1) 啟動時間不符（例如 PID 被重用）：當作過期紀錄，新的轉接程式照常啟動
+      writeFileSync(state, JSON.stringify({ pid: victim.pid, start: 1, token: 'stale', port: 1 }));
+      const b = await startBridge(`http://127.0.0.1:${upPort}`, { dir });
+      expect(alive(victim.pid!)).toBe(true);
+      expect((await request({ port: b.port })).status).toBe(200);
+      await requestStop(b);
+      // 2) PID 與啟動時間都相符，但它不是轉接程式（不會讀停止代碼）：新的轉接程式等待後放棄啟動，仍不結束它
+      await runPsToEnd(
+        path.join(dir, 'forge.ps1'),
+        `$p = Get-Process -Id ${victim.pid}; @{ pid = $p.Id; start = $p.StartTime.ToUniversalTime().Ticks; token = 'forged'; port = 1 } | ConvertTo-Json -Compress | Set-Content -Path '${state.replace(/'/g, "''")}'`,
+      );
+      const port = await freePort();
+      const second = await runPsToEnd(path.join(dir, 'second.ps1'), bridgeScript(ORIGIN, 5, { port, target: `http://127.0.0.1:${upPort}`, stateDir: dir, lifetimeMs: 60_000 }));
+      expect(second.code).not.toBeNull();
+      expect(alive(victim.pid!)).toBe(true);
+      expect((await request({ port })).error).toBeDefined(); // 沒有接手、沒有開始轉接
+      expect(JSON.parse(readFileSync(state, 'utf8').replace(/^\uFEFF/, '')).token).toBe('forged');
+    } finally {
+      victim.kill();
+      await up.stop();
+    }
   }, 40_000);
 
-  it('重新啟動：請舊的轉接程式自己結束後，新的才接手同一個連接埠', async () => {
+  it('再次啟動：請舊的轉接程式自己結束後，新的才接手同一個連接埠', async () => {
     const up = fakeUpstream({ events: 1, gapMs: 10 });
     const upPort = await up.start();
     try {
@@ -403,8 +430,7 @@ describe.skipIf(!available)('轉接程式到期與停止（實際執行）', () 
         if (status !== 200) await sleep(250);
       }
       expect(status).toBe(200);
-      await runPsToEnd(path.join(a.dir, 'stop.ps1'), bridgeStopCommand({ stateDir: a.dir }));
-      for (let i = 0; i < 20 && b.proc.exitCode === null; i++) await sleep(250);
+      await requestStop(b);
       expect(b.proc.exitCode).not.toBeNull();
     } finally {
       await up.stop();

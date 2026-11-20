@@ -15,6 +15,7 @@ vi.mock('../../src/ai/byok/retrieval', async (importOriginal) => ({
   questionRelevance: () => probe.relevance(),
 }));
 
+import { prefersBridge } from '../../src/ai/byok/bridge';
 import { setChatUi } from '../../src/ai/byok/chatUi';
 import { topicVerdict } from '../../src/ai/byok/check';
 import { CONFIG_KEY, KEY_STORAGE_KEY, __resetByokMemoryForTests, byokVersion, clearByok, loadByok, saveByok } from '../../src/ai/byok/config';
@@ -159,11 +160,13 @@ describe('R1 設定與金鑰是同一份快照（金鑰綁定服務與來源）'
   it('重現 C：輸入但未儲存的金鑰，換服務後清空，不會送到新服務', async () => {
     render(<ByokSettings />);
     fireEvent.change(screen.getByTestId('byok-key'), { target: { value: 'FAKE-TYPED-OPENAI-KEY' } });
-    fireEvent.change(screen.getByRole('combobox', { name: /^AI 服務/ }), { target: { value: 'ollama' } });
+    // Windows 的選單只有「透過轉接程式」的 Ollama
+    fireEvent.change(screen.getByRole('combobox', { name: /^AI 服務/ }), { target: { value: prefersBridge() ? 'ollama-bridge' : 'ollama' } });
     expect((screen.getByTestId('byok-key') as HTMLInputElement).value).toBe('');
     fireEvent.click(screen.getByRole('button', { name: '取得模型清單' }));
     await waitFor(() => expect(probe.calls).toHaveLength(1));
-    expect(probe.calls[0].url).toBe('http://localhost:11434/v1/models');
+    // Windows 上選 Ollama 會帶入透過轉接程式的版本（11435）；其他系統直接連線（11434）
+    expect(probe.calls[0].url).toBe(prefersBridge() ? 'http://localhost:11435/v1/models' : 'http://localhost:11434/v1/models');
     expect(sentText()).not.toContain('FAKE-TYPED-OPENAI-KEY');
     expect(sentText()).not.toContain(OPENAI_KEY);
   });

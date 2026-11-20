@@ -113,7 +113,9 @@ export interface DetectResult {
 export async function detectLocal(fetchImpl: typeof fetch = fetch): Promise<DetectResult> {
   const blocked: string[] = [];
   let empty: DetectResult['found'];
-  for (const p of BYOK_PRESETS.filter((x) => x.local)) {
+  // 先找本站轉接程式（已在執行就能直接用），再找 Ollama、LM Studio
+  const order = (id: string) => (id === 'ollama-bridge' ? 0 : id === 'ollama' ? 1 : 2);
+  for (const p of BYOK_PRESETS.filter((x) => x.local).sort((a, b) => order(a.id) - order(b.id))) {
     const ids = await localModels(p.baseUrl, fetchImpl);
     if (ids) {
       const models = orderModels(ids);

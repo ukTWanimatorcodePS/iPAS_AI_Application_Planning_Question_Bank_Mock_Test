@@ -134,7 +134,7 @@ export function beginConnection(config: ByokConfig, key: string): (o: Outcome) =
       publish(session ? { ...session, phase: 'online' } : { target, phase: 'idle', message: o.message });
       return;
     }
-    // 成功：本機轉接程式有回報到期時間時以它為準（重新啟動轉接程式會更新）；
+    // 成功：本機轉接程式有回報到期時間時以它為準（再次啟動轉接程式會更新）；
     // 否則沿用尚未到期的這段連線（不延長），或開始新的 30 分鐘
     const t = now();
     const startedAt = session?.startedAt ?? t;

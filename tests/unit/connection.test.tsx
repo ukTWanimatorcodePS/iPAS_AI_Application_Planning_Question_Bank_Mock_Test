@@ -4,7 +4,7 @@
  */
 import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, onTestFinished, vi } from 'vitest';
 
 vi.mock('../../src/app/AppContext', () => ({ useApp: () => ({ level: 'junior', settings: {} }) }));
 vi.mock('../../src/ai/byok/retrieval', async (importOriginal) => ({
@@ -194,7 +194,9 @@ describe('設定表單', () => {
     expect(screen.queryByRole('status')).toBeNull();
   });
 
-  it('自動偵測本機 AI：先顯示結果，不覆蓋已儲存的雲端設定與金鑰；確認後才套用並連線', async () => {
+  it('自動偵測本機 AI（macOS／Linux：直接連線）：先顯示結果，不覆蓋已儲存的雲端設定與金鑰；確認後才套用並連線', async () => {
+    const ua = vi.spyOn(navigator, 'userAgent', 'get').mockReturnValue('Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36');
+    onTestFinished(() => ua.mockRestore());
     const fetch = vi.fn(async (url: string) => (String(url).startsWith('http://localhost:11434/v1/models') ? models('nomic-embed-text', 'llama3.2:3b') : Promise.reject(new TypeError('Failed to fetch'))));
     vi.stubGlobal('fetch', fetch);
     render(<ByokSettings />);
@@ -213,7 +215,7 @@ describe('設定表單', () => {
   });
 
   it('偵測結果按「取消」：什麼都不改', async () => {
-    vi.stubGlobal('fetch', vi.fn(async (url: string) => (String(url).startsWith('http://localhost:11434/v1/models') ? models('llama3.2:3b') : Promise.reject(new TypeError('x')))));
+    vi.stubGlobal('fetch', vi.fn(async (url: string) => (String(url).startsWith('http://localhost:1234/v1/models') ? models('llama3.2:3b') : Promise.reject(new TypeError('x')))));
     render(<ByokSettings />);
     fireEvent.click(screen.getByTestId('byok-detect'));
     await screen.findByTestId('byok-detected');

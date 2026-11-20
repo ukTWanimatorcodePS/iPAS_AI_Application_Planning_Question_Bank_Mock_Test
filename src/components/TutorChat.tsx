@@ -446,7 +446,7 @@ export function TutorChat() {
                 >
                   <span className="min-w-0 flex-1">
                     {conn.phase === 'expired'
-                      ? (config && isBridgeUrl(config.baseUrl) ? '本機轉接程式的許可時間已到，已自動中斷。請在設定頁「本機暫時許可」按「重新啟動」，再按「重新連線」。' : '本次連線已滿 30 分鐘，已自動中斷。按「重新連線」開始新的 30 分鐘。')
+                      ? (config && isBridgeUrl(config.baseUrl) ? '本機轉接程式的許可時間已到，已自動中斷。請在設定頁「本機暫時許可」按「啟動」再執行一次，再按「重新連線」。' : '本次連線已滿 30 分鐘，已自動中斷。按「重新連線」開始新的 30 分鐘。')
                       : conn.phase === 'offline'
                         ? (conn.message ?? '連線失敗。')
                         : (conn.message ?? '尚未連線。可按「連線」先確認服務（不消耗 token），或直接提問。每次連線最長 30 分鐘。')}

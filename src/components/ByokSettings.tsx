@@ -2,11 +2,11 @@ import { KeyRound, ListRestart, PlugZap, Radar, ShieldCheck, Trash2 } from 'luci
 import { useId, useRef, useState, useSyncExternalStore } from 'react';
 import { ByokError, listModels, verifyConnection } from '../ai/byok/client';
 import { getConnection, resetConnection } from '../ai/byok/connection';
-import { detectLocal, type Diagnosis } from '../ai/byok/diagnose';
+import { detectLocal, orderModels, type Diagnosis } from '../ai/byok/diagnose';
 import { ConnectionIndicator, SessionTimer } from './ConnectionIndicator';
 import { LocalSetupGuide } from './LocalSetupGuide';
 import { LocalBridgePanel } from './LocalBridgePanel';
-import { BRIDGE_BASE_URL, isBridgeUrl } from '../ai/byok/bridge';
+import { BRIDGE_BASE_URL, isBridgeUrl, prefersBridge } from '../ai/byok/bridge';
 import {
   BYOK_PRESETS,
   byokVersion,
@@ -84,7 +84,8 @@ export function ByokSettings({ onSaved, compact = false }: { onSaved?: () => voi
   };
 
   const choosePreset = (id: string) => {
-    const p = presetById(id);
+    // Windows：選 Ollama 直接帶入透過轉接程式的版本（本站無法直接連 Ollama）
+    const p = presetById(id === 'ollama' && prefersBridge() ? 'ollama-bridge' : id);
     setCfg((c) => ({ ...c, presetId: p.id, kind: p.kind, baseUrl: p.baseUrl, model: p.defaultModel }));
     resetForNewEndpoint(!!keyInput.trim());
   };
@@ -117,7 +118,8 @@ export function ByokSettings({ onSaved, compact = false }: { onSaved?: () => voi
   const validate = (key: string): string | null => {
     const gate = endpointGate(cfg.baseUrl, trusted);
     if (gate) return gate;
-    if (!cfg.model.trim()) return '請填寫模型名稱（可按「取得模型清單」）。';
+    // 本機服務的模型名稱可以留空：連線前會自動讀取已下載的模型並填入（見 withModel）
+    if (!cfg.model.trim() && !(endpoint.ok && endpoint.local)) return '請填寫模型名稱（可按「取得模型清單」）。';
     if (preset.needsKey && !key) return '請輸入 API 金鑰。';
     return null;
   };
@@ -148,7 +150,7 @@ export function ByokSettings({ onSaved, compact = false }: { onSaved?: () => voi
         text:
           local.ok && local.local
             ? isBridgeUrl(form.baseUrl) && getConnection().expiresAt
-              ? `${prefix}已連線，模型「${form.model}」可以使用。連線到 ${new Date(getConnection().expiresAt!).toLocaleTimeString('zh-TW', { hour: '2-digit', minute: '2-digit' })} 為止（跟著本機轉接程式的許可時間）；到期請在「本機暫時許可」按「重新啟動」，再按「重新連線」。`
+              ? `${prefix}已連線，模型「${form.model}」可以使用。連線到 ${new Date(getConnection().expiresAt!).toLocaleTimeString('zh-TW', { hour: '2-digit', minute: '2-digit' })} 為止（跟著本機轉接程式的許可時間）；到期請在「本機暫時許可」按「啟動」再執行一次，再按「重新連線」。要提早停止，請在轉接程式的 PowerShell 視窗按 Ctrl+C。`
               : `${prefix}已連線，模型「${form.model}」可以使用。每次連線最長 30 分鐘，時間到請按「重新連線」。`
             : `${prefix}已連線：服務有回應。金鑰與所選模型是否能回答，會在第一次提問時確認（各家服務的檢查方式不同）。每次連線最長 30 分鐘，時間到請按「重新連線」。`,
       });
@@ -163,15 +165,73 @@ export function ByokSettings({ onSaved, compact = false }: { onSaved?: () => voi
   };
 
   /** 主要流程：儲存設定，接著確認連線 */
+  /**
+   * 本機服務沒填模型名稱時，自動讀取已下載的模型（只讀清單，不耗 token）並填入第一個對話模型，免得使用者自己找名稱。
+   * 讀不到時顯示原因並回傳 null。
+   */
+  /** 等待期間設定在別處被清除或改存（另一個表單、其他分頁）時顯示的說明 */
+  const STALE_TEXT = '等待期間 AI 設定已在其他地方變更（清除或改存其他服務），已取消這次操作，沒有儲存也沒有連線。請確認目前的設定後再試一次。';
+
+  /**
+   * @param stale 送出後 AI 設定是否已在別處變更（Codex r4 R4-1：只看本表單的 formSeq 不夠，
+   *   另一個表單或分頁清除金鑰、改存服務時，等待中的舊操作不可再寫回或連線）
+   */
+  const withModel = async (form: ByokConfig, key: string, stale: () => boolean): Promise<ByokConfig | null> => {
+    if (form.model) return form;
+    const seq = formSeq.current;
+    setBusy(true);
+    setStatus({ tone: 'info', text: '正在讀取本機已下載的模型…' });
+    try {
+      const list = orderModels(await listModels(form, key));
+      if (seq !== formSeq.current) return null;
+      if (stale()) {
+        setStatus({ tone: 'bad', text: STALE_TEXT });
+        return null;
+      }
+      if (!list.length) {
+        setStatus({ tone: 'bad', text: '這個本機服務還沒有任何模型。請先下載一個對話模型（例如在終端機執行 ollama pull qwen3:8b），再試一次。' });
+        return null;
+      }
+      const p = presetById(form.presetId);
+      const model = list.includes(p.defaultModel) ? p.defaultModel : list[0];
+      setModels(list);
+      setCfg((c) => ({ ...c, model }));
+      return { ...form, model };
+    } catch (e) {
+      if (seq !== formSeq.current) return null;
+      if (stale()) {
+        setStatus({ tone: 'bad', text: STALE_TEXT });
+        return null;
+      }
+      setDiagnosis(e instanceof ByokError ? (e.diagnosis ?? null) : null);
+      setStatus({ tone: 'bad', text: `無法自動讀取模型：${e instanceof ByokError ? e.message : '請確認本機服務已啟動。'}` });
+      return null;
+    } finally {
+      if (seq === formSeq.current) setBusy(false);
+    }
+  };
+
+  /** 儲存並連線（已有模型名稱時立即儲存；本機服務沒填模型時先自動讀取並填入） */
   const save = () => {
     const key = effectiveKey();
     const err = validate(key);
     if (err) return setStatus({ tone: 'bad', text: err });
-    const next = { ...cfg, baseUrl: cfg.baseUrl.trim(), model: cfg.model.trim() };
-    saveByok(next, key);
-    setKeyInput('');
-    onSaved?.();
-    void connect(next, key, '已儲存。');
+    const form = { ...cfg, baseUrl: cfg.baseUrl.trim(), model: cfg.model.trim() };
+    const commit = (next: ByokConfig, auto: boolean) => {
+      saveByok(next, key);
+      setKeyInput('');
+      onSaved?.();
+      void connect(next, key, auto ? `已自動選用模型「${next.model}」並儲存。` : '已儲存。');
+    };
+    if (form.model) return commit(form, false);
+    // 送出當下的 AI 設定版本：讀取模型清單等待期間若在別處被清除或改存，就不寫回、不連線
+    const version = byokVersion();
+    const stale = () => byokVersion() !== version;
+    void withModel(form, key, stale).then((next) => {
+      if (!next) return;
+      if (stale()) return setStatus({ tone: 'bad', text: STALE_TEXT });
+      commit(next, true);
+    });
   };
 
   /**
@@ -189,7 +249,15 @@ export function ByokSettings({ onSaved, compact = false }: { onSaved?: () => voi
     const key = effectiveKey();
     const err = validate(key);
     if (err) return setStatus({ tone: 'bad', text: err });
-    void connect({ ...cfg, baseUrl: cfg.baseUrl.trim(), model: cfg.model.trim() }, key, '（尚未儲存）');
+    const form = { ...cfg, baseUrl: cfg.baseUrl.trim(), model: cfg.model.trim() };
+    if (form.model) return void connect(form, key, '（尚未儲存）');
+    const version = byokVersion();
+    const stale = () => byokVersion() !== version;
+    void withModel(form, key, stale).then((f) => {
+      if (!f) return;
+      if (stale()) return setStatus({ tone: 'bad', text: STALE_TEXT });
+      void connect(f, key, `（尚未儲存）已自動選用模型「${f.model}」。`);
+    });
   };
 
   const fetchModels = async () => {
@@ -203,10 +271,23 @@ export function ByokSettings({ onSaved, compact = false }: { onSaved?: () => voi
     setBusy(true);
     setStatus({ tone: 'info', text: '正在取得模型清單…' });
     try {
-      const list = await listModels(form, key);
+      const raw = await listModels(form, key);
       if (seq !== formSeq.current) return; // 等待期間換了服務或網址：結果不屬於目前的表單
+      const list = orderModels(raw);
       setModels(list);
-      setStatus({ tone: list.length ? 'ok' : 'info', text: list.length ? `找到 ${list.length} 個模型，可在「模型」欄位選擇。` : '服務沒有回傳模型清單，請手動輸入模型名稱。' });
+      if (!list.length) return setStatus({ tone: 'info', text: '服務沒有回傳模型清單，請手動輸入模型名稱。' });
+      // 自動填入：還沒填模型，或本機服務填的模型不在清單裡（雲端清單格式各家不同，已填的不覆蓋）
+      const current = form.model.trim();
+      const local = checkEndpoint(form.baseUrl);
+      const p = presetById(form.presetId);
+      const auto = !current || (local.ok && local.local && !list.includes(current)) ? (list.includes(p.defaultModel) ? p.defaultModel : list[0]) : '';
+      if (auto) setCfg((c) => ({ ...c, model: auto }));
+      setStatus({
+        tone: 'ok',
+        text: auto
+          ? `找到 ${list.length} 個模型，已自動填入「${auto}」。要用其他模型，請從「模型」下方的選單選擇。`
+          : `找到 ${list.length} 個模型，可從「模型」下方的選單選擇。`,
+      });
     } catch (e) {
       if (seq !== formSeq.current) return;
       setDiagnosis(e instanceof ByokError ? (e.diagnosis ?? null) : null);
@@ -226,6 +307,25 @@ export function ByokSettings({ onSaved, compact = false }: { onSaved?: () => voi
     if (seq !== formSeq.current) return;
     setBusy(false);
     const found = r.found;
+    // 找到 Ollama（本站無法直接連，或轉接程式還沒啟動）：直接帶入「透過轉接程式」的設定（使用者要求，省去手動切換），
+    // 打開下方「本機暫時許可」，按「啟動」執行轉接程式後再「儲存並連線」。不儲存、不動已儲存的設定與金鑰
+    const ollamaHere = found?.presetId === 'ollama' ? found : null;
+    if (prefersBridge() && (ollamaHere || (!found && r.blocked.includes('ollama')))) {
+      const bridge = presetById('ollama-bridge');
+      const list = ollamaHere?.models ?? [];
+      const current = cfg.model.trim();
+      const keep = (cfg.presetId === 'ollama' || cfg.presetId === 'ollama-bridge') && current;
+      const model = list.length ? (list.includes(current) ? current : list.includes(bridge.defaultModel) ? bridge.defaultModel : list[0]) : keep ? current : bridge.defaultModel;
+      setCfg((c) => ({ ...c, presetId: bridge.id, kind: bridge.kind, baseUrl: bridge.baseUrl, model }));
+      setModels(list);
+      setKeyInput('');
+      setTrusted(false);
+      setStatus({
+        tone: 'info',
+        text: `找到 Ollama${list.length ? `（${list.length} 個模型）` : ''}，已帶入「透過轉接程式」的設定（尚未儲存）。請在下方「本機暫時許可」按「啟動」，貼到 PowerShell 執行後，再按「儲存並連線」。${list.length ? '' : '轉接程式啟動後，可按「取得模型清單」選擇模型。'}`,
+      });
+      return;
+    }
     if (found?.models.length) {
       const p = presetById(found.presetId);
       const current = cfg.model.trim();
@@ -315,7 +415,10 @@ export function ByokSettings({ onSaved, compact = false }: { onSaved?: () => voi
       <label className="grid gap-1">
         <span className="font-semibold">AI 服務</span>
         <select className={field} value={cfg.presetId} onChange={(e) => choosePreset(e.target.value)} aria-describedby={`${uid}-hint`}>
-          {BYOK_PRESETS.map((p) => (
+          {BYOK_PRESETS.filter((p) =>
+            // Windows 只列「透過轉接程式」的 Ollama；其他系統只列直接連線（轉接程式只有 Windows 版）。目前選中的一律保留
+            p.id === cfg.presetId ? true : p.id === 'ollama' ? !prefersBridge() : p.id === 'ollama-bridge' ? prefersBridge() : true,
+          ).map((p) => (
             <option key={p.id} value={p.id}>
               {p.label}
             </option>
@@ -368,6 +471,22 @@ export function ByokSettings({ onSaved, compact = false }: { onSaved?: () => voi
           ))}
         </datalist>
       </label>
+      {endpoint.ok && endpoint.local && !models.length && (
+        <p className="-mt-2 text-xs text-muted">本機服務的模型可以留空：按「儲存並連線」或「取得模型清單」會自動讀取已下載的模型並填入。</p>
+      )}
+      {models.length > 0 && (
+        <label className="-mt-2 grid gap-1 text-xs">
+          <span className="text-muted">從偵測到的 {models.length} 個模型選擇</span>
+          <select className={field} value={models.includes(cfg.model.trim()) ? cfg.model.trim() : ''} onChange={(e) => e.target.value && changeModel(e.target.value)} data-testid="byok-model-select">
+            {!models.includes(cfg.model.trim()) && <option value="">（請選擇；目前填的是清單外的名稱）</option>}
+            {models.map((m) => (
+              <option key={m} value={m}>
+                {m}
+              </option>
+            ))}
+          </select>
+        </label>
+      )}
 
       <label className="grid gap-1">
         <span className="font-semibold">

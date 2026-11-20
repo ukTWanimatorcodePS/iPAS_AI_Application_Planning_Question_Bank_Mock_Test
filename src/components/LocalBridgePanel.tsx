@@ -1,10 +1,11 @@
-import { Check, Play, RotateCw, Square } from 'lucide-react';
+import { Check, Play } from 'lucide-react';
 import { useState } from 'react';
-import { BRIDGE_BASE_URL, BRIDGE_DEFAULT_MINUTES, BRIDGE_MAX_MINUTES, BRIDGE_MIN_MINUTES, bridgeScript, bridgeStopCommand, clampMinutes, isBridgeUrl } from '../ai/byok/bridge';
+import { BRIDGE_BASE_URL, BRIDGE_DEFAULT_MINUTES, BRIDGE_MAX_MINUTES, BRIDGE_MIN_MINUTES, bridgeScript, clampMinutes, isBridgeUrl } from '../ai/byok/bridge';
 
 /**
  * 本機暫時許可（Ollama 轉接程式，Windows PowerShell）。設定頁 API 欄位下方，預設收合。
- * 右上角三個按鈕只「複製指令」：網頁不能執行電腦上的程式，使用者貼到 PowerShell 執行。
+ * 右上角只有「啟動」：複製指令，使用者貼到 PowerShell 執行（網頁不能執行電腦上的程式）。
+ * 停止＝在該 PowerShell 視窗按 Ctrl+C；要再用就再按「啟動」（舊的會先自行結束）。
  * 不會發出任何網路請求；連線確認請按「重新連線」或「儲存並連線」。
  */
 export function LocalBridgePanel({ baseUrl, onUseBridge, open = false }: { baseUrl: string; onUseBridge: () => void; open?: boolean }) {
@@ -23,8 +24,6 @@ export function LocalBridgePanel({ baseUrl, onUseBridge, open = false }: { baseU
   };
   const actions = [
     { id: 'start', label: '啟動', icon: Play, text: () => bridgeScript(origin, m), desc: `複製「啟動 ${m} 分鐘」的 PowerShell 指令` },
-    { id: 'stop', label: '停止', icon: Square, text: () => bridgeStopCommand(), desc: '複製「停止轉接程式」的 PowerShell 指令' },
-    { id: 'restart', label: '重新啟動', icon: RotateCw, text: () => bridgeScript(origin, m), desc: `複製「重新啟動 ${m} 分鐘」的 PowerShell 指令（會先停止舊的）` },
   ] as const;
 
   return (
@@ -52,7 +51,7 @@ export function LocalBridgePanel({ baseUrl, onUseBridge, open = false }: { baseU
       </summary>
       <div className="mt-2 grid gap-2">
         <p className="text-muted" aria-live="polite" data-testid="bridge-copy-status">
-          {copied ? '已複製。請開啟 PowerShell，貼上後按 Enter 執行。' : '按右上角的按鈕會複製指令（網頁無法直接執行電腦上的程式），再貼到 PowerShell 執行。'}
+          {copied ? '已複製。請開啟 PowerShell，貼上後按 Enter 執行。' : '按右上角的「啟動」會複製指令（網頁無法直接執行電腦上的程式），再貼到 PowerShell 執行。'}
         </p>
         <label className="flex flex-wrap items-center gap-2">
           <span className="font-semibold">許可時間</span>
@@ -83,12 +82,15 @@ export function LocalBridgePanel({ baseUrl, onUseBridge, open = false }: { baseU
           <li>設定許可時間，按右上角「啟動」複製指令。</li>
           <li>開啟 PowerShell，貼上並按 Enter。看到「轉接程式已啟動」後保持視窗開著。</li>
           <li>API 位址使用 {BRIDGE_BASE_URL}，回到這裡按「重新連線」（或「儲存並連線」）。</li>
+          <li>
+            要停止：在那個 PowerShell 視窗按 <kbd className="rounded border border-line px-1 font-mono">Ctrl</kbd>+<kbd className="rounded border border-line px-1 font-mono">C</kbd>（或直接關閉視窗）。
+          </li>
         </ol>
         <ul className="ml-4 list-disc space-y-0.5 text-muted">
           <li>只接受這台電腦上的本站（{origin}）網頁連線（區網或其他網站都會被拒絕），只轉送 AI 導師需要的路徑；不修改 Ollama 設定，也不會重新啟動 Ollama 或中斷其他程式。</li>
-          <li>網站的倒數會跟著轉接程式的到期時間，到期時轉接程式會中斷進行中的回答並關閉。若是提早停止或關閉視窗，本站要到下一次連線或提問才會發現（不會在背景偵測）。要繼續使用，再按「重新啟動」。</li>
+          <li>網站的倒數會跟著轉接程式的到期時間，到期時轉接程式會中斷進行中的回答並關閉。若是按 Ctrl+C 提早停止或關閉視窗，本站要到下一次連線或提問才會發現（不會在背景偵測）。要繼續使用，再按「啟動」執行一次（舊的轉接程式會先自行結束）。</li>
           <li>轉接程式一次處理一個請求：回答產生中時，其他請求（例如重新連線）會等它結束。</li>
-          <li>要提早停止：關閉 PowerShell 視窗，或按「停止」複製停止指令執行。「停止」不會強制結束任何程式，只會通知這次啟動的轉接程式自行關閉。網頁按鈕無法替你重新授權本機。</li>
+          <li>網頁按鈕無法替你重新授權本機，也無法替你停止轉接程式。</li>
           <li>目前只提供 Windows 版；macOS／Linux 請看下方「讓本站連到 Ollama」的暫時做法。</li>
         </ul>
         <details>
