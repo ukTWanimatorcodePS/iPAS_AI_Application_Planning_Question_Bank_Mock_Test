@@ -10,12 +10,15 @@
  * - 晚到的結果（設定已改、或已有更新的請求）一律丟棄，不會誤亮綠燈。
  */
 import { useSyncExternalStore } from 'react';
+import { isBridgeUrl } from './bridge';
 import { credentialId, loadByok, normalizeBaseUrl, retainCredential, subscribeByok, type ByokConfig } from './config';
 
 /** 每個模型一次連線的最長時間 */
 export const SESSION_MS = 30 * 60_000;
 /** 剩餘時間少於這個值時，計時器改為提醒樣式 */
 export const SESSION_WARN_MS = 5 * 60_000;
+/** 本機轉接程式的許可最長 120 分鐘；超過視為不可信，不採用 */
+const MAX_LOCAL_MS = 120 * 60_000 + 60_000;
 
 export type Phase = 'idle' | 'checking' | 'online' | 'offline' | 'expired';
 
@@ -90,7 +93,15 @@ subscribeByok(() => {
   resetConnection();
 });
 
-export type Outcome = { phase: 'online' } | { phase: 'offline'; message: string } | { phase: 'aborted' } | { phase: 'unverified'; message: string };
+/**
+ * online 的 localExpiresAt：本機轉接程式回報的許可到期時間（毫秒）。有值時網站倒數以它為準
+ * （使用者選擇「網站倒數跟著本機許可走」；許可可設 5～120 分鐘，所以可能超過 30 分鐘）。
+ */
+export type Outcome =
+  | { phase: 'online'; localExpiresAt?: number }
+  | { phase: 'offline'; message: string }
+  | { phase: 'aborted' }
+  | { phase: 'unverified'; message: string };
 
 /**
  * 開始一次會連線到 AI 服務的請求。回傳 finish：請求結束時呼叫一次。
@@ -99,6 +110,8 @@ export type Outcome = { phase: 'online' } | { phase: 'offline'; message: string 
 export function beginConnection(config: ByokConfig, key: string): (o: Outcome) => void {
   const id = ++sequence;
   retainCredential(key); // 連線中的金鑰識別碼固定保留
+  // 只有本站轉接位址回報的到期時間可以採用（防禦：雲端或其他本機程式不能藉此延長 30 分鐘）
+  const bridge = isBridgeUrl(config.baseUrl);
   const target = targetOf(config, key);
   const prev = state.target === target ? state : null;
   const session = prev && (prev.phase === 'online' || prev.phase === 'checking') && prev.expiresAt && !pastDeadline(prev) ? prev : null;
@@ -121,10 +134,12 @@ export function beginConnection(config: ByokConfig, key: string): (o: Outcome) =
       publish(session ? { ...session, phase: 'online' } : { target, phase: 'idle', message: o.message });
       return;
     }
-    // 成功：沿用尚未到期的這段連線（不延長）；否則開始新的 30 分鐘
+    // 成功：本機轉接程式有回報到期時間時以它為準（重新啟動轉接程式會更新）；
+    // 否則沿用尚未到期的這段連線（不延長），或開始新的 30 分鐘
     const t = now();
     const startedAt = session?.startedAt ?? t;
-    const expiresAt = session?.expiresAt ?? t + SESSION_MS;
+    const local = bridge && o.localExpiresAt !== undefined && o.localExpiresAt > t && o.localExpiresAt - t <= MAX_LOCAL_MS ? o.localExpiresAt : undefined;
+    const expiresAt = local ?? session?.expiresAt ?? t + SESSION_MS;
     if (expiresAt <= t) publish({ target, phase: 'expired' });
     else publish({ target, phase: 'online', startedAt, expiresAt });
   };

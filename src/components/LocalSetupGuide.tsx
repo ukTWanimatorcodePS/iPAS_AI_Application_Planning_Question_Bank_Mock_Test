@@ -2,8 +2,10 @@ import { Check, Copy } from 'lucide-react';
 import { useState } from 'react';
 
 /**
- * 「讓本站連到本機 AI」的一次性設定步驟（依 Ollama 官方 FAQ：設定 OLLAMA_ORIGINS 後重新啟動 Ollama）。
- * 只允許本站網址（不是全部網站），設定一次即可，之後不用每次調整。
+ * 「讓本站連到本機 AI」的暫時做法。使用者偏好短期許可，不提供永久設定（不再教 setx／launchctl／systemd）。
+ * - Windows：本機轉接程式（LocalBridgePanel），不修改 Ollama 設定、到期自動關閉
+ * - macOS／Linux：只對該終端機視窗有效的 OLLAMA_ORIGINS（依 Ollama 官方 FAQ），關閉視窗即撤回
+ * 以前用永久方式設定過的人，仍保留移除說明。
  */
 type Os = 'windows' | 'mac' | 'linux';
 
@@ -67,37 +69,35 @@ export function LocalSetupGuide({ presetId, highlight = false }: { presetId: str
         <p className="mt-1 text-muted">瀏覽器若詢問是否允許本站存取「區域網路／本機裝置」，請選允許。這是該程式自己的設定，本站的 30 分鐘連線時限不會撤回它。</p>
       </details>
     );
-  if (presetId !== 'ollama') return null;
+  if (presetId !== 'ollama' && presetId !== 'ollama-bridge') return null;
   const steps: Record<Os, { title: string; items: { text: string; copy?: string; label?: string }[] }> = {
     windows: {
       title: 'Windows',
-      items: [
-        { text: '在工作列右下角的 Ollama 圖示按右鍵，選擇結束（Quit）。' },
-        { text: '開啟 PowerShell，貼上並執行下面這一行（只允許本站，不是所有網站）：', copy: `setx OLLAMA_ORIGINS "${origin}"`, label: 'Windows 設定指令' },
-        { text: '從開始功能表重新開啟 Ollama。' },
-      ],
+      items: [{ text: '請用上方「本機暫時許可（Windows 轉接程式）」：設定時間後按「啟動」，把指令貼到 PowerShell 執行，API 位址改用轉接程式位址。不修改 Ollama 設定，到期自動關閉。' }],
     },
     mac: {
       title: 'macOS',
       items: [
-        { text: '開啟「終端機」，貼上並執行：', copy: `launchctl setenv OLLAMA_ORIGINS "${origin}"`, label: 'macOS 設定指令' },
-        { text: '結束 Ollama 再重新開啟。電腦重新開機後，若又連不上，再執行一次上面的指令。' },
+        { text: '先結束 Ollama（選單列的 Ollama 圖示 → Quit）。' },
+        { text: '開啟「終端機」，貼上並執行（只在這個視窗開著時有效，關閉視窗就撤回）：', copy: `OLLAMA_ORIGINS="${origin}" ollama serve`, label: 'macOS 暫時啟動指令' },
       ],
     },
     linux: {
       title: 'Linux',
       items: [
-        { text: '執行下面的指令，在 [Service] 下方加入一行：', copy: 'sudo systemctl edit ollama.service', label: 'Linux 編輯服務指令' },
-        { text: '要加入的那一行：', copy: `Environment="OLLAMA_ORIGINS=${origin}"`, label: 'Linux 設定內容' },
-        { text: '存檔後重新啟動：', copy: 'sudo systemctl daemon-reload && sudo systemctl restart ollama', label: 'Linux 重新啟動指令' },
+        { text: '先停止背景的 Ollama 服務：', copy: 'sudo systemctl stop ollama', label: 'Linux 停止服務指令' },
+        { text: '在終端機貼上並執行（只在這個視窗開著時有效，關閉視窗就撤回）：', copy: `OLLAMA_ORIGINS="${origin}" ollama serve`, label: 'Linux 暫時啟動指令' },
+        { text: '用完後關閉視窗，需要時再啟動背景服務：', copy: 'sudo systemctl start ollama', label: 'Linux 啟動服務指令' },
       ],
     },
   };
   const s = steps[os];
   return (
     <details className={`rounded-lg p-2 text-xs ${highlight ? 'bg-warn-soft' : 'bg-soft'}`} open={highlight} data-testid="local-setup-guide">
-      <summary className="cursor-pointer font-semibold">讓本站連到 Ollama（設定一次即可）</summary>
-      <p className="mt-1 text-muted">Ollama 預設只允許本機網頁連線。要從本站使用，需要把本站網址（{origin}）加入允許清單：</p>
+      <summary className="cursor-pointer font-semibold">讓本站連到 Ollama（暫時許可）</summary>
+      <p className="mt-1 text-muted">
+        Ollama 預設只允許本機網頁連線，本站（{origin}）會被拒絕（HTTP 403，這不是金鑰問題）。以下做法都是暫時的，不會永久改變電腦設定：
+      </p>
       <div className="mt-1 flex gap-1" role="tablist" aria-label="作業系統">
         {(Object.keys(steps) as Os[]).map((k) => (
           <button key={k} type="button" role="tab" aria-selected={os === k} className={`btn btn-sm !min-h-[32px] !px-2 ${os === k ? '' : 'btn-secondary'}`} onClick={() => setOs(k)}>
@@ -112,14 +112,13 @@ export function LocalSetupGuide({ presetId, highlight = false }: { presetId: str
             {it.copy && <CopyLine text={it.copy} label={it.label ?? '指令'} />}
           </li>
         ))}
-        <li>回到這裡按「重新連線」。</li>
+        <li>回到這裡按「重新連線」（或「儲存並連線」）。</li>
       </ol>
-      <p className="mt-1 text-muted">
-        已經為其他網址設定過 OLLAMA_ORIGINS 的話，請用英文逗號把本站網址加在後面，不要覆蓋原本的設定。瀏覽器若詢問是否允許本站存取「區域網路／本機裝置」，請選允許。
-      </p>
+      <p className="mt-1 text-muted">瀏覽器若詢問是否允許本站存取「區域網路／本機裝置」，請選允許。</p>
       <p className="mt-1 text-muted" data-testid="local-setup-persistence">
-        注意：這是 Ollama 的設定，{os === 'mac' ? '在重新開機前' : '會一直保留（重新開機也有效）'}，直到你自己移除。本站的 30 分鐘連線時限只會中斷本站的連線，<strong>不會</strong>撤回這個允許設定。
-        不想再讓本站連線時，{os === 'windows' ? '請到「編輯您帳戶的環境變數」刪除 OLLAMA_ORIGINS，再重新開啟 Ollama' : os === 'mac' ? '請執行 launchctl unsetenv OLLAMA_ORIGINS，再重新開啟 Ollama' : '請用 sudo systemctl edit ollama.service 刪除那一行，再重新啟動'}。
+        本站的 30 分鐘連線只停止本站的提問，<strong>不會</strong>改變電腦設定；本機許可到期或關閉後，網頁按鈕無法替你重新授權，請在電腦上再啟動一次。
+        以前若用永久方式設定過 OLLAMA_ORIGINS，可以這樣移除：
+        {os === 'windows' ? '到「編輯您帳戶的環境變數」刪除 OLLAMA_ORIGINS，再重新開啟 Ollama' : os === 'mac' ? '執行 launchctl unsetenv OLLAMA_ORIGINS，再重新開啟 Ollama' : '用 sudo systemctl edit ollama.service 刪除該行，再重新啟動'}。
       </p>
     </details>
   );

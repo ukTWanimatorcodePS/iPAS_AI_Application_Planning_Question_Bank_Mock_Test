@@ -240,7 +240,10 @@ describe('設定表單', () => {
     const guide = screen.getByTestId('local-setup-guide');
     expect(guide).toHaveAttribute('open');
     expect(guide).toHaveTextContent(window.location.origin);
-    expect(screen.getByTestId('local-setup-persistence')).toHaveTextContent('不會撤回');
+    // v1.2.x：不再提供永久設定；說明本站計時不會改變電腦設定，且網頁無法替使用者重新授權（Ollama 403 需求）
+    expect(screen.getByTestId('local-setup-persistence')).toHaveTextContent('不會');
+    expect(screen.getByTestId('local-setup-persistence')).toHaveTextContent('無法替你重新授權');
+    expect(guide).not.toHaveTextContent('setx');
   });
 
   it('雲端服務連線成功時，不宣稱所選模型已可回答', async () => {

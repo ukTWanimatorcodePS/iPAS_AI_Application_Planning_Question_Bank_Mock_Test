@@ -1,10 +1,12 @@
 import { KeyRound, ListRestart, PlugZap, Radar, ShieldCheck, Trash2 } from 'lucide-react';
 import { useId, useRef, useState, useSyncExternalStore } from 'react';
 import { ByokError, listModels, verifyConnection } from '../ai/byok/client';
-import { resetConnection } from '../ai/byok/connection';
+import { getConnection, resetConnection } from '../ai/byok/connection';
 import { detectLocal, type Diagnosis } from '../ai/byok/diagnose';
 import { ConnectionIndicator, SessionTimer } from './ConnectionIndicator';
 import { LocalSetupGuide } from './LocalSetupGuide';
+import { LocalBridgePanel } from './LocalBridgePanel';
+import { BRIDGE_BASE_URL, isBridgeUrl } from '../ai/byok/bridge';
 import {
   BYOK_PRESETS,
   byokVersion,
@@ -87,6 +89,12 @@ export function ByokSettings({ onSaved, compact = false }: { onSaved?: () => voi
     resetForNewEndpoint(!!keyInput.trim());
   };
 
+  /** 改用本機轉接程式：保留已選的模型 */
+  const useBridge = () => {
+    setCfg((c) => ({ ...c, presetId: 'ollama-bridge', kind: 'openai-compatible', baseUrl: BRIDGE_BASE_URL }));
+    resetForNewEndpoint(!!keyInput.trim());
+  };
+
   const changeBaseUrl = (value: string) => {
     const before = endpointOrigin(cfg.baseUrl);
     const after = endpointOrigin(value);
@@ -139,7 +147,9 @@ export function ByokSettings({ onSaved, compact = false }: { onSaved?: () => voi
         tone: 'ok',
         text:
           local.ok && local.local
-            ? `${prefix}已連線，模型「${form.model}」可以使用。每次連線最長 30 分鐘，時間到請按「重新連線」。`
+            ? isBridgeUrl(form.baseUrl) && getConnection().expiresAt
+              ? `${prefix}已連線，模型「${form.model}」可以使用。連線到 ${new Date(getConnection().expiresAt!).toLocaleTimeString('zh-TW', { hour: '2-digit', minute: '2-digit' })} 為止（跟著本機轉接程式的許可時間）；到期請在「本機暫時許可」按「重新啟動」，再按「重新連線」。`
+              : `${prefix}已連線，模型「${form.model}」可以使用。每次連線最長 30 分鐘，時間到請按「重新連線」。`
             : `${prefix}已連線：服務有回應。金鑰與所選模型是否能回答，會在第一次提問時確認（各家服務的檢查方式不同）。每次連線最長 30 分鐘，時間到請按「重新連線」。`,
       });
     } catch (e) {
@@ -162,6 +172,16 @@ export function ByokSettings({ onSaved, compact = false }: { onSaved?: () => voi
     setKeyInput('');
     onSaved?.();
     void connect(next, key, '已儲存。');
+  };
+
+  /**
+   * 重新連線：用已儲存的設定再確認一次（只讀取模型清單，不消耗 token），成功後開始新的一段計時。
+   * 本機轉接程式重新啟動後，網站倒數會改用新的到期時間。
+   */
+  const reconnect = () => {
+    const snap = loadByok();
+    if (!snap.config) return setStatus({ tone: 'bad', text: '還沒有儲存的設定，請先按「儲存並連線」。' });
+    void connect(snap.config, snap.key, '');
   };
 
   /** 只測試、不儲存（例如想先確認新金鑰）；成功後再按「儲存並連線」會沿用這段連線與計時，不會重新計時 */
@@ -319,6 +339,9 @@ export function ByokSettings({ onSaved, compact = false }: { onSaved?: () => voi
         />
         {!endpoint.ok && cfg.baseUrl && <span className="text-xs text-bad">{endpoint.message}</span>}
       </label>
+      {(preset.id === 'ollama' || preset.id === 'ollama-bridge' || isBridgeUrl(cfg.baseUrl)) && (
+        <LocalBridgePanel baseUrl={cfg.baseUrl} onUseBridge={useBridge} open={diagnosis?.problem === 'cors' || preset.id === 'ollama-bridge'} />
+      )}
       {needsTrust && (
         <label className="flex items-start gap-2 rounded-lg bg-warn-soft p-2 text-xs">
           <input type="checkbox" checked={trusted} onChange={(e) => setTrusted(e.target.checked)} />
@@ -377,6 +400,9 @@ export function ByokSettings({ onSaved, compact = false }: { onSaved?: () => voi
       <div className="flex flex-wrap gap-2">
         <button type="button" className="btn btn-sm" onClick={save} disabled={busy} data-testid="byok-save">
           <PlugZap size={14} aria-hidden /> 儲存並連線
+        </button>
+        <button type="button" className="btn btn-secondary btn-sm" onClick={reconnect} disabled={busy || !loadByok().config} data-testid="byok-reconnect">
+          重新連線
         </button>
         <button type="button" className="btn btn-secondary btn-sm" onClick={test} disabled={busy} data-testid="byok-test">
           只測試，不儲存

@@ -1,5 +1,6 @@
 import { checkEndpoint, normalizeBaseUrl, presetById, type ByokConfig } from './config';
 import { beginConnection, isExpired } from './connection';
+import { BRIDGE_PORT, bridgeExpiresOf, isBridgeRequest, isBridgeUrl } from './bridge';
 import { diagnoseLocal, type Diagnosis } from './diagnose';
 
 export interface ChatTurn {
@@ -74,10 +75,30 @@ export function requestChars(system: string, messages: ChatTurn[]): number {
 /** 服務的錯誤說明含金鑰或憑證相關內容時，整段不顯示 */
 const HIDDEN_DETAIL = '\u0000hidden';
 
-function statusError(status: number, detail = ''): ByokError {
+/** Ollama（或本站轉接程式）回 403：最可能是拒絕本站來源（Ollama 預設只允許本機網頁） */
+export const LOCAL_FORBIDDEN_MESSAGE =
+  '本機的 Ollama 拒絕了本站的連線（HTTP 403）。最可能的原因是 Ollama 預設只允許本機網頁連線，本站還沒有取得許可。請到設定頁展開「本機暫時許可」，按「啟動」執行轉接程式，再按「重新連線」。';
+
+/** 其他本機程式回 403：各程式有自己的來源或權限規則，不做單一斷言 */
+export const LOCAL_OTHER_FORBIDDEN_MESSAGE =
+  '本機 AI 程式拒絕了這次請求（HTTP 403）。可能是該程式只允許特定網頁來源，或有自己的權限或金鑰設定；請查看該程式的說明。';
+
+export type LocalKind = false | 'ollama' | 'other';
+
+/** 本機位址屬於 Ollama（預設連接埠或本站轉接程式）還是其他本機程式；不是本機回傳 false */
+export function localKindOf(config: Pick<ByokConfig, 'presetId' | 'baseUrl'>): LocalKind {
+  const c = checkEndpoint(config.baseUrl);
+  if (!c.ok || !c.local) return false;
+  if (config.presetId === 'ollama' || config.presetId === 'ollama-bridge' || c.url.port === '11434' || c.url.port === String(BRIDGE_PORT)) return 'ollama';
+  return 'other';
+}
+
+function statusError(status: number, detail = '', local: LocalKind = false): ByokError {
   // 各家服務的錯誤說明不同，附上服務自己的說明（安全檢查後、限制長度），方便對照該服務的文件
   const tail = detail === HIDDEN_DETAIL ? '（服務的說明含金鑰或憑證相關內容，為了安全不顯示）' : detail ? `（服務回覆：${detail}）` : '';
   // 驗證失敗的說明最可能回顯金鑰：一律不附服務說明
+  if (local === 'ollama' && status === 403) return new ByokError(LOCAL_FORBIDDEN_MESSAGE, 'config', status);
+  if (local === 'other' && status === 403) return new ByokError(LOCAL_OTHER_FORBIDDEN_MESSAGE, 'config', status);
   if (status === 401 || status === 403) return new ByokError('API 金鑰無效或沒有權限，請到設定檢查金鑰。', 'auth', status);
   if (status === 404) return new ByokError(`找不到這個 API 位址或模型名稱，請檢查設定。${tail}`, 'config', status);
   if (status === 429) return new ByokError(`超過服務的使用量或速率限制，請稍後再試，或到服務後台檢查額度。${tail}`, 'rate', status);
@@ -156,6 +177,9 @@ async function explain(e: unknown, config: ByokConfig, fetchImpl?: typeof fetch)
   if (!(e instanceof ByokError) || e.diagnosis) return e;
   const check = checkEndpoint(config.baseUrl);
   if (!check.ok || !check.local) return e;
+  // 本站轉接程式連不到：沒有啟動，或許可時間已到（轉接程式到期會自動關閉）
+  if (e.kind === 'network' && isBridgeUrl(config.baseUrl))
+    return new ByokError('連不到本機轉接程式：可能還沒啟動，或許可時間已到而自動關閉。請到設定頁展開「本機暫時許可」按「啟動」，再按「重新連線」。', 'network');
   if (e.kind !== 'network' && e.status !== 404 && e.status !== 400) return e;
   const d = await diagnoseLocal(config, e.kind === 'network' ? undefined : e.status, fetchImpl);
   return d ? new ByokError(d.message, e.kind, e.status, d) : e;
@@ -417,7 +441,7 @@ async function streamOpenAiCompatible(o: StreamOptions, local: boolean): Promise
     param = param === 'max_tokens' ? 'max_completion_tokens' : 'max_tokens';
     res = await send(param);
   }
-  if (!res.ok) throw statusError(res.status, (await readError(res, o.apiKey)).shown);
+  if (!res.ok) throw statusError(res.status, (await readError(res, o.apiKey)).shown, local ? localKindOf(o.config) : false);
   if (!res.body) throw new ByokError('AI 服務沒有回傳回答內容，請檢查模型名稱與設定。', 'server');
   tokenParamLearned.set(learnKey, param);
 
@@ -585,17 +609,43 @@ async function streamAnthropic(o: StreamOptions): Promise<ChatResult> {
   }
 }
 
+/**
+ * 包一層 fetch，記下轉接程式回應的到期時間（網站倒數以它為準）。
+ * 只信任「設定就是本站轉接位址、且請求確實送往轉接程式」的回應；雲端服務或其他本機程式帶同名標頭一律忽略，
+ * 不能用來延長網站的 30 分鐘。
+ */
+function trackBridge(fetchImpl: typeof fetch | undefined, config: ByokConfig): { fetch: typeof fetch; expires: () => number | undefined } {
+  const base = fetchImpl ?? ((...a: Parameters<typeof fetch>) => fetch(...a));
+  if (!isBridgeUrl(config.baseUrl)) return { fetch: base, expires: () => undefined };
+  let expires: number | undefined;
+  const wrapped = (async (...a: Parameters<typeof fetch>) => {
+    const res = await base(...a);
+    const input = a[0];
+    const url = typeof input === 'string' ? input : input instanceof URL ? input.href : input.url;
+    if (isBridgeRequest(url)) expires = bridgeExpiresOf(res) ?? expires;
+    return res;
+  }) as typeof fetch;
+  return { fetch: wrapped, expires: () => expires };
+}
+
 /** 串流取得回答。錯誤一律轉成不含金鑰的 ByokError（使用者中止時丟出 AbortError） */
 export async function streamChat(o: StreamOptions): Promise<ChatResult> {
   const check = checkEndpoint(o.config.baseUrl);
   if (!check.ok) throw new ByokError(check.message, 'config');
   if (!o.config.model.trim()) throw new ByokError('請先在設定中填寫模型名稱。', 'config');
   // 連線已滿 30 分鐘：提問不能自動開始新的一段，必須由使用者按「重新連線」
-  if (isExpired(o.config, o.apiKey)) throw new ByokError('本次連線已滿 30 分鐘，已自動中斷。請按「重新連線」開始新的 30 分鐘。', 'expired');
+  if (isExpired(o.config, o.apiKey))
+    throw new ByokError(
+      isBridgeUrl(o.config.baseUrl)
+        ? '本機轉接程式的許可時間已到，已自動中斷。請在設定頁「本機暫時許可」按「重新啟動」，再按「重新連線」。'
+        : '本次連線已滿 30 分鐘，已自動中斷。請按「重新連線」開始新的 30 分鐘。',
+      'expired',
+    );
   const finish = beginConnection(o.config, o.apiKey);
+  const bridge = trackBridge(o.fetchImpl, o.config);
   try {
-    const result = await (o.config.kind === 'anthropic' ? streamAnthropic(o) : streamOpenAiCompatible(o, check.local));
-    finish({ phase: 'online' });
+    const result = await (o.config.kind === 'anthropic' ? streamAnthropic(o) : streamOpenAiCompatible({ ...o, fetchImpl: bridge.fetch }, check.local));
+    finish({ phase: 'online', localExpiresAt: bridge.expires() });
     return result;
   } catch (e) {
     if (e instanceof DOMException && e.name === 'AbortError') {
@@ -642,13 +692,14 @@ export async function verifyConnection(config: ByokConfig, apiKey: string, fetch
   if (!check.ok) throw new ByokError(check.message, 'config');
   if (!config.model.trim()) throw new ByokError('請先填寫模型名稱（可按「取得模型清單」）。', 'config');
   const finish = beginConnection(config, apiKey);
+  const bridge = trackBridge(fetchImpl, config);
   let listed = false;
   try {
-    const models = await listModelsRequest(config, apiKey, fetchImpl);
+    const models = await listModelsRequest(config, apiKey, config.kind === 'anthropic' ? fetchImpl : bridge.fetch);
     listed = true;
     const model = config.model.trim();
     if (check.local && !models.includes(model)) throw new ByokError(`這個服務沒有模型「${model}」，請從模型清單選擇。`, 'config', 404);
-    finish({ phase: 'online' });
+    finish({ phase: 'online', localExpiresAt: bridge.expires() });
     return { verified: true, models };
   } catch (e) {
     // 依端點實際能力判斷，不依服務選單：同一個代理不論選哪個服務，結果都一樣
@@ -697,7 +748,7 @@ async function listModelsRequest(config: ByokConfig, apiKey: string, fetchImpl?:
   } catch (e) {
     throw networkError(e, check.local);
   }
-  if (!res.ok) throw statusError(res.status, (await readError(res, apiKey)).shown);
+  if (!res.ok) throw statusError(res.status, (await readError(res, apiKey)).shown, localKindOf(config));
   let json: { data?: unknown };
   try {
     json = (await res.json()) as { data?: unknown };

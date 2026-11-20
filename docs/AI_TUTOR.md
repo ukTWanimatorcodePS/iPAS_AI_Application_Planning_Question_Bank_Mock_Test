@@ -187,3 +187,18 @@ export default {
 3. 重新部署後，「設定 → AI 導師」即可選擇遠端模式；未設定時該選項自動停用。
 
 > 目前狀態：本專案**尚未部署任何後端代理**，網站只提供示範模式。
+
+## 本機 Ollama 403 與轉接程式（2026-11-21，未發布）
+
+- Ollama 預設只允許本機網頁來源；本站（GitHub Pages）的請求會得到 HTTP 403。本機位址的 403 改顯示「拒絕本站來源」說明（`LOCAL_FORBIDDEN_MESSAGE`），不再當成金鑰錯誤。
+- 使用者選擇方案 C（本機轉接程式），不提供永久設定。`src/ai/byok/bridge.ts` 產生 PowerShell 腳本：
+  - 登記 `http://localhost:11435/`。HttpListener 的 localhost 前綴只比對 Host 名稱，所以每個請求另外檢查：連線來源與本機端點都是 loopback（IPv4 對應位址先轉回 IPv4）、Host 必須是 `localhost:11435`，否則 403（Codex F1：區網／VPN 位址帶 `Host: localhost` 曾可使用）。只接受 Origin 與本站完全相符（大小寫相符）的請求；只轉送 `/v1/models`、`/v1/chat/completions`、`/api/tags`、`/api/version`；轉送時不帶 Authorization、Cookie、Origin，不跟隨重新導向（Ollama 視為本機請求，不必改設定、不重啟）。
+  - 請求本文以有上限的迴圈實際讀取並累計，最多 2 MiB；`Content-Length` 超過或分塊上傳累計超過都回 413，且不轉送（Codex F3）。
+  - 回應附 `X-IPAS-Bridge-Expires`（毫秒，經 `Access-Control-Expose-Headers` 公開）；預檢回 `Access-Control-Allow-Private-Network: true`。
+  - 5～120 分鐘是絕對截止：等待連線、讀取上傳、等待 Ollama 回應、串流讀寫都以非同步工作搭配 250 毫秒輪詢檢查期限，到期立即 `Abort()` 送往 Ollama 的請求與目前的回應，再關閉 listener；送往 Ollama 的逾時也縮到剩餘時間（Codex F2）。取消放在每個請求的 `finally`：按 Ctrl+C 中止（視窗仍開著）也一定取消上游，不會讓 Ollama 在背後繼續產生回答（Codex 第二輪 R2-1）；提早結束的訊息為中性的「已中止」。
+  - 停止與重新啟動不強制結束任何程式（Codex F4）：啟動時在 TEMP 寫入紀錄（PID、行程啟動時間、隨機停止代碼）。停止指令先確認紀錄的 PID 與啟動時間都相符，才寫入停止代碼；轉接程式自己讀到代碼後結束並清除紀錄。紀錄對不上（程式已不在、PID 被重用）時只清除紀錄；轉接程式沒回應時請使用者自行關閉視窗。
+  - 單執行緒依序處理請求：一則串流回答進行中時，其他請求（例如重新連線）排隊。手動停止且網站閒置時，網站不會在背景偵測，要到下一次連線或提問才知道。
+- 網站只能複製指令，無法執行本機程式。`verifyConnection`／`streamChat` 讀到期標頭後，連線倒數改用該時間（超過 120 分鐘或已過期不採用）；只有設定為 `http://localhost:11435/v1`、且請求確實送往該來源的回應才讀取這個標頭，`connection.ts` 也再確認一次（Codex F5：雲端回應曾可把計時延長為 90 分鐘）。轉接程式連不到時顯示專屬說明。
+- 403 說明分開：Ollama（preset、11434 或轉接連接埠）說明最可能是來源未獲許可；其他本機程式只說可能原因（來源、權限或金鑰設定），不斷言不是金鑰問題。
+- 2026-11-21 本機實測（測完即停止，未變更 Ollama 設定）：本站來源 200 並帶標頭；其他來源與無來源 403；預檢 204；非允許路徑 404；串流到 [DONE]；正式建置在瀏覽器經轉接程式連線成功，倒數跟著 5 分鐘許可，問答成功；停止後顯示「連不到本機轉接程式」。
+

@@ -72,7 +72,17 @@ export const BYOK_PRESETS: ByokPreset[] = [
     local: true,
     needsKey: false,
     defaultModel: '',
-    hint: '在自己電腦執行 Ollama。需允許本站網域連線：啟動前設定環境變數 OLLAMA_ORIGINS（例如本站網址的來源）。資料不離開你的電腦。',
+    hint: '在自己電腦執行 Ollama。Ollama 預設只允許本機網頁連線，本站會被拒絕（HTTP 403）：Windows 請改用下方「本機暫時許可」的轉接程式，macOS／Linux 請看「讓本站連到 Ollama」。資料不離開你的電腦。',
+  },
+  {
+    id: 'ollama-bridge',
+    label: 'Ollama（本機，透過轉接程式）',
+    kind: 'openai-compatible',
+    baseUrl: 'http://localhost:11435/v1',
+    local: true,
+    needsKey: false,
+    defaultModel: '',
+    hint: '先在下方「本機暫時許可」按「啟動」，把指令貼到 PowerShell 執行轉接程式（只允許本站、到期自動關閉、不修改 Ollama 設定）。資料不離開你的電腦。',
   },
   {
     id: 'lmstudio',
