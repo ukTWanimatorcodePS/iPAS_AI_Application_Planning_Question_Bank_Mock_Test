@@ -355,3 +355,11 @@ Claude 逐處核對屬實並修正，另在題庫找到 3 題相同問題一併�
 ## Codex 提問引導第三輪複查（2026-11-20，未提交）
 
 詳見本機 `docs/AUDIT_2026-11-20_question-guidance_r3.md`（不 stage）。同意本次已複查的提問引導修正發布，不構成提交推送授權。G2-R2 的情境世代在第一個等待前記錄，pending A→B→A 後不恢復延續資格（請求維持 1）；不切換情境的正向延續仍正常（2 次）。S1 等待實際狀態文字修正通過，未刪除斷言。typecheck、lint、835 題驗證、420 項單元、build 通過；完整 E2E 54 通過、2 略過；引導360px／鍵盤／草稿／到期補充瀏覽器 2 通過。指定 r2 探測 422 通過、1 舊缺陷斷言預期失敗；r3 正向驗收加既有測試 424 通過。本輪未發現新必修。未改正式程式或題庫、未提交推送、未變更 Ollama 許可；未重跑 Python。
+
+## v1.2.0 發布（2026-11-20，Claude）
+
+- 使用者同意後提交 `d01b160` 並推送 main；GitHub Actions「Test & Deploy to GitHub Pages」成功：https://github.com/ukTWanimatorcodePS/iPAS_AI_Application_Planning_Question_Bank_Mock_Test/actions/runs/44767939928
+- 發布前本機檢查：typecheck、lint、835 題驗證、單元 420、build、Pyodide 80/80＋18/18、E2E 54 通過（2 選用略過）。
+- 正式網址已確認顯示「版本 v1.2.0」（桌面左下角與頁尾）。GitHub Pages 約有 10 分鐘快取，使用者看到舊版時請重新整理。
+- 內容：AI 導師連線狀態燈與 30 分鐘連線、跨服務相容（Codex 連線第 6～12 輪）、提問受阻的原因說明與引導（Codex 提問引導第 1～3 輪）。
+
