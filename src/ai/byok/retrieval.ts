@@ -233,6 +233,66 @@ export async function questionRelevance(level: Level, userText: string): Promise
   return best;
 }
 
+/**
+ * 本站課綱名詞（辨識學習意圖用，不是手寫白名單）。只取「定義或觀念」層級的來源：
+ * - 講義「名詞與定義」小節的術語（例如「協同過濾（Collaborative Filtering）」）
+ * - 觀念說明小節（必考核心觀念、原理及運作流程、容易混淆的觀念比較）的 ### 小標題（例如「推薦系統」）
+ * - 細項名稱與課綱的範圍詞（scopeTerms）
+ * 不取「不同領域的實際案例」等段落的粗體：那裡的「出版社」「行銷部」是案例角色，不是專業術語（Codex 提問引導 G1）。
+ * 只收中文 3 字以上或英文 4 字母以上的名詞。
+ */
+const CONCEPT_SECTIONS = /^(必考核心觀念|原理及運作流程|容易混淆的觀念比較)$/;
+let conceptCache: Promise<string[]> | null = null;
+/** 初級與中級合併：辨識學習意圖不受目前級別限制（初級頁面問「協同過濾」也算學習提問） */
+async function conceptVocabulary(): Promise<string[]> {
+  let p = conceptCache;
+  if (!p) {
+    p = (async () => {
+      const terms = new Set<string>();
+      const add = (raw: string) => {
+        for (const part of raw.split(/[（）()、，,／/：:]/)) {
+          const t = part.replace(/^\d+[.、]\s*/, '').trim();
+          if (/^L[12]\d{4}$/.test(t)) continue;
+          if (/^[㐀-鿿]{3,12}$/.test(t) || /^[A-Za-z][A-Za-z -]{3,30}$/.test(t)) terms.add(t);
+        }
+      };
+      for (const c of allCompetencies()) {
+        add(c.name);
+        for (const term of c.scopeTerms ?? []) for (const alt of term.split('|')) add(alt);
+        const md = (await loadLesson(c.code)) ?? '';
+        let section = '';
+        for (const line of md.split(/\r?\n/)) {
+          const h2 = line.match(/^##\s+(.+)$/);
+          if (h2) {
+            section = h2[1].trim();
+            continue;
+          }
+          if (section === '名詞與定義') {
+            const m = line.match(/^\s*[-*]\s+\*\*([^*]{2,40})\*\*/);
+            if (m) add(m[1]);
+          } else if (CONCEPT_SECTIONS.test(section)) {
+            const h3 = line.match(/^###\s+(.+)$/);
+            if (h3) add(h3[1]);
+          }
+        }
+      }
+      return [...terms].sort((x, y) => y.length - x.length);
+    })();
+    conceptCache = p;
+  }
+  return p;
+}
+
+const escapeRe = (t: string) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+/** 提問中出現的本站課綱名詞（英文以整詞比對，避免字串片段誤中） */
+export async function conceptHits(text: string): Promise<string[]> {
+  const t = text.toLowerCase();
+  return (await conceptVocabulary()).filter((term) =>
+    /^[A-Za-z]/.test(term) ? new RegExp(String.raw`\b${escapeRe(term.toLowerCase())}\b`).test(t) : t.includes(term.toLowerCase()),
+  );
+}
+
 export function sourcesBlock(sources: RetrievedSource[]): string {
   if (!sources.length) return '【本站依據資料】（這次沒有找到相關資料）';
   return ['【本站依據資料】', ...sources.map((s) => `[${s.ref}]（${s.title}）\n${s.text}`)].join('\n\n');

@@ -61,25 +61,55 @@ const GENERAL_REF = /解釋|為什麼|為何|例子|舉例|重點|觀念|看不�
 /** 一般問句放行所需的最低相關度（questionRelevance，已排除常見虛詞） */
 export const GENERAL_REF_MIN_RELEVANCE = 3;
 
-export type TopicVerdict = { ok: true } | { ok: false; reply: string };
+/**
+ * 本機判斷沒有送出的原因。這是規則判斷結果，不是對使用者意圖的斷言：
+ * - greeting：打招呼
+ * - unclear_topic：系統目前無法確認想問的學習主題
+ * - possible_off_topic：看起來像學習範圍以外的請求（生活、娛樂等）
+ */
+export type BlockReason = 'greeting' | 'unclear_topic' | 'possible_off_topic';
 
-export const OFF_TOPIC_REPLY =
-  '我是 iPAS AI 應用規劃師的學習導師，只回答和本站講義、題庫與考試有關的問題。這則訊息沒有送出給 AI，不會產生用量。可以試著問：「什麼是過擬合？」或在題目頁問「給我一點提示」。';
+export type TopicVerdict = { ok: true } | { ok: false; reason: BlockReason; reply: string };
+
+const NOT_SENT = '這則訊息尚未送給 AI，不會產生模型用量。';
+const MAY_ERR = '（這是本機的自動判斷，可能判斷錯誤。）';
+export const BLOCK_REPLY: Record<BlockReason, string> = {
+  greeting: `你好！你可以先選一份講義，或直接告訴我你想了解的觀念。${NOT_SENT}`,
+  unclear_topic: `我目前還不確定你想問哪個學習觀念。${NOT_SENT}請補充單元、觀念名稱，或指出題目中不懂的部分，例如：「這題中，為什麼 A 不適合？」${MAY_ERR}`,
+  possible_off_topic: `這則訊息看起來不是 iPAS AI 應用規劃師的學習問題，所以${NOT_SENT}AI 導師只協助本站講義、題庫與考試相關的學習；如果你其實是在問學習觀念，請說明和哪個單元或觀念有關。${MAY_ERR}`,
+};
+/** 舊名稱相容：明顯離題時的回覆 */
+export const OFF_TOPIC_REPLY = BLOCK_REPLY.possible_off_topic;
+
+/** 延續追問（「再簡單一點」「可以舉例嗎」）：短、指向剛才的說明，且不像閒聊 */
+const FOLLOW_UP = /再|簡單|白話|舉例|例子|為什麼|為何|怎麼說|什麼意思|意思|不懂|不太懂|詳細|換個|說明|還有呢|然後呢|差別|比較|整理|重點|總結/;
+export const FOLLOW_UP_MAX_CHARS = 30;
+
+export interface TopicOptions {
+  /** 提問中出現的本站課綱名詞（由講義粗體名詞與細項名稱自動擷取，見 retrieval.ts conceptHits） */
+  concepts?: string[];
+  /** 同一題／同一講義、剛問過已送出的學習問題（延續追問） */
+  continuing?: boolean;
+}
 
 /**
  * @param relevance 提問本身與本站資料的相關度（questionRelevance）
  * @param hasPageContext 目前在題目或講義頁
  */
-export function topicVerdict(text: string, relevance: number, hasPageContext: boolean): TopicVerdict {
+export function topicVerdict(text: string, relevance: number, hasPageContext: boolean, opts: TopicOptions = {}): TopicVerdict {
   const t = text.trim();
-  if (GREETING.test(t)) return { ok: false, reply: OFF_TOPIC_REPLY };
-  const strong = STUDY_TERMS_EN.test(t) || STUDY_TERMS_ZH_STRONG.test(t);
+  const block = (reason: BlockReason): TopicVerdict => ({ ok: false, reason, reply: BLOCK_REPLY[reason] });
+  if (GREETING.test(t)) return block('greeting');
+  // 學習依據：專業縮寫、強主題詞，或本站講義中出現的課綱名詞（不是手寫白名單）
+  const strong = STUDY_TERMS_EN.test(t) || STUDY_TERMS_ZH_STRONG.test(t) || (opts.concepts?.length ?? 0) > 0;
   const study = strong || STUDY_TERMS_ZH_GENERAL.test(t);
-  // 像閒聊時，只有強主題詞能放行；泛用詞（評估、風險、分類…）不足以證明是學習提問
-  if (CHITCHAT.test(t) && !strong) return { ok: false, reply: OFF_TOPIC_REPLY };
+  // 像閒聊時，只有強學習依據能放行（「協同過濾如何推薦電影？」可以；「推薦今晚看什麼電影」不行）
+  if (CHITCHAT.test(t) && !strong) return block('possible_off_topic');
   if (hasPageContext && EXPLICIT_REF.test(t)) return { ok: true };
+  // 延續剛才同一題／同一講義的學習對話；換題、換頁、清除對話後不延續（由呼叫端決定 continuing）
+  if (opts.continuing && t.length <= FOLLOW_UP_MAX_CHARS && FOLLOW_UP.test(t)) return { ok: true };
   if (study) return { ok: true };
   if (hasPageContext && GENERAL_REF.test(t) && relevance >= GENERAL_REF_MIN_RELEVANCE) return { ok: true };
-  if (relevance < GENERAL_REF_MIN_RELEVANCE) return { ok: false, reply: OFF_TOPIC_REPLY };
+  if (relevance < GENERAL_REF_MIN_RELEVANCE) return block('unclear_topic');
   return { ok: true };
 }

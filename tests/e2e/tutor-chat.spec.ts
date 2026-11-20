@@ -4,10 +4,38 @@ import { choose, currentQuestion, isMobile, loadBank, skipOnboarding } from './h
 const bank = loadBank();
 const FAKE_KEY = 'sk-e2e-FAKE-KEY-0000';
 
+test('AI 連線：儲存並連線亮綠燈與 30 分鐘計時（不產生回答），失敗紅燈，設定與對話框一致', async ({ page }) => {
+  const calls = await mockApi(page);
+  await skipOnboarding(page);
+  await enableAndConfigure(page);
+  const form = page.getByTestId('byok-settings').first();
+  // 連線只讀模型清單，不送出提問
+  await expect(form.getByTestId('ai-connection')).toHaveAttribute('data-state', 'online');
+  await expect(form.getByRole('timer')).toContainText(/^\s*(30:00|29:\d\d)/);
+  expect(calls).toHaveLength(0);
+  await page.getByTestId('tutor-fab').click();
+  const chat = page.getByTestId('tutor-chat');
+  await expect(chat.getByTestId('tutor-chat-context').getByTestId('ai-connection')).toHaveAttribute('data-state', 'online');
+  await expect(chat.getByTestId('tutor-session-timer')).toBeVisible();
+  await expect(chat.getByTestId('tutor-connection-notice')).toHaveCount(0);
+  await page.getByTestId('tutor-minimize').click();
+  await page.unroute('https://api.openai.com/**');
+  await page.route('https://api.openai.com/**', route => route.fulfill({ status: 503, body: '{}' }));
+  await form.getByTestId('byok-test').click();
+  await expect(form.getByRole('status')).toContainText('連線失敗');
+  await expect(form.getByTestId('ai-connection')).toHaveAttribute('data-state', 'offline');
+  await page.getByTestId('tutor-fab').click();
+  await expect(chat.getByTestId('tutor-connection-notice')).toHaveAttribute('data-state', 'offline');
+  await expect(chat.getByTestId('tutor-reconnect')).toBeVisible();
+});
+
 /** 攔截 OpenAI 相容 API：記錄每一次請求，回傳串流回答 */
 async function mockApi(page: Page) {
   const calls: Request[] = [];
   await page.route('https://api.openai.com/**', async (route) => {
+    // 「連線」只讀模型清單：回傳模型，不計入提問次數
+    if (route.request().url().endsWith('/models'))
+      return route.fulfill({ status: 200, headers: { 'content-type': 'application/json', 'access-control-allow-origin': '*' }, body: JSON.stringify({ data: [{ id: 'test-model' }] }) });
     calls.push(route.request());
     const chunks = ['監督式學習用「有標準答案」的資料訓練 [S1]。', '（舉例）像用標好垃圾郵件的信件教模型分辨。'];
     const body = chunks.map((c) => `data: ${JSON.stringify({ choices: [{ delta: { content: c } }] })}\n\n`).join('') + 'data: [DONE]\n\n';
@@ -24,7 +52,7 @@ async function enableAndConfigure(page: Page) {
   await form.getByRole('combobox', { name: /^模型/ }).fill('test-model');
   await form.getByTestId('byok-key').fill(FAKE_KEY);
   await form.getByTestId('byok-save').click();
-  await expect(form.getByRole('status')).toContainText('已儲存');
+  await expect(form.getByRole('status')).toContainText('已儲存。已連線');
 }
 
 test('AI 導師預設關閉；開啟後只有按「送出」才呼叫 API，回答附依據', async ({ page }) => {
@@ -66,11 +94,12 @@ test('AI 導師預設關閉；開啟後只有按「送出」才呼叫 API，回�
   await expect(page.getByTestId('tutor-chat-log')).toContainText('監督式學習用「有標準答案」的資料訓練');
   expect(calls).toHaveLength(1);
   const req = calls[0];
+  await expect(chat.getByTestId('ai-connection')).toHaveAttribute('data-state', 'online');
   expect(req.url()).toBe('https://api.openai.com/v1/chat/completions');
   expect(req.url()).not.toContain(FAKE_KEY);
   expect(req.headers()['authorization']).toBe(`Bearer ${FAKE_KEY}`);
-  const body = req.postDataJSON() as { messages: { role: string; content: string }[]; max_tokens: number };
-  expect(body.max_tokens).toBeLessThanOrEqual(2048);
+  const body = req.postDataJSON() as { messages: { role: string; content: string }[]; max_completion_tokens: number };
+  expect(body.max_completion_tokens).toBeLessThanOrEqual(2048);
   expect(body.messages[0].role).toBe('system');
   expect(body.messages.at(-1)!.content).toContain('【本站依據資料】');
   expect(body.messages.at(-1)!.content).toContain('什麼是監督式學習？');

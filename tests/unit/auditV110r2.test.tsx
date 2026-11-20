@@ -99,6 +99,10 @@ describe('R1 設定與金鑰是同一份快照（金鑰綁定服務與來源）'
     fireEvent.change(keyB, { target: { value: OPENROUTER_KEY } });
     fireEvent.click(saveB);
     expect(loadByok().config?.presetId).toBe('openrouter');
+    // 「儲存並連線」用 OpenRouter 自己的金鑰確認連線（只讀模型清單）；之後只看第一個表單發出的請求
+    await waitFor(() => expect(probe.calls).toHaveLength(1));
+    expect(probe.calls[0].url).toBe('https://openrouter.ai/api/v1/models');
+    probe.calls = [];
     // 第一個表單仍是 OpenAI：已儲存的金鑰屬於 OpenRouter，不能拿來用
     fireEvent.click(screen.getAllByRole('button', { name: '取得模型清單' })[0]);
     await waitFor(() => expect(probe.calls).toHaveLength(1));

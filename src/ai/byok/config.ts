@@ -92,7 +92,7 @@ export const BYOK_PRESETS: ByokPreset[] = [
     local: false,
     needsKey: false,
     defaultModel: '',
-    hint: '輸入服務提供的 OpenAI 相容 API 位址（通常以 /v1 結尾）。請確認網址來自你信任的服務：金鑰會送到這個位址。',
+    hint: '輸入服務提供的 API 位址（通常以 /v1 結尾）。支援條件：提供 OpenAI Chat Completions 相容介面（/chat/completions）、金鑰以 Authorization: Bearer 傳送，且允許網頁跨來源直接連線（CORS）。符合的雲端服務或本機程式（http://localhost:連接埠/v1）都可以試；其他驗證方式或原生 API 目前不支援。請確認網址來自你信任的服務：金鑰會送到這個位址。',
   },
 ];
 
@@ -130,7 +130,7 @@ export function checkEndpoint(raw: string): EndpointCheck {
   if (url.search || url.hash) return { ok: false, message: '網址不可包含 ? 或 # 之後的參數（避免把金鑰或資料放進網址）。' };
   const local = LOCAL_HOSTS.has(url.hostname);
   if (url.protocol === 'http:' && !local)
-    return { ok: false, message: '為了保護金鑰，只允許 https 網址；只有本機（localhost、127.0.0.1）可以使用 http。' };
+    return { ok: false, message: '為了保護金鑰與對話，只允許 https 網址；只有這台電腦本機（localhost、127.0.0.1）可以使用 http。區網其他電腦的 http 位址（例如 http://192.168.x.x）會以明文傳送，目前不支援。' };
   if (url.protocol !== 'https:' && url.protocol !== 'http:') return { ok: false, message: '只支援 https（或本機 http）網址。' };
   return { ok: true, url, local, known: KNOWN_HOSTS.has(url.hostname) };
 }
@@ -259,9 +259,43 @@ export function saveByok(config: ByokConfig, key: string): void {
   emit();
 }
 
+/**
+ * 金鑰的不透明識別碼（只在記憶體）：同一把金鑰得到同一個代號，不同金鑰一定不同（不用雜湊，不會碰撞）。
+ * 連線狀態只記這個代號，不記金鑰本身。只保留最近 CREDENTIAL_LIMIT 把（例如輸入時的每個中間字串），
+ * 但「已儲存的金鑰」與「目前連線使用的金鑰」固定保留，不會因為在設定頁打字或換金鑰被擠掉而誤顯示未連線。
+ * 其他被淘汰的金鑰之後會拿到新代號，只會讓連線變成「未連線」，不會誤沿用。
+ */
+const CREDENTIAL_LIMIT = 16;
+const credentials = new Map<string, number>();
+let credentialSeq = 0;
+/** 目前連線使用的金鑰（由 connection.ts 告知，只在記憶體） */
+let retainedKey = '';
+export function retainCredential(key: string): void {
+  retainedKey = key.trim();
+}
+function pinnedCredential(k: string): boolean {
+  return k === retainedKey || loadKeyRecord()?.key.trim() === k;
+}
+export function credentialId(key: string): string {
+  const k = key.trim();
+  if (!k) return '';
+  let id = credentials.get(k);
+  if (id === undefined) id = ++credentialSeq;
+  credentials.delete(k);
+  credentials.set(k, id); // 移到最新
+  // 由舊到新淘汰，跳過固定保留的金鑰（固定保留最多兩把，總數不會無限增加）
+  for (const old of credentials.keys()) {
+    if (credentials.size <= CREDENTIAL_LIMIT) break;
+    if (old !== k && !pinnedCredential(old)) credentials.delete(old);
+  }
+  return `c${id}`;
+}
+
 /** 清除金鑰與設定（「清除金鑰」按鈕、清除所有資料時使用） */
 export function clearByok(): void {
   memoryRecord = null;
+  credentials.clear();
+  retainedKey = '';
   for (const s of [safeStorage('local'), safeStorage('session')]) {
     s?.removeItem(KEY_STORAGE_KEY);
     s?.removeItem(CONFIG_KEY);

@@ -139,7 +139,9 @@ describe('OpenAI 相容服務', () => {
     expect(c.init.credentials).toBe('omit');
     expect(c.init.referrerPolicy).toBe('no-referrer');
     const body = JSON.parse(String(c.init.body));
-    expect(body.max_tokens).toBe(MAX_OUTPUT_TOKENS);
+    // OpenAI 官方 API 的新模型只接受 max_completion_tokens（其他相容服務用 max_tokens，見 connection.test.tsx）
+    expect(body.max_completion_tokens).toBe(MAX_OUTPUT_TOKENS);
+    expect(body.max_tokens).toBeUndefined();
     expect(body.stream).toBe(true);
     expect(body.messages[0]).toEqual({ role: 'system', content: '系統' });
   });
