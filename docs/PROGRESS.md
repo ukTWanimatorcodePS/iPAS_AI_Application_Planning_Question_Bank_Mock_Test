@@ -391,3 +391,11 @@ Claude 逐處核對屬實並修正，另在題庫找到 3 題相同問題一併�
 ## Codex Ollama轉接簡化第五輪複查（2026-11-21，未提交）
 
 詳見本機 `docs/AUDIT_2026-11-21_ollama-bridge_r5.md`（不stage）。同意本次R4-1修正發布，不構成提交推送授權。兩個原反例已修復：外部清除後config/key仍空、改存新服務後保留新設定；各只有原清單1次請求。只測試、storage事件、失敗分支與正常自動填入對照通過；無其他未保護的自動等待後全域設定寫入點。applyDetected是使用者明確點選後同步保存，fetchModels／detect只改草稿。失敗清單可能另做不帶金鑰的根路徑診斷，未建立舊連線或恢復資料；已分清並保留探測初稿錯誤預期日誌。typecheck、lint、835題、455單元含11runtime、build通過；E2E54通過2略過；原r4套件456通過2舊缺陷斷言預期失敗；r5正向套件461通過；Windows360px補充1通過。未改正式程式／題庫、未提交推送、未啟動延長或變更Ollama許可，未重跑題庫Python或未變動Ctrl+C真實PTY。
+
+## v1.2.2 發布（2026-11-21，Claude）
+
+- 使用者同意後提交 `6686845` 並推送 main；GitHub Actions「Test & Deploy to GitHub Pages」成功：https://github.com/ukTWanimatorcodePS/iPAS_AI_Application_Planning_Question_Bank_Mock_Test/actions/runs/44802173515
+- 發布前本機檢查：typecheck、lint、835 題驗證、單元 455（含 11 項在 Windows PowerShell 5.1 實際執行轉接腳本）、Pyodide 80/80＋18/18、build、E2E 54 通過（2 選用略過）。
+- 正式網址已確認顯示「版本 v1.2.2」；Windows 的服務選單只列「Ollama（本機，透過轉接程式）」，「本機暫時許可」只剩「啟動」按鈕。GitHub Pages 約有 10 分鐘快取，使用者看到舊版時請重新整理。
+- 內容：轉接程式只留「啟動」、按 Ctrl+C 停止；Windows 選 Ollama 或自動偵測時直接帶入轉接版本；本機模型自動填入與下拉選單；等待中設定在別處變更時取消舊操作（Codex 第 4～5 輪同意）。
+- 仍待決定：GitHub Actions 為 ubuntu，會略過 Windows 實際執行測試；發布前須在 Windows 本機執行 `npm run test`。
