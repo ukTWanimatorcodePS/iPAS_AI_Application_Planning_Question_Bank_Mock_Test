@@ -16,7 +16,7 @@ const stores = {
   reviewItems: 'questionId, level, masteryStatus, nextDueAt', sources: 'version',
 };
 
-it.each([1, 2])('audit: IndexedDB v%i → v3 preserves every seeded table and primary ID', async (version) => {
+it.each([1, 2])('audit: IndexedDB v%i → current version (v4) preserves every seeded table and primary ID', async (version) => {
   const name = `audit-v1-full-migration-${version}`;
   const old = new Dexie(name);
   old.version(1).stores(stores);
@@ -37,7 +37,7 @@ it.each([1, 2])('audit: IndexedDB v%i → v3 preserves every seeded table and pr
       if (table === 'settings') expect(after[0]).toMatchObject(records[0]);
       else expect(after).toEqual(records);
     }
-    expect(upgraded.verno).toBe(3);
+    expect(upgraded.verno).toBe(4);
     expect(await upgraded.studyTime.count()).toBe(0);
     __setDb(upgraded);
     await ensureInitialized();
@@ -45,7 +45,7 @@ it.each([1, 2])('audit: IndexedDB v%i → v3 preserves every seeded table and pr
   } finally { await upgraded.delete(); }
 });
 
-it.each([1, 2, 3])('audit: backup schema v%i restores all historical records and reexports v3', async (version) => {
+it.each([1, 2, 3])('audit: backup schema v%i restores all historical records and reexports backup schema v3', async (version) => {
   const raw = structuredClone(fixture);
   raw.schemaVersion = version;
   if (version >= 2) { raw.data.tutorLogs = [tutor]; raw.data.settings.examDate = { junior: '2027-01-01', middle: null }; }

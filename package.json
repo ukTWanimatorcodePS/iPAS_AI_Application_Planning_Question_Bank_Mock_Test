@@ -1,7 +1,7 @@
 {
   "name": "ipas-ai-prep",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -18,6 +18,7 @@
     "audit:options": "node scripts/option-cues.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "1.4.0",
     "dexie": "^4.4.7",
     "dexie-react-hooks": "^4.4.0",
     "highlight.js": "^11.11.2",

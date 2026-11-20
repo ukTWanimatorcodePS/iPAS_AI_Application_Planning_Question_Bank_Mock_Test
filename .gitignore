@@ -10,3 +10,6 @@ test-results
 
 # 本機工具設定
 .claude/settings.local.json
+
+# 列印講義只供使用者個人閱讀，不上傳 GitHub（原稿、PDF、建置程式與複查紀錄都只留在本機）
+outputs/printable/

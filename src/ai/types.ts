@@ -3,13 +3,15 @@ import type { TutorMode } from '../data/types';
 
 /**
  * AI 導師的 Provider 介面。
- * - 遠端模式只送出 questionId、selected、mode、exclude（已出過的補強題 ID），不送出任何個人資料。
+ * - 遠端模式只送出 questionId、selected、optionOrder（選項顯示順序）、mode、exclude（已出過的補強題 ID），不送出任何個人資料。
  * - 任何真實 AI 服務都必須經由後端代理（保管 API 金鑰、驗證使用者、限制用量）；前端絕不持有金鑰。
  */
 export interface TutorRequest {
   question: Question;
   selected: string[];
   mode: TutorMode;
+  /** 原題作答當下的選項顯示順序（A～D 代號依此標示；沒有時用題庫原始順序） */
+  optionOrder?: string[];
 }
 
 export interface TutorSection {

@@ -23,6 +23,7 @@ import { NavLink, Outlet, useLocation, useNavigate } from 'react-router';
 import { allCompetencies } from '../content';
 import type { Level } from '../content/schema';
 import { APP_VERSION } from '../config/project';
+import { TutorChat } from '../components/TutorChat';
 import { db } from '../data/db';
 import { useApp } from './AppContext';
 
@@ -241,6 +242,10 @@ export function Layout() {
 
         <main id="main" className="pb-safe mx-auto w-full max-w-[1400px] min-w-0 flex-1 px-4 pt-6 md:px-8 md:pt-8" tabIndex={-1}>
           <Outlet />
+          {/* 手機與平板：側欄不顯示，版本號放在每頁內容底部，不必打開功能選單也看得到 */}
+          <p className="mt-10 mb-2 text-center text-[0.72rem] text-muted lg:hidden" data-testid="app-version-footer">
+            版本 v{APP_VERSION}・獨立學習工具，非 iPAS 官方平台
+          </p>
         </main>
       </div>
 
@@ -267,6 +272,9 @@ export function Layout() {
           ))}
         </nav>
       )}
+
+      {/* AI 導師（自備 API）：預設關閉，於設定開啟後才顯示懸浮圖示 */}
+      <TutorChat />
 
       {/* 手機功能選單抽屜 */}
       {menuOpen && (

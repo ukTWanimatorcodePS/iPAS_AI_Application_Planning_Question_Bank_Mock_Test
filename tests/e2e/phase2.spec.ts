@@ -303,15 +303,24 @@ test('限時模考：切到背景分頁時間照走，回到頁面已逾時就�
   expect(saved.durationSec).toBeLessThanOrEqual(60);
 });
 
-test('介面顯示版本號 v1.0.0（桌面左下角；手機在功能選單）', async ({ page }) => {
+test('介面顯示版本號 v1.1.0（桌面左下角；手機不必開選單，每頁底部就看得到）', async ({ page }) => {
   await skipOnboarding(page);
   await page.goto('./#/');
   if (isMobile(page)) {
+    const footer = page.getByTestId('app-version-footer');
+    await expect(footer).toContainText('版本 v1.1.0');
+    await footer.scrollIntoViewIfNeeded();
+    await expect(footer).toBeInViewport();
+    // 不被底部導覽列蓋住
+    const fb = (await footer.boundingBox())!;
+    const nb = (await page.getByRole('navigation', { name: '主要導覽（行動版）' }).boundingBox())!;
+    expect(fb.y + fb.height).toBeLessThanOrEqual(nb.y + 1);
     await page.getByRole('button', { name: '開啟功能選單' }).click();
-    await expect(page.getByTestId('app-version-mobile')).toHaveText('版本 v1.0.0');
+    await expect(page.getByTestId('app-version-mobile')).toHaveText('版本 v1.1.0');
   } else {
     const v = page.getByTestId('app-version');
-    await expect(v).toHaveText('版本 v1.0.0');
+    await expect(v).toHaveText('版本 v1.1.0');
+    await expect(page.getByTestId('app-version-footer')).toBeHidden();
     const box = (await v.boundingBox())!;
     const vp = page.viewportSize()!;
     expect(box.x).toBeLessThan(vp.width / 4);

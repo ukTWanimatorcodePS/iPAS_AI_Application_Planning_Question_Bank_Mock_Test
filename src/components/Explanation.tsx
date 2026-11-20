@@ -1,7 +1,9 @@
-import { BookOpen, CheckCircle2, ExternalLink, PlusCircle, RotateCcw, XCircle } from 'lucide-react';
+import { Bot, BookOpen, CheckCircle2, ExternalLink, PlusCircle, RotateCcw, XCircle } from 'lucide-react';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
+import { setChatContext } from '../ai/byok/context';
+import { setChatUi, useChatUi } from '../ai/byok/chatUi';
 import { getCompetency } from '../content';
 import { AUTHORING_LABEL, DIFFICULTY_LABEL, ORIGIN_LABEL, QTYPE_LABEL, REVIEW_LABEL, type Question } from '../content/schema';
 import { db } from '../data/db';
@@ -10,6 +12,7 @@ import { addToReview } from '../data/repo';
 import { isCorrect } from '../lib/scoring';
 import { TutorPanel } from './TutorPanel';
 import { reportIssueUrl } from '../config/project';
+import { displayOptions, lettersOf } from '../lib/optionOrder';
 
 export function OriginBadge({ q }: { q: Question }) {
   const official = q.origin === 'official-released' || q.origin === 'official-sample';
@@ -25,11 +28,14 @@ export function OriginBadge({ q }: { q: Question }) {
 export function Explanation({
   q,
   selected,
+  order,
   showActions = true,
   showTutor = true,
 }: {
   q: Question;
   selected: string[] | undefined;
+  /** 作答當下的選項顯示順序；A～D 代號依此順序標示（沒有時用題庫原始順序） */
+  order?: string[];
   showActions?: boolean;
   showTutor?: boolean;
 }) {
@@ -39,7 +45,14 @@ export function Explanation({
   const inReview = useLiveQuery(() => db.reviewItems.get(q.id), [q.id]);
   const [msg, setMsg] = useState<string | null>(null);
   const comp = getCompetency(q.explanation.lessonAnchor);
-  const label = (ids: string[]) => (ids.length ? ids.join('、') : '未作答');
+  const label = (ids: string[]) => (ids.length ? lettersOf(q, order, ids).join('、') : '未作答');
+  const chatUi = useChatUi();
+  const { pathname } = useLocation();
+  // 解析已顯示：把這題（含標準解析）交給 AI 導師作為依據，並打開對話視窗。不會自動送出，按「送出」才產生用量
+  const askTutor = () => {
+    setChatContext({ kind: 'question', question: q, order, selected: sel, answerVisible: true, label: `${q.competencyCode} 的這一題（已看解析）`, path: pathname });
+    setChatUi({ size: 'normal' });
+  };
 
   return (
     <div className="mt-4 grid gap-3" data-testid={`explanation-${q.id}`}>
@@ -60,13 +73,13 @@ export function Explanation({
 
       <div className="rounded-xl border border-line p-4">
         <h4 className="mb-1 text-sm font-bold">逐一選項解析</h4>
-        {q.options.map((o) => {
+        {displayOptions(q, order).map(({ option: o, letter }) => {
           const right = q.correctOptionIds.includes(o.id);
           const picked = sel.includes(o.id);
           return (
             <div key={o.id} className={`answerline ${right ? 'correct' : picked ? 'wrong' : ''}`}>
               <div className="text-sm font-bold">
-                {o.id}. {o.text}
+                {letter}. {o.text}
                 {right && <span className="pill pill-green ml-2">正解</span>}
                 {picked && !right && <span className="pill pill-red ml-2">你的選擇</span>}
               </div>
@@ -146,6 +159,11 @@ export function Explanation({
           >
             <PlusCircle size={15} /> {inReview ? '已在錯題本' : '加入錯題本'}
           </button>
+          {chatUi.enabled && (
+            <button type="button" className="btn btn-ghost btn-sm" onClick={askTutor} data-testid={`ask-tutor-${q.id}`}>
+              <Bot size={15} /> 問 AI 導師
+            </button>
+          )}
           <button
             type="button"
             className="btn btn-ghost btn-sm"
@@ -165,7 +183,7 @@ export function Explanation({
         </div>
       )}
       {/* AI 導師：答錯或未作答時提供；為選用功能，不影響上方的標準解析 */}
-      {showTutor && !ok && <TutorPanel q={q} selected={sel} />}
+      {showTutor && !ok && <TutorPanel q={q} selected={sel} order={order} />}
     </div>
   );
 }

@@ -5,9 +5,10 @@ import { useApp } from '../app/AppContext';
 import { getProvider, mockProvider, TUTOR_MODE_LABEL, type TutorResponse } from '../ai';
 import { getQuestion } from '../content';
 import type { Question } from '../content/schema';
-import { logTutor, recordTutorAttempt } from '../data/repo';
+import { logTutor, nextOptionOrder, recordTutorAttempt } from '../data/repo';
 import type { TutorMode } from '../data/types';
 import { isCorrect } from '../lib/scoring';
+import { displayOptions, lettersOf } from '../lib/optionOrder';
 import { CodeBlock } from './CodeBlock';
 
 const MODES: TutorMode[] = ['simple', 'detailed', 'example', 'compare', 'another'];
@@ -42,7 +43,7 @@ function MiniMd({ text }: { text: string }) {
   );
 }
 
-export function TutorPanel({ q, selected }: { q: Question; selected: string[] }) {
+export function TutorPanel({ q, selected, order }: { q: Question; selected: string[]; order?: string[] }) {
   const { settings, level } = useApp();
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState<TutorMode>('detailed');
@@ -54,6 +55,8 @@ export function TutorPanel({ q, selected }: { q: Question; selected: string[] })
   const [modesUsed, setModesUsed] = useState<TutorMode[]>([]);
   const [pick, setPick] = useState<string[]>([]);
   const [result, setResult] = useState<boolean | null>(null);
+  // 補強題的選項顯示順序：每次載入新的補強題都重新打亂
+  const [rqOrder, setRqOrder] = useState<string[] | undefined>(undefined);
   const started = useRef(Date.now());
   // 每次顯示的補強題一個識別碼：資料層以它防止重複記錄；submitting 防止送出中再次點擊
   const attemptKey = useRef(crypto.randomUUID());
@@ -66,8 +69,12 @@ export function TutorPanel({ q, selected }: { q: Question; selected: string[] })
     setLoading(true);
     setError(null);
     provider
-      .teach({ question: q, selected, mode }, { signal: ctrl.signal, excludeIds: used })
-      .then((r) => {
+      .teach({ question: q, selected, mode, optionOrder: order }, { signal: ctrl.signal, excludeIds: used })
+      .then(async (r) => {
+        // 補強題與正式出題共用「上一次顯示順序」紀錄：正確答案位置一定和上次不同
+        const order = r.reinforcementQuestionId ? await nextOptionOrder(r.reinforcementQuestionId) : undefined;
+        if (ctrl.signal.aborted) return;
+        setRqOrder(order);
         setResp(r);
         setPick([]);
         setResult(null);
@@ -95,7 +102,7 @@ export function TutorPanel({ q, selected }: { q: Question; selected: string[] })
     const target = rq;
     const provider0 = resp!.provider;
     const modes0 = modesUsed;
-    const r = await recordTutorAttempt({ originalQuestionId: q.id, questionId: target.id, selected: pick, timeMs: Date.now() - started.current, attemptKey: key });
+    const r = await recordTutorAttempt({ originalQuestionId: q.id, questionId: target.id, selected: pick, timeMs: Date.now() - started.current, attemptKey: key, optionOrder: rqOrder });
     const ok = r?.correct ?? isCorrect(target, pick);
     // 晚到的結果只屬於原本那一題：畫面已換題時不更新目前畫面（作答紀錄已正確寫入原題）
     if (attemptKey.current === key) setResult(ok);
@@ -185,13 +192,13 @@ export function TutorPanel({ q, selected }: { q: Question; selected: string[] })
                 {rq.code && <CodeBlock code={rq.code} language={rq.codeLanguage} />}
                 <fieldset className="mt-2 grid gap-2" disabled={result !== null}>
                   <legend className="sr-only">補強題選項</legend>
-                  {rq.options.map((o) => {
+                  {displayOptions(rq, rqOrder).map(({ option: o, letter }) => {
                     const state = result === null ? undefined : rq.correctOptionIds.includes(o.id) ? 'correct' : pick.includes(o.id) ? 'wrong' : undefined;
                     return (
                       <label key={o.id} className="opt !min-h-[44px] !py-2 text-sm" data-state={state}>
                         <input type="radio" name={`tutor-${rq.id}`} checked={pick.includes(o.id)} onChange={() => setPick([o.id])} />
                         <span className="[overflow-wrap:anywhere]">
-                          <strong>{o.id}.</strong> {o.text}
+                          <strong>{letter}.</strong> {o.text}
                         </span>
                       </label>
                     );
@@ -208,7 +215,7 @@ export function TutorPanel({ q, selected }: { q: Question; selected: string[] })
                       ? '這個觀念已初步建立；原題仍會依排程在到期日再測一次，確認真正掌握。'
                       : '建議先回講義對應段落重讀，原題已改為今天到期，稍後可在錯題本重測。'}
                     <p className="mt-1 text-ink">
-                      正確答案：{rq.correctOptionIds.join('、')}。{rq.explanation.correctRationale}
+                      正確答案：{lettersOf(rq, rqOrder, rq.correctOptionIds).join('、')}。{rq.explanation.correctRationale}
                     </p>
                     <button type="button" className="btn btn-secondary btn-sm mt-2" onClick={another}>
                       <RefreshCw size={14} /> 再出一題

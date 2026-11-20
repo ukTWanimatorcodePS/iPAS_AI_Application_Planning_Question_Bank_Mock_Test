@@ -8,6 +8,8 @@ import { isCorrect, scoreSession } from '../lib/scoring';
 import { db, defaultSettings } from './db';
 import type { AnswerAttempt, MistakeReason, QuizMode, QuizSession, TutorLog, UserSettings } from './types';
 import { recordedDuration } from '../lib/timer';
+import { shuffleOrder } from '../lib/optionOrder';
+import { clearByok } from '../ai/byok/config';
 
 const nowIso = () => new Date().toISOString();
 
@@ -100,27 +102,56 @@ export async function createSession(input: {
 }): Promise<string> {
   if (input.questionIds.length === 0) throw new Error('沒有可用題目，無法建立測驗');
   const sessionId = newId();
-  await db.quizSessions.put({
-    sessionId,
-    level: input.level,
-    mode: input.mode,
-    subject: input.subject,
-    scopeLabel: input.scopeLabel,
-    competencyCodes: input.competencyCodes,
-    questionIds: input.questionIds,
-    answers: {},
-    revealed: [],
-    flagged: [],
-    currentIndex: 0,
-    startAt: nowIso(),
-    submittedAt: null,
-    durationSec: 0,
-    timeLimitSec: input.timeLimitSec ?? null,
-    ...(input.unseenOnly ? { unseenOnly: true } : {}),
-    rawScore: null,
-    validCount: null,
+  // 讀取上一次順序、產生新順序、寫回與建立測驗在同一個交易：IndexedDB 會把交易排隊，
+  // 同時建立（連點、多分頁）也不會兩次讀到同一個「上一次」
+  await db.transaction('rw', [db.quizSessions, db.lastOptionOrders], async () => {
+    const optionOrders = await assignOptionOrders(input.questionIds);
+    await db.quizSessions.put({
+      sessionId,
+      level: input.level,
+      mode: input.mode,
+      subject: input.subject,
+      scopeLabel: input.scopeLabel,
+      competencyCodes: input.competencyCodes,
+      questionIds: input.questionIds,
+      answers: {},
+      revealed: [],
+      flagged: [],
+      currentIndex: 0,
+      // 實際開始時間（限時模考依此計時），不受歷史紀錄的時間影響
+      startAt: nowIso(),
+      submittedAt: null,
+      durationSec: 0,
+      timeLimitSec: input.timeLimitSec ?? null,
+      ...(input.unseenOnly ? { unseenOnly: true } : {}),
+      optionOrders,
+      rawScore: null,
+      validCount: null,
+    });
   });
   return sessionId;
+}
+
+/**
+ * 為每題產生新的顯示順序並記下來。正確答案的位置一定和該題上一次顯示時不同（沒有紀錄時和題庫原始位置不同）。
+ * 必須在包含 lastOptionOrders 的讀寫交易中呼叫。
+ */
+async function assignOptionOrders(questionIds: string[]): Promise<Record<string, string[]>> {
+  const orders: Record<string, string[]> = {};
+  for (const id of questionIds) {
+    const q = getQuestion(id);
+    if (!q) continue;
+    const prev = await db.lastOptionOrders.get(id);
+    const next = shuffleOrder(q, prev?.order);
+    orders[id] = next;
+    await db.lastOptionOrders.put({ questionId: id, order: next });
+  }
+  return orders;
+}
+
+/** AI 導師補強題：每次出現都換順序，並與正式出題共用「上一次順序」紀錄 */
+export async function nextOptionOrder(questionId: string): Promise<string[] | undefined> {
+  return db.transaction('rw', db.lastOptionOrders, async () => (await assignOptionOrders([questionId]))[questionId]);
 }
 
 /**
@@ -160,6 +191,7 @@ async function recordAttempt(s: QuizSession, questionId: string, selected: strin
     correct: isCorrect(q, selected),
     timeMs,
     answeredAt: nowIso(),
+    ...(s.optionOrders?.[questionId] ? { optionOrder: s.optionOrders[questionId] } : {}),
   };
   await db.attempts.add(attempt);
   const settings = await getSettings();
@@ -255,8 +287,10 @@ export async function addToReview(questionId: string): Promise<void> {
 
 /* ---------- 清除 ---------- */
 export async function clearAllData(): Promise<void> {
-  await db.transaction('rw', [db.settings, db.lessonProgress, db.quizSessions, db.attempts, db.reviewItems, db.tutorLogs, db.studyTime], async () => {
-    await Promise.all([db.settings.clear(), db.lessonProgress.clear(), db.quizSessions.clear(), db.attempts.clear(), db.reviewItems.clear(), db.tutorLogs.clear(), db.studyTime.clear()]);
+  // 一併清除 AI 導師的自備金鑰與設定（存在瀏覽器儲存區，不在資料庫內）
+  clearByok();
+  await db.transaction('rw', [db.settings, db.lessonProgress, db.quizSessions, db.attempts, db.reviewItems, db.tutorLogs, db.studyTime, db.lastOptionOrders], async () => {
+    await Promise.all([db.settings.clear(), db.lessonProgress.clear(), db.quizSessions.clear(), db.attempts.clear(), db.reviewItems.clear(), db.tutorLogs.clear(), db.studyTime.clear(), db.lastOptionOrders.clear()]);
   });
 }
 
@@ -282,6 +316,8 @@ export async function recordTutorAttempt(input: {
   timeMs: number;
   /** 這一次顯示的補強題識別碼；同一個識別碼只記錄一次（防止連點重複記錄） */
   attemptKey?: string;
+  /** 補強題當下的選項顯示順序 */
+  optionOrder?: string[];
 }): Promise<{ correct: boolean } | null> {
   const q = getQuestion(input.questionId);
   if (!q || !input.selected.length) return null;
@@ -302,6 +338,7 @@ export async function recordTutorAttempt(input: {
       correct: isCorrect(q, input.selected),
       timeMs: input.timeMs,
       answeredAt: nowIso(),
+      ...(input.optionOrder ? { optionOrder: input.optionOrder } : {}),
     };
     await db.attempts.add(attempt);
     const settings = await getSettings();

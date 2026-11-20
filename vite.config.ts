@@ -1,5 +1,6 @@
 /// <reference types="vitest/config" />
-import { defineConfig } from 'vite';
+import { createHash } from 'node:crypto';
+import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 
@@ -15,9 +16,47 @@ function resolveBase(): string {
   return '/';
 }
 
+/**
+ * 正式建置時加入內容安全政策（CSP），降低 XSS 讀取使用者 AI 金鑰的風險：
+ * - 只允許本站的腳本，以及 index.html 內以雜湊值核可的主題初始化腳本；不允許 eval 與外部腳本。
+ * - 連線（connect-src）允許 https 與本機 http，讓使用者自選的雲端或本機 AI 服務可以連線。
+ * - 圖片只允許本站與 data:；AI 回覆中的外部圖片不會被載入。
+ * 開發伺服器（HMR 需要內嵌腳本）不套用。
+ */
+function contentSecurityPolicy(): Plugin {
+  return {
+    name: 'ipas-csp',
+    apply: 'build',
+    transformIndexHtml: {
+      order: 'post',
+      handler(html) {
+        // 只核可有內容的內嵌腳本（目前只有 index.html 的主題初始化）
+        const hashes = [...html.matchAll(/<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/g)].filter((m) => m[1].trim()).map(
+          (m) => `'sha256-${createHash('sha256').update(m[1]).digest('base64')}'`,
+        );
+        const csp = [
+          "default-src 'self'",
+          `script-src 'self' ${hashes.join(' ')}`.trim(),
+          "style-src 'self' 'unsafe-inline'",
+          "img-src 'self' data:",
+          "font-src 'self' data:",
+          "connect-src 'self' https: http://localhost:* http://127.0.0.1:*",
+          "worker-src 'self'",
+          "manifest-src 'self'",
+          "object-src 'none'",
+          "base-uri 'self'",
+          "form-action 'self'",
+        ].join('; ');
+        return html.replace('<meta charset="UTF-8" />', `<meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content="${csp}" />`);
+      },
+    },
+  };
+}
+
 export default defineConfig({
   base: resolveBase(),
-  plugins: [react(), tailwindcss()],
+  plugins: [react(), tailwindcss(), contentSecurityPolicy()],
   build: {
     // 最大的是中級題庫資料 chunk（約 710 kB、gzip 約 155 kB，依級別延遲載入）；A1 改寫讓誘答變長後超過原本的 700
     chunkSizeWarningLimit: 900,

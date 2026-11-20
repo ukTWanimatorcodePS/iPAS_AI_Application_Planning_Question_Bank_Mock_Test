@@ -129,7 +129,7 @@ export function ResultsPage() {
                 {q.stem}
               </h3>
               {q.code && <CodeBlock code={q.code} language={q.codeLanguage} />}
-              <Explanation q={q} selected={session.answers[id]} />
+              <Explanation q={q} selected={session.answers[id]} order={session.optionOrders?.[id]} />
             </section>
           );
         })}

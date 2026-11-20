@@ -63,6 +63,17 @@ export interface QuizSession {
   validCount: number | null;
   /** 驗證測驗：只出沒看過答案或解析的題目；「再做一次」時沿用（選填，舊資料沒有此欄位） */
   unseenOnly?: boolean;
+  /**
+   * 每題選項的顯示順序（原始選項 ID 依畫面 A、B、C、D 的順序排列），建立測驗時打亂。
+   * 選填：v1.1.0 以前的測驗沒有此欄位，顯示時沿用題庫原始順序。作答仍記錄原始選項 ID。
+   */
+  optionOrders?: Record<string, string[]>;
+}
+
+/** 每題上一次顯示的選項順序（v1.1.0，IndexedDB v4）：讓下一次出題的正確答案位置一定換掉 */
+export interface LastOptionOrder {
+  questionId: string;
+  order: string[];
 }
 
 export interface AnswerAttempt {
@@ -77,6 +88,8 @@ export interface AnswerAttempt {
   correct: boolean;
   timeMs: number;
   answeredAt: string;
+  /** 作答當下的選項顯示順序（選填，v1.1.0 起記錄），錯題本重看解析時用同樣的 A～D 代號 */
+  optionOrder?: string[];
 }
 
 export type MasteryStatus = 'unresolved' | 'reviewing' | 'mastered';

@@ -10,7 +10,8 @@ vi.mock('../../src/ai',()=>{
  const provider={id:'mock',name:'mock',teach:state.teach};
  return {getProvider:()=>provider,mockProvider:provider,TUTOR_MODE_LABEL:{simple:'簡單解釋',detailed:'詳細教學',example:'舉例',compare:'比較',another:'再出一題'}};
 });
-vi.mock('../../src/data/repo',()=>({recordTutorAttempt:state.record,logTutor:vi.fn(async()=>{})}));
+// v1.1.0：補強題的選項順序改由 repo.nextOptionOrder 產生，假模組一併提供
+vi.mock('../../src/data/repo',()=>({recordTutorAttempt:state.record,logTutor:vi.fn(async()=>{}),nextOptionOrder:vi.fn(async()=>undefined)}));
 import {TutorPanel} from '../../src/components/TutorPanel';
 it.each(['簡單解釋','再出一題'])('B1 old submission must not grade new reinforcement after %s',async(tab)=>{
  const [q,a,b]=questionsFor({competencyCode:'L11101'});let calls=0;let finish:(r:{correct:boolean})=>void=()=>{};

@@ -10,6 +10,8 @@ import { ensureInitialized } from '../data/db';
 import type { ThemePref, Track } from '../data/types';
 import { sanitizeIntervals } from '../lib/review';
 import { remoteProvider } from '../ai';
+import { ByokSettings } from '../components/ByokSettings';
+import { setChatUi, useChatUi } from '../ai/byok/chatUi';
 
 const WEEK = ['日', '一', '二', '三', '四', '五', '六'];
 
@@ -195,6 +197,18 @@ export function SettingsPage() {
 
         <section className="card" aria-labelledby="set-ai">
           <CardHead title={<span id="set-ai">AI 導師</span>} />
+          <h3 className="mb-1 text-sm font-bold">對話型 AI 導師（使用你自己的 AI 服務）</h3>
+          <p className="mb-2 text-xs text-muted">
+            可接 Claude、OpenAI、Gemini 等雲端服務，或 Ollama、LM Studio 等本機模型。AI 會依本站的官方評鑑範圍、講義與題庫標準解析回答，並標出依據編號。
+            <strong>預設關閉；開啟後只會在畫面角落顯示圖示，只有你按「送出」才會呼叫 AI 服務，沒有對話就不會產生用量。</strong>
+            測驗、模擬考與錯題重測在交卷前無法使用。
+          </p>
+          <TutorToggle />
+          <div className="mt-3 rounded-xl border border-line p-3">
+            <ByokSettings />
+          </div>
+
+          <h3 className="mt-5 mb-1 text-sm font-bold">解析頁的「重新教我這個觀念」</h3>
           <fieldset className="grid gap-2">
             <legend className="sr-only">AI 導師來源</legend>
             <label className="opt">
@@ -223,7 +237,7 @@ export function SettingsPage() {
             </label>
           </fieldset>
           <p className="mt-3 text-xs text-muted">
-            本站不會要求你輸入任何 AI 服務的 API 金鑰。真實 AI 只能透過保管金鑰、驗證使用者、限制用量的後端代理提供（說明見專案 docs/AI_TUTOR.md）。
+            本站程式碼不含任何 API 金鑰，也沒有自己的伺服器。對話型 AI 導師使用的是你在上方輸入、只存在這台裝置瀏覽器的金鑰；「遠端 AI」則須由網站管理者另外部署後端代理（說明見專案 docs/AI_TUTOR.md）。
           </p>
         </section>
 
@@ -291,5 +305,19 @@ export function SettingsPage() {
         真的要永久清除這台裝置上的所有學習進度嗎？
       </ConfirmDialog>
     </>
+  );
+}
+
+/** 對話型 AI 導師的開關：預設關閉，開啟後顯示懸浮圖示 */
+function TutorToggle() {
+  const { enabled } = useChatUi();
+  return (
+    <label className="opt">
+      <input type="checkbox" checked={enabled} onChange={(e) => setChatUi({ enabled: e.target.checked, size: 'closed' })} data-testid="tutor-enable" />
+      <span>
+        <strong>{enabled ? '已開啟對話型 AI 導師' : '開啟對話型 AI 導師'}</strong>
+        <span className="block text-xs text-muted">{enabled ? '畫面角落會顯示 AI 導師圖示，點一下展開對話。取消勾選即隱藏。' : '開啟後畫面角落會出現 AI 導師圖示。'}</span>
+      </span>
+    </label>
   );
 }

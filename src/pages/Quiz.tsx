@@ -1,6 +1,7 @@
 import { ArrowLeft, ArrowRight, Clock, Flag, Grid3X3, LogOut, Send } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Navigate, useNavigate, useParams } from 'react-router';
+import { Navigate, useLocation, useNavigate, useParams } from 'react-router';
+import { clearChatContext, setChatContext, type ChatContext } from '../ai/byok/context';
 import { Drawer } from '../app/Layout';
 import { Explanation, OriginBadge } from '../components/Explanation';
 import { CodeBlock } from '../components/CodeBlock';
@@ -10,6 +11,7 @@ import { useSession } from '../data/hooks';
 import { patchSession, revealQuestion, setAnswer, submitSession } from '../data/repo';
 import { MODE_LABEL, type QuizSession } from '../data/types';
 import { recordedDuration, wallElapsedSec } from '../lib/timer';
+import { displayOptions } from '../lib/optionOrder';
 
 function fmt(sec: number) {
   const s = Math.max(0, Math.round(sec));
@@ -58,6 +60,21 @@ function Runner({ session }: { session: QuizSession }) {
   const revealed = session.revealed.includes(qid);
   const isPractice = session.mode === 'practice';
   const answeredCount = ids.filter((id) => session.answers[id]?.length).length;
+  const { pathname } = useLocation();
+
+  // AI 導師情境：測驗、模擬考、錯題重測交卷前鎖定；練習模式提交前只給提示，提交後才附上解析
+  const answerKey = selected.join(',');
+  useEffect(() => {
+    const c: ChatContext = !isPractice
+      ? { kind: 'locked', reason: '測驗進行中：交卷前不能使用 AI 導師，避免作答時看到答案提示。交卷後可在結果頁對每題「問 AI 導師」。', path: pathname }
+      : q
+        ? { kind: 'question', question: q, order: session.optionOrders?.[qid], selected, answerVisible: revealed, label: `第 ${index + 1} 題・${q.competencyCode}`, path: pathname }
+        : { kind: 'none', path: pathname };
+    setChatContext(c);
+    return () => clearChatContext(c);
+    // selected 以 answerKey 代表，避免每次渲染都重新登記
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [qid, revealed, isPractice, answerKey, pathname, index]);
   const remaining = session.timeLimitSec ? session.timeLimitSec - elapsed : null;
 
   const doSubmit = useCallback(async () => {
@@ -234,7 +251,7 @@ function Runner({ session }: { session: QuizSession }) {
               {q.code && <CodeBlock code={q.code} language={q.codeLanguage} />}
               <fieldset className="mt-4 grid gap-2.5" disabled={revealed}>
                 <legend className="sr-only">選項</legend>
-                {q.options.map((o) => {
+                {displayOptions(q, session.optionOrders?.[qid]).map(({ option: o, letter }) => {
                   const state = revealed ? (q.correctOptionIds.includes(o.id) ? 'correct' : selected.includes(o.id) ? 'wrong' : undefined) : undefined;
                   return (
                     <label key={o.id} className="opt" data-state={state} aria-disabled={revealed}>
@@ -245,14 +262,14 @@ function Runner({ session }: { session: QuizSession }) {
                         onChange={() => choose(o.id)}
                       />
                       <span className="min-w-0 whitespace-pre-wrap [overflow-wrap:anywhere]">
-                        <strong>{o.id}.</strong> {o.text}
+                        <strong>{letter}.</strong> {o.text}
                       </span>
                     </label>
                   );
                 })}
               </fieldset>
 
-              {isPractice && revealed && <Explanation q={q} selected={selected} />}
+              {isPractice && revealed && <Explanation q={q} selected={selected} order={session.optionOrders?.[qid]} />}
             </>
           )}
 

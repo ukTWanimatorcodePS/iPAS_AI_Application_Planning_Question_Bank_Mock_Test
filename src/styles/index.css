@@ -474,3 +474,136 @@
     transition: none !important;
   }
 }
+
+/* AI 導師懸浮圖示與對話視窗（自備 API）：手機避開底部導覽列與講義的測驗按鈕 */
+.tutor-fab {
+  position: fixed;
+  right: 16px;
+  bottom: calc(132px + env(safe-area-inset-bottom));
+  z-index: 45;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  background: var(--c-primary);
+  color: var(--c-primary-ink);
+  box-shadow: 0 6px 18px rgb(20 32 51 / 0.25);
+}
+.tutor-fab:focus-visible {
+  outline: 3px solid var(--c-ink);
+  outline-offset: 2px;
+}
+.tutor-fab-quiz {
+  bottom: calc(84px + env(safe-area-inset-bottom));
+}
+.tutor-fab-badge {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  border-radius: 999px;
+  background: var(--c-warn-soft);
+  color: var(--c-warn);
+  padding: 1px;
+  width: 16px;
+  height: 16px;
+}
+.tutor-chat {
+  position: fixed;
+  z-index: 55;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--c-border);
+  background: var(--c-surface);
+  color: var(--c-ink);
+  box-shadow: 0 12px 40px rgb(20 32 51 / 0.28);
+}
+/* 手機：標準＝下半部面板；放大＝全螢幕 */
+.tutor-chat-normal {
+  inset: auto 0 0 0;
+  height: min(70dvh, 620px);
+  border-radius: 16px 16px 0 0;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.tutor-chat-large {
+  inset: 0;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+@media (min-width: 1024px) {
+  .tutor-fab,
+  .tutor-fab-quiz {
+    right: 24px;
+    bottom: 24px;
+  }
+  .tutor-chat-normal {
+    inset: auto 24px 24px auto;
+    width: 380px;
+    height: min(600px, calc(100vh - 48px));
+    border-radius: 16px;
+    padding-bottom: 0;
+  }
+  .tutor-chat-large {
+    inset: auto 24px 24px auto;
+    width: min(760px, calc(100vw - 48px));
+    height: calc(100vh - 48px);
+    border-radius: 16px;
+    padding-bottom: 0;
+  }
+}
+.tutor-icon-btn {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  color: var(--c-muted);
+}
+.tutor-icon-btn:hover,
+.tutor-icon-btn[aria-pressed='true'] {
+  background: var(--c-soft);
+  color: var(--c-ink);
+}
+.tutor-msg-user {
+  margin-left: 2.5rem;
+  border-radius: 12px;
+  background: var(--c-primary-soft);
+  padding: 0.5rem 0.75rem;
+}
+.tutor-msg-ai {
+  margin-right: 1rem;
+  border-radius: 12px;
+  background: var(--c-soft);
+  padding: 0.5rem 0.75rem;
+  overflow-wrap: anywhere;
+}
+.prose-chat p,
+.prose-chat ul,
+.prose-chat ol {
+  margin: 0.25rem 0;
+}
+.prose-chat ul {
+  list-style: disc;
+  padding-left: 1.2rem;
+}
+.prose-chat ol {
+  list-style: decimal;
+  padding-left: 1.2rem;
+}
+.prose-chat pre {
+  overflow-x: auto;
+  border-radius: 8px;
+  background: var(--c-bg);
+  padding: 0.5rem;
+  font-size: 0.8rem;
+}
+.prose-chat table {
+  display: block;
+  overflow-x: auto;
+  font-size: 0.8rem;
+}
+.prose-chat th,
+.prose-chat td {
+  border: 1px solid var(--c-border);
+  padding: 0.2rem 0.4rem;
+}

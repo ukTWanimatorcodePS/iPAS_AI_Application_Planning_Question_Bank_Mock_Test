@@ -15,7 +15,7 @@
 - 只有具相關專業者實際審閱過的內容才能標為 `human-reviewed`；自動檢查通過只能是 `ai-checked`。
 - 發現並確認的錯誤說法，請加入 `src/content/misconceptions.ts` 與 `tests/unit/misconceptions.test.ts`，避免再犯。
 - 不可修改 IndexedDB 既有版本定義；資料結構變更請新增 Dexie version 與 migration，並維持備份檔向下相容。
-- 前端不可放任何 API 金鑰（AI 導師說明見 `docs/AI_TUTOR.md`）。
+- 程式碼、建置設定與 repo 不可放任何 API 金鑰。對話型 AI 導師只使用使用者自己在瀏覽器輸入的金鑰：不可寫入 IndexedDB、備份或匯出，不可放進網址或 console，只送往通過 `checkEndpoint` 的位址；修改前先讀 `docs/AI_TUTOR.md` 第 0 節。
 - 報告中的數字與覆蓋範圍，請以實際指令輸出為準，並分開列出結構檢查、程式執行驗證與內容審閱。
 - 官方評鑑範圍改版時，更新 `curriculum.json` 的 `officialScope`（逐字）與 `scopeTerms`，並更新 `docs/SCOPE_COVERAGE.md`；測試要求每個有官方內容的細項都設定 `scopeTerms`，且關鍵字都出現在對應講義。
 - 階段性完成或複查後，更新 `docs/PROGRESS.md`；使用者看得到的變更寫進 `CHANGELOG.md`。

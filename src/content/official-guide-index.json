@@ -1,0 +1,986 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-11-20",
+  "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+  "pageNumberConvention": {
+    "pdf": "1-based physical page number, including cover and front matter; ranges inclusive",
+    "printed": "printed chapter-page label; ranges inclusive"
+  },
+  "mappingNotes": [
+    "僅收錄定位資料，不含指引正文、題目、答案或圖片。",
+    "初級16個細項以共同上位主題章節定位，非已核實的細項專屬頁碼；同一主題的細項共享範圍，不代表每頁皆屬於每個細項。",
+    "中級34個細項以目錄中的同名章節定位。",
+    "頁碼涵蓋整個對應章節，可能含該章節練習與解析；索引不轉錄其內容，亦不代表逐頁內容審核。",
+    "versionCode僅抄錄下載檔名明示代碼；中級檔名只含上傳時間戳，不將時間戳冒充官方版號。",
+    "初級科目二版本碼依檔名原樣記為114123，不自行補零或推斷日期。"
+  ],
+  "guides": {
+    "L11": {
+      "level": "junior",
+      "subjectTitle": "人工智慧基礎概論",
+      "filename": "AI應用規劃師(初級)-學習指引-科目1_人工智慧基礎概論1141203_20251222172144.pdf",
+      "versionCode": "1141203",
+      "versionCodeBasis": "filename_literal",
+      "uploadTimestampFromFilename": "20251222172144",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "pdfUrl": "https://www.ipas.org.tw/api/proxy/uploads/certification_resource/bf93f438f7be48d295c1b40a34d79f3d/AI%E6%87%89%E7%94%A8%E8%A6%8F%E5%8A%83%E5%B8%AB%28%E5%88%9D%E7%B4%9A%29-%E5%AD%B8%E7%BF%92%E6%8C%87%E5%BC%95-%E7%A7%91%E7%9B%AE1_%E4%BA%BA%E5%B7%A5%E6%99%BA%E6%85%A7%E5%9F%BA%E7%A4%8E%E6%A6%82%E8%AB%961141203_20251222172144.pdf",
+      "verifiedAt": "2026-11-20",
+      "pdfPageCount": 71,
+      "sha256": "11eec1f79617aee49989e9e2f1c54c7a33dcaedc5f21d375a9dba5a393ca216c"
+    },
+    "L12": {
+      "level": "junior",
+      "subjectTitle": "生成式 AI 應用與規劃",
+      "filename": "AI應用規劃師(初級)-學習指引-科目2_生成式AI應用與規劃114123_20251222172159.pdf",
+      "versionCode": "114123",
+      "versionCodeBasis": "filename_literal",
+      "uploadTimestampFromFilename": "20251222172159",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "pdfUrl": "https://www.ipas.org.tw/api/proxy/uploads/certification_resource/bf93f438f7be48d295c1b40a34d79f3d/AI%E6%87%89%E7%94%A8%E8%A6%8F%E5%8A%83%E5%B8%AB%28%E5%88%9D%E7%B4%9A%29-%E5%AD%B8%E7%BF%92%E6%8C%87%E5%BC%95-%E7%A7%91%E7%9B%AE2_%E7%94%9F%E6%88%90%E5%BC%8FAI%E6%87%89%E7%94%A8%E8%88%87%E8%A6%8F%E5%8A%83114123_20251222172159.pdf",
+      "verifiedAt": "2026-11-20",
+      "pdfPageCount": 62,
+      "sha256": "142d9dadbbfd35020875a640beaa15f6e7ad86b3fe91920048df59123fd7ea5f"
+    },
+    "L21": {
+      "level": "middle",
+      "subjectTitle": "人工智慧技術應用與規劃",
+      "filename": "AI應用規劃師(中級)-學習指引-科目1人工智慧技術應用規劃_20251222101833.pdf",
+      "versionCode": null,
+      "versionCodeBasis": "not_explicit_in_linked_filename",
+      "uploadTimestampFromFilename": "20251222101833",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "pdfUrl": "https://www.ipas.org.tw/api/proxy/uploads/certification_resource/bf93f438f7be48d295c1b40a34d79f3d/AI%E6%87%89%E7%94%A8%E8%A6%8F%E5%8A%83%E5%B8%AB%28%E4%B8%AD%E7%B4%9A%29-%E5%AD%B8%E7%BF%92%E6%8C%87%E5%BC%95-%E7%A7%91%E7%9B%AE1%E4%BA%BA%E5%B7%A5%E6%99%BA%E6%85%A7%E6%8A%80%E8%A1%93%E6%87%89%E7%94%A8%E8%A6%8F%E5%8A%83_20251222101833.pdf",
+      "verifiedAt": "2026-11-20",
+      "pdfPageCount": 168,
+      "sha256": "7b1c67e3280600fbeca893bc1c13421d5aa44841272c34b456f1346731bf3812"
+    },
+    "L22": {
+      "level": "middle",
+      "subjectTitle": "大數據處理分析與應用",
+      "filename": "AI應用規劃師(中級)-學習指引-科目2大數據處理分析與應用_20251222101850.pdf",
+      "versionCode": null,
+      "versionCodeBasis": "not_explicit_in_linked_filename",
+      "uploadTimestampFromFilename": "20251222101850",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "pdfUrl": "https://www.ipas.org.tw/api/proxy/uploads/certification_resource/bf93f438f7be48d295c1b40a34d79f3d/AI%E6%87%89%E7%94%A8%E8%A6%8F%E5%8A%83%E5%B8%AB%28%E4%B8%AD%E7%B4%9A%29-%E5%AD%B8%E7%BF%92%E6%8C%87%E5%BC%95-%E7%A7%91%E7%9B%AE2%E5%A4%A7%E6%95%B8%E6%93%9A%E8%99%95%E7%90%86%E5%88%86%E6%9E%90%E8%88%87%E6%87%89%E7%94%A8_20251222101850.pdf",
+      "verifiedAt": "2026-11-20",
+      "pdfPageCount": 182,
+      "sha256": "cae491470cb756ed4323b11e19459465383e2d93ee5f0e4abfcd8f4983b49933"
+    },
+    "L23": {
+      "level": "middle",
+      "subjectTitle": "機器學習技術與應用",
+      "filename": "AI應用規劃師(中級)-學習指引-科目3機器學習技術與應用_20251222101907.pdf",
+      "versionCode": null,
+      "versionCodeBasis": "not_explicit_in_linked_filename",
+      "uploadTimestampFromFilename": "20251222101907",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "pdfUrl": "https://www.ipas.org.tw/api/proxy/uploads/certification_resource/bf93f438f7be48d295c1b40a34d79f3d/AI%E6%87%89%E7%94%A8%E8%A6%8F%E5%8A%83%E5%B8%AB%28%E4%B8%AD%E7%B4%9A%29-%E5%AD%B8%E7%BF%92%E6%8C%87%E5%BC%95-%E7%A7%91%E7%9B%AE3%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92%E6%8A%80%E8%A1%93%E8%88%87%E6%87%89%E7%94%A8_20251222101907.pdf",
+      "verifiedAt": "2026-11-20",
+      "pdfPageCount": 223,
+      "sha256": "cc4300a4133276509f34750313f65fd02e4bd1960366fc604f236f057719247a"
+    }
+  },
+  "competencies": {
+    "L11101": {
+      "subjectCode": "L11",
+      "competencyTitle": "AI 的定義與分類",
+      "guideFilename": "AI應用規劃師(初級)-學習指引-科目1_人工智慧基礎概論1141203_20251222172144.pdf",
+      "versionCode": "1141203",
+      "sectionNumber": "3.1",
+      "sectionTitle": "人工智慧概念",
+      "pageRange": {
+        "printedStart": "3-1",
+        "printedEnd": "3-23",
+        "pdfStart": 7,
+        "pdfEnd": 29
+      },
+      "mappingGranularity": "parent_topic_section",
+      "mappingBasis": "curriculum_parent_topic_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L11102": {
+      "subjectCode": "L11",
+      "competencyTitle": "AI 治理概念",
+      "guideFilename": "AI應用規劃師(初級)-學習指引-科目1_人工智慧基礎概論1141203_20251222172144.pdf",
+      "versionCode": "1141203",
+      "sectionNumber": "3.1",
+      "sectionTitle": "人工智慧概念",
+      "pageRange": {
+        "printedStart": "3-1",
+        "printedEnd": "3-23",
+        "pdfStart": 7,
+        "pdfEnd": 29
+      },
+      "mappingGranularity": "parent_topic_section",
+      "mappingBasis": "curriculum_parent_topic_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L11201": {
+      "subjectCode": "L11",
+      "competencyTitle": "資料基本概念與來源",
+      "guideFilename": "AI應用規劃師(初級)-學習指引-科目1_人工智慧基礎概論1141203_20251222172144.pdf",
+      "versionCode": "1141203",
+      "sectionNumber": "3.2",
+      "sectionTitle": "資料處理與分析概念",
+      "pageRange": {
+        "printedStart": "3-24",
+        "printedEnd": "3-32",
+        "pdfStart": 30,
+        "pdfEnd": 38
+      },
+      "mappingGranularity": "parent_topic_section",
+      "mappingBasis": "curriculum_parent_topic_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L11202": {
+      "subjectCode": "L11",
+      "competencyTitle": "資料整理與分析流程",
+      "guideFilename": "AI應用規劃師(初級)-學習指引-科目1_人工智慧基礎概論1141203_20251222172144.pdf",
+      "versionCode": "1141203",
+      "sectionNumber": "3.2",
+      "sectionTitle": "資料處理與分析概念",
+      "pageRange": {
+        "printedStart": "3-24",
+        "printedEnd": "3-32",
+        "pdfStart": 30,
+        "pdfEnd": 38
+      },
+      "mappingGranularity": "parent_topic_section",
+      "mappingBasis": "curriculum_parent_topic_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L11203": {
+      "subjectCode": "L11",
+      "competencyTitle": "資料隱私與安全",
+      "guideFilename": "AI應用規劃師(初級)-學習指引-科目1_人工智慧基礎概論1141203_20251222172144.pdf",
+      "versionCode": "1141203",
+      "sectionNumber": "3.2",
+      "sectionTitle": "資料處理與分析概念",
+      "pageRange": {
+        "printedStart": "3-24",
+        "printedEnd": "3-32",
+        "pdfStart": 30,
+        "pdfEnd": 38
+      },
+      "mappingGranularity": "parent_topic_section",
+      "mappingBasis": "curriculum_parent_topic_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L11301": {
+      "subjectCode": "L11",
+      "competencyTitle": "機器學習基本原理",
+      "guideFilename": "AI應用規劃師(初級)-學習指引-科目1_人工智慧基礎概論1141203_20251222172144.pdf",
+      "versionCode": "1141203",
+      "sectionNumber": "3.3",
+      "sectionTitle": "機器學習概念",
+      "pageRange": {
+        "printedStart": "3-33",
+        "printedEnd": "3-47",
+        "pdfStart": 39,
+        "pdfEnd": 53
+      },
+      "mappingGranularity": "parent_topic_section",
+      "mappingBasis": "curriculum_parent_topic_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L11302": {
+      "subjectCode": "L11",
+      "competencyTitle": "常見的機器學習模型",
+      "guideFilename": "AI應用規劃師(初級)-學習指引-科目1_人工智慧基礎概論1141203_20251222172144.pdf",
+      "versionCode": "1141203",
+      "sectionNumber": "3.3",
+      "sectionTitle": "機器學習概念",
+      "pageRange": {
+        "printedStart": "3-33",
+        "printedEnd": "3-47",
+        "pdfStart": 39,
+        "pdfEnd": 53
+      },
+      "mappingGranularity": "parent_topic_section",
+      "mappingBasis": "curriculum_parent_topic_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L11401": {
+      "subjectCode": "L11",
+      "competencyTitle": "鑑別式 AI 與生成式 AI 的基本原理",
+      "guideFilename": "AI應用規劃師(初級)-學習指引-科目1_人工智慧基礎概論1141203_20251222172144.pdf",
+      "versionCode": "1141203",
+      "sectionNumber": "3.4",
+      "sectionTitle": "鑑別式AI 與生成式AI 概念",
+      "pageRange": {
+        "printedStart": "3-48",
+        "printedEnd": "3-63",
+        "pdfStart": 54,
+        "pdfEnd": 69
+      },
+      "mappingGranularity": "parent_topic_section",
+      "mappingBasis": "curriculum_parent_topic_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L11402": {
+      "subjectCode": "L11",
+      "competencyTitle": "鑑別式 AI 與生成式 AI 的整合應用",
+      "guideFilename": "AI應用規劃師(初級)-學習指引-科目1_人工智慧基礎概論1141203_20251222172144.pdf",
+      "versionCode": "1141203",
+      "sectionNumber": "3.4",
+      "sectionTitle": "鑑別式AI 與生成式AI 概念",
+      "pageRange": {
+        "printedStart": "3-48",
+        "printedEnd": "3-63",
+        "pdfStart": 54,
+        "pdfEnd": 69
+      },
+      "mappingGranularity": "parent_topic_section",
+      "mappingBasis": "curriculum_parent_topic_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L12101": {
+      "subjectCode": "L12",
+      "competencyTitle": "No Code / Low Code 的基本概念",
+      "guideFilename": "AI應用規劃師(初級)-學習指引-科目2_生成式AI應用與規劃114123_20251222172159.pdf",
+      "versionCode": "114123",
+      "sectionNumber": "3.1",
+      "sectionTitle": "No code / Low code 概念",
+      "pageRange": {
+        "printedStart": "3-1",
+        "printedEnd": "3-16",
+        "pdfStart": 7,
+        "pdfEnd": 22
+      },
+      "mappingGranularity": "parent_topic_section",
+      "mappingBasis": "curriculum_parent_topic_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L12102": {
+      "subjectCode": "L12",
+      "competencyTitle": "No Code / Low Code 的優勢與限制",
+      "guideFilename": "AI應用規劃師(初級)-學習指引-科目2_生成式AI應用與規劃114123_20251222172159.pdf",
+      "versionCode": "114123",
+      "sectionNumber": "3.1",
+      "sectionTitle": "No code / Low code 概念",
+      "pageRange": {
+        "printedStart": "3-1",
+        "printedEnd": "3-16",
+        "pdfStart": 7,
+        "pdfEnd": 22
+      },
+      "mappingGranularity": "parent_topic_section",
+      "mappingBasis": "curriculum_parent_topic_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L12201": {
+      "subjectCode": "L12",
+      "competencyTitle": "生成式 AI 應用領域與常見工具",
+      "guideFilename": "AI應用規劃師(初級)-學習指引-科目2_生成式AI應用與規劃114123_20251222172159.pdf",
+      "versionCode": "114123",
+      "sectionNumber": "3.2",
+      "sectionTitle": "生成式AI 應用領域與工具使用",
+      "pageRange": {
+        "printedStart": "3-17",
+        "printedEnd": "3-30",
+        "pdfStart": 23,
+        "pdfEnd": 36
+      },
+      "mappingGranularity": "parent_topic_section",
+      "mappingBasis": "curriculum_parent_topic_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L12202": {
+      "subjectCode": "L12",
+      "competencyTitle": "如何善用生成式 AI 工具",
+      "guideFilename": "AI應用規劃師(初級)-學習指引-科目2_生成式AI應用與規劃114123_20251222172159.pdf",
+      "versionCode": "114123",
+      "sectionNumber": "3.2",
+      "sectionTitle": "生成式AI 應用領域與工具使用",
+      "pageRange": {
+        "printedStart": "3-17",
+        "printedEnd": "3-30",
+        "pdfStart": 23,
+        "pdfEnd": 36
+      },
+      "mappingGranularity": "parent_topic_section",
+      "mappingBasis": "curriculum_parent_topic_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L12301": {
+      "subjectCode": "L12",
+      "competencyTitle": "生成式 AI 導入評估",
+      "guideFilename": "AI應用規劃師(初級)-學習指引-科目2_生成式AI應用與規劃114123_20251222172159.pdf",
+      "versionCode": "114123",
+      "sectionNumber": "3.3",
+      "sectionTitle": "生成式AI 導入評估規劃",
+      "pageRange": {
+        "printedStart": "3-31",
+        "printedEnd": "3-54",
+        "pdfStart": 37,
+        "pdfEnd": 60
+      },
+      "mappingGranularity": "parent_topic_section",
+      "mappingBasis": "curriculum_parent_topic_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L12302": {
+      "subjectCode": "L12",
+      "competencyTitle": "生成式 AI 導入規劃",
+      "guideFilename": "AI應用規劃師(初級)-學習指引-科目2_生成式AI應用與規劃114123_20251222172159.pdf",
+      "versionCode": "114123",
+      "sectionNumber": "3.3",
+      "sectionTitle": "生成式AI 導入評估規劃",
+      "pageRange": {
+        "printedStart": "3-31",
+        "printedEnd": "3-54",
+        "pdfStart": 37,
+        "pdfEnd": 60
+      },
+      "mappingGranularity": "parent_topic_section",
+      "mappingBasis": "curriculum_parent_topic_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L12303": {
+      "subjectCode": "L12",
+      "competencyTitle": "生成式 AI 風險管理",
+      "guideFilename": "AI應用規劃師(初級)-學習指引-科目2_生成式AI應用與規劃114123_20251222172159.pdf",
+      "versionCode": "114123",
+      "sectionNumber": "3.3",
+      "sectionTitle": "生成式AI 導入評估規劃",
+      "pageRange": {
+        "printedStart": "3-31",
+        "printedEnd": "3-54",
+        "pdfStart": 37,
+        "pdfEnd": 60
+      },
+      "mappingGranularity": "parent_topic_section",
+      "mappingBasis": "curriculum_parent_topic_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L21101": {
+      "subjectCode": "L21",
+      "competencyTitle": "自然語言處理技術與應用",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目1人工智慧技術應用規劃_20251222101833.pdf",
+      "versionCode": null,
+      "sectionNumber": "3.1",
+      "sectionTitle": "自然語言處理技術與應用",
+      "pageRange": {
+        "printedStart": "3-3",
+        "printedEnd": "3-39",
+        "pdfStart": 10,
+        "pdfEnd": 46
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L21102": {
+      "subjectCode": "L21",
+      "competencyTitle": "電腦視覺技術與應用",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目1人工智慧技術應用規劃_20251222101833.pdf",
+      "versionCode": null,
+      "sectionNumber": "3.2",
+      "sectionTitle": "電腦視覺技術與應用",
+      "pageRange": {
+        "printedStart": "3-40",
+        "printedEnd": "3-58",
+        "pdfStart": 47,
+        "pdfEnd": 65
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L21103": {
+      "subjectCode": "L21",
+      "competencyTitle": "生成式 AI 技術與應用",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目1人工智慧技術應用規劃_20251222101833.pdf",
+      "versionCode": null,
+      "sectionNumber": "3.3",
+      "sectionTitle": "生成式AI 技術與應用",
+      "pageRange": {
+        "printedStart": "3-59",
+        "printedEnd": "3-72",
+        "pdfStart": 66,
+        "pdfEnd": 79
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L21104": {
+      "subjectCode": "L21",
+      "competencyTitle": "多模態人工智慧應用",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目1人工智慧技術應用規劃_20251222101833.pdf",
+      "versionCode": null,
+      "sectionNumber": "3.4",
+      "sectionTitle": "多模態人工智慧應用",
+      "pageRange": {
+        "printedStart": "3-73",
+        "printedEnd": "3-87",
+        "pdfStart": 80,
+        "pdfEnd": 94
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L21201": {
+      "subjectCode": "L21",
+      "competencyTitle": "AI 導入評估",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目1人工智慧技術應用規劃_20251222101833.pdf",
+      "versionCode": null,
+      "sectionNumber": "4.1",
+      "sectionTitle": "AI 導入評估",
+      "pageRange": {
+        "printedStart": "4-3",
+        "printedEnd": "4-14",
+        "pdfStart": 97,
+        "pdfEnd": 108
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L21202": {
+      "subjectCode": "L21",
+      "competencyTitle": "AI 導入規劃",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目1人工智慧技術應用規劃_20251222101833.pdf",
+      "versionCode": null,
+      "sectionNumber": "4.2",
+      "sectionTitle": "AI 導入規劃",
+      "pageRange": {
+        "printedStart": "4-15",
+        "printedEnd": "4-28",
+        "pdfStart": 109,
+        "pdfEnd": 122
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L21203": {
+      "subjectCode": "L21",
+      "competencyTitle": "AI 風險管理",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目1人工智慧技術應用規劃_20251222101833.pdf",
+      "versionCode": null,
+      "sectionNumber": "4.3",
+      "sectionTitle": "AI 風險管理",
+      "pageRange": {
+        "printedStart": "4-29",
+        "printedEnd": "4-47",
+        "pdfStart": 123,
+        "pdfEnd": 141
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L21301": {
+      "subjectCode": "L21",
+      "competencyTitle": "數據準備與模型選擇",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目1人工智慧技術應用規劃_20251222101833.pdf",
+      "versionCode": null,
+      "sectionNumber": "5.1",
+      "sectionTitle": "數據準備與模型選擇",
+      "pageRange": {
+        "printedStart": "5-2",
+        "printedEnd": "5-13",
+        "pdfStart": 143,
+        "pdfEnd": 154
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L21302": {
+      "subjectCode": "L21",
+      "competencyTitle": "AI 技術系統集成與部署",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目1人工智慧技術應用規劃_20251222101833.pdf",
+      "versionCode": null,
+      "sectionNumber": "5.2",
+      "sectionTitle": "AI 技術系統集成與部署",
+      "pageRange": {
+        "printedStart": "5-14",
+        "printedEnd": "5-26",
+        "pdfStart": 155,
+        "pdfEnd": 167
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L22101": {
+      "subjectCode": "L22",
+      "competencyTitle": "敘述性統計與資料摘要技術",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目2大數據處理分析與應用_20251222101850.pdf",
+      "versionCode": null,
+      "sectionNumber": "3.1",
+      "sectionTitle": "敘述性統計與資料摘要技術",
+      "pageRange": {
+        "printedStart": "3-2",
+        "printedEnd": "3-12",
+        "pdfStart": 9,
+        "pdfEnd": 19
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L22102": {
+      "subjectCode": "L22",
+      "competencyTitle": "機率分佈與資料分佈模型",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目2大數據處理分析與應用_20251222101850.pdf",
+      "versionCode": null,
+      "sectionNumber": "3.2",
+      "sectionTitle": "機率分佈與資料分佈模型",
+      "pageRange": {
+        "printedStart": "3-13",
+        "printedEnd": "3-22",
+        "pdfStart": 20,
+        "pdfEnd": 29
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L22103": {
+      "subjectCode": "L22",
+      "competencyTitle": "假設檢定與統計推論",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目2大數據處理分析與應用_20251222101850.pdf",
+      "versionCode": null,
+      "sectionNumber": "3.3",
+      "sectionTitle": "假設檢定與統計推論",
+      "pageRange": {
+        "printedStart": "3-23",
+        "printedEnd": "3-48",
+        "pdfStart": 30,
+        "pdfEnd": 55
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L22201": {
+      "subjectCode": "L22",
+      "competencyTitle": "數據收集與清理",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目2大數據處理分析與應用_20251222101850.pdf",
+      "versionCode": null,
+      "sectionNumber": "4.1",
+      "sectionTitle": "數據收集與清理",
+      "pageRange": {
+        "printedStart": "4-2",
+        "printedEnd": "4-8",
+        "pdfStart": 57,
+        "pdfEnd": 63
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L22202": {
+      "subjectCode": "L22",
+      "competencyTitle": "數據儲存與管理",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目2大數據處理分析與應用_20251222101850.pdf",
+      "versionCode": null,
+      "sectionNumber": "4.2",
+      "sectionTitle": "數據儲存與管理",
+      "pageRange": {
+        "printedStart": "4-9",
+        "printedEnd": "4-19",
+        "pdfStart": 64,
+        "pdfEnd": 74
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L22203": {
+      "subjectCode": "L22",
+      "competencyTitle": "數據處理技術與工具",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目2大數據處理分析與應用_20251222101850.pdf",
+      "versionCode": null,
+      "sectionNumber": "4.3",
+      "sectionTitle": "數據處理技術與工具",
+      "pageRange": {
+        "printedStart": "4-20",
+        "printedEnd": "4-33",
+        "pdfStart": 75,
+        "pdfEnd": 88
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L22301": {
+      "subjectCode": "L22",
+      "competencyTitle": "統計學在大數據中的應用",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目2大數據處理分析與應用_20251222101850.pdf",
+      "versionCode": null,
+      "sectionNumber": "5.1",
+      "sectionTitle": "統計學在大數據中的應用",
+      "pageRange": {
+        "printedStart": "5-2",
+        "printedEnd": "5-9",
+        "pdfStart": 90,
+        "pdfEnd": 97
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L22302": {
+      "subjectCode": "L22",
+      "competencyTitle": "常見的大數據分析方法",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目2大數據處理分析與應用_20251222101850.pdf",
+      "versionCode": null,
+      "sectionNumber": "5.2",
+      "sectionTitle": "常見的大數據分析方法",
+      "pageRange": {
+        "printedStart": "5-10",
+        "printedEnd": "5-28",
+        "pdfStart": 98,
+        "pdfEnd": 116
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L22303": {
+      "subjectCode": "L22",
+      "competencyTitle": "數據可視化工具",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目2大數據處理分析與應用_20251222101850.pdf",
+      "versionCode": null,
+      "sectionNumber": "5.3",
+      "sectionTitle": "數據可視化工具",
+      "pageRange": {
+        "printedStart": "5-29",
+        "printedEnd": "5-50",
+        "pdfStart": 117,
+        "pdfEnd": 138
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L22401": {
+      "subjectCode": "L22",
+      "competencyTitle": "大數據與機器學習",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目2大數據處理分析與應用_20251222101850.pdf",
+      "versionCode": null,
+      "sectionNumber": "6.1",
+      "sectionTitle": "大數據與機器學習",
+      "pageRange": {
+        "printedStart": "6-2",
+        "printedEnd": "6-13",
+        "pdfStart": 140,
+        "pdfEnd": 151
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L22402": {
+      "subjectCode": "L22",
+      "competencyTitle": "大數據在鑑別式 AI 中的應用",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目2大數據處理分析與應用_20251222101850.pdf",
+      "versionCode": null,
+      "sectionNumber": "6.2",
+      "sectionTitle": "大數據在鑑別式AI 中的應用",
+      "pageRange": {
+        "printedStart": "6-14",
+        "printedEnd": "6-24",
+        "pdfStart": 152,
+        "pdfEnd": 162
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L22403": {
+      "subjectCode": "L22",
+      "competencyTitle": "大數據在生成式 AI 中的應用",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目2大數據處理分析與應用_20251222101850.pdf",
+      "versionCode": null,
+      "sectionNumber": "6.3",
+      "sectionTitle": "大數據在生成式AI 中的應用",
+      "pageRange": {
+        "printedStart": "6-25",
+        "printedEnd": "6-29",
+        "pdfStart": 163,
+        "pdfEnd": 167
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L22404": {
+      "subjectCode": "L22",
+      "competencyTitle": "大數據隱私保護、安全與合規",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目2大數據處理分析與應用_20251222101850.pdf",
+      "versionCode": null,
+      "sectionNumber": "6.4",
+      "sectionTitle": "大數據隱私保護、安全與合規",
+      "pageRange": {
+        "printedStart": "6-30",
+        "printedEnd": "6-43",
+        "pdfStart": 168,
+        "pdfEnd": 181
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L23101": {
+      "subjectCode": "L23",
+      "competencyTitle": "機率／統計之機器學習基礎應用",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目3機器學習技術與應用_20251222101907.pdf",
+      "versionCode": null,
+      "sectionNumber": "3.1",
+      "sectionTitle": "機率/統計之機器學習基礎應用",
+      "pageRange": {
+        "printedStart": "3-2",
+        "printedEnd": "3-8",
+        "pdfStart": 9,
+        "pdfEnd": 15
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L23102": {
+      "subjectCode": "L23",
+      "competencyTitle": "線性代數之機器學習基礎應用",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目3機器學習技術與應用_20251222101907.pdf",
+      "versionCode": null,
+      "sectionNumber": "3.2",
+      "sectionTitle": "線性代數之機器學習基礎應用",
+      "pageRange": {
+        "printedStart": "3-9",
+        "printedEnd": "3-17",
+        "pdfStart": 16,
+        "pdfEnd": 24
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L23103": {
+      "subjectCode": "L23",
+      "competencyTitle": "數值優化技術與方法",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目3機器學習技術與應用_20251222101907.pdf",
+      "versionCode": null,
+      "sectionNumber": "3.3",
+      "sectionTitle": "數值優化技術與方法",
+      "pageRange": {
+        "printedStart": "3-18",
+        "printedEnd": "3-31",
+        "pdfStart": 25,
+        "pdfEnd": 38
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L23201": {
+      "subjectCode": "L23",
+      "competencyTitle": "機器學習原理與技術",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目3機器學習技術與應用_20251222101907.pdf",
+      "versionCode": null,
+      "sectionNumber": "4.1",
+      "sectionTitle": "機器學習原理與技術",
+      "pageRange": {
+        "printedStart": "4-2",
+        "printedEnd": "4-11",
+        "pdfStart": 40,
+        "pdfEnd": 49
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L23202": {
+      "subjectCode": "L23",
+      "competencyTitle": "常見機器學習演算法",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目3機器學習技術與應用_20251222101907.pdf",
+      "versionCode": null,
+      "sectionNumber": "4.2",
+      "sectionTitle": "常見機器學習演算法",
+      "pageRange": {
+        "printedStart": "4-12",
+        "printedEnd": "4-53",
+        "pdfStart": 50,
+        "pdfEnd": 91
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L23203": {
+      "subjectCode": "L23",
+      "competencyTitle": "深度學習原理與框架",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目3機器學習技術與應用_20251222101907.pdf",
+      "versionCode": null,
+      "sectionNumber": "4.3",
+      "sectionTitle": "深度學習原理與框架",
+      "pageRange": {
+        "printedStart": "4-54",
+        "printedEnd": "4-96",
+        "pdfStart": 92,
+        "pdfEnd": 134
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L23301": {
+      "subjectCode": "L23",
+      "competencyTitle": "數據準備與特徵工程",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目3機器學習技術與應用_20251222101907.pdf",
+      "versionCode": null,
+      "sectionNumber": "5.1",
+      "sectionTitle": "數據準備與特徵工程",
+      "pageRange": {
+        "printedStart": "5-2",
+        "printedEnd": "5-10",
+        "pdfStart": 136,
+        "pdfEnd": 144
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L23302": {
+      "subjectCode": "L23",
+      "competencyTitle": "模型選擇與架構設計",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目3機器學習技術與應用_20251222101907.pdf",
+      "versionCode": null,
+      "sectionNumber": "5.2",
+      "sectionTitle": "模型選擇與架構設計",
+      "pageRange": {
+        "printedStart": "5-11",
+        "printedEnd": "5-16",
+        "pdfStart": 145,
+        "pdfEnd": 150
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L23303": {
+      "subjectCode": "L23",
+      "competencyTitle": "模型訓練、評估與驗證",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目3機器學習技術與應用_20251222101907.pdf",
+      "versionCode": null,
+      "sectionNumber": "5.3",
+      "sectionTitle": "模型訓練、評估與驗證",
+      "pageRange": {
+        "printedStart": "5-17",
+        "printedEnd": "5-29",
+        "pdfStart": 151,
+        "pdfEnd": 163
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L23304": {
+      "subjectCode": "L23",
+      "competencyTitle": "模型調整與優化",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目3機器學習技術與應用_20251222101907.pdf",
+      "versionCode": null,
+      "sectionNumber": "5.4",
+      "sectionTitle": "模型調整與優化",
+      "pageRange": {
+        "printedStart": "5-30",
+        "printedEnd": "5-57",
+        "pdfStart": 164,
+        "pdfEnd": 191
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L23401": {
+      "subjectCode": "L23",
+      "competencyTitle": "數據隱私、安全與合規",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目3機器學習技術與應用_20251222101907.pdf",
+      "versionCode": null,
+      "sectionNumber": "6.1",
+      "sectionTitle": "數據隱私、安全與合規",
+      "pageRange": {
+        "printedStart": "6-2",
+        "printedEnd": "6-13",
+        "pdfStart": 194,
+        "pdfEnd": 205
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    },
+    "L23402": {
+      "subjectCode": "L23",
+      "competencyTitle": "演算法偏見與公平性",
+      "guideFilename": "AI應用規劃師(中級)-學習指引-科目3機器學習技術與應用_20251222101907.pdf",
+      "versionCode": null,
+      "sectionNumber": "6.2",
+      "sectionTitle": "演算法偏見與公平性",
+      "pageRange": {
+        "printedStart": "6-14",
+        "printedEnd": "6-30",
+        "pdfStart": 206,
+        "pdfEnd": 222
+      },
+      "mappingGranularity": "competency_section",
+      "mappingBasis": "competency_title_to_guide_table_of_contents",
+      "downloadPageUrl": "https://ipd.nat.gov.tw/ipas/certification/AIAP/learning-resources",
+      "verifiedAt": "2026-11-20"
+    }
+  }
+}

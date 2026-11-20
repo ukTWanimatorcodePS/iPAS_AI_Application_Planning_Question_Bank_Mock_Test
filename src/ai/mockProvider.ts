@@ -1,6 +1,7 @@
 import { getCompetency, loadLesson, questionsFor } from '../content';
 import type { Question } from '../content/schema';
 import { bulletsOf, sectionBody, tableRowsOf } from '../lib/lessonOutline';
+import { lettersOf } from '../lib/optionOrder';
 import type { TutorProvider, TutorRequest, TutorResponse, TutorSection } from './types';
 
 /**
@@ -25,14 +26,16 @@ function optionText(q: Question, id: string) {
 }
 
 export async function buildMockTutor(req: TutorRequest, excludeIds: string[] = []): Promise<TutorResponse> {
-  const { question: q, selected, mode } = req;
+  const { question: q, selected, mode, optionOrder } = req;
+  // 代號用使用者畫面上看到的 A～D（選項有打亂時和題庫原始代號不同）
+  const letter = (id: string) => lettersOf(q, optionOrder, [id])[0] ?? id;
   const comp = getCompetency(q.competencyCode);
   const md = (await loadLesson(q.explanation.lessonAnchor)) ?? '';
   const core = bulletsOf(sectionBody(md, '必考核心觀念'));
   const cases = bulletsOf(sectionBody(md, '不同領域的實際案例'));
   const traps = bulletsOf(sectionBody(md, '常見考試陷阱'));
   const compareRows = tableRowsOf(sectionBody(md, '容易混淆的觀念比較'));
-  const correct = q.correctOptionIds.map((id) => `${id}. ${optionText(q, id)}`).join('、');
+  const correct = q.correctOptionIds.map((id) => `${letter(id)}. ${optionText(q, id)}`).join('、');
   const wrongPicked = selected.filter((s) => !(q.correctOptionIds as string[]).includes(s));
 
   const coreSection: TutorSection = {
@@ -45,7 +48,7 @@ export async function buildMockTutor(req: TutorRequest, excludeIds: string[] = [
     title: '為什麼這樣選會錯',
     body: wrongPicked.length
       ? [
-          ...wrongPicked.map((id) => `- 你選了 **${id}. ${optionText(q, id)}**：${q.explanation.optionRationales[id]}`),
+          ...wrongPicked.map((id) => `- 你選了 **${letter(id)}. ${optionText(q, id)}**：${q.explanation.optionRationales[id]}`),
           `- 正確答案是 **${correct}**：${q.explanation.correctRationale}`,
         ].join('\n')
       : `- 你沒有作答或已答對。正確答案是 **${correct}**：${q.explanation.correctRationale}`,

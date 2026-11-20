@@ -8,7 +8,7 @@ import type { TutorProvider, TutorResponse } from './types';
  * 只有在建置時設定 VITE_AI_TUTOR_ENDPOINT（後端代理網址）才會啟用。
  * - 前端不持有、也不輸入任何 AI 服務的 API 金鑰；金鑰只存在後端代理的環境變數中。
  * - 後端負責：使用者驗證、速率與額度限制、成本上限、內容過濾、紀錄。
- * - 前端只送出 questionId、selected、mode、exclude（本次已出過的補強題 ID），不含個人資料；後端自行從題庫取得題目與標準解析作為依據。
+ * - 前端只送出 questionId、selected（原始選項 ID）、optionOrder（畫面顯示順序，讓回覆用同樣的 A～D 代號）、mode、exclude（本次已出過的補強題 ID），不含個人資料；後端自行從題庫取得題目與標準解析作為依據。
  * - 回應一律標示為 AI 生成，且不得覆蓋題目的標準答案。
  * 參考實作與部署說明：docs/AI_TUTOR.md
  */
@@ -34,7 +34,7 @@ export const remoteProvider: TutorProvider = {
       // credentials: 'include' 讓後端以自己的登入工作階段（HttpOnly Cookie）驗證使用者；前端不處理任何金鑰
       credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ questionId: req.question.id, selected: req.selected, mode: req.mode, exclude: opts?.excludeIds ?? [] }),
+      body: JSON.stringify({ questionId: req.question.id, selected: req.selected, optionOrder: req.optionOrder, mode: req.mode, exclude: opts?.excludeIds ?? [] }),
       signal: opts?.signal,
     });
     if (res.status === 401) throw new Error('請先登入 AI 導師服務');

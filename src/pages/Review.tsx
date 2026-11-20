@@ -14,6 +14,7 @@ import { startReviewQuiz } from '../data/quizFactory';
 import { rescheduleReview, setMistakeReason } from '../data/repo';
 import { MASTERY_LABEL, REASON_LABEL, type MasteryStatus, type MistakeReason, type ReviewItem } from '../data/types';
 import { isDue } from '../lib/review';
+import { lettersOf } from '../lib/optionOrder';
 
 const TABS: MasteryStatus[] = ['unresolved', 'reviewing', 'mastered'];
 
@@ -160,7 +161,7 @@ function ReviewCard({ item, onRetest }: { item: ReviewItem; onRetest: () => void
           <ol className="mt-1 ml-4 list-decimal">
             {history.map((h) => (
               <li key={h.id}>
-                {formatDateTime(h.answeredAt)}：選 {h.selectedIds.join('、') || '—'}，{h.correct ? '答對' : '答錯'}
+                {formatDateTime(h.answeredAt)}：選 {lettersOf(q, h.optionOrder, h.selectedIds).join('、') || '—'}，{h.correct ? '答對' : '答錯'}
               </li>
             ))}
           </ol>
@@ -203,9 +204,9 @@ function ReviewCard({ item, onRetest }: { item: ReviewItem; onRetest: () => void
           </select>
         </label>
       </div>
-      {open && <Explanation q={q} selected={last?.selectedIds} showActions={false} showTutor={false} />}
+      {open && <Explanation q={q} selected={last?.selectedIds} order={last?.optionOrder} showActions={false} showTutor={false} />}
       <div className="mt-3">
-        <TutorPanel q={q} selected={last && !last.correct ? last.selectedIds : []} />
+        <TutorPanel q={q} selected={last && !last.correct ? last.selectedIds : []} order={last?.optionOrder} />
       </div>
     </article>
   );

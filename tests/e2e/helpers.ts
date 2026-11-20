@@ -38,9 +38,12 @@ function escapeRegExp(s: string) {
   return s.replace(/[.*+?^${}()|[\]\\]/g, (c) => '\\' + c);
 }
 
-/** 依「選項代號＋完整文字」精確點選，避免「結構化資料」同時命中「非結構化資料」等子字串 */
+/**
+ * 依「完整選項文字」精確點選，避免「結構化資料」同時命中「非結構化資料」等子字串。
+ * v1.1.0 起選項每次打亂，畫面代號（A～D）不等於題庫原始代號，因此只比對文字，代號接受任何字母。
+ */
 export function optionLocator(root: Page | Locator, opt: { id: string; text: string }) {
-  return root.locator('label.opt').filter({ hasText: new RegExp(`^\\s*${opt.id}\\.\\s*${escapeRegExp(opt.text)}\\s*$`) });
+  return root.locator('label.opt').filter({ hasText: new RegExp(`^\\s*[A-F]\\.\\s*${escapeRegExp(opt.text)}\\s*$`) });
 }
 
 export async function choose(page: Page, q: Q, correct: boolean) {

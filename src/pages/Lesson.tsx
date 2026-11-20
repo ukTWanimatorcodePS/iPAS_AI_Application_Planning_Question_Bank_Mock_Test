@@ -1,7 +1,8 @@
 import { ArrowLeft, ArrowRight, CheckCircle2, ChevronDown, ChevronRight, ListTree, Minus, NotebookPen, Plus } from 'lucide-react';
 import { useLiveQuery } from 'dexie-react-hooks';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Link, useNavigate, useParams, useSearchParams } from 'react-router';
+import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router';
+import { clearChatContext, setChatContext, type ChatContext } from '../ai/byok/context';
 import { useApp } from '../app/AppContext';
 import { Drawer } from '../app/Layout';
 import { Markdown } from '../components/Markdown';
@@ -48,6 +49,13 @@ function Lesson({ code }: { code: string }) {
   const [active, setActive] = useState<string | null>(null);
   const [msg, setMsg] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const { pathname } = useLocation();
+  // AI 導師情境：目前閱讀的講義（只登記代碼，送出提問時才檢索內容）
+  useEffect(() => {
+    const c: ChatContext = { kind: 'lesson', code, path: pathname };
+    setChatContext(c);
+    return () => clearChatContext(c);
+  }, [code, pathname]);
   const restored = useRef(false);
   const [params] = useSearchParams();
   const targetSection = params.get('section');

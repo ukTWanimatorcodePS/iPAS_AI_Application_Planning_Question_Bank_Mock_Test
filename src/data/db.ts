@@ -4,6 +4,7 @@ import { DEFAULT_INTERVALS } from '../lib/review';
 import type {
   AnswerAttempt,
   CurriculumSource,
+  LastOptionOrder,
   TutorLog,
   LessonProgress,
   StudyTimeLog,
@@ -28,6 +29,7 @@ export class PrepDB extends Dexie {
   sources!: Table<CurriculumSource, string>;
   tutorLogs!: Table<TutorLog, number>;
   studyTime!: Table<StudyTimeLog, string>;
+  lastOptionOrders!: Table<LastOptionOrder, string>;
 
   constructor(name = DB_NAME) {
     super(name);
@@ -53,7 +55,28 @@ export class PrepDB extends Dexie {
     // v3：新增講義閱讀時間的每日紀錄。舊版只有累計閱讀時間、無法還原每天讀了多久，因此不回填，
     // 本週／本月統計只計入升級後的閱讀時間；累計值仍保留在 lessonProgress.timeSpentSec。
     this.version(3).stores({ studyTime: 'key, date, level' });
+    // v4（v1.1.0）：每題上一次顯示的選項順序。從既有測驗與 AI 導師作答紀錄回填，既有資料原封保留。
+    this.version(4)
+      .stores({ lastOptionOrders: 'questionId' })
+      .upgrade(async (tx) => {
+        const rows = rebuildLastOptionOrders(await tx.table('quizSessions').toArray(), await tx.table('attempts').toArray());
+        await tx.table('lastOptionOrders').bulkPut(rows);
+      });
   }
+}
+
+/**
+ * 依時間先後從測驗與 AI 導師作答紀錄推出每題最後一次的顯示順序（升級資料庫、匯入備份時使用）。
+ * 只用來決定「下一次要避開的位置」；找不到時下一次以題庫原始順序為準。
+ */
+export function rebuildLastOptionOrders(sessions: QuizSession[], attempts: AnswerAttempt[]): LastOptionOrder[] {
+  const events: { at: string; questionId: string; order: string[] }[] = [];
+  for (const s of sessions) for (const [questionId, order] of Object.entries(s.optionOrders ?? {})) events.push({ at: s.startAt, questionId, order });
+  for (const a of attempts) if (a.mode === 'tutor' && a.optionOrder) events.push({ at: a.answeredAt, questionId: a.questionId, order: a.optionOrder });
+  events.sort((x, y) => x.at.localeCompare(y.at));
+  const last = new Map<string, string[]>();
+  for (const e of events) last.set(e.questionId, e.order);
+  return [...last].map(([questionId, order]) => ({ questionId, order }));
 }
 
 export let db = new PrepDB();
