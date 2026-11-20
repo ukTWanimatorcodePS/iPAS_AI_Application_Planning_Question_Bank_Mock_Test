@@ -375,3 +375,11 @@ Claude 逐處核對屬實並修正，另在題庫找到 3 題相同問題一併�
 ## Codex Ollama轉接第三輪複查（2026-11-21，未提交）
 
 詳見本機 `docs/AUDIT_2026-11-21_ollama-bridge_r3.md`（不stage）。同意本次已複查修正發布，不構成提交推送授權。R2-1在真實PTY／Windows5.1／NoExit的上傳、等待首回應、串流三點均修復：退出shell之前已觀察上下游中止、shell仍在執行且狀態清除；上傳未完成時沒有上游請求。done只在回應Close後設true，未見未完成路徑跳過finally取消；中止原因改為已中止。typecheck、lint、835題驗證、442單元（含11項實際腳本）、build通過；PowerShell7 runtime另11通過；E2E54通過2略過。測試shell及假上游全清理，19434／19439／19440／19441均確認關閉，未碰使用者11434／11435或正式TEMP轉接狀態，未變更許可。未改正式程式／題庫、未提交推送、未重跑題庫Python。Windows CI建議仍待後續處理。
+
+## v1.2.1 發布（2026-11-21，Claude）
+
+- 使用者同意後提交 `de55b5d` 並推送 main；GitHub Actions「Test & Deploy to GitHub Pages」成功：https://github.com/ukTWanimatorcodePS/iPAS_AI_Application_Planning_Question_Bank_Mock_Test/actions/runs/44789254580
+- 發布前本機檢查：typecheck、lint、835 題驗證、單元 442（含 11 項在 Windows PowerShell 5.1 實際執行轉接腳本；PowerShell 7 另跑 11 項通過）、Pyodide 80/80＋18/18、build、E2E 54 通過（2 選用略過）。
+- 正式網址已確認顯示「版本 v1.2.1」（桌面左下角與頁尾），設定頁有「Ollama（本機，透過轉接程式）」選項與「重新連線」按鈕。GitHub Pages 約有 10 分鐘快取，使用者看到舊版時請重新整理。
+- 內容：本機 Ollama 403 說明、Windows 本機轉接程式（Codex 轉接第 1～3 輪同意）、網站倒數對齊轉接期限、設定頁「重新連線」、移除永久設定步驟。
+- 待決定：GitHub Actions 為 ubuntu，會略過 Windows 實際執行測試；Codex 建議另加 windows-latest 檢查。在此之前，發布前須在 Windows 本機執行 `npm run test`。
