@@ -1,6 +1,6 @@
 /** 專案公開資訊（不含任何個人資料或金鑰） */
-/** 網站版本（與 package.json 的 version 一致；單元測試會檢查）。v1.0.0：2026-11-19；v1.1.0：2026-11-20（選項每次打亂、手機顯示版本號）；v1.2.0：2026-11-20（AI 導師連線狀態與 30 分鐘連線、跨服務相容、提問引導）；v1.2.1：2026-11-21（本機 Ollama 403 說明、Windows 本機轉接程式、設定頁重新連線）；v1.2.2：2026-11-21（轉接程式只留啟動、Windows 自動帶入轉接版本、模型自動填入） */
-export const APP_VERSION = '1.2.2';
+/** 網站版本（與 package.json 的 version 一致；單元測試會檢查）。v1.0.0：2026-11-19；v1.1.0：2026-11-20（選項每次打亂、手機顯示版本號）；v1.2.0：2026-11-20（AI 導師連線狀態與 30 分鐘連線、跨服務相容、提問引導）；v1.2.1：2026-11-21（本機 Ollama 403 說明、Windows 本機轉接程式、設定頁重新連線）；v1.2.2：2026-11-21（轉接程式只留啟動、Windows 自動帶入轉接版本、模型自動填入）；v1.2.3：2026-11-21（手機版 AI 導師設定：預設雲端、手機教學、觸控 44px） */
+export const APP_VERSION = '1.2.3';
 
 export const REPO_URL = 'https://github.com/ukTWanimatorcodePS/iPAS_AI_Application_Planning_Question_Bank_Mock_Test';
 

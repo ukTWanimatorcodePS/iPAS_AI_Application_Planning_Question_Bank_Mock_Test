@@ -6,6 +6,8 @@ import { detectLocal, orderModels, type Diagnosis } from '../ai/byok/diagnose';
 import { ConnectionIndicator, SessionTimer } from './ConnectionIndicator';
 import { LocalSetupGuide } from './LocalSetupGuide';
 import { LocalBridgePanel } from './LocalBridgePanel';
+import { MobileSetupGuide } from './MobileSetupGuide';
+import { KEY_PAGES, isMobileDevice } from '../ai/byok/device';
 import { BRIDGE_BASE_URL, isBridgeUrl, prefersBridge } from '../ai/byok/bridge';
 import {
   BYOK_PRESETS,
@@ -23,6 +25,9 @@ import {
   subscribeByok,
   type ByokConfig,
 } from '../ai/byok/config';
+
+/** 預設位址是 localhost、只在執行它的同一台裝置有效的服務（手機版不列出） */
+const LOCAL_ONLY_PRESETS = new Set(['ollama', 'ollama-bridge', 'lmstudio']);
 
 function initialConfig(): ByokConfig {
   const saved = loadConfig();
@@ -44,6 +49,18 @@ export function ByokSettings({ onSaved, compact = false }: { onSaved?: () => voi
   const [diagnosis, setDiagnosis] = useState<Diagnosis | null>(null);
   /** 自動偵測找到的本機服務：使用者確認後才套用並儲存（不直接覆蓋現有設定與金鑰） */
   const [detected, setDetected] = useState<{ presetId: string; baseUrl: string; models: string[]; model: string } | null>(null);
+  const serviceRef = useRef<HTMLSelectElement>(null);
+  /** 開啟服務選單（支援 showPicker 的瀏覽器直接展開；否則移到選單上） */
+  const openServicePicker = () => {
+    const el = serviceRef.current;
+    if (!el) return;
+    el.focus();
+    try {
+      (el as HTMLSelectElement & { showPicker?: () => void }).showPicker?.();
+    } catch {
+      // 不支援或不允許時，已移到選單上
+    }
+  };
   /** 表單上的服務或位址每改一次就加一；等待中的連線結果若不屬於目前的表單內容就丟棄 */
   const formSeq = useRef(0);
   // 另一個表單（設定頁／導師視窗）或其他分頁儲存、清除設定時重新渲染，提示文字跟著更新
@@ -157,6 +174,12 @@ export function ByokSettings({ onSaved, compact = false }: { onSaved?: () => voi
     } catch (e) {
       if (seq !== formSeq.current) return;
       const err = e instanceof ByokError ? e : null;
+      if (isMobileDevice() && LOCAL_ONLY_PRESETS.has(form.presetId)) {
+        // 手機上的 Ollama／LM Studio 預設位址指向手機本身：不顯示電腦版的步驟
+        setDiagnosis(null);
+        setStatus({ tone: 'bad', text: `${prefix}連線失敗：在手機上，${form.baseUrl} 指向手機本身，不會連到電腦上的服務。請改選雲端服務，或若手機本身有相容的服務，改用「其他 OpenAI 相容服務」。` });
+        return;
+      }
       setDiagnosis(err?.diagnosis ?? null);
       setStatus({ tone: 'bad', text: `${prefix}連線失敗：${err?.message ?? '請確認服務位址與模型名稱。'}` });
     } finally {
@@ -280,13 +303,19 @@ export function ByokSettings({ onSaved, compact = false }: { onSaved?: () => voi
       const current = form.model.trim();
       const local = checkEndpoint(form.baseUrl);
       const p = presetById(form.presetId);
-      const auto = !current || (local.ok && local.local && !list.includes(current)) ? (list.includes(p.defaultModel) ? p.defaultModel : list[0]) : '';
+      // 本機：空白或清單外時自動填入。雲端：只在有預設模型且在清單裡時填入；清單依字母排序，第一個常是舊模型或不能對話的模型，不自動選
+      const isLocal = local.ok && local.local;
+      const auto = isLocal
+        ? !current || !list.includes(current) ? (list.includes(p.defaultModel) ? p.defaultModel : list[0]) : ''
+        : !current && p.defaultModel && list.includes(p.defaultModel) ? p.defaultModel : '';
       if (auto) setCfg((c) => ({ ...c, model: auto }));
       setStatus({
         tone: 'ok',
         text: auto
           ? `找到 ${list.length} 個模型，已自動填入「${auto}」。要用其他模型，請從「模型」下方的選單選擇。`
-          : `找到 ${list.length} 個模型，可從「模型」下方的選單選擇。`,
+          : !current
+            ? `找到 ${list.length} 個模型，請從「模型」下方的選單選擇要用的模型。`
+            : `找到 ${list.length} 個模型，可從「模型」下方的選單選擇。`,
       });
     } catch (e) {
       if (seq !== formSeq.current) return;
@@ -393,8 +422,12 @@ export function ByokSettings({ onSaved, compact = false }: { onSaved?: () => voi
   const savedSnap = loadByok();
   const savedOther = detected && savedSnap.config && savedSnap.config.presetId !== detected.presetId ? savedSnap.config.presetId : null;
   const field = 'field !min-h-[40px] !py-1.5 text-sm';
+  // 手機或平板：localhost 指向手機本身，自動偵測與轉接程式只適用同一台電腦，所以先提供雲端服務（自訂網址仍可設定）
+  const mobile = isMobileDevice();
+  const LOCAL_ONLY = LOCAL_ONLY_PRESETS;
+  const keyPage = KEY_PAGES[preset.id];
   return (
-    <div className="grid gap-3 text-sm" data-testid="byok-settings">
+    <div className="byok-form grid gap-3 text-sm" data-testid="byok-settings">
       <div role="note" className="rounded-lg bg-soft p-2 text-xs" data-testid="byok-connection-status">
         <div className="flex flex-wrap items-center gap-2">
           <ConnectionIndicator config={cfg} apiKey={key} showLabel />
@@ -404,28 +437,44 @@ export function ByokSettings({ onSaved, compact = false }: { onSaved?: () => voi
           按「儲存並連線」確認服務能用（只讀取模型清單，不消耗 token）。綠燈＝已連線，紅燈＝連線失敗，灰燈＝未連線或已到時。每次連線最長 30 分鐘，時間到請按「重新連線」。
         </p>
       </div>
-      {(!compact || preset.local) && (
-        <button type="button" className="btn btn-secondary btn-sm justify-self-start" onClick={detect} disabled={busy} data-testid="byok-detect">
-          <Radar size={14} aria-hidden /> 自動偵測本機 AI
-        </button>
-      )}
-      {(!compact || preset.local) && (
-        <p className="-mt-2 text-[0.7rem] text-muted">只檢查 Ollama 與 LM Studio 的預設位址；雲端服務或其他本機程式請直接在下方選擇服務、輸入位址。</p>
+      {mobile ? (
+        <div role="note" className="rounded-lg bg-warn-soft p-2 text-xs" data-testid="byok-mobile-note">
+          <p className="font-semibold">在手機或平板上使用</p>
+          <p className="mt-1">
+            手機上預設使用雲端服務：一般的 Ollama、LM Studio 要先在電腦上下載模型並執行，而手機的 localhost 指向手機本身，不會連到電腦上的 Ollama 或 LM Studio；本站的自動偵測與 Windows 轉接程式只適用同一台電腦。若你已有在手機本機執行的相容服務，或可信的 HTTPS 位址，可選「其他 OpenAI 相容服務」自行設定。
+          </p>
+          <div className="mt-2">
+            <MobileSetupGuide presetId={preset.id} open={!anySaved && !loadByok().config} hasKeyPage={!!keyPage} />
+          </div>
+        </div>
+      ) : (
+        <>
+          {(!compact || preset.local) && (
+            <button type="button" className="btn btn-secondary btn-sm justify-self-start" onClick={detect} disabled={busy} data-testid="byok-detect">
+              <Radar size={14} aria-hidden /> 自動偵測本機 AI
+            </button>
+          )}
+          {(!compact || preset.local) && (
+            <p className="-mt-2 text-[0.7rem] text-muted">只檢查 Ollama 與 LM Studio 的預設位址；雲端服務或其他本機程式請直接在下方選擇服務、輸入位址。</p>
+          )}
+        </>
       )}
       <label className="grid gap-1">
         <span className="font-semibold">AI 服務</span>
-        <select className={field} value={cfg.presetId} onChange={(e) => choosePreset(e.target.value)} aria-describedby={`${uid}-hint`}>
+        <select ref={serviceRef} className={field} value={cfg.presetId} onChange={(e) => choosePreset(e.target.value)} aria-describedby={`${uid}-hint`}>
           {BYOK_PRESETS.filter((p) =>
             // Windows 只列「透過轉接程式」的 Ollama；其他系統只列直接連線（轉接程式只有 Windows 版）。目前選中的一律保留
-            p.id === cfg.presetId ? true : p.id === 'ollama' ? !prefersBridge() : p.id === 'ollama-bridge' ? prefersBridge() : true,
+            // 手機不列只能在電腦上用的本機服務（自訂網址仍可輸入）
+            p.id === cfg.presetId ? true : mobile && LOCAL_ONLY.has(p.id) ? false : p.id === 'ollama' ? !prefersBridge() : p.id === 'ollama-bridge' ? prefersBridge() : true,
           ).map((p) => (
             <option key={p.id} value={p.id}>
               {p.label}
             </option>
           ))}
         </select>
-        <span id={`${uid}-hint`} className="text-xs text-muted">
-          {preset.hint}
+        <span id={`${uid}-hint`} className="text-xs text-muted" data-testid="byok-service-hint">
+          {/* 手機上的本機服務：電腦版的步驟在手機上做不到，改由下方手機說明處理（Codex 手機複查 R2-1） */}
+          {mobile && LOCAL_ONLY.has(preset.id) ? '這是電腦用的本機服務；在手機上請看下方說明，改選雲端服務或其他相容服務。' : preset.hint}
         </span>
       </label>
 
@@ -442,7 +491,7 @@ export function ByokSettings({ onSaved, compact = false }: { onSaved?: () => voi
         />
         {!endpoint.ok && cfg.baseUrl && <span className="text-xs text-bad">{endpoint.message}</span>}
       </label>
-      {(preset.id === 'ollama' || preset.id === 'ollama-bridge' || isBridgeUrl(cfg.baseUrl)) && (
+      {!mobile && (preset.id === 'ollama' || preset.id === 'ollama-bridge' || isBridgeUrl(cfg.baseUrl)) && (
         <LocalBridgePanel baseUrl={cfg.baseUrl} onUseBridge={useBridge} open={diagnosis?.problem === 'cors' || preset.id === 'ollama-bridge'} />
       )}
       {needsTrust && (
@@ -478,7 +527,7 @@ export function ByokSettings({ onSaved, compact = false }: { onSaved?: () => voi
         <label className="-mt-2 grid gap-1 text-xs">
           <span className="text-muted">從偵測到的 {models.length} 個模型選擇</span>
           <select className={field} value={models.includes(cfg.model.trim()) ? cfg.model.trim() : ''} onChange={(e) => e.target.value && changeModel(e.target.value)} data-testid="byok-model-select">
-            {!models.includes(cfg.model.trim()) && <option value="">（請選擇；目前填的是清單外的名稱）</option>}
+            {!models.includes(cfg.model.trim()) && <option value="">{cfg.model.trim() ? '（請選擇；目前填的是清單外的名稱）' : '（請選擇模型）'}</option>}
             {models.map((m) => (
               <option key={m} value={m}>
                 {m}
@@ -507,8 +556,17 @@ export function ByokSettings({ onSaved, compact = false }: { onSaved?: () => voi
           data-testid="byok-key"
         />
       </label>
+      {keyPage && (
+        <div className="-mt-1 grid gap-1 text-xs text-muted" data-testid="byok-key-page">
+          <span>還沒有金鑰？到服務的官方頁面建立，複製後回到這裡貼上：</span>
+          <a href={keyPage.url} target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm justify-self-start">
+            到 {keyPage.name} 建立金鑰（新分頁）
+          </a>
+          <span>可能需要登入或設定付款；費用、免費額度與限制以各服務官方說明為準。</span>
+        </div>
+      )}
 
-      <label className="flex items-start gap-2 text-xs">
+      <label className="byok-check flex items-start gap-2 text-xs">
         <input type="checkbox" checked={cfg.rememberKey} onChange={(e) => setCfg((c) => ({ ...c, rememberKey: e.target.checked }))} />
         <span>
           在這台裝置記住金鑰（不勾選時，關閉分頁就會清除）。
@@ -575,8 +633,25 @@ export function ByokSettings({ onSaved, compact = false }: { onSaved?: () => voi
           ))}
         </div>
       )}
-      {(preset.local || (endpoint.ok && endpoint.local)) && (
-        <LocalSetupGuide key={preset.id} presetId={preset.local ? preset.id : 'generic'} highlight={diagnosis?.problem === 'cors'} />
+      {mobile && LOCAL_ONLY.has(preset.id) ? (
+        <div role="note" className="grid gap-2 rounded-lg bg-warn-soft p-2 text-xs" data-testid="byok-mobile-local">
+          <p>
+            目前選的是「{preset.label}」（{cfg.baseUrl}）。在手機上，這個位址指向手機本身，不會連到電腦上的服務；電腦版的自動偵測與轉接程式在手機上不提供。
+          </p>
+          <p>請在上方「AI 服務」改選雲端服務；若手機本身有相容的服務，可改用「其他 OpenAI 相容服務」。原本的設定不會被自動刪除。</p>
+          <div className="flex flex-wrap gap-2">
+            <button type="button" className="btn btn-sm" onClick={openServicePicker} data-testid="byok-mobile-pick">
+              前往 AI 服務選單
+            </button>
+            <button type="button" className="btn btn-secondary btn-sm" onClick={() => choosePreset('custom')} data-testid="byok-mobile-custom">
+              改用其他相容服務
+            </button>
+          </div>
+        </div>
+      ) : (
+        (preset.local || (endpoint.ok && endpoint.local)) && (
+          <LocalSetupGuide key={preset.id} presetId={preset.local ? preset.id : 'generic'} highlight={diagnosis?.problem === 'cors'} />
+        )
       )}
 
       {!compact && (

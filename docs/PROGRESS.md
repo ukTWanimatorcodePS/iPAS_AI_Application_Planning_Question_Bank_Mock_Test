@@ -399,3 +399,15 @@ Claude 逐處核對屬實並修正，另在題庫找到 3 題相同問題一併�
 - 正式網址已確認顯示「版本 v1.2.2」；Windows 的服務選單只列「Ollama（本機，透過轉接程式）」，「本機暫時許可」只剩「啟動」按鈕。GitHub Pages 約有 10 分鐘快取，使用者看到舊版時請重新整理。
 - 內容：轉接程式只留「啟動」、按 Ctrl+C 停止；Windows 選 Ollama 或自動偵測時直接帶入轉接版本；本機模型自動填入與下拉選單；等待中設定在別處變更時取消舊操作（Codex 第 4～5 輪同意）。
 - 仍待決定：GitHub Actions 為 ubuntu，會略過 Windows 實際執行測試；發布前須在 Windows 本機執行 `npm run test`。
+
+## Codex手機版AI導師設定複查（2026-11-21，未提交）
+
+詳見本機 `docs/AUDIT_2026-11-21_mobile-tutor.md`（不stage）。暫不同意，三項P2：M1新44px樣式未覆蓋field，Android360／iPhone390／iPad768／Windows觸控1440實測皆40px（按鈕44）；M2手機說明把預設localhost限制誤寫成所有本機AI只能同機；M3手機保留已存Ollama轉接時仍顯示桌機LocalSetupGuide，要求按已隱藏的上方啟動面板。金鑰官方入口查核通過但未登入建鑰；手機／平板與觸控筆電判斷合理但桌機偽裝UA有已知限制；雲端空模型不亂選通過。typecheck、lint、835題、463單元、build及正式E2E54通過2略過；新增瀏覽器尺寸探測4失敗（同一M1），舊設定引導觀察1通過（重現M3），失敗斷言未刪除。已列其他手機體驗建議與實機未測限制。未改正式程式／題庫、未提交推送、未啟動延長或變更Ollama許可；未重跑題庫Python。
+
+## Codex 手機版 AI 導師第二輪複查（2026-11-21，未提交）
+
+詳見 `docs/AUDIT_2026-11-21_mobile-tutor_r2.md`。暫不同意發布：兩項 P2，R2-1 手機保留本機 preset 時，服務選單下方的 preset.hint 仍指向隱藏的桌機啟動／設定步驟；R2-2 新增手機教學 summary 只有 30px。原欄位、按鈕、金鑰連結與勾選列於四種 profile 均達 44px；預設雲端、舊設定保留、雲端不亂選模型通過，showPicker 不存在或丟例外的聚焦退回兩案通過。typecheck、lint、835 題驗證、一般 Windows 464 項測試、build、正式 E2E 58 通過／6 略過；前輪探測調整過時觀察預期後 5 通過；新邊界探測 4 失敗／2 通過，對應兩類 P2，失敗斷言保留。首次受限制環境的 HttpListener／預覽服務問題與重跑證據均已記錄。教學比對官方 Android／Apple 文件，Safari 版面差異及重新載入時草稿可能遺失列為建議；未宣稱實機 Safari 通過。未改正式程式／題庫、未提交推送、未啟動延長或變更使用者 Ollama 許可。
+
+## Codex 手機版 AI 導師第三輪複查（2026-11-21，未提交）
+
+詳見 `docs/AUDIT_2026-11-21_mobile-tutor_r3.md`。同意本批手機修正發布；R2-1 三種本機 preset 的服務提示均改為手機說明，R2-2 教學 summary 實測由 30px 改為 44px，未發現新的必修問題。原額外探測 6 通過，四種 profile＋舊設定 5 通過；typecheck、lint、835 題驗證、464 項單元、build 與正式 E2E 58 通過／6 略過。Android／iOS 教學第 3、4 步可接受，Safari 更多後補所有分頁名稱屬非阻擋建議；未宣稱實機 Chrome／Safari、原生剪貼簿或鍵盤通過。未修改正式程式／題庫，未提交推送或變更使用者 Ollama 許可；本報告同意不代表已授權執行發布。

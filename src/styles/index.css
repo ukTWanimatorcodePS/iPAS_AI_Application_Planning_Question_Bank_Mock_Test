@@ -607,3 +607,31 @@
   border: 1px solid var(--c-border);
   padding: 0.2rem 0.4rem;
 }
+
+/*
+ * AI 導師設定：觸控裝置或窄螢幕的按鈕、欄位、連結按鈕與勾選列至少 44px（規格：手機觸控 ≥44×44px）。
+ * 必須放在 utilities 層：元件上的 !min-h-[40px] 等是 utilities 層的 !important，
+ * 而 !important 時「有層」會勝過「沒有層」的規則；放進同一層後由較高的選擇器權重（兩個 class）決定。
+ */
+@layer utilities {
+  @media (pointer: coarse), (max-width: 640px) {
+    .byok-form .btn,
+    .byok-form .field {
+      min-height: 44px !important;
+    }
+    .byok-form .byok-check {
+      min-height: 44px;
+      align-items: center;
+    }
+    /* 展開／收合列（教學、設定說明）：保留原生 details／summary 的鍵盤操作，擴大可點範圍 */
+    .byok-form summary {
+      min-height: 44px;
+      padding-block: 0.75rem;
+    }
+    .byok-form .byok-check input[type='checkbox'] {
+      width: 1.25rem;
+      height: 1.25rem;
+      flex-shrink: 0;
+    }
+  }
+}
