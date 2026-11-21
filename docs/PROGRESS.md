@@ -411,3 +411,11 @@ Claude 逐處核對屬實並修正，另在題庫找到 3 題相同問題一併�
 ## Codex 手機版 AI 導師第三輪複查（2026-11-21，未提交）
 
 詳見 `docs/AUDIT_2026-11-21_mobile-tutor_r3.md`。同意本批手機修正發布；R2-1 三種本機 preset 的服務提示均改為手機說明，R2-2 教學 summary 實測由 30px 改為 44px，未發現新的必修問題。原額外探測 6 通過，四種 profile＋舊設定 5 通過；typecheck、lint、835 題驗證、464 項單元、build 與正式 E2E 58 通過／6 略過。Android／iOS 教學第 3、4 步可接受，Safari 更多後補所有分頁名稱屬非阻擋建議；未宣稱實機 Chrome／Safari、原生剪貼簿或鍵盤通過。未修改正式程式／題庫，未提交推送或變更使用者 Ollama 許可；本報告同意不代表已授權執行發布。
+
+## v1.2.3 發布（2026-11-21，Claude）
+
+- 使用者同意後提交 `f7f121e` 並推送 main；GitHub Actions「Test & Deploy to GitHub Pages」成功：https://github.com/ukTWanimatorcodePS/iPAS_AI_Application_Planning_Question_Bank_Mock_Test/actions/runs/44876793577
+- 發布前本機檢查：typecheck、lint、835 題驗證、單元 464（含 11 項在 Windows PowerShell 5.1 實際執行轉接腳本）、Pyodide 80/80＋18/18、build、E2E 58 通過（6 略過：2 選用＋4 項只在手機或電腦尺寸執行）。
+- 正式網址已確認顯示「版本 v1.2.3」；以手機尺寸（Android 使用者代理字串）確認手機說明與教學出現、不顯示自動偵測、金鑰欄 44px、沒有橫向溢出。GitHub Pages 約有 10 分鐘快取，使用者看到舊版時請重新整理。
+- 內容：手機版 AI 導師設定預設雲端服務與說明、手機設定教學、手機上已存本機服務的指引、建立金鑰按鈕、觸控 44px、雲端模型不自動選第一個（Codex 手機複查第 1～3 輪同意）。
+- 待後續：真實 iPhone Safari／Android Chrome 實機驗證；教學過長時的「開始設定」捷徑、API 位址收進進階、貼上金鑰按鈕、對話框標題列圖示 44px；GitHub Actions 加 Windows 檢查（目前發布前須在 Windows 本機執行 `npm run test`）。
